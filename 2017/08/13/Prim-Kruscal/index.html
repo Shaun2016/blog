@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/shaun.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta name="keywords" content="Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Prim-Kruscal">
+<meta property="og:url" content="http://yoursite.com/2017/08/13/Prim-Kruscal/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/prim_kruscal/tu.jpg">
+<meta property="og:image" content="http://yoursite.com/images/prim_kruscal/prim.jpg">
+<meta property="og:image" content="http://yoursite.com/images/prim_kruscal/kruscal.jpg">
+<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=dfb6266065b0e2a1f63bccd1587f64a4&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160744-00b6e27da65b4b48b903e768a97bf888.png">
+<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=2b83a531e086dc93da48d329819fc113&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png">
+<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=39cd479da65629e403608953a381ae81&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png">
+<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=f547dbac92c11e77a5fc3e32ff80658e&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png">
+<meta property="og:updated_time" content="2017-08-13T10:23:37.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prim-Kruscal">
+<meta name="twitter:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta name="twitter:image" content="http://yoursite.com/images/prim_kruscal/tu.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/13/Prim-Kruscal/"/>
+
+
+
+
+
+  <title>Prim-Kruscal | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/13/Prim-Kruscal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Prim-Kruscal</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T13:26:57+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/OJ-做题知识点积累/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ 做题知识点积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="贪心算法——最小生成树"><a href="#贪心算法——最小生成树" class="headerlink" title="贪心算法——最小生成树"></a>贪心算法——最小生成树</h1><blockquote>
+<ol>
+<li><p>G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树</p>
+</li>
+<li><p>MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存在 G 的一棵最小生成树包括这条边（u，v）</p>
+</li>
+<li><p>Prim 和 Kruscal 都应用最小生成树的 MST 性质进行贪心选择</p>
+</li>
+<li><p>实例中连通带权图为<img src="/images/prim_kruscal/tu.jpg" alt="tu"></p>
+<p>图的表示：邻接矩阵——使用二维数组存放两点之间的信息</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Prim-算法"><a href="#Prim-算法" class="headerlink" title="Prim 算法"></a>Prim 算法</h2><blockquote>
+<p>设 G=(V,E) 是连通带权图，V = {1,2,…,n}</p>
+<p>构造 G 的最小生成树的 Prim算法的基本思想是：首先置 S={1}，然后只要 S 是 V 的真子集，就做如下贪心选择：选取满足条件 i∈S，j∈V-S，且 c[i][j] 最小的边，并将顶点 j 添加到 S 中，这个过程一直进行到 S=V为止。这个过程中选取的所有边构成 G 的一颗最小生成树</p>
+<p><img src="/images/prim_kruscal/prim.jpg" alt="prim.jpg"> </p>
+</blockquote>
+<p><em>Question:</em> 如何有效地找出满足 i∈S, j∈V-S，且权 c[i][j] 最小的边 (i,j) ?</p>
+<p><strong>代码说明：</strong></p>
+<blockquote>
+<p>对于每个 j∈V-S，closest[j] 是 j 在 S 中的临界顶点，它与 j 在 S 中的其他临接顶点 k 相比较有：</p>
+<p>c[j][closest[j]]≤c[j][k]</p>
+<p>lowest[j] 的值就是 c[j][closest[j]]</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MIN 100001</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span>[<span class="number">100</span>][<span class="number">100</span>],<span class="keyword">int</span>)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> N;</div><div class="line">    <span class="keyword">int</span> arr[<span class="number">100</span>][<span class="number">100</span>];	<span class="comment">// 存放两点之间连线的权值</span></div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N)) &#123;</div><div class="line">        <span class="comment">// 输入</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++) &#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Prim</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"最小生成树权值和：%d\n"</span>,Prim(arr,N));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// lowcost[i]:V-S中点i到S中的点连线最小权值</span></div><div class="line"><span class="comment">// closet[i]:V-S中点i到s中权值最小连线应该连的点坐标</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span> c[<span class="number">100</span>][<span class="number">100</span>],<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lowcost[N],closest[N], res=<span class="number">0</span>;</div><div class="line">    <span class="keyword">bool</span> s[N];</div><div class="line">    <span class="comment">// S 集合最开始只有0号元素时，对lowcost, clostest初始化</span></div><div class="line">    s[<span class="number">0</span>] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) &#123;</div><div class="line">        lowcost[i] = c[i][<span class="number">0</span>];   <span class="comment">// 最开始 S 中只有 0</span></div><div class="line">        closest[i] = <span class="number">0</span>;</div><div class="line">        s[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 将 V-S 集合中的元素放到 S 中</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) &#123;</div><div class="line">        <span class="keyword">int</span> k, imin = MIN;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">            <span class="keyword">if</span>(!s[j] &amp;&amp; lowcost[j] &lt; imin) &#123;</div><div class="line">                imin = lowcost[j];</div><div class="line">                k = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        s[k] = <span class="literal">true</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d--%d \n"</span>,k,closest[k]);</div><div class="line">        res += imin;</div><div class="line">        <span class="comment">// 由于 S 中有了一个新的元素，V-S 中各点 lowcost 值可能发生变化</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">            <span class="keyword">if</span>(!s[j] &amp;&amp; lowcost[j] &gt; c[j][k]) &#123;</div><div class="line">                lowcost[j] = c[j][k];</div><div class="line">                closest[j] = k;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">Input:</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">0 4 9 21</span></div><div class="line"><span class="comment">4 0 8 17</span></div><div class="line"><span class="comment">9 8 0 16</span></div><div class="line"><span class="comment">21 17 16 0</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<h2 id="Kruscal-算法"><a href="#Kruscal-算法" class="headerlink" title="Kruscal 算法"></a>Kruscal 算法</h2><blockquote>
+<p>先构造一个只含 n 个顶点、而边集为空的子图，把子图中各个顶点看成各棵树上的根结点，之后，从网的边集 E 中选取一条权值最小的边，若该条边的两个顶点分属不同的树，则将其加入子图，即把两棵树合成一棵树，反之，若该条边的两个顶点已落在同一棵树上，则不可取，而应该取下一条权值最小的边再试之。依次类推，直到森林中只有一棵树，也即子图中含有 n-1 条边为止</p>
+<p><strong>简单的说：</strong> Kruscal 算法先找权值最小的边，检查这条边两个端点是否在一个集合中，如果不在一个集合中，连接两点(合并点所在集合)后找下一条权值最小的边；如果在一个集合，不连接两点直接找下一条权值最小的边，直到连接的边数为n-1为止</p>
+<p><img src="/images/prim_kruscal/kruscal.jpg" alt="kruscal"></p>
+</blockquote>
+<p><em>Question:</em> </p>
+<ul>
+<li>怎样按权递增的顺序查看各边？</li>
+<li>怎样判断两点是否在一个集合中？</li>
+</ul>
+<h3 id="优先队列和并查集"><a href="#优先队列和并查集" class="headerlink" title="优先队列和并查集"></a>优先队列和并查集</h3><blockquote>
+<p>优先队列请见 <a href="/2017/02/06/priority-queue/">priority-queue</a></p>
+<p>并查集（Union-find Sets）主要用于处理一些<em>不相交集合</em> 的合并问题，使用树形结构表示一个集合，树的每个节点就表示集合中的一个元素，树根作为集合的代表。</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=dfb6266065b0e2a1f63bccd1587f64a4&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160744-00b6e27da65b4b48b903e768a97bf888.png" alt=""></p>
+<p>并查集的基本操作有三个：</p>
+<ol>
+<li><p>makeSet(s)：建立一个新的并查集，其中包含 s 个单元素集合。</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=2b83a531e086dc93da48d329819fc113&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png" alt="构造并查集初始化"></p>
+</li>
+<li><p>unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。</p>
+</li>
+<li><p>find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。在find方法中，如果每次都沿着父节点向上查找，当树很高时，会降低查找效率（时间复杂度就是树的高度）有一种非常简单而有效的策略——路径压缩：</p>
+</li>
+<li><p>路径压缩，就是在每次查找时，令查找路径上的每个节点都直接指向根节点</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=39cd479da65629e403608953a381ae81&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png" alt=""></p>
+<p>这样查看每个元素所在树的根节点只需要一步</p>
+</li>
+<li><p>并查集的合并：将一个集合的树根指向另一个集合的树根</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=f547dbac92c11e77a5fc3e32ff80658e&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png" alt=""></p>
+</li>
+</ol>
+<p>​    合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
+</blockquote>
+<p><strong>使用优先队列将边升序排列（注意对自定义类型要重写 ‘&lt;’ 运算符）</strong></p>
+<p><strong>使用并查集判断两点是否在一个集合上（根节点是否相等），合并两集合</strong> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> arr[MAXSIZE][MAXSIZE];</div><div class="line"><span class="keyword">int</span> uset[MAXSIZE];  <span class="comment">// uset[i] :元素i所属集合的根节点</span></div><div class="line"><span class="keyword">int</span> urank[MAXSIZE]; <span class="comment">// urank[i] :元素i为根节点集合的高度</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruscal</span><span class="params">(<span class="keyword">int</span>)</span></span>;</div><div class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">int</span> y;</div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line">    Edge(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> weight) &#123;</div><div class="line">        <span class="keyword">this</span>-&gt;x = x;</div><div class="line">        <span class="keyword">this</span>-&gt;y = y;</div><div class="line">        <span class="keyword">this</span>-&gt;weight = weight;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (Edge edge1, Edge edge2) &#123;</div><div class="line">        <span class="keyword">return</span> edge1.weight &gt; edge2.weight;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">priority_queue&lt;Edge&gt; q;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> N;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N)) &#123;</div><div class="line">        res = <span class="number">0</span>;</div><div class="line">        <span class="comment">// 输入</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++) &#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将边放入优先队列中</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">                q.push(Edge(i,j,arr[i][j]));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        Kruscal(N);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeSet</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    <span class="comment">// 初始时每个元素独立成为一个集合，根节点是本身，集合（树）高度为0</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">        uset[i] = i;</div><div class="line">        urank[i] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="comment">// 只有根节点的父节点是本身</span></div><div class="line">    <span class="keyword">if</span>(uset[x] == x) &#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 不是根节点递归寻找根节点，找到后赋值给uset[x]减少下次递归的次数，相当于压缩了到根节点的路径</span></div><div class="line">    <span class="keyword">return</span> uset[x] = findRoot(uset[x]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">unionSet</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="comment">// 取 x,y 所在集合的根节点</span></div><div class="line">    x=findRoot(x);</div><div class="line">    y=findRoot(y);</div><div class="line">    <span class="comment">// x,y 属于一个集合，不可合并</span></div><div class="line">    <span class="keyword">if</span>(x == y) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// x,y 不在同一集合，将高度小的集合加到高度大的集合根节点</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(urank[x] &gt; urank[y]) &#123;</div><div class="line">        <span class="comment">// y 集合的根节点的父亲是 x 集合的根节点</span></div><div class="line">        uset[y] = x;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        uset[x] = y;</div><div class="line">        <span class="comment">// 高度相等，x所在集合根节点接到y集合根节点，y集合高度加一</span></div><div class="line">        <span class="keyword">if</span>(urank[x] == urank[y]) &#123;</div><div class="line">            urank[y]++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruscal</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    makeSet(N);</div><div class="line">    <span class="keyword">int</span> qsize = q.size();</div><div class="line">    <span class="keyword">int</span> lineNum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;qsize;i++) &#123;</div><div class="line">        <span class="comment">// e为当前最小权值边</span></div><div class="line">        Edge e = q.top();</div><div class="line">        <span class="comment">// 按权值降序处理每一条边，如果两点不在一个集合中，合并两点所在的集合返回true，说明生成了一条连线</span></div><div class="line">        <span class="keyword">if</span>(unionSet(e.x, e.y)) &#123;</div><div class="line">            lineNum ++;</div><div class="line">            res += arr[e.x][e.y];</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d--%d\n"</span>,e.x,e.y);</div><div class="line">            <span class="comment">// 连线数 = 点数 - 1 时为最小生成树，结束循环</span></div><div class="line">            <span class="keyword">if</span>(lineNum == N - <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        q.pop();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">Input:</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">0 4 9 21</span></div><div class="line"><span class="comment">4 0 8 17</span></div><div class="line"><span class="comment">9 8 0 16</span></div><div class="line"><span class="comment">21 17 16 0</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/09/springboot-mybatis/" rel="next" title="springboot-mybatis小程序">
+                <i class="fa fa-chevron-left"></i> springboot-mybatis小程序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/21/LCS/" rel="prev" title="LCS">
+                LCS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shaunJm" />
+          <p class="site-author-name" itemprop="name">shaunJm</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心算法——最小生成树"><span class="nav-number">1.</span> <span class="nav-text">贪心算法——最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prim-算法"><span class="nav-number">1.1.</span> <span class="nav-text">Prim 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kruscal-算法"><span class="nav-number">1.2.</span> <span class="nav-text">Kruscal 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优先队列和并查集"><span class="nav-number">1.2.1.</span> <span class="nav-text">优先队列和并查集</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaunJm</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

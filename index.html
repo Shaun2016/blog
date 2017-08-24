@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/shaun.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+   page-home 
+ ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/21/LCS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/21/LCS/" itemprop="url">LCS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-21T12:32:37+08:00">
+                2017-08-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="动态规划——最长公共子序列（LCS）"><a href="#动态规划——最长公共子序列（LCS）" class="headerlink" title="动态规划——最长公共子序列（LCS）"></a>动态规划——最长公共子序列（LCS）</h1><h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><ul>
+<li><strong>子序列：</strong> 原序列 <strong>X</strong>，将 <strong>X</strong> 中的元素组成新序列 <strong>Z</strong>，这些元素的先后位置与原序列相对一致，<strong>Z</strong> 是 <strong>X</strong> 的一个子序列</li>
+</ul>
+<ul>
+<li><strong>最长公共子序列：</strong> 若 <strong>Z</strong> 是 <strong>X</strong> 的子序列 , <strong>Z</strong> 也是 <strong>Y</strong> 的子序列，且不存在比 <strong>Z</strong> 更长的 <strong>X</strong> 和 <strong>Y</strong> 的公共子序列，则称 <strong>Z</strong> 是 <strong>X</strong> 和 <strong>Y</strong> 的最长公共子序列 ，记为 <strong>Z ∈LCS( X , Y) </strong>。最长公共子序列往往不止一个</li>
+</ul>
+<blockquote>
+<p>eg:  <strong>X</strong> = { A，B，C，B，D，A，B }，<strong>Y</strong> = { B，D，C，A，B，A }，则 { B，C，B，A } 是 <strong>X</strong> 和 <strong>Y</strong> 的一条公共子序列，由于没有更长的公共子序列，故也是一条最长公共子序列</p>
+</blockquote>
+<h2 id="最长公共子序列的结构"><a href="#最长公共子序列的结构" class="headerlink" title="最长公共子序列的结构"></a>最长公共子序列的结构</h2><blockquote>
+<p>在穷举法中，将 <strong>X</strong> 中所有子序列，检查它是否也是 <strong>Y</strong>  的子序列，确定是公共子序列后记录最长的公共子序列。设 <strong>X</strong> 有 m 个元素，则它的子序列有 2<sup>m</sup>个，穷举法需要指数时间</p>
+</blockquote>
+<h3 id="最长公共子序列具有最优子结构"><a href="#最长公共子序列具有最优子结构" class="headerlink" title="最长公共子序列具有最优子结构"></a>最长公共子序列具有最优子结构</h3><blockquote>
+<p>设序列 <strong>X</strong> = { x<sub>1</sub>，x<sub>2</sub>，<strong>···</strong>，x<sub>m</sub> } 和 <strong>Y</strong> = { y<sub>1</sub>，y<sub>2</sub>，<strong>···</strong>，y<sub>n</sub> } 的最长公共子序列为 <strong>Z</strong> = { z<sub>1</sub>，z<sub>2</sub>，<strong>···</strong>，z<sub>k</sub> }，则</p>
+<ol>
+<li>若 x<sub>m</sub> = y<sub>n</sub>，则 z<sub>k</sub> =  x<sub>m</sub> = y<sub>n</sub>，且<strong>Z</strong><sub>k-1</sub> 是 <strong>X</strong><sub>m-1</sub> 和 <strong>Y</strong><sub>n-1</sub> 的最长公共子序列</li>
+<li>若 x<sub>m</sub> ≠ y<sub>n</sub>，且 z<sub>k</sub> ≠  x<sub>m</sub>，则 <strong>Z</strong> 是 <strong>X</strong><sub>m-1</sub> 和 <strong>Y</strong> 的最长公共子序列</li>
+<li>若 x<sub>m</sub> ≠ y<sub>n</sub>，且 z<sub>k</sub> ≠  y<sub>n</sub>，则 <strong>Z</strong> 是 <strong>X</strong> 和 <strong>Y</strong><sub>n-1</sub> 的最长公共子序列</li>
+</ol>
+</blockquote>
+<h3 id="子问题的递归结构"><a href="#子问题的递归结构" class="headerlink" title="子问题的递归结构"></a>子问题的递归结构</h3><blockquote>
+<p>如果从顶向下计算，将出现大量的子问题重叠…动态规划的基本思想是从低向上计算不同子问题，通过底部子问题的解，得出顶部问题的解。最终目的是得到最顶上问题的解。</p>
+<p>建立两个矩阵 c 和 b，矩阵 c 用来存放 i, j 位置的最长公共子序列长度(简记为LCS值)，矩阵 b 存放i, j 位置是由哪个方向来的，方便回溯 </p>
+<p>建立递归关系如下：</p>
+</blockquote>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mn>0</mn><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo>=</mo><mn>0</mn><mtext> </mtext><mi>o</mi><mi>r</mi><mtext> </mtext><mi>j</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd><mrow><mi>c</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>+</mo><mn>1</mn><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>y</mi><mi>j</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mi>m</mi><mi>a</mi><mi>x</mi><mo>(</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo separator="true">,</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo><mo>)</mo><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>y</mi><mi>j</mi></msub></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">c[i,j]=\begin{cases}
+0, &amp; i=0\ or\ j=0\\
+c[i-1,j-1]+1,&amp;i,j&gt;0\ and\ x_i=y_j\\
+max(c[i-1,j],c[i,j-1]), &amp;i,j&gt;0\ and\  x_i\ne y_j
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.41em;"></span><span class="strut bottom" style="height:4.32em;vertical-align:-1.9099999999999997em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-0.000010000000000287557em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-1.1500100000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.4500200000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">0</span><span class="mpunct">,</span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mbin">+</span><span class="mord mathrm">1</span><span class="mpunct">,</span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">a</span><span class="mord mathit">x</span><span class="mopen">(</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span><span class="mclose">)</span><span class="mpunct">,</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mspace"> </span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">≠</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>=</mo><mrow><mo fence="true">{</mo><mtable><mtr><mtd><mrow><mn>1</mn><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><msub><mi>y</mi><mi>j</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>y</mi><mi>j</mi></msub><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><mi>c</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>&gt;</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn><mo separator="true">,</mo></mrow></mtd><mtd><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>y</mi><mi>j</mi></msub><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><mi>c</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>≤</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow></mtd></mtr></mtable></mrow></mrow><annotation encoding="application/x-tex">
+b[i,j]=\begin{cases}
+1,&amp;i,j&gt;0\ and\ x_i=y_j\\
+2, &amp;i,j&gt;0\ and\  x_i\ne y_j\ and\ c[i-1,j]&gt;c[i,j-1]\\
+
+3, &amp;i,j&gt;0\ and\  x_i\ne y_j\ and\ c[i-1,j]\leq c[i,j-1]
+
+\end{cases}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.41em;"></span><span class="strut bottom" style="height:4.32em;vertical-align:-1.9099999999999997em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">b</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎩</span></span></span><span style="top:0.9500099999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-0.000010000000000287557em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎨</span></span></span><span style="top:-1.1500100000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎪</span></span></span><span style="top:-1.4500200000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎧</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mpunct">,</span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mpunct">,</span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span><span class="mpunct">,</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:1em;"></span><span class="col-align-l"><span class="vlist"><span style="top:-1.4020000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span style="top:0.0379999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">≠</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">&gt;</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span><span style="top:1.4779999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">≠</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">≤</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span>
+<p><img src="/images/lcs/lcs1.jpg" alt="lcs1.jpg"></p>
+<blockquote>
+<p>图中右下角 5(2) 表示 (8, 8) 位置的LCS值为5，由上面的位置得到</p>
+<p>右下角的值就是LCS值，从该点通过矩阵 b 回溯，遇到 2 向上走，遇到 3 向左走，遇到 1 斜上走，当遇到边缘时(i=0 或 j=0)停止，既可以得到一条最长公共子序列</p>
+<p>但是这样做只能得打两串的一条最长公共子序列，因为 c[i−1,j]=c[i,j−1] 时是可以向上也可以向左，但是我们指定他向左了，这样就不会出现不同的情况。于是，可以添加一种 b 的值：</p>
+</blockquote>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>=</mo><mn>4</mn><mo separator="true">,</mo><mtext> </mtext><mtext> </mtext><mtext> </mtext><mtext> </mtext><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mn>0</mn><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><msub><mi>x</mi><mi>i</mi></msub><mo>≠</mo><msub><mi>y</mi><mi>j</mi></msub><mtext> </mtext><mi>a</mi><mi>n</mi><mi>d</mi><mtext> </mtext><mi>c</mi><mo>[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>c</mi><mo>[</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>−</mo><mn>1</mn><mo>]</mo></mrow><annotation encoding="application/x-tex">b[i,j]=4,\ \ \ \ i,j&gt;0\ and\  x_i\ne y_j\ and\ c[i-1,j]=c[i,j-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">b</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathrm">4</span><span class="mpunct">,</span><span class="mord mspace"> </span><span class="mord mspace"> </span><span class="mord mspace"> </span><span class="mord mspace"> </span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">≠</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mspace"> </span><span class="mord mathit">a</span><span class="mord mathit">n</span><span class="mord mathit">d</span><span class="mord mspace"> </span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit">c</span><span class="mopen">[</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">]</span></span></span></span></span>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/13/Prim-Kruscal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/13/Prim-Kruscal/" itemprop="url">Prim-Kruscal</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T13:26:57+08:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/OJ-做题知识点积累/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ 做题知识点积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="贪心算法——最小生成树"><a href="#贪心算法——最小生成树" class="headerlink" title="贪心算法——最小生成树"></a>贪心算法——最小生成树</h1><blockquote>
+<ol>
+<li><p>G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树</p>
+</li>
+<li><p>MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存在 G 的一棵最小生成树包括这条边（u，v）</p>
+</li>
+<li><p>Prim 和 Kruscal 都应用最小生成树的 MST 性质进行贪心选择</p>
+</li>
+<li><p>实例中连通带权图为<img src="/images/prim_kruscal/tu.jpg" alt="tu"></p>
+<p>图的表示：邻接矩阵——使用二维数组存放两点之间的信息</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="Prim-算法"><a href="#Prim-算法" class="headerlink" title="Prim 算法"></a>Prim 算法</h2><blockquote>
+<p>设 G=(V,E) 是连通带权图，V = {1,2,…,n}</p>
+<p>构造 G 的最小生成树的 Prim算法的基本思想是：首先置 S={1}，然后只要 S 是 V 的真子集，就做如下贪心选择：选取满足条件 i∈S，j∈V-S，且 c[i][j] 最小的边，并将顶点 j 添加到 S 中，这个过程一直进行到 S=V为止。这个过程中选取的所有边构成 G 的一颗最小生成树</p>
+<p><img src="/images/prim_kruscal/prim.jpg" alt="prim.jpg"> </p>
+</blockquote>
+<p><em>Question:</em> 如何有效地找出满足 i∈S, j∈V-S，且权 c[i][j] 最小的边 (i,j) ?</p>
+<p><strong>代码说明：</strong></p>
+<blockquote>
+<p>对于每个 j∈V-S，closest[j] 是 j 在 S 中的临界顶点，它与 j 在 S 中的其他临接顶点 k 相比较有：</p>
+<p>c[j][closest[j]]≤c[j][k]</p>
+<p>lowest[j] 的值就是 c[j][closest[j]]</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MIN 100001</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span>[<span class="number">100</span>][<span class="number">100</span>],<span class="keyword">int</span>)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> N;</div><div class="line">    <span class="keyword">int</span> arr[<span class="number">100</span>][<span class="number">100</span>];	<span class="comment">// 存放两点之间连线的权值</span></div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N)) &#123;</div><div class="line">        <span class="comment">// 输入</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++) &#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// Prim</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"最小生成树权值和：%d\n"</span>,Prim(arr,N));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// lowcost[i]:V-S中点i到S中的点连线最小权值</span></div><div class="line"><span class="comment">// closet[i]:V-S中点i到s中权值最小连线应该连的点坐标</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Prim</span><span class="params">(<span class="keyword">int</span> c[<span class="number">100</span>][<span class="number">100</span>],<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> lowcost[N],closest[N], res=<span class="number">0</span>;</div><div class="line">    <span class="keyword">bool</span> s[N];</div><div class="line">    <span class="comment">// S 集合最开始只有0号元素时，对lowcost, clostest初始化</span></div><div class="line">    s[<span class="number">0</span>] = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) &#123;</div><div class="line">        lowcost[i] = c[i][<span class="number">0</span>];   <span class="comment">// 最开始 S 中只有 0</span></div><div class="line">        closest[i] = <span class="number">0</span>;</div><div class="line">        s[i] = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 将 V-S 集合中的元素放到 S 中</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N;i++) &#123;</div><div class="line">        <span class="keyword">int</span> k, imin = MIN;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">            <span class="keyword">if</span>(!s[j] &amp;&amp; lowcost[j] &lt; imin) &#123;</div><div class="line">                imin = lowcost[j];</div><div class="line">                k = j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        s[k] = <span class="literal">true</span>;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d--%d \n"</span>,k,closest[k]);</div><div class="line">        res += imin;</div><div class="line">        <span class="comment">// 由于 S 中有了一个新的元素，V-S 中各点 lowcost 值可能发生变化</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">            <span class="keyword">if</span>(!s[j] &amp;&amp; lowcost[j] &gt; c[j][k]) &#123;</div><div class="line">                lowcost[j] = c[j][k];</div><div class="line">                closest[j] = k;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">Input:</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">0 4 9 21</span></div><div class="line"><span class="comment">4 0 8 17</span></div><div class="line"><span class="comment">9 8 0 16</span></div><div class="line"><span class="comment">21 17 16 0</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+<h2 id="Kruscal-算法"><a href="#Kruscal-算法" class="headerlink" title="Kruscal 算法"></a>Kruscal 算法</h2><blockquote>
+<p>先构造一个只含 n 个顶点、而边集为空的子图，把子图中各个顶点看成各棵树上的根结点，之后，从网的边集 E 中选取一条权值最小的边，若该条边的两个顶点分属不同的树，则将其加入子图，即把两棵树合成一棵树，反之，若该条边的两个顶点已落在同一棵树上，则不可取，而应该取下一条权值最小的边再试之。依次类推，直到森林中只有一棵树，也即子图中含有 n-1 条边为止</p>
+<p><strong>简单的说：</strong> Kruscal 算法先找权值最小的边，检查这条边两个端点是否在一个集合中，如果不在一个集合中，连接两点(合并点所在集合)后找下一条权值最小的边；如果在一个集合，不连接两点直接找下一条权值最小的边，直到连接的边数为n-1为止</p>
+<p><img src="/images/prim_kruscal/kruscal.jpg" alt="kruscal"></p>
+</blockquote>
+<p><em>Question:</em> </p>
+<ul>
+<li>怎样按权递增的顺序查看各边？</li>
+<li>怎样判断两点是否在一个集合中？</li>
+</ul>
+<h3 id="优先队列和并查集"><a href="#优先队列和并查集" class="headerlink" title="优先队列和并查集"></a>优先队列和并查集</h3><blockquote>
+<p>优先队列请见 <a href="/2017/02/06/priority-queue/">priority-queue</a></p>
+<p>并查集（Union-find Sets）主要用于处理一些<em>不相交集合</em> 的合并问题，使用树形结构表示一个集合，树的每个节点就表示集合中的一个元素，树根作为集合的代表。</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=dfb6266065b0e2a1f63bccd1587f64a4&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160744-00b6e27da65b4b48b903e768a97bf888.png" alt=""></p>
+<p>并查集的基本操作有三个：</p>
+<ol>
+<li><p>makeSet(s)：建立一个新的并查集，其中包含 s 个单元素集合。</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=2b83a531e086dc93da48d329819fc113&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png" alt="构造并查集初始化"></p>
+</li>
+<li><p>unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。</p>
+</li>
+<li><p>find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。在find方法中，如果每次都沿着父节点向上查找，当树很高时，会降低查找效率（时间复杂度就是树的高度）有一种非常简单而有效的策略——路径压缩：</p>
+</li>
+<li><p>路径压缩，就是在每次查找时，令查找路径上的每个节点都直接指向根节点</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=39cd479da65629e403608953a381ae81&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png" alt=""></p>
+<p>这样查看每个元素所在树的根节点只需要一步</p>
+</li>
+<li><p>并查集的合并：将一个集合的树根指向另一个集合的树根</p>
+<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=f547dbac92c11e77a5fc3e32ff80658e&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png" alt=""></p>
+</li>
+</ol>
+<p>​    合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
+</blockquote>
+<p><strong>使用优先队列将边升序排列（注意对自定义类型要重写 ‘&lt;’ 运算符）</strong></p>
+<p><strong>使用并查集判断两点是否在一个集合上（根节点是否相等），合并两集合</strong> </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> arr[MAXSIZE][MAXSIZE];</div><div class="line"><span class="keyword">int</span> uset[MAXSIZE];  <span class="comment">// uset[i] :元素i所属集合的根节点</span></div><div class="line"><span class="keyword">int</span> urank[MAXSIZE]; <span class="comment">// urank[i] :元素i为根节点集合的高度</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruscal</span><span class="params">(<span class="keyword">int</span>)</span></span>;</div><div class="line"><span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></div><div class="line">    <span class="keyword">int</span> x;</div><div class="line">    <span class="keyword">int</span> y;</div><div class="line">    <span class="keyword">int</span> weight;</div><div class="line">    Edge(<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> weight) &#123;</div><div class="line">        <span class="keyword">this</span>-&gt;x = x;</div><div class="line">        <span class="keyword">this</span>-&gt;y = y;</div><div class="line">        <span class="keyword">this</span>-&gt;weight = weight;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (Edge edge1, Edge edge2) &#123;</div><div class="line">        <span class="keyword">return</span> edge1.weight &gt; edge2.weight;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">priority_queue&lt;Edge&gt; q;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> N;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N)) &#123;</div><div class="line">        res = <span class="number">0</span>;</div><div class="line">        <span class="comment">// 输入</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++) &#123;</div><div class="line">                <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;arr[i][j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 将边放入优先队列中</span></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N<span class="number">-1</span>;i++) &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;N;j++) &#123;</div><div class="line">                q.push(Edge(i,j,arr[i][j]));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        Kruscal(N);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,res);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">makeSet</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    <span class="comment">// 初始时每个元素独立成为一个集合，根节点是本身，集合（树）高度为0</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++) &#123;</div><div class="line">        uset[i] = i;</div><div class="line">        urank[i] = <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findRoot</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</div><div class="line">    <span class="comment">// 只有根节点的父节点是本身</span></div><div class="line">    <span class="keyword">if</span>(uset[x] == x) &#123;</div><div class="line">        <span class="keyword">return</span> x;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 不是根节点递归寻找根节点，找到后赋值给uset[x]减少下次递归的次数，相当于压缩了到根节点的路径</span></div><div class="line">    <span class="keyword">return</span> uset[x] = findRoot(uset[x]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">unionSet</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">    <span class="comment">// 取 x,y 所在集合的根节点</span></div><div class="line">    x=findRoot(x);</div><div class="line">    y=findRoot(y);</div><div class="line">    <span class="comment">// x,y 属于一个集合，不可合并</span></div><div class="line">    <span class="keyword">if</span>(x == y) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// x,y 不在同一集合，将高度小的集合加到高度大的集合根节点</span></div><div class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(urank[x] &gt; urank[y]) &#123;</div><div class="line">        <span class="comment">// y 集合的根节点的父亲是 x 集合的根节点</span></div><div class="line">        uset[y] = x;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        uset[x] = y;</div><div class="line">        <span class="comment">// 高度相等，x所在集合根节点接到y集合根节点，y集合高度加一</span></div><div class="line">        <span class="keyword">if</span>(urank[x] == urank[y]) &#123;</div><div class="line">            urank[y]++;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Kruscal</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</div><div class="line">    makeSet(N);</div><div class="line">    <span class="keyword">int</span> qsize = q.size();</div><div class="line">    <span class="keyword">int</span> lineNum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;qsize;i++) &#123;</div><div class="line">        <span class="comment">// e为当前最小权值边</span></div><div class="line">        Edge e = q.top();</div><div class="line">        <span class="comment">// 按权值降序处理每一条边，如果两点不在一个集合中，合并两点所在的集合返回true，说明生成了一条连线</span></div><div class="line">        <span class="keyword">if</span>(unionSet(e.x, e.y)) &#123;</div><div class="line">            lineNum ++;</div><div class="line">            res += arr[e.x][e.y];</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d--%d\n"</span>,e.x,e.y);</div><div class="line">            <span class="comment">// 连线数 = 点数 - 1 时为最小生成树，结束循环</span></div><div class="line">            <span class="keyword">if</span>(lineNum == N - <span class="number">1</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        q.pop();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">Input:</span></div><div class="line"><span class="comment">4</span></div><div class="line"><span class="comment">0 4 9 21</span></div><div class="line"><span class="comment">4 0 8 17</span></div><div class="line"><span class="comment">9 8 0 16</span></div><div class="line"><span class="comment">21 17 16 0</span></div><div class="line"><span class="comment">*/</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/09/springboot-mybatis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/04/09/springboot-mybatis/" itemprop="url">springboot-mybatis小程序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-09T00:24:14+08:00">
+                2017-04-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Project/" itemprop="url" rel="index">
+                    <span itemprop="name">Project</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="IntelliJ开发SpringBoot-Mybatis应用程序"><a href="#IntelliJ开发SpringBoot-Mybatis应用程序" class="headerlink" title="IntelliJ开发SpringBoot-Mybatis应用程序"></a>IntelliJ开发SpringBoot-Mybatis应用程序</h1><h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><blockquote>
+<p>new Project——Spring Initializr</p>
+<p>填好工程Name，包路径Group,Package</p>
+<p>Dependencies页面勾选Web，Mybatis，Mysql会自动帮你生产maven的pom文件，当然也可以自己后往里添加，maven会自动的帮你下载需要的依赖</p>
+<p>Finish</p>
+</blockquote>
+<p><em>注：</em></p>
+<p>maven默认中央仓库在国外可能使下载依赖很慢，可以修改maven的conf/settings.xml更换镜像地址：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </div><div class="line">   <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>          </div><div class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="工程结构说明"><a href="#工程结构说明" class="headerlink" title="工程结构说明"></a>工程结构说明</h2><blockquote>
+<p>main-java 目录下的 *Application 类是项目的启动类</p>
+<p>main 下的 application.yml 是配置文件</p>
+<p>test 是测试类的目录</p>
+<p>pom.xml 是 maven 的依赖管理文件</p>
+</blockquote>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p><em>配置文件有 .properties 和 .yml 两种，格式不同而已，下面的是 .yml</em></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#server</div><div class="line">server:</div><div class="line">  port: 80</div><div class="line">#spring config</div><div class="line">spring:</div><div class="line">  aop:</div><div class="line">    auto: true</div><div class="line">  datasource:</div><div class="line">    name: *</div><div class="line">    url: jdbc:mysql://localhost:3306/*</div><div class="line">    driverClassName: com.mysql.jdbc.Driver</div><div class="line">    username: *</div><div class="line">    password: *</div><div class="line">    type: com.alibaba.druid.pool.DruidDataSource</div><div class="line">    maxActive: 1000</div><div class="line">    initialSize: 5</div><div class="line">    maxWait: 60000</div><div class="line">    minIdle: 1</div><div class="line">    timeBetweenEvictionRunsMillis: 60000</div><div class="line">    minEvictableIdleTimeMillis: 300000</div><div class="line">    testWhileIdle: true</div><div class="line">    testOnBorrow: false</div><div class="line">    testOnReturn: false</div><div class="line">    poolPreparedStatements: true</div><div class="line">    maxOpenPreparedStatements: 20</div><div class="line"></div><div class="line"># MyBatis</div><div class="line">mybatis:</div><div class="line">  type-aliases-package: com.zjm.model</div><div class="line">  mapper-locations: classpath:/mapper/*.xml</div><div class="line">  configuration:</div><div class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</div><div class="line"></div><div class="line">#PageHelper</div><div class="line">pagehelper:</div><div class="line">  offsetAsPageNum: true</div><div class="line">  rowBoundsWithCount: true</div><div class="line">  reasonable: true</div></pre></td></tr></table></figure>
+<h2 id="编写Mybatis-小程序"><a href="#编写Mybatis-小程序" class="headerlink" title="编写Mybatis 小程序"></a>编写Mybatis 小程序</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><blockquote>
+<ul>
+<li>在上面的配置文件中 Mybatis 的配置项里</li>
+</ul>
+<p><em>type-aliases-package：是对象类的路径</em> (main.java.com.*.model下)</p>
+<p><em>mapper-locations：是对象dao类对应的 .xml 的路径</em> (main.resource.mapper下)</p>
+<p>建立以上路径及com.*.dao</p>
+<ul>
+<li>在pom.xml中加入依赖：(在<dependencies>标签中)</dependencies></li>
+</ul>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.20<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>在*Application.java文件的类上加入</li>
+</ul>
+<p>@MapperScan(basePackages = “com.zjm.dao”)</p>
+<p>@SpringBootApplication</p>
+<p>这两个注解</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@MapperScan</span>(basePackages = <span class="string">"com.zjm.dao"</span>)</div><div class="line"><span class="meta">@SpringBootApplication</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IshopApplication</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		SpringApplication.run(IshopApplication.class, args);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="User"><a href="#User" class="headerlink" title="User"></a>User</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm.model;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Integer id;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String nickname;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String password;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String phone;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String email;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Date regdate;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Integer sex;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String head;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.id = id;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getNickname</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> nickname;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNickname</span><span class="params">(String nickname)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.nickname = nickname == <span class="keyword">null</span> ? <span class="keyword">null</span> : nickname.trim();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> password;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.password = password == <span class="keyword">null</span> ? <span class="keyword">null</span> : password.trim();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPhone</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> phone;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPhone</span><span class="params">(String phone)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.phone = phone == <span class="keyword">null</span> ? <span class="keyword">null</span> : phone.trim();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> email;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.email = email == <span class="keyword">null</span> ? <span class="keyword">null</span> : email.trim();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getRegdate</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> regdate;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRegdate</span><span class="params">(Date regdate)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.regdate = regdate;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getSex</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> sex;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(Integer sex)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.sex = sex;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getHead</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> head;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setHead</span><span class="params">(String head)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.head = head == <span class="keyword">null</span> ? <span class="keyword">null</span> : head.trim();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</div><div class="line">                <span class="string">"id="</span> + id +</div><div class="line">                <span class="string">", nickname='"</span> + nickname + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", password='"</span> + password + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", phone='"</span> + phone + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", email='"</span> + email + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", regdate="</span> + regdate +</div><div class="line">                <span class="string">", sex="</span> + sex +</div><div class="line">                <span class="string">", head='"</span> + head + <span class="string">'\''</span> +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="UserMapper"><a href="#UserMapper" class="headerlink" title="UserMapper"></a>UserMapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm.dao;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.zjm.model.User;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">deleteByPrimaryKey</span><span class="params">(Integer id)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(User record)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insertSelective</span><span class="params">(User record)</span></span>;</div><div class="line"></div><div class="line">    <span class="function">User <span class="title">selectByPrimaryKey</span><span class="params">(Integer id)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKeySelective</span><span class="params">(User record)</span></span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updateByPrimaryKey</span><span class="params">(User record)</span></span>;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="UserMapper-xml"><a href="#UserMapper-xml" class="headerlink" title="UserMapper.xml"></a>UserMapper.xml</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zjm.dao.UserMapper"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.zjm.model.User"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"Id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> <span class="attr">property</span>=<span class="string">"id"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"nickName"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"nickname"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"password"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"password"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"phone"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"phone"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"email"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"email"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"regDate"</span> <span class="attr">jdbcType</span>=<span class="string">"DATE"</span> <span class="attr">property</span>=<span class="string">"regdate"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"sex"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> <span class="attr">property</span>=<span class="string">"sex"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"head"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"head"</span> /&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"Base_Column_List"</span>&gt;</span></div><div class="line">    Id, nickName, password, phone, email, regDate, sex, head</div><div class="line">  <span class="tag">&lt;/<span class="name">sql</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Integer"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></div><div class="line">    select </div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></div><div class="line">    from user</div><div class="line">    where Id = #&#123;id,jdbcType=INTEGER&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectUserByExample"</span> <span class="attr">parameterType</span>=<span class="string">"User"</span> <span class="attr">resultMap</span>=<span class="string">"BaseResultMap"</span>&gt;</span></div><div class="line">    SELECT</div><div class="line">    <span class="tag">&lt;<span class="name">include</span> <span class="attr">refid</span>=<span class="string">"Base_Column_List"</span> /&gt;</span></div><div class="line">    FROM USER</div><div class="line">    <span class="tag">&lt;<span class="name">where</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"id != null"</span>&gt;</span></div><div class="line">        Id = #&#123;id&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"nickname != null"</span>&gt;</span></div><div class="line">        nickName = #&#123;nickname&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"password != null"</span>&gt;</span></div><div class="line">        password = #&#123;password&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span>&gt;</span></div><div class="line">        phone = #&#123;phone&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span>&gt;</span></div><div class="line">        email = #&#123;email&#125;</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">where</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"deleteByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"java.lang.Integer"</span>&gt;</span></div><div class="line">    delete from user</div><div class="line">    where Id = #&#123;id,jdbcType=INTEGER&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">delete</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insert"</span> <span class="attr">parameterType</span>=<span class="string">"com.zjm.model.User"</span>&gt;</span></div><div class="line">    insert into user (Id, nickName, password, </div><div class="line">      phone, email, regDate, </div><div class="line">      sex, head)</div><div class="line">    values (#&#123;id,jdbcType=INTEGER&#125;, #&#123;nickname,jdbcType=VARCHAR&#125;, #&#123;password,jdbcType=VARCHAR&#125;, </div><div class="line">      #&#123;phone,jdbcType=VARCHAR&#125;, #&#123;email,jdbcType=VARCHAR&#125;, #&#123;regdate,jdbcType=DATE&#125;, </div><div class="line">      #&#123;sex,jdbcType=INTEGER&#125;, #&#123;head,jdbcType=VARCHAR&#125;)</div><div class="line">  <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insertSelective"</span> <span class="attr">parameterType</span>=<span class="string">"com.zjm.model.User"</span>&gt;</span></div><div class="line">    insert into user</div><div class="line">    <span class="tag">&lt;<span class="name">trim</span> <span class="attr">prefix</span>=<span class="string">"("</span> <span class="attr">suffix</span>=<span class="string">")"</span> <span class="attr">suffixOverrides</span>=<span class="string">","</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"id != null"</span>&gt;</span></div><div class="line">        Id,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"nickname != null"</span>&gt;</span></div><div class="line">        nickName,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"password != null"</span>&gt;</span></div><div class="line">        password,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span>&gt;</span></div><div class="line">        phone,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span>&gt;</span></div><div class="line">        email,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"regdate != null"</span>&gt;</span></div><div class="line">        regDate,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"sex != null"</span>&gt;</span></div><div class="line">        sex,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"head != null"</span>&gt;</span></div><div class="line">        head,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">trim</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">trim</span> <span class="attr">prefix</span>=<span class="string">"values ("</span> <span class="attr">suffix</span>=<span class="string">")"</span> <span class="attr">suffixOverrides</span>=<span class="string">","</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"id != null"</span>&gt;</span></div><div class="line">        #&#123;id,jdbcType=INTEGER&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"nickname != null"</span>&gt;</span></div><div class="line">        #&#123;nickname,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"password != null"</span>&gt;</span></div><div class="line">        #&#123;password,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span>&gt;</span></div><div class="line">        #&#123;phone,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span>&gt;</span></div><div class="line">        #&#123;email,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"regdate != null"</span>&gt;</span></div><div class="line">        #&#123;regdate,jdbcType=DATE&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"sex != null"</span>&gt;</span></div><div class="line">        #&#123;sex,jdbcType=INTEGER&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"head != null"</span>&gt;</span></div><div class="line">        #&#123;head,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">trim</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateByPrimaryKeySelective"</span> <span class="attr">parameterType</span>=<span class="string">"com.zjm.model.User"</span>&gt;</span></div><div class="line">    update user</div><div class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"nickname != null"</span>&gt;</span></div><div class="line">        nickName = #&#123;nickname,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"password != null"</span>&gt;</span></div><div class="line">        password = #&#123;password,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"phone != null"</span>&gt;</span></div><div class="line">        phone = #&#123;phone,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"email != null"</span>&gt;</span></div><div class="line">        email = #&#123;email,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"regdate != null"</span>&gt;</span></div><div class="line">        regDate = #&#123;regdate,jdbcType=DATE&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"sex != null"</span>&gt;</span></div><div class="line">        sex = #&#123;sex,jdbcType=INTEGER&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"head != null"</span>&gt;</span></div><div class="line">        head = #&#123;head,jdbcType=VARCHAR&#125;,</div><div class="line">      <span class="tag">&lt;/<span class="name">if</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line">    where Id = #&#123;id,jdbcType=INTEGER&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">update</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"updateByPrimaryKey"</span> <span class="attr">parameterType</span>=<span class="string">"com.zjm.model.User"</span>&gt;</span></div><div class="line">    update user</div><div class="line">    set nickName = #&#123;nickname,jdbcType=VARCHAR&#125;,</div><div class="line">      password = #&#123;password,jdbcType=VARCHAR&#125;,</div><div class="line">      phone = #&#123;phone,jdbcType=VARCHAR&#125;,</div><div class="line">      email = #&#123;email,jdbcType=VARCHAR&#125;,</div><div class="line">      regDate = #&#123;regdate,jdbcType=DATE&#125;,</div><div class="line">      sex = #&#123;sex,jdbcType=INTEGER&#125;,</div><div class="line">      head = #&#123;head,jdbcType=VARCHAR&#125;</div><div class="line">    where Id = #&#123;id,jdbcType=INTEGER&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">update</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><p><em>进入UserMapper.java，右键——Go to—— Test——Create new test</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm.dao;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.zjm.model.User;</div><div class="line"><span class="keyword">import</span> com.zjm.util.MD5;</div><div class="line"><span class="keyword">import</span> org.junit.Test;</div><div class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</div><div class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</div><div class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringRunner;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Date;</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by ZJM on 2017/4/5.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">@SpringBootTest</span></div><div class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserMapperTest</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> UserMapper userMapper;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteByPrimaryKey</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        userMapper.deleteByPrimaryKey(<span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        User user = <span class="keyword">new</span> User();</div><div class="line">        user.setPhone(<span class="string">"13636662259"</span>);</div><div class="line">        user.setSex(<span class="number">0</span>);</div><div class="line">        user.setEmail(<span class="string">"7788521@qq.com"</span>);</div><div class="line">        user.setNickname(<span class="string">"zjm"</span>);</div><div class="line">        user.setPassword(<span class="string">"123456"</span>);</div><div class="line">        user.setRegdate(<span class="keyword">new</span> Date());</div><div class="line">        userMapper.insert(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertSelective</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectByPrimaryKey</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        User user = userMapper.selectByPrimaryKey(<span class="number">1</span>);</div><div class="line">        System.out.println(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByPrimaryKeySelective</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        User user = <span class="keyword">new</span> User();</div><div class="line">        user.setId(<span class="number">1</span>);</div><div class="line">        user.setNickname(<span class="string">"shaunHaHaHa"</span>);</div><div class="line">        userMapper.updateByPrimaryKeySelective(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateByPrimaryKey</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="meta">@Test</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectUserByExample</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        User user = <span class="keyword">new</span> User();</div><div class="line">        user.setPassword(<span class="string">"123456"</span>);</div><div class="line">        System.out.println(userMapper.selectUserByExample(user));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>点击方法旁边的绿色按钮运行就行了</p>
+<h2 id="发请求测试"><a href="#发请求测试" class="headerlink" title="发请求测试"></a>发请求测试</h2><p><em>上面的是 JUnit 的单元测试，现在用发请求的方式从服务器获取响应</em></p>
+<p><em>正常需要在controller和mapper中间建立service层，这里示例业务简单，简化省去了service层，正式的项目中再加上</em></p>
+<h3 id="新建controller"><a href="#新建controller" class="headerlink" title="新建controller"></a>新建controller</h3><blockquote>
+<p>在com.*.controller下新建UserMS.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm.controller;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.sun.javafx.collections.MappingChange;</div><div class="line"><span class="keyword">import</span> com.zjm.dao.UserMapper;</div><div class="line"><span class="keyword">import</span> com.zjm.model.User;</div><div class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</div><div class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</div><div class="line"></div><div class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * Created by ZJM on 2017/4/8.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="meta">@RestController</span></div><div class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserMS</span> </span>&#123;</div><div class="line">    <span class="meta">@Autowired</span></div><div class="line">    <span class="keyword">private</span> UserMapper userMapper;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"add"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">add</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        userMapper.insert(user);</div><div class="line">        <span class="keyword">return</span> user;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"delete"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">delete</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;String,Object&gt;();</div><div class="line">        <span class="keyword">boolean</span> isOk = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            userMapper.deleteByPrimaryKey(id);</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            isOk = <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        map.put(<span class="string">"status"</span>,isOk);</div><div class="line">        <span class="keyword">return</span> map;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"update"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">update</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        userMapper.updateByPrimaryKeySelective(user);</div><div class="line">        <span class="keyword">return</span> user;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"findUserById"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">findUserById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> userMapper.selectByPrimaryKey(id);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"findUserByExample"</span>)</div><div class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">findUserByExample</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> userMapper.selectUserByExample(user);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p><em>*Application.java文件点击绿色三角，即可启动 IntelliJ 自带的 tomcat，按照配置的服务名及端口访问吧</em></p>
+<h3 id="发请求"><a href="#发请求" class="headerlink" title="发请求"></a>发请求</h3><p><em>安装postman或者浏览器发送请求</em></p>
+<p><strong>eg</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">http://localhost:8080/user/findUserById?id=1</div><div class="line">http://localhost:8080/user/findUserByExample?sex=1</div><div class="line">http://localhost:8080/user/delete?id=5</div><div class="line">http://localhost:8080/user/update?id=6&amp;nickname=小王</div></pre></td></tr></table></figure>
+<p>要是用浏览器发post请求还得写表单，post请求就用 postman 发吧</p>
+<p><strong>到此一个简单的例子就可以运行了 </strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/install-jdk-tomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/05/install-jdk-tomcat/" itemprop="url">Centos下安装jdk和Tomcat</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T15:36:47+08:00">
+                2017-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="用yum安装jdk"><a href="#用yum安装jdk" class="headerlink" title="用yum安装jdk"></a>用yum安装jdk</h3><h4 id="查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）"><a href="#查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）" class="headerlink" title="查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）"></a>查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）</h4><p><code>yum search java|grep jdk</code></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>yum install java-1.7.0-openjdk</code></p>
+<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>在profile文件中添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>set java environment</div><div class="line">JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131</div><div class="line"><span class="meta">#</span>复制路径以防路径无法找到</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</div></pre></td></tr></table></figure>
+<p>让修改生效</p>
+<p><code>source /etc/profile</code></p>
+<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p><code>java -version</code></p>
+<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><h4 id="使用wget命令："><a href="#使用wget命令：" class="headerlink" title="使用wget命令："></a>使用wget命令：</h4><p><code>wget -c http://apache.fayea.com/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz</code></p>
+<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p><code>tar -zxvf apache-tomcat-8.5.11.tar.gz</code></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>进入解压后的<code>apache-tomcat-8.5.11 -- bin</code>目录，执行命令：</p>
+<p><code>./startup.sh</code></p>
+<h4 id="检查能否访问"><a href="#检查能否访问" class="headerlink" title="检查能否访问"></a>检查能否访问</h4><p><em>如果不能访问，可能是防火墙问题：</em></p>
+<ul>
+<li><p>关闭防火墙： <code>service firewalld stop</code></p>
+</li>
+<li><p>在<code>iptables</code>里添加开放 8080 端口： <code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</code></p>
+<p>将iptables服务重启： <code>service iptables restart</code></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/install-mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/05/install-mysql/" itemprop="url">Centos下安装mysql</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T13:53:58+08:00">
+                2017-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运维/" itemprop="url" rel="index">
+                    <span itemprop="name">运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="yum-安装"><a href="#yum-安装" class="headerlink" title="yum 安装"></a>yum 安装</h2><p><code>yum install -y mysql-server mysql mysql-devel</code></p>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p><code>service mysqld start</code></p>
+<h2 id="给root用户设置密码"><a href="#给root用户设置密码" class="headerlink" title="给root用户设置密码"></a>给root用户设置密码</h2><p><code>mysqladmin -u root password &#39;your password&#39;</code></p>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><p><code>mysql -u root -p</code></p>
+<h2 id="查看并更改字符集"><a href="#查看并更改字符集" class="headerlink" title="查看并更改字符集"></a>查看并更改字符集</h2><p><code>show variables like &#39;character%&#39;;</code></p>
+<p>关闭mysql服务</p>
+<p><code>service mysqld stop</code></p>
+<p>修改my.cnf文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">[mysqld]</div><div class="line">default-character-set = utf8    #这个是我添加的</div><div class="line">character_set_server=utf8      #这个是我添加的</div><div class="line">init_connect='SET NAMES utf8'</div><div class="line">datadir=/var/lib/mysql</div><div class="line">socket=/var/lib/mysql/mysql.sock</div><div class="line">user=mysql</div><div class="line">symbolic-links=0</div><div class="line"> </div><div class="line">[mysqld_safe]</div><div class="line">default-character-set = utf8    #这个是我添加的</div><div class="line">log-error=/var/log/mysqld.log</div><div class="line">pid-file=/var/run/mysqld/mysqld.pid</div><div class="line"> </div><div class="line">[client]</div><div class="line">default-character-set = utf8      #这个是我添加的</div><div class="line"> </div><div class="line">[mysql.server]</div><div class="line">default-character-set = utf8      #这个是我添加的</div><div class="line"> </div><div class="line">[mysql]</div><div class="line">default-character-set = utf8      #这个是我添加的</div></pre></td></tr></table></figure>
+<h2 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h2><p><code>service mysqld restart</code></p>
+<h2 id="查看监听端口"><a href="#查看监听端口" class="headerlink" title="查看监听端口"></a>查看监听端口</h2><p><code>netstat -anp</code></p>
+<p>mysql数据库绑定的默认端口号是 3306</p>
+<h2 id="用本地可视化工具连接服务器数据库"><a href="#用本地可视化工具连接服务器数据库" class="headerlink" title="用本地可视化工具连接服务器数据库"></a>用本地可视化工具连接服务器数据库</h2><p>在服务器端进入mysql服务，执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grant all privileges on *.* to &apos;root&apos;@&apos;%&apos; identified by &apos;your password by root&apos;;</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+<p><em>在本地即可登录访问</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/06/priority-queue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/02/06/priority-queue/" itemprop="url">priority_queue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-06T20:49:34+08:00">
+                2017-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OJ-做题/" itemprop="url" rel="index">
+                    <span itemprop="name">OJ 做题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="STL-priority-queue-优先队列"><a href="#STL-priority-queue-优先队列" class="headerlink" title="STL priority_queue 优先队列"></a>STL priority_queue 优先队列</h1><p><strong>在优先队列中，优先级高的元素先出队列</strong></p>
+<blockquote>
+<p>class template</p>
+<h1 id="std-priority-queue"><a href="#std-priority-queue" class="headerlink" title="std::priority_queue"></a>std::priority_queue</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, </span></div><div class="line"><span class="class">   <span class="title">class</span> <span class="title">Container</span> = <span class="title">vector</span>&lt;T&gt;,</span></div><div class="line"><span class="class">   <span class="title">class</span> <span class="title">Compare</span> = <span class="title">less</span>&lt;typename Container::value_type&gt; &gt; <span class="title">class</span>  </span></div><div class="line"><span class="class">   <span class="title">priority_queue</span>;</span></div></pre></td></tr></table></figure>
+<h3 id="Priority-queue"><a href="#Priority-queue" class="headerlink" title="Priority queue"></a>Priority queue</h3><p>Priority queues are a type of container adaptors, specifically designed such that its first element is always the greatest of the elements it contains, according to some <em>strict weak ordering</em> criterion.<br>This context is similar to a <em>heap</em>, where elements can be inserted at any moment, and only the <em>max heap</em>element can be retrieved (the one at the top in the <em>priority queue</em>).<br>Priority queues are implemented as <em>container adaptors</em>, which are classes that use an encapsulated object of a specific container class as its <em>underlying container</em>, providing a specific set of member functions to access its elements. Elements are <em>popped</em> from the <em>“back”</em> of the specific container, which is known as the <em>top</em> of the priority queue.</p>
+<p>The standard container classes <a href="http://www.cplusplus.com/vector" target="_blank" rel="external">vector</a> and <a href="http://www.cplusplus.com/deque" target="_blank" rel="external">deque</a> fulfill these requirements. By default, if no container class is specified for a particular <a href="http://www.cplusplus.com/priority_queue" target="_blank" rel="external">priority_queue</a> class instantiation, the standard container <a href="http://www.cplusplus.com/vector" target="_blank" rel="external">vector</a> is used.<br>Support of <em>random access iterators</em> is required to keep a heap structure internally at all times. This is done automatically by the container adaptor by automatically calling the algorithm functions <a href="http://www.cplusplus.com/make_heap" target="_blank" rel="external">make_heap</a>, <a href="http://www.cplusplus.com/push_heap" target="_blank" rel="external">push_heap</a> and <a href="http://www.cplusplus.com/pop_heap" target="_blank" rel="external">pop_heap</a> when needed.</p>
+<h3 id="Template-parameters"><a href="#Template-parameters" class="headerlink" title="Template parameters"></a>Template parameters</h3><ul>
+<li><p>T</p>
+<p>Type of the elements.Aliased as member type priority_queue::value_type.</p>
+</li>
+<li><p>Container</p>
+<p>Type of the internal <em>underlying container</em> object where the elements are stored.Its value_type shall be T.Aliased as member type priority_queue::container_type.</p>
+</li>
+<li><p>Compare</p>
+<p>A binary predicate that takes two elements (of type T) as arguments and returns a <code>bool</code>.The expression <code>comp(a,b)</code>, where comp is an object of this type and a and b are elements in the container, shall return <code>true</code> if a is considered to go before b in the <em>strict weak ordering</em> the function defines.The priority_queue uses this function to maintain the elements sorted in a way that preserves <em>heap properties</em> (i.e., that the element popped is the last according to this <em>strict weak ordering</em>).This can be a function pointer or a function object, and defaults to <code>less</code>, which returns the same as applying the <em>less-than operator</em> (`a).</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h3><blockquote>
+<p>priority_queue 将其中的元素默认按照从大到小排列</p>
+<p>默认声明：priority_queue&lt; T , vector , less &gt; q;</p>
+<p>默认声明可省略为：priority_queue q;</p>
+<p>声明为从小到大：priority_queue&lt; T , vector , greater &gt; q;</p>
+<p>如果T是自定义类型，则必须重载operator&lt;</p>
+</blockquote>
+<h3 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Student</span> &#123;</span></div><div class="line">    <span class="built_in">string</span> name;</div><div class="line">	<span class="keyword">int</span> score;</div><div class="line">	Student(<span class="built_in">string</span> name,<span class="keyword">int</span> score) &#123;</div><div class="line">        <span class="keyword">this</span>-&gt;name = name;</div><div class="line">        <span class="keyword">this</span>-&gt;score = score;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (Student stu1,Student stu2) &#123;</div><div class="line">		<span class="keyword">return</span> stu1.score &lt; stu2.score;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    Student stu[<span class="number">3</span>] = &#123;</div><div class="line">        Student(<span class="string">"Tom"</span>,<span class="number">80</span>),</div><div class="line">        Student(<span class="string">"Jerry"</span>,<span class="number">100</span>),</div><div class="line">        Student(<span class="string">"Marry"</span>,<span class="number">90</span>)</div><div class="line">    &#125;;</div><div class="line">    priority_queue&lt;Student&gt; q;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++) &#123;</div><div class="line">        q.push(stu[i]);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;q.size()&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">3</span>;i++) &#123;</div><div class="line">        Student s = q.top();</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;s.name&lt;&lt;<span class="string">", "</span>&lt;&lt;s.score&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">        q.pop();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/24/ky/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/24/ky/" itemprop="url">Share~</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-24T13:39:40+08:00">
+                2017-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分享给朋友的"><a href="#分享给朋友的" class="headerlink" title="分享给朋友的"></a>分享给朋友的</h1><p><em>Dear Mao Shuo</em>:</p>
+<blockquote>
+<p>你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去吃饭，中午ZZZ，下午两点开始，三个小时又吃饭，晚上六点开始，四个小时回寝，一天最多十个小时的学习时间，真正有收获的没多少。。。我九月份还报了文都的秋季班（补暑假课程的班），因为我暑假有实训。文都的课好也不好，为了赶进度，有时一天看十个多小时的视频。往往一天下来很累了，回来就没有把一天的课进行总结整理笔记。我有一次整理了一次，花了很多时间，因为课上的内容太多，老师说的很快，好多听不懂的需要课后自己整理复习，如果没有总结复习，那课久了回看笔记就看不懂了，还会越堆越多。所以，不及时总结复习，课就等于白上，还浪费大量的时间和精力。</p>
+<p>其实还是自己总结最重要了，看视频，做题，再多，自己不理解归纳总结知识点，意义都不大。做题我有一招特别好使，如果你知道这道题考的考点是什么，你一定能做对。所以，数学背笔记时一定要背考点，12345…</p>
+<p>复习计划早制定，专业课早开始，政治选择早开始，真的不是很难，别害怕，就是路漫漫修远，坚持下来不容易。</p>
+<p>如果我调剂不到好的学校，就做研友；复试通过，就给你书…</p>
+</blockquote>
+<p><em>Good luck</em></p>
+<p><em>Shaun</em></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/23/sort/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/23/sort/" itemprop="url">排序算法小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:23:07+08:00">
+                2017-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数据结构排序算法时空稳"><a href="#数据结构排序算法时空稳" class="headerlink" title="数据结构排序算法时空稳"></a>数据结构排序算法时空稳</h1><table>
+<thead>
+<tr>
+<th>分类</th>
+<th>排序方法</th>
+<th>平均情况(时)</th>
+<th>最坏(时)</th>
+<th>最好(时)</th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入</td>
+<td>直接插入</td>
+<td>O(n*n)</td>
+<td>O(n*n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳</td>
+</tr>
+<tr>
+<td></td>
+<td>折半插入</td>
+<td>O(n*n)</td>
+<td></td>
+<td></td>
+<td>O(1)</td>
+<td>稳</td>
+</tr>
+<tr>
+<td></td>
+<td>希尔</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td></td>
+<td>O(1)</td>
+<td>不稳</td>
+</tr>
+<tr>
+<td>交换</td>
+<td>冒泡</td>
+<td>O(n*n)</td>
+<td>O(n*n)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>稳</td>
+</tr>
+<tr>
+<td></td>
+<td>快速</td>
+<td>O(nlogn)</td>
+<td>O(n*n)</td>
+<td>O(nlogn)</td>
+<td>O(logn)</td>
+<td>不稳</td>
+</tr>
+<tr>
+<td>选择</td>
+<td>简单选择</td>
+<td>O(n*n)</td>
+<td>O(n*n)</td>
+<td>O(n*n)</td>
+<td>O(1)</td>
+<td>不稳</td>
+</tr>
+<tr>
+<td></td>
+<td>堆排</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td>O(1)</td>
+<td>不稳</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>归并</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td>O(nlogn)</td>
+<td>O(n)</td>
+<td>稳</td>
+</tr>
+<tr>
+<td></td>
+<td>基数</td>
+<td>O(d(n+r))</td>
+<td>O(d(n+r))</td>
+<td>O(d(n+r))</td>
+<td>O(r)</td>
+<td>稳</td>
+</tr>
+</tbody>
+</table>
+<h1 id="小口诀"><a href="#小口诀" class="headerlink" title="小口诀"></a>小口诀</h1><ul>
+<li>基于基本排序算法</li>
+<li>时间复杂度按平均算</li>
+<li>@马士兵老师</li>
+</ul>
+<blockquote>
+<p>冒泡选择插入堆，快速希尔计基堆<br>归并O(n)快logn，其他空间都是1<br>快堆归并nlogn，插折冒选慢n方（平均时间）<br>希尔特殊1.3，基数d把两数加（平均时间）<br>希尔快选堆不稳，其他排序稳稳哒</p>
+</blockquote>
+<p><strong>注：</strong></p>
+<ol>
+<li><p><em>log 的 g 不发音</em></p>
+</li>
+<li><p><em>第二句空间复杂度，三四句时间</em>  </p>
+<p>​</p>
+</li>
+</ol>
+<p>​       </p>
+<p>​      </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/15/Git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/15/Git/" itemprop="url">Git基本操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-15T22:01:56+08:00">
+                2017-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/版本控制/" itemprop="url" rel="index">
+                    <span itemprop="name">版本控制</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Git 是目前最流行的版本管理系统</strong></p>
+<h2 id="Windows系统安装和使用"><a href="#Windows系统安装和使用" class="headerlink" title="Windows系统安装和使用"></a>Windows系统安装和使用</h2><p>安装后会出现三个工具-Bash,-CMD,-GUI，只用-Bash就行</p>
+<p>在你想作为本地仓库的文件夹上（或进入文件夹空白处）鼠标右键，选择Git Bash here</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p>​    从远程主机复制文件到本地文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git clone &lt;链接&gt; &lt;本地路径&gt;</div></pre></td></tr></table></figure>
+<p>​    &lt;本地路径&gt;省略即-Bash当前路径</p>
+<h3 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h3><ol>
+<li><p>管理远程主机名：Git要求每个远程主机都必须指定一个主机名</p>
+<p>添加远程主机+命名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote add &lt;主机名&gt; &lt;网址&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>列出所有远程主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote</div><div class="line">origin</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看远程主机名对应的网址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote -v</div><div class="line">origin  https://... (fetch)</div><div class="line">origin  https://...(push)</div></pre></td></tr></table></figure>
+</li>
+<li><p>删除主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote rm &lt;主机名&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>改主机名</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h3><ol>
+<li><p>远程主机有更新（commit），将更新的取回本地。默认情况下git fetch 取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch &lt;远程主机名&gt; &lt;分支名&gt;</div></pre></td></tr></table></figure>
+<p><strong>eg</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git branch -r</div><div class="line">origin/master    #查看远程分支</div><div class="line"></div><div class="line"><span class="meta">$</span> git branch -a  #查看所有分支（包括本地）</div><div class="line">* master</div><div class="line">  remotes/origin/master</div></pre></td></tr></table></figure>
+</li>
+<li><p>在本地分支上合并远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git merge origin/master</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><ol>
+<li><p>取回远程主机某分支的更新，并与本地的制定分支合并</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</div></pre></td></tr></table></figure>
+<p>与当前分支合并冒号后可省略</p>
+<p><strong>eg</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git pull origin master</div></pre></td></tr></table></figure>
+<p>相当于</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch origin</div><div class="line"><span class="meta">$</span> git merge origin/master</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><ol>
+<li><p>将本地分支的更新，推送到远程主机</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
+<p><strong>eg</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push origin master:master</div><div class="line"><span class="meta">#</span>等同于</div><div class="line"><span class="meta">$</span> git push origin master</div></pre></td></tr></table></figure>
+<p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
+<p>上面命令表示，将本地的master分支推送到origin主机的master分支。</p>
+</li>
+<li><p>省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push origin :master</div><div class="line"><span class="meta">#</span> 等同于</div><div class="line"><span class="meta">$</span> git push origin --delete master</div></pre></td></tr></table></figure>
+<p>上面命令表示删除origin主机的master分支</p>
+<p>更详细资料请参照：<a href="https://www.git-scm.com/book/en/v2" target="_blank" rel="external">https://www.git-scm.com/book/en/v2</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/13/Begin/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/01/13/Begin/" itemprop="url">开篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-13T21:26:45+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="自序"><a href="#自序" class="headerlink" title="自序"></a>自序</h1><p>​    大家好，我是一个普通的大学生，2013年考入哈尔滨工程大学软件工程专业，2017年想写博客，已经24岁。人生正在紧要关口，大的决策呼之欲出。</p>
+<p>​    现在的我，放假在家，感到有属于自己的时间无比宝贵，没有外事打扰，想干什么就干什么，以后怕是少有了，无比珍惜。每天能做自己喜欢做的事，玩也好，学也好，不必担心衣食住行，真是最后的天堂了。</p>
+<p>​    想把自己的收获、乐趣、心得，想法通过网站向有缘来访的朋友分享，留住生命中的点滴。</p>
+<p>​    这两天为了建一个博客站，忙来忙去找了很多资料，问了很多朋友。总算有了点成果，虽然就是读说明书，还是很费劲，遇到的问题层出不穷……我觉的程序员最宝贵的能力就是自学能力，敢于接触新鲜事物，读懂别人的文章，英文开发文档，自己把新技术掌握了，并有自己的理解。</p>
+<p>​    现在的我还差很多，希望在朋友的帮助下，师长的指导下，一点一点的，不断进步。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="shaunJm" />
+          <p class="site-author-name" itemprop="name">shaunJm</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">shaunJm</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
