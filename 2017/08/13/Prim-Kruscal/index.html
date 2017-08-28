@@ -109,7 +109,7 @@
 <meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=2b83a531e086dc93da48d329819fc113&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png">
 <meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=39cd479da65629e403608953a381ae81&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png">
 <meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=f547dbac92c11e77a5fc3e32ff80658e&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png">
-<meta property="og:updated_time" content="2017-08-13T10:23:37.914Z">
+<meta property="og:updated_time" content="2017-08-28T16:43:26.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prim-Kruscal">
 <meta name="twitter:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
@@ -406,7 +406,7 @@
       
 
       
-        <h1 id="贪心算法——最小生成树"><a href="#贪心算法——最小生成树" class="headerlink" title="贪心算法——最小生成树"></a>贪心算法——最小生成树</h1><blockquote>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="贪心算法——最小生成树"><a href="#贪心算法——最小生成树" class="headerlink" title="贪心算法——最小生成树"></a>贪心算法——最小生成树</h1><blockquote>
 <ol>
 <li><p>G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树</p>
 </li>
@@ -425,6 +425,7 @@
 <p><img src="/images/prim_kruscal/prim.jpg" alt="prim.jpg"> </p>
 </blockquote>
 <p><em>Question:</em> 如何有效地找出满足 i∈S, j∈V-S，且权 c[i][j] 最小的边 (i,j) ?</p>
+<a id="more"></a>
 <p><strong>代码说明：</strong></p>
 <blockquote>
 <p>对于每个 j∈V-S，closest[j] 是 j 在 S 中的临界顶点，它与 j 在 S 中的其他临接顶点 k 相比较有：</p>
@@ -461,9 +462,9 @@
 </li>
 <li><p>并查集的合并：将一个集合的树根指向另一个集合的树根</p>
 <p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=f547dbac92c11e77a5fc3e32ff80658e&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png" alt=""></p>
+<p>​合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
 </li>
 </ol>
-<p>​    合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
 </blockquote>
 <p><strong>使用优先队列将边升序排列（注意对自定义类型要重写 ‘&lt;’ 运算符）</strong></p>
 <p><strong>使用并查集判断两点是否在一个集合上（根节点是否相等），合并两集合</strong> </p>
@@ -508,8 +509,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/21/LCS/" rel="prev" title="LCS">
-                LCS <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/21/LCS/" rel="prev" title="求所有LCS的简单算法及矩阵搜索算法">
+                求所有LCS的简单算法及矩阵搜索算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

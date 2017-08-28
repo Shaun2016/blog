@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="IntelliJ开发SpringBoot-Mybatis应用程序新建工程 new Project——Spring Initializr 填好工程Name，包路径Group,Package Dependencies页面勾选Web，Mybatis，Mysql会自动帮你生产maven的pom文件，当然也可以自己后往里添加，maven会自动的帮你下载需要的依赖 Finish  注： maven默认中央仓库">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-28T13:41:56.449Z">
+<meta property="og:updated_time" content="2017-08-28T16:44:15.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springboot-mybatis小程序">
 <meta name="twitter:description" content="IntelliJ开发SpringBoot-Mybatis应用程序新建工程 new Project——Spring Initializr 填好工程Name，包路径Group,Package Dependencies页面勾选Web，Mybatis，Mysql会自动帮你生产maven的pom文件，当然也可以自己后往里添加，maven会自动的帮你下载需要的依赖 Finish  注： maven默认中央仓库">
@@ -387,7 +387,7 @@
       
 
       
-        <h1 id="IntelliJ开发SpringBoot-Mybatis应用程序"><a href="#IntelliJ开发SpringBoot-Mybatis应用程序" class="headerlink" title="IntelliJ开发SpringBoot-Mybatis应用程序"></a>IntelliJ开发SpringBoot-Mybatis应用程序</h1><h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><blockquote>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="IntelliJ开发SpringBoot-Mybatis应用程序"><a href="#IntelliJ开发SpringBoot-Mybatis应用程序" class="headerlink" title="IntelliJ开发SpringBoot-Mybatis应用程序"></a>IntelliJ开发SpringBoot-Mybatis应用程序</h1><h2 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h2><blockquote>
 <p>new Project——Spring Initializr</p>
 <p>填好工程Name，包路径Group,Package</p>
 <p>Dependencies页面勾选Web，Mybatis，Mysql会自动帮你生产maven的pom文件，当然也可以自己后往里添加，maven会自动的帮你下载需要的依赖</p>
@@ -402,6 +402,7 @@
 <p>test 是测试类的目录</p>
 <p>pom.xml 是 maven 的依赖管理文件</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p><em>配置文件有 .properties 和 .yml 两种，格式不同而已，下面的是 .yml</em></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#server</div><div class="line">server:</div><div class="line">  port: 80</div><div class="line">#spring config</div><div class="line">spring:</div><div class="line">  aop:</div><div class="line">    auto: true</div><div class="line">  datasource:</div><div class="line">    name: *</div><div class="line">    url: jdbc:mysql://localhost:3306/*</div><div class="line">    driverClassName: com.mysql.jdbc.Driver</div><div class="line">    username: *</div><div class="line">    password: *</div><div class="line">    type: com.alibaba.druid.pool.DruidDataSource</div><div class="line">    maxActive: 1000</div><div class="line">    initialSize: 5</div><div class="line">    maxWait: 60000</div><div class="line">    minIdle: 1</div><div class="line">    timeBetweenEvictionRunsMillis: 60000</div><div class="line">    minEvictableIdleTimeMillis: 300000</div><div class="line">    testWhileIdle: true</div><div class="line">    testOnBorrow: false</div><div class="line">    testOnReturn: false</div><div class="line">    poolPreparedStatements: true</div><div class="line">    maxOpenPreparedStatements: 20</div><div class="line"></div><div class="line"># MyBatis</div><div class="line">mybatis:</div><div class="line">  type-aliases-package: com.zjm.model</div><div class="line">  mapper-locations: classpath:/mapper/*.xml</div><div class="line">  configuration:</div><div class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</div><div class="line"></div><div class="line">#PageHelper</div><div class="line">pagehelper:</div><div class="line">  offsetAsPageNum: true</div><div class="line">  rowBoundsWithCount: true</div><div class="line">  reasonable: true</div></pre></td></tr></table></figure>
 <h2 id="编写Mybatis-小程序"><a href="#编写Mybatis-小程序" class="headerlink" title="编写Mybatis 小程序"></a>编写Mybatis 小程序</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><blockquote>

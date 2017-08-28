@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="STL priority_queue 优先队列在优先队列中，优先级高的元素先出队列  class template std::priority_queue1234template &amp;lt;class T,    class Container = vector&amp;lt;T&amp;gt;,   class Compare = less&amp;lt;typename Container::value_type&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-13T10:18:51.772Z">
+<meta property="og:updated_time" content="2017-08-28T16:43:46.277Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="priority_queue">
 <meta name="twitter:description" content="STL priority_queue 优先队列在优先队列中，优先级高的元素先出队列  class template std::priority_queue1234template &amp;lt;class T,    class Container = vector&amp;lt;T&amp;gt;,   class Compare = less&amp;lt;typename Container::value_type&amp;gt">
@@ -387,10 +387,13 @@
       
 
       
-        <h1 id="STL-priority-queue-优先队列"><a href="#STL-priority-queue-优先队列" class="headerlink" title="STL priority_queue 优先队列"></a>STL priority_queue 优先队列</h1><p><strong>在优先队列中，优先级高的元素先出队列</strong></p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="STL-priority-queue-优先队列"><a href="#STL-priority-queue-优先队列" class="headerlink" title="STL priority_queue 优先队列"></a>STL priority_queue 优先队列</h1><p><strong>在优先队列中，优先级高的元素先出队列</strong></p>
 <blockquote>
 <p>class template</p>
 <h1 id="std-priority-queue"><a href="#std-priority-queue" class="headerlink" title="std::priority_queue"></a>std::priority_queue</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>, </span></div><div class="line"><span class="class">   <span class="title">class</span> <span class="title">Container</span> = <span class="title">vector</span>&lt;T&gt;,</span></div><div class="line"><span class="class">   <span class="title">class</span> <span class="title">Compare</span> = <span class="title">less</span>&lt;typename Container::value_type&gt; &gt; <span class="title">class</span>  </span></div><div class="line"><span class="class">   <span class="title">priority_queue</span>;</span></div></pre></td></tr></table></figure>
+</blockquote>
+<a id="more"></a>
+<blockquote>
 <h3 id="Priority-queue"><a href="#Priority-queue" class="headerlink" title="Priority queue"></a>Priority queue</h3><p>Priority queues are a type of container adaptors, specifically designed such that its first element is always the greatest of the elements it contains, according to some <em>strict weak ordering</em> criterion.<br>This context is similar to a <em>heap</em>, where elements can be inserted at any moment, and only the <em>max heap</em>element can be retrieved (the one at the top in the <em>priority queue</em>).<br>Priority queues are implemented as <em>container adaptors</em>, which are classes that use an encapsulated object of a specific container class as its <em>underlying container</em>, providing a specific set of member functions to access its elements. Elements are <em>popped</em> from the <em>“back”</em> of the specific container, which is known as the <em>top</em> of the priority queue.</p>
 <p>The standard container classes <a href="http://www.cplusplus.com/vector" target="_blank" rel="external">vector</a> and <a href="http://www.cplusplus.com/deque" target="_blank" rel="external">deque</a> fulfill these requirements. By default, if no container class is specified for a particular <a href="http://www.cplusplus.com/priority_queue" target="_blank" rel="external">priority_queue</a> class instantiation, the standard container <a href="http://www.cplusplus.com/vector" target="_blank" rel="external">vector</a> is used.<br>Support of <em>random access iterators</em> is required to keep a heap structure internally at all times. This is done automatically by the container adaptor by automatically calling the algorithm functions <a href="http://www.cplusplus.com/make_heap" target="_blank" rel="external">make_heap</a>, <a href="http://www.cplusplus.com/push_heap" target="_blank" rel="external">push_heap</a> and <a href="http://www.cplusplus.com/pop_heap" target="_blank" rel="external">pop_heap</a> when needed.</p>
 <h3 id="Template-parameters"><a href="#Template-parameters" class="headerlink" title="Template parameters"></a>Template parameters</h3><ul>

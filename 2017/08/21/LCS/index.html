@@ -97,7 +97,7 @@
 <meta name="description" content="动态规划——最长公共子序列（LCS）背景知识 子序列： 原序列 X，将 X 中的元素组成新序列 Z，这些元素的先后位置与原序列相对一致，Z 是 X 的一个子序列   最长公共子序列： 若 Z 是 X 的子序列 , Z 也是 Y 的子序列，且不存在比 Z 更长的 X 和 Y 的公共子序列，则称 Z 是 X 和 Y 的最长公共子序列 ，记为 Z ∈LCS( X , Y) 。最长公共子序列往往不止一个">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LCS">
+<meta property="og:title" content="求所有LCS的简单算法及矩阵搜索算法">
 <meta property="og:url" content="http://yoursite.com/2017/08/21/LCS/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="动态规划——最长公共子序列（LCS）背景知识 子序列： 原序列 X，将 X 中的元素组成新序列 Z，这些元素的先后位置与原序列相对一致，Z 是 X 的一个子序列   最长公共子序列： 若 Z 是 X 的子序列 , Z 也是 Y 的子序列，且不存在比 Z 更长的 X 和 Y 的公共子序列，则称 Z 是 X 和 Y 的最长公共子序列 ，记为 Z ∈LCS( X , Y) 。最长公共子序列往往不止一个">
@@ -105,9 +105,9 @@
 <meta property="og:image" content="http://yoursite.com/images/lcs/lcs1.jpg">
 <meta property="og:image" content="http://yoursite.com/images/lcs/lcs2.jpg">
 <meta property="og:image" content="http://yoursite.com/images/lcs/tree.jpg">
-<meta property="og:updated_time" content="2017-08-28T16:32:51.123Z">
+<meta property="og:updated_time" content="2017-08-28T16:43:08.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LCS">
+<meta name="twitter:title" content="求所有LCS的简单算法及矩阵搜索算法">
 <meta name="twitter:description" content="动态规划——最长公共子序列（LCS）背景知识 子序列： 原序列 X，将 X 中的元素组成新序列 Z，这些元素的先后位置与原序列相对一致，Z 是 X 的一个子序列   最长公共子序列： 若 Z 是 X 的子序列 , Z 也是 Y 的子序列，且不存在比 Z 更长的 X 和 Y 的公共子序列，则称 Z 是 X 和 Y 的最长公共子序列 ，记为 Z ∈LCS( X , Y) 。最长公共子序列往往不止一个">
 <meta name="twitter:image" content="http://yoursite.com/images/lcs/lcs1.jpg">
 
@@ -145,7 +145,7 @@
 
 
 
-  <title>LCS | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>求所有LCS的简单算法及矩阵搜索算法 | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -319,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">LCS</h1>
+          <h1 class="post-title" itemprop="name headline">求所有LCS的简单算法及矩阵搜索算法</h1>
         
 
         <div class="post-meta">
@@ -411,6 +411,7 @@
 <li>若 x<sub>m</sub> ≠ y<sub>n</sub>，且 z<sub>k</sub> ≠  y<sub>n</sub>，则 <strong>Z</strong> 是 <strong>X</strong> 和 <strong>Y</strong><sub>n-1</sub> 的最长公共子序列</li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <h3 id="子问题的递归结构"><a href="#子问题的递归结构" class="headerlink" title="子问题的递归结构"></a>子问题的递归结构</h3><blockquote>
 <p>如果从顶向下计算，将出现大量的子问题重叠…动态规划的基本思想是从低向上计算不同子问题，通过底部子问题的解，得出顶部问题的解。最终目的是得到最顶上问题的解。</p>
 <p>建立两个矩阵 c 和 b，矩阵 c 用来存放 i, j 位置的最长公共子序列长度(简记为LCS长度)，矩阵 b 存放i, j 位置是由哪个方向来的，方便回溯 </p>
