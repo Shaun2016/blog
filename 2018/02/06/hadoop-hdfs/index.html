@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="运维," />
+  <meta name="keywords" content="Hadoop," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="用yum安装jdk查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）yum search java|grep jdk 安装yum install java-1.7.0-openjdk 设置环境变量在profile文件中添加如下内容： 1234567#set java environmentJAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.">
-<meta name="keywords" content="运维">
+<meta name="description" content="启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070  集中管理Slaves 在/usr/local/hadoop/etc/had">
+<meta name="keywords" content="Hadoop">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos下安装jdk和Tomcat">
-<meta property="og:url" content="http://yoursite.com/2017/03/05/install-jdk-tomcat/index.html">
+<meta property="og:title" content="hadoop hdfs">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/hadoop-hdfs/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="用yum安装jdk查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）yum search java|grep jdk 安装yum install java-1.7.0-openjdk 设置环境变量在profile文件中添加如下内容： 1234567#set java environmentJAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.">
+<meta property="og:description" content="启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070  集中管理Slaves 在/usr/local/hadoop/etc/had">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-28T16:40:50.931Z">
+<meta property="og:updated_time" content="2018-02-07T12:23:33.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Centos下安装jdk和Tomcat">
-<meta name="twitter:description" content="用yum安装jdk查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）yum search java|grep jdk 安装yum install java-1.7.0-openjdk 设置环境变量在profile文件中添加如下内容： 1234567#set java environmentJAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.">
+<meta name="twitter:title" content="hadoop hdfs">
+<meta name="twitter:description" content="启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070  集中管理Slaves 在/usr/local/hadoop/etc/had">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/05/install-jdk-tomcat/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/02/06/hadoop-hdfs/"/>
 
 
 
 
 
-  <title>Centos下安装jdk和Tomcat | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>hadoop hdfs | Hexo</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -298,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/05/install-jdk-tomcat/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/hadoop-hdfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="shaunJm">
@@ -315,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Centos下安装jdk和Tomcat</h1>
+          <h1 class="post-title" itemprop="name headline">hadoop hdfs</h1>
         
 
         <div class="post-meta">
@@ -327,8 +327,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T15:36:47+08:00">
-                2017-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T17:33:53+08:00">
+                2018-02-06
               </time>
             
 
@@ -350,8 +350,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/运维/" itemprop="url" rel="index">
-                    <span itemprop="name">运维</span>
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
                   </a>
                 </span>
 
@@ -387,26 +387,48 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="用yum安装jdk"><a href="#用yum安装jdk" class="headerlink" title="用yum安装jdk"></a>用yum安装jdk</h3><h4 id="查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）"><a href="#查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）" class="headerlink" title="查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）"></a>查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）</h4><p><code>yum search java|grep jdk</code></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>yum install java-1.7.0-openjdk</code></p>
-<h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>在profile文件中添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>set java environment</div><div class="line">JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131</div><div class="line"><span class="meta">#</span>复制路径以防路径无法找到</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</div></pre></td></tr></table></figure>
-<p>让修改生效</p>
-<p><code>source /etc/profile</code></p>
-<a id="more"></a>
-<h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><p><code>java -version</code></p>
-<h3 id="安装Tomcat"><a href="#安装Tomcat" class="headerlink" title="安装Tomcat"></a>安装Tomcat</h3><h4 id="使用wget命令："><a href="#使用wget命令：" class="headerlink" title="使用wget命令："></a>使用wget命令：</h4><p><code>wget -c http://apache.fayea.com/tomcat/tomcat-8/v8.5.11/bin/apache-tomcat-8.5.11.tar.gz</code></p>
-<h4 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h4><p><code>tar -zxvf apache-tomcat-8.5.11.tar.gz</code></p>
-<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><p>进入解压后的<code>apache-tomcat-8.5.11 -- bin</code>目录，执行命令：</p>
-<p><code>./startup.sh</code></p>
-<h4 id="检查能否访问"><a href="#检查能否访问" class="headerlink" title="检查能否访问"></a>检查能否访问</h4><p><em>如果不能访问，可能是防火墙问题：</em></p>
-<ul>
-<li><p>关闭防火墙： <code>service firewalld stop</code></p>
-</li>
-<li><p>在<code>iptables</code>里添加开放 8080 端口： <code>-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT</code></p>
-<p>将iptables服务重启： <code>service iptables restart</code></p>
-</li>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><ul>
+<li>启动namenode和datanode</li>
 </ul>
+<blockquote>
+<p><code>hadoop-daemon.sh start namenode(datanode)</code></p>
+</blockquote>
+<ul>
+<li>在master上检测datanode</li>
+</ul>
+<blockquote>
+<p><code>hdfs dfsadmin -report | more</code></p>
+</blockquote>
+<ul>
+<li>在web页面观察hadoop集群情况</li>
+</ul>
+<blockquote>
+<p><code>192.168.137.100:50070</code></p>
+</blockquote>
+<h1 id="集中管理Slaves"><a href="#集中管理Slaves" class="headerlink" title="集中管理Slaves"></a>集中管理Slaves</h1><blockquote>
+<p>在<code>/usr/local/hadoop/etc/hadoop</code>下的slaves文件中添加slaves的主机名，在master中就可以管理其中的所有slaves，如：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slave1</div><div class="line">slave2</div><div class="line">slave3</div></pre></td></tr></table></figure>
+<blockquote>
+<p>执行：<code>start-dfs.sh</code>，输入master, slave, secondaryNameNode的密码</p>
+<p>为了避免输入多次的密码，在 <code>/.ssh</code> 下执行 <code>ssh-keygen -t rsa</code></p>
+<p>回车三次，发现.ssh下生成两个文件：<code>id_ras</code> （私钥）和 <code>id_ras.pub</code>（公钥）</p>
+<p>从master发送公钥到master, slave1, slave2, slave3：<code>ssh-copy-id master</code>, <code>ssh-copy-id slave1</code>, <code>ssh-copy-id slave2</code>, <code>ssh-copy-id slave3</code> 以后<code>ssh IP</code> 就不用再输入密码了，再执行<code>start-dfs.sh</code>时就不用再次输入密码了</p>
+</blockquote>
+<h1 id="hdfs文件系统"><a href="#hdfs文件系统" class="headerlink" title="hdfs文件系统"></a>hdfs文件系统</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
+<p><code>hadoop fs -ls</code>或<code>hdfs dfs -ls</code></p>
+<p>放置一个文件到hdfs中：<code>hadoop fs -put file /</code></p>
+<p>通过网页观察现象：<code>http://192.168.137.100:50070/explorer.html#/</code></p>
+<p>指令：</p>
+<p><code>hadoop fs -mkdir /dirname</code></p>
+<p><code>hadoop fs -text /filename</code> 查看文本文件内容</p>
+<p><code>hadoop fs -rm /filename</code></p>
+</blockquote>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><blockquote>
+<p>编写/hadoop/etc/hadoop/hdfs-site.xml</p>
+<p><em>eg:</em> 修改复制的个数为2份（默认为3份）：</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,7 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/运维/" rel="tag"># 运维</a>
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
           
         </div>
       
@@ -437,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/05/install-mysql/" rel="next" title="Centos下安装mysql">
-                <i class="fa fa-chevron-left"></i> Centos下安装mysql
+              <a href="/2018/02/05/hadoop-day1/" rel="next" title="hadoop配置环境及启动">
+                <i class="fa fa-chevron-left"></i> hadoop配置环境及启动
               </a>
             
           </div>
@@ -446,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/09/springboot-mybatis/" rel="prev" title="springboot-mybatis小程序">
-                springboot-mybatis小程序 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -585,7 +603,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用yum安装jdk"><span class="nav-number">1.</span> <span class="nav-text">用yum安装jdk</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）"><span class="nav-number">1.1.</span> <span class="nav-text">查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置环境变量"><span class="nav-number">1.3.</span> <span class="nav-text">设置环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#验证"><span class="nav-number">1.4.</span> <span class="nav-text">验证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Tomcat"><span class="nav-number">2.</span> <span class="nav-text">安装Tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用wget命令："><span class="nav-number">2.1.</span> <span class="nav-text">使用wget命令：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压"><span class="nav-number">2.2.</span> <span class="nav-text">解压</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启动"><span class="nav-number">2.3.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检查能否访问"><span class="nav-number">2.4.</span> <span class="nav-text">检查能否访问</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集中管理Slaves"><span class="nav-number">1.</span> <span class="nav-text">集中管理Slaves</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdfs文件系统"><span class="nav-number">2.</span> <span class="nav-text">hdfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指令"><span class="nav-number">2.1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置参数"><span class="nav-number">2.2.</span> <span class="nav-text">配置参数</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址  vim /etc/sysconfig/network-scripts/ifcfg-enp03 IPADDR=192.168.137.100 NETMASK=255.255">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-06T06:00:31.431Z">
+<meta property="og:updated_time" content="2018-02-07T09:16:41.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop配置环境及启动">
 <meta name="twitter:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址  vim /etc/sysconfig/network-scripts/ifcfg-enp03 IPADDR=192.168.137.100 NETMASK=255.255">
@@ -449,14 +449,14 @@
 <p>添加：<code>export PATH=$PATH:/usr/local/hadoop/bin:/usr/local/hadoop/sbin</code></p>
 <p>执行： <code>source /etc/profile</code></p>
 </blockquote>
-<p><strong>以这台虚拟机做master，复制出三台虚拟机做slave，配置IP和网关，改主机名</strong></p>
-<h1 id="启动Hadoop"><a href="#启动Hadoop" class="headerlink" title="启动Hadoop"></a>启动Hadoop</h1><h2 id="配置所有虚拟机"><a href="#配置所有虚拟机" class="headerlink" title="配置所有虚拟机"></a>配置所有虚拟机</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/hadoop/etc/hadoop</div><div class="line">vim core-site.xml # master管理结点，slave知道master</div><div class="line"><span class="meta">#</span> 在&lt;configuration&gt;内添加：</div><div class="line">&lt;property&gt;</div><div class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</div><div class="line">        &lt;value&gt;hdfs://master:9000&lt;/value&gt;</div><div class="line">&lt;/property&gt;</div></pre></td></tr></table></figure>
+<p><strong>以这台虚拟机做master，复制出三台虚拟机做slaver，配置IP和网关，改主机名分别为slave1, slave2, slave3</strong></p>
+<h1 id="启动Hadoop"><a href="#启动Hadoop" class="headerlink" title="启动Hadoop"></a>启动Hadoop</h1><h2 id="配置所有虚拟机"><a href="#配置所有虚拟机" class="headerlink" title="配置所有虚拟机"></a>配置所有虚拟机</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/hadoop/etc/hadoop</div><div class="line">vim core-site.xml # master管理结点，slave知道master</div><div class="line"><span class="comment">&lt;!-- 在&lt;configuration&gt;内添加：--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://master:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>修改所有虚拟机的host文件</p>
 <p><code>vim /etc/hosts</code></p>
 </blockquote>
 <p><em>eg</em></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">192.168.137.100 master</div><div class="line">192.168.137.101 slaver1</div><div class="line">192.168.137.102 slaver2</div><div class="line">192.168.137.103 slaver3</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">192.168.137.100 master</div><div class="line">192.168.137.101 slave1</div><div class="line">192.168.137.102 slave2</div><div class="line">192.168.137.103 slave3</div></pre></td></tr></table></figure>
 <blockquote>
 <p>格式化namenode(仅master)</p>
 <p><code>hdfs namenode -format</code></p>
@@ -505,6 +505,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/06/hadoop-hdfs/" rel="prev" title="hadoop hdfs">
+                hadoop hdfs <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -583,7 +587,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

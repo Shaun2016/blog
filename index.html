@@ -298,6 +298,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/hadoop-hdfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/06/hadoop-hdfs/" itemprop="url">hadoop hdfs</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T17:33:53+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><ul>
+<li>启动namenode和datanode</li>
+</ul>
+<blockquote>
+<p><code>hadoop-daemon.sh start namenode(datanode)</code></p>
+</blockquote>
+<ul>
+<li>在master上检测datanode</li>
+</ul>
+<blockquote>
+<p><code>hdfs dfsadmin -report | more</code></p>
+</blockquote>
+<ul>
+<li>在web页面观察hadoop集群情况</li>
+</ul>
+<blockquote>
+<p><code>192.168.137.100:50070</code></p>
+</blockquote>
+<h1 id="集中管理Slaves"><a href="#集中管理Slaves" class="headerlink" title="集中管理Slaves"></a>集中管理Slaves</h1><blockquote>
+<p>在<code>/usr/local/hadoop/etc/hadoop</code>下的slaves文件中添加slaves的主机名，在master中就可以管理其中的所有slaves，如：</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slave1</div><div class="line">slave2</div><div class="line">slave3</div></pre></td></tr></table></figure>
+<blockquote>
+<p>执行：<code>start-dfs.sh</code>，输入master, slave, secondaryNameNode的密码</p>
+<p>为了避免输入多次的密码，在 <code>/.ssh</code> 下执行 <code>ssh-keygen -t rsa</code></p>
+<p>回车三次，发现.ssh下生成两个文件：<code>id_ras</code> （私钥）和 <code>id_ras.pub</code>（公钥）</p>
+<p>从master发送公钥到master, slave1, slave2, slave3：<code>ssh-copy-id master</code>, <code>ssh-copy-id slave1</code>, <code>ssh-copy-id slave2</code>, <code>ssh-copy-id slave3</code> 以后<code>ssh IP</code> 就不用再输入密码了，再执行<code>start-dfs.sh</code>时就不用再次输入密码了</p>
+</blockquote>
+<h1 id="hdfs文件系统"><a href="#hdfs文件系统" class="headerlink" title="hdfs文件系统"></a>hdfs文件系统</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
+<p><code>hadoop fs -ls</code>或<code>hdfs dfs -ls</code></p>
+<p>放置一个文件到hdfs中：<code>hadoop fs -put file /</code></p>
+<p>通过网页观察现象：<code>http://192.168.137.100:50070/explorer.html#/</code></p>
+<p>指令：</p>
+<p><code>hadoop fs -mkdir /dirname</code></p>
+<p><code>hadoop fs -text /filename</code> 查看文本文件内容</p>
+<p><code>hadoop fs -rm /filename</code></p>
+</blockquote>
+<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><blockquote>
+<p>编写/hadoop/etc/hadoop/hdfs-site.xml</p>
+<p><em>eg:</em> 修改复制的个数为2份（默认为3份）：</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/05/hadoop-day1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1706,247 +1889,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/23/sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shaunJm">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/23/sort/" itemprop="url">排序算法小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-23T15:23:07+08:00">
-                2017-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="数据结构排序算法时空稳"><a href="#数据结构排序算法时空稳" class="headerlink" title="数据结构排序算法时空稳"></a>数据结构排序算法时空稳</h1><table>
-<thead>
-<tr>
-<th>分类</th>
-<th>排序方法</th>
-<th>平均情况(时)</th>
-<th>最坏(时)</th>
-<th>最好(时)</th>
-<th>空间复杂度</th>
-<th>稳定性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>插入</td>
-<td>直接插入</td>
-<td>O(n*n)</td>
-<td>O(n*n)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-<td>稳</td>
-</tr>
-<tr>
-<td></td>
-<td>折半插入</td>
-<td>O(n*n)</td>
-<td></td>
-<td></td>
-<td>O(1)</td>
-<td>稳</td>
-</tr>
-<tr>
-<td></td>
-<td>希尔</td>
-<td>O(nlogn)</td>
-<td>O(nlogn)</td>
-<td></td>
-<td>O(1)</td>
-<td>不稳</td>
-</tr>
-<tr>
-<td>交换</td>
-<td>冒泡</td>
-<td>O(n*n)</td>
-<td>O(n*n)</td>
-<td>O(n)</td>
-<td>O(1)</td>
-<td>稳</td>
-</tr>
-<tr>
-<td></td>
-<td>快速</td>
-<td>O(nlogn)</td>
-<td>O(n*n)</td>
-<td>O(nlogn)</td>
-<td>O(logn)</td>
-<td>不稳</td>
-</tr>
-<tr>
-<td>选择</td>
-<td>简单选择</td>
-<td>O(n*n)</td>
-<td>O(n*n)</td>
-<td>O(n*n)</td>
-<td>O(1)</td>
-<td>不稳</td>
-</tr>
-<tr>
-<td></td>
-<td>堆排</td>
-<td>O(nlogn)</td>
-<td>O(nlogn)</td>
-<td>O(nlogn)</td>
-<td>O(1)</td>
-<td>不稳</td>
-</tr>
-<tr>
-<td>其他</td>
-<td>归并</td>
-<td>O(nlogn)</td>
-<td>O(nlogn)</td>
-<td>O(nlogn)</td>
-<td>O(n)</td>
-<td>稳</td>
-</tr>
-<tr>
-<td></td>
-<td>基数</td>
-<td>O(d(n+r))</td>
-<td>O(d(n+r))</td>
-<td>O(d(n+r))</td>
-<td>O(r)</td>
-<td>稳</td>
-</tr>
-</tbody>
-</table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/23/sort/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1999,7 +1941,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
