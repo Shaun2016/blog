@@ -298,6 +298,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/08/java-hdfs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="shaunJm">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/08/java-hdfs/" itemprop="url">java hdfs</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-08T15:33:48+08:00">
+                2018-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="Java程序访问HDFS"><a href="#Java程序访问HDFS" class="headerlink" title="Java程序访问HDFS"></a>Java程序访问HDFS</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> dbfs;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.FileInputStream;</div><div class="line"><span class="keyword">import</span> java.math.BigDecimal;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FSDataOutputStream;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileStatus;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.IOUtils;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloHDFS</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line"><span class="comment">//		URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());</span></div><div class="line"><span class="comment">//		URL url = new URL("hdfs://192.168.137.100:9000/hello.txt");</span></div><div class="line"><span class="comment">//		InputStream in = url.openStream();</span></div><div class="line"><span class="comment">//		IOUtils.copyBytes(in, System.out, 4096, true);</span></div><div class="line">		</div><div class="line">		Configuration conf = <span class="keyword">new</span> Configuration();</div><div class="line">		conf.set(<span class="string">"fs.defaultFS"</span>, <span class="string">"hdfs://192.168.137.100:9000"</span>);</div><div class="line">      	<span class="comment">// 修改hdfs配置参数值</span></div><div class="line">		conf.set(<span class="string">"dfs.replication"</span>, <span class="string">"5"</span>);</div><div class="line">		FileSystem fileSystem = FileSystem.get(conf);</div><div class="line">		<span class="comment">// 判断路径是否存在</span></div><div class="line">		<span class="keyword">boolean</span> success = fileSystem.exists(<span class="keyword">new</span> Path(<span class="string">"/zjm"</span>));</div><div class="line">		System.out.println(success);</div><div class="line">		<span class="comment">// 新建路径，注意如果已经存在同名目录会覆盖原目录x_x</span></div><div class="line">		success = fileSystem.mkdirs(<span class="keyword">new</span> Path(<span class="string">"/zjm"</span>));</div><div class="line">		System.out.println(success);</div><div class="line">		<span class="comment">// 删除</span></div><div class="line">		success = fileSystem.delete(<span class="keyword">new</span> Path(<span class="string">"/zjm"</span>), <span class="keyword">true</span>);</div><div class="line">		System.out.println(success);</div><div class="line">		<span class="comment">// 上传文件</span></div><div class="line">		FSDataOutputStream out = fileSystem.create(<span class="keyword">new</span> Path(<span class="string">"/test.data"</span>));</div><div class="line">		FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">"F:learn/mashibing/hadoop/马士兵hadoop2.7入门_03.mp4"</span>);</div><div class="line">		IOUtils.copyBytes(fis, out, <span class="number">4096</span>, <span class="keyword">true</span>);</div><div class="line">		fileSystem.delete(<span class="keyword">new</span> Path(<span class="string">"/video"</span>), <span class="keyword">true</span>);</div><div class="line">      	<span class="comment">// 上传文件：IO流可计算上传进度</span></div><div class="line">		FSDataOutputStream out = fileSystem.create(<span class="keyword">new</span> Path(<span class="string">"/video"</span>));</div><div class="line">		FileInputStream in = <span class="keyword">new</span> FileInputStream(<span class="string">"F:learn/mashibing/hadoop/马士兵hadoop2.7入门_03.mp4"</span>);</div><div class="line">		<span class="keyword">int</span> total = in.available();</div><div class="line">		<span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4096</span>];</div><div class="line">		<span class="keyword">int</span> len = in.read(buf);</div><div class="line">		<span class="keyword">int</span> now = len;</div><div class="line">		<span class="keyword">while</span>(len != -<span class="number">1</span>) &#123;</div><div class="line">			<span class="comment">// 上传百分比，保留小数点后两位</span></div><div class="line">			System.out.println(<span class="keyword">new</span> BigDecimal((<span class="keyword">float</span>)now/total*<span class="number">100</span>).setScale(<span class="number">2</span>, BigDecimal.ROUND_HALF_UP).doubleValue());</div><div class="line">			out.write(buf, <span class="number">0</span>, len);</div><div class="line">			len = in.read(buf);</div><div class="line">			now += len;</div><div class="line">		&#125;</div><div class="line">		in.close();</div><div class="line">		out.close();</div><div class="line">		<span class="comment">// 查看文件结构</span></div><div class="line">		FileStatus[] statuses = fileSystem.listStatus(<span class="keyword">new</span> Path(<span class="string">"/"</span>));</div><div class="line">		<span class="keyword">for</span>(FileStatus status: statuses) &#123;</div><div class="line">			System.out.println(status.getPath());</div><div class="line">			System.out.println(status.getPermission());</div><div class="line">			System.out.println(status.getReplication());</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注：</strong>需要关闭权限检查，向<code>hdfs-site.xml</code>中添加并重启hdfs</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.permissions.enabled<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>false<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><em>description:</em></p>
+<blockquote>
+<p>If “true”, enable permission checking in HDFS. If “false”, permission checking is turned off, but all other behavior is unchanged. Switching from one parameter value to the other does not change the mode, owner or group of files or directories.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/hadoop-hdfs/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1720,155 +1868,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/24/ky/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="shaunJm">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/24/ky/" itemprop="url">Share~</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-24T13:39:40+08:00">
-                2017-01-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="分享给朋友的"><a href="#分享给朋友的" class="headerlink" title="分享给朋友的"></a>分享给朋友的</h1><p><em>Dear Mao Shuo</em>:</p>
-<blockquote>
-<p>你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去吃饭，中午ZZZ，下午两点开始，三个小时又吃饭，晚上六点开始，四个小时回寝，一天最多十个小时的学习时间，真正有收获的没多少。。。我九月份还报了文都的秋季班（补暑假课程的班），因为我暑假有实训。文都的课好也不好，为了赶进度，有时一天看十个多小时的视频。往往一天下来很累了，回来就没有把一天的课进行总结整理笔记。我有一次整理了一次，花了很多时间，因为课上的内容太多，老师说的很快，好多听不懂的需要课后自己整理复习，如果没有总结复习，那课久了回看笔记就看不懂了，还会越堆越多。所以，不及时总结复习，课就等于白上，还浪费大量的时间和精力。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/01/24/ky/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1921,7 +1920,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
