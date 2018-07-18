@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D308/sign=3501fe127ccb0a4681228d395361f63e/b17eca8065380cd7a8d1be05a644ad345882810e.jpg">
 <meta property="og:image" content="https://www.zhihu.com/equation?tex=Cov%28X%2CY%29%3DE%5B%28X-%5Cmu+_%7Bx%7D%29%28Y-%5Cmu+_%7By%7D%29%5D">
 <meta property="og:image" content="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=4253573177,2792087979&fm=58">
-<meta property="og:updated_time" content="2018-03-02T01:21:16.219Z">
+<meta property="og:updated_time" content="2018-03-13T06:20:03.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="math basic">
 <meta name="twitter:description" content="前言 数学功底太差，概率论与数理统计、线性代数，大量概念理解不够，之前的强化记忆都为了应付考试，记题型、背步骤，现在用到数据处理和公式推导时发现都不会了。下面把一些用到的概念记录下，主要是看到的通俗的解释，直观形象的描述。尽量使概念活起来。^ - ^">
@@ -124,7 +124,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '5.1.2',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -417,7 +417,8 @@
 <p>其中P为A的特征向量组成的矩阵，Λ对角线上是A的特征值，即A为对称阵，做合同变换，特征值不变，A与Λ互为合同矩阵</p>
 </blockquote>
 <h2 id="正定阵"><a href="#正定阵" class="headerlink" title="正定阵"></a>正定阵</h2><blockquote>
-<p>对于n阶方阵A，若任意n阶向量x，都有x<sup>T</sup>Ax&gt;0，则称A是正定阵。</p>
+<p>直观上：正定阵是一种实对称阵</p>
+<p>对于n阶方阵A，若任意n阶非零向量x，都有x<sup>T</sup>Ax&gt;0，则称A是正定阵。</p>
 <p>给定任意m×n的矩阵A，A<sup>T</sup>A一定是半正定对称方阵</p>
 <p>对称阵A是正定阵，A特征值都为正，A的顺序主子式都为正</p>
 </blockquote>
@@ -694,7 +695,7 @@
 
   <span class="post-meta-divider">|</span>
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.2</div>
 
 
         
@@ -737,6 +738,8 @@
   
 
 
+  
+
 
 
 
@@ -765,6 +768,9 @@
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
 
   
 
@@ -778,6 +784,13 @@
   
   
 
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
@@ -787,7 +800,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
 
 
 
@@ -838,5 +851,9 @@
 
   
 
+  
+    <script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
 </body>
 </html>
