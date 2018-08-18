@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/08/09/elastic-search/</loc>
+    
+    <lastmod>2018-08-18T13:28:27.447Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/14/concurrent/</loc>
+    
+    <lastmod>2018-08-18T13:28:04.356Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/07/18/producter-consumer/</loc>
+    
+    <lastmod>2018-08-18T13:27:50.031Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/04/08/kibana-command/</loc>
     
     <lastmod>2018-08-09T03:10:24.697Z</lastmod>
