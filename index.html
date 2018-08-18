@@ -414,36 +414,19 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="文档搜索"><a href="#文档搜索" class="headerlink" title="文档搜索"></a>文档搜索</h1><h2 id="query-string-search"><a href="#query-string-search" class="headerlink" title="query string search"></a>query string search</h2><blockquote>
+          <h1 id="文档搜索"><a href="#文档搜索" class="headerlink" title="文档搜索"></a>文档搜索</h1><h2 id="query-string-search"><a href="#query-string-search" class="headerlink" title="query string search"></a>query string search</h2><blockquote>
 <p><code>GET (index/type)/_search(?parameter_name=parameter_value&amp;...)</code></p>
 <p><code>()</code> 内为可选项，如无条件查询: <code>GET /_search</code></p>
 <p><code>GET /_search?q=name:zjm&amp;sort=no:desc</code></p>
 <p>当搜索条件复杂时构建 query string 很麻烦，生产环境很少使用</p>
 </blockquote>
-<h2 id="query-DSL"><a href="#query-DSL" class="headerlink" title="query DSL"></a>query DSL</h2><blockquote>
-<p><strong>DSL</strong>: Domain Specified Language</p>
-</blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 查询所有数据</span></div><div class="line">GET /index/<span class="built_in">type</span>/_search </div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;<span class="string">"match_all"</span>:&#123;&#125;&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment"># 条件查询，排序</span></div><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  <span class="string">"query"</span>: &#123;</div><div class="line">    <span class="string">"match"</span>: &#123;</div><div class="line">      <span class="string">"name"</span>: <span class="string">"zjm"</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  <span class="string">"sort"</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="string">"age"</span>: &#123;</div><div class="line">        <span class="string">"order"</span>: <span class="string">"desc"</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div><div class="line"><span class="comment"># 分页</span></div><div class="line">GET /_search</div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;<span class="string">"match_all"</span>: &#123;&#125;&#125;,</div><div class="line">    <span class="string">"from"</span>: 1,	<span class="comment"># 从第几条开始</span></div><div class="line">    <span class="string">"size"</span>: 2,	<span class="comment"># 查询的数据个数</span></div><div class="line">    <span class="string">"sort"</span>: [</div><div class="line">        &#123;<span class="string">"age"</span>: <span class="string">"desc"</span>&#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"><span class="comment"># 查询部分字段</span></div><div class="line">GET _search</div><div class="line">&#123;</div><div class="line">    <span class="string">"query"</span>: &#123;<span class="string">"match_all"</span>: &#123;&#125;&#125;,</div><div class="line">    <span class="string">"_source"</span>: [<span class="string">"name"</span>, <span class="string">"age"</span>],</div><div class="line">    <span class="string">"sort"</span>: [</div><div class="line">        &#123;<span class="string">"age"</span>: <span class="string">"asc"</span>&#125;</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="query-filter"><a href="#query-filter" class="headerlink" title="query filter"></a>query filter</h2><blockquote>
-<p>过滤查询，是 query DSL 的补充，不进行匹配相关度计算</p>
-<p>eg: 搜索 position 包含 java 且年龄在 22-24 之间</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  "query": &#123;</div><div class="line">    "bool": &#123;	# 多条件搜索</div><div class="line">      "must": [</div><div class="line">        &#123;"match": &#123;</div><div class="line">          "position": "java"</div><div class="line">        &#125;&#125;,</div><div class="line">        &#123;</div><div class="line">          "range": &#123;</div><div class="line">            "age": &#123;</div><div class="line">              "gte": 22,</div><div class="line">              "lte": 24</div><div class="line">            &#125;</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      ]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">#</span><span class="bash"> 使用 Filter</span></div><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  "query": &#123;</div><div class="line">    "bool": &#123;</div><div class="line">      "must": [</div><div class="line">        &#123;"match": &#123;</div><div class="line">          "position": "java"</div><div class="line">        &#125;&#125;</div><div class="line">      ],</div><div class="line">      "filter": &#123;</div><div class="line">        "range": &#123;</div><div class="line">          "age": &#123;</div><div class="line">            "gte": 22,</div><div class="line">            "lte": 24</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>注：filter 在 must 的结果中进行过滤，filter中的字段不进行相关度计算</em></p>
-<h2 id="full-text-search"><a href="#full-text-search" class="headerlink" title="full-text search"></a>full-text search</h2><blockquote>
-<p>全文匹配：position 中含有 java 或 php 或 scale的，词与词之间属于独立的条件</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  "query": &#123;</div><div class="line">    "match": &#123;</div><div class="line">      "position": "java php scale"</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="phrase-search"><a href="#phrase-search" class="headerlink" title="phrase search"></a>phrase search</h2><blockquote>
-<p>短语检索：position 含有 java developer 这个短语，只有 java 或者 developer 不行的呦</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  "query": &#123;</div><div class="line">    "match_phrase": &#123;</div><div class="line">      "position": "java developer"</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="highlight-display"><a href="#highlight-display" class="headerlink" title="highlight display"></a>highlight display</h2><blockquote>
-<p>高亮显示</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">GET /index1/type1/_search</div><div class="line">&#123;</div><div class="line">  "query": &#123;</div><div class="line">    "match": &#123;</div><div class="line">      "name": "zjm"</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  "highlight": &#123;</div><div class="line">    "fields":[</div><div class="line">      &#123;</div><div class="line">       "name" : &#123;&#125;</div><div class="line">      &#125;</div><div class="line">      ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/09/elastic-search/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2017,8 +2000,6 @@
   
 
 
-  
-
 
 
 
@@ -2046,9 +2027,6 @@
 
   
   <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-  
-  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
 
 
   
@@ -2422,7 +2400,7 @@
         onPopupClose();
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
@@ -2440,8 +2418,6 @@
 
   
 
-  
-    <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 </body>
 </html>
