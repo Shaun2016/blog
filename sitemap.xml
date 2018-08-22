@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/07/18/producter-consumer/</loc>
+    
+    <lastmod>2018-08-22T15:43:35.907Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/20/jvm-gc/</loc>
+    
+    <lastmod>2018-08-20T14:52:43.070Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/08/18/singleton/</loc>
     
     <lastmod>2018-08-19T14:08:54.639Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2018/07/14/concurrent/</loc>
     
     <lastmod>2018-08-18T13:28:04.356Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/07/18/producter-consumer/</loc>
-    
-    <lastmod>2018-08-18T13:27:50.031Z</lastmod>
     
   </url>
   

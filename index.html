@@ -322,6 +322,195 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/20/jvm-gc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/20/jvm-gc/" itemprop="url">jvm gc</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-20T21:08:44+08:00">
+                2018-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>JavaGC (Garbage Collection, 垃圾收集) 机制，下面介绍的是 HotSpot 的 GC 机制。Java GC 机制可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。对于一般的程序，Java GC 可以自动的完成绝大多数事情，然而，对于较大型的应用软件，需要对 JVM 进行优化，必须要清楚 Java GC 机制。</p>
+</blockquote>
+<h2 id="java-GC-要干啥"><a href="#java-GC-要干啥" class="headerlink" title="java GC 要干啥"></a>java GC 要干啥</h2><ol>
+<li>确定哪些内存要回收</li>
+<li>何时执行 GC</li>
+<li>怎样执行 GC</li>
+</ol>
+<h2 id="JVM-内存区域的划分"><a href="#JVM-内存区域的划分" class="headerlink" title="JVM 内存区域的划分"></a>JVM 内存区域的划分</h2><p><img src="images\java\jvm.png" alt="jvm"></p>
+<ol>
+<li><p>程序计数器 (Program Counter Register)</p>
+<blockquote>
+<p>记录线程执行的字节码运行到第几行</p>
+</blockquote>
+</li>
+<li><p>虚拟机栈 (JVM Stack)</p>
+<blockquote>
+<p>一个线程每个方法执行的同时，都会创建一个栈帧 (Stack Frame)，栈帧中存储局部变量表、操作站、动态链接、方法出口等，当方法被调用时，栈帧入栈，方法执行完栈帧出栈</p>
+</blockquote>
+</li>
+<li><p>本地方法栈 (Native Method Statck)</p>
+<blockquote>
+<p>执行 natice 方法，用C语言编写，和虚拟机栈放在一起使用</p>
+</blockquote>
+</li>
+<li><p>堆区 (Heap)</p>
+<blockquote>
+<p>存储对象实例</p>
+</blockquote>
+</li>
+<li><p>方法区 (Method Area)</p>
+<blockquote>
+<p>已经被虚拟机加载的类的信息，如接口，方法，属性，对象类型等，final 常量，静态变量等</p>
+<p>运行时常量池 (Runtime Constant Pool) 是方法区的一部分，存储编译器生成的常量、引用，也存储运行期间产生的常量，如 String 的常量池</p>
+</blockquote>
+</li>
+<li><p>直接内存 (Direct Memory)</p>
+<blockquote>
+<p>JVM以外的机器内存</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="java-对象的内存访问"><a href="#java-对象的内存访问" class="headerlink" title="java 对象的内存访问"></a>java 对象的内存访问</h2><blockquote>
+<p>一个 Java 的引用访问的内存涉及到：JVM栈，堆，方法区</p>
+<p>eg: <code>Student stu = new Student();</code></p>
+<p><code>Student stu</code>是一个本地引用，存储在 JVM 栈的本地变量表中，<code>new Student()</code>作为实例对象存储在堆中，堆中记录了 Student 类的类型信息（接口，方法，属性，对象类型等）的地址，这些地址所在的数据存储在方法区中</p>
+</blockquote>
+<p><em>Java 内存分配和回收机制概括的说：<strong>分代分配</strong>，<strong>分代回收</strong>，对象按存活时间分为：<strong>年轻代</strong>，<strong>年老代</strong>，<strong>永久代</strong></em></p>
+<h2 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h2><h2 id="何时触发-GC-和执行-GC-的方式"><a href="#何时触发-GC-和执行-GC-的方式" class="headerlink" title="何时触发 GC 和执行 GC 的方式"></a>何时触发 GC 和执行 GC 的方式</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/18/singleton/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1674,156 +1863,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/java-map-reduce/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang JM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShaunJM's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/11/java-map-reduce/" itemprop="url">java map-reduce</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T12:48:22+08:00">
-                2018-02-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
-                    <span itemprop="name">Big Data</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java开发Map-Reduce程序"><a href="#Java开发Map-Reduce程序" class="headerlink" title="Java开发Map/Reduce程序"></a>Java开发Map/Reduce程序</h1><h2 id="MR程序执行方式："><a href="#MR程序执行方式：" class="headerlink" title="MR程序执行方式："></a>MR程序执行方式：</h2><ul>
-<li>在本地运行，输入输出都在本地，用于调试程序</li>
-<li>把远程数据拉到本地运行，输出传回远程，只适合数据量小</li>
-<li>在远程运行，输入输出都在远程</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/11/java-map-reduce/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1876,7 +1915,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1898,7 +1937,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
