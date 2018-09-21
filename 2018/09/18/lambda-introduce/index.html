@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="life," />
+  <meta name="keywords" content="java," />
 
 
 
@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="分享给朋友的Dear Mao Shuo:  你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去">
-<meta name="keywords" content="life">
+<meta name="description" content="lambda表达式是java8的新特性，使java在编程中更简单，代码更简洁可读，避免了冗长的内部类、匿名类，下面通过栗子看看lambda有哪些应用吧*^-^*">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Share~">
-<meta property="og:url" content="http://yoursite.com/2017/01/24/ky/index.html">
+<meta property="og:title" content="简单好用的lambda">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/lambda-introduce/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="分享给朋友的Dear Mao Shuo:  你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去">
+<meta property="og:description" content="lambda表达式是java8的新特性，使java在编程中更简单，代码更简洁可读，避免了冗长的内部类、匿名类，下面通过栗子看看lambda有哪些应用吧*^-^*">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-28T16:41:51.639Z">
+<meta property="og:image" content="c:/Users/zjm/blog/source/images/java/stream.png">
+<meta property="og:updated_time" content="2018-09-21T07:31:55.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Share~">
-<meta name="twitter:description" content="分享给朋友的Dear Mao Shuo:  你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去">
+<meta name="twitter:title" content="简单好用的lambda">
+<meta name="twitter:description" content="lambda表达式是java8的新特性，使java在编程中更简单，代码更简洁可读，避免了冗长的内部类、匿名类，下面通过栗子看看lambda有哪些应用吧*^-^*">
+<meta name="twitter:image" content="c:/Users/zjm/blog/source/images/java/stream.png">
 
 
 
@@ -135,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/24/ky/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/lambda-introduce/"/>
 
 
 
 
 
-  <title>Share~ | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>简单好用的lambda | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -322,7 +324,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/24/ky/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/lambda-introduce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -339,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Share~</h1>
+          <h1 class="post-title" itemprop="name headline">简单好用的lambda</h1>
         
 
         <div class="post-meta">
@@ -351,8 +353,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-24T13:39:40+08:00">
-                2017-01-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-18T10:22:14+08:00">
+                2018-09-18
               </time>
             
 
@@ -374,8 +376,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -411,18 +413,82 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="分享给朋友的"><a href="#分享给朋友的" class="headerlink" title="分享给朋友的"></a>分享给朋友的</h1><p><em>Dear Mao Shuo</em>:</p>
-<blockquote>
-<p>你看历年分数线先给自己各科定个小目标，100+100+50+50啊，关注几个老师的微博，微信公众号：蒋中挺，何凯文，张宇，刘一男……都会有免费的直播，何凯文还有每日一句，有时间就看，没时间就算了别当负担，我每日一句就跟了一阵。直播课感觉蒋中挺的挺好的，还有回放，英语数学我都没咋听，不过我还是推荐听。我学的时间里有效的部分太少了：早上九点开始，两个半小时去吃饭，中午ZZZ，下午两点开始，三个小时又吃饭，晚上六点开始，四个小时回寝，一天最多十个小时的学习时间，真正有收获的没多少。。。我九月份还报了文都的秋季班（补暑假课程的班），因为我暑假有实训。文都的课好也不好，为了赶进度，有时一天看十个多小时的视频。往往一天下来很累了，回来就没有把一天的课进行总结整理笔记。我有一次整理了一次，花了很多时间，因为课上的内容太多，老师说的很快，好多听不懂的需要课后自己整理复习，如果没有总结复习，那课久了回看笔记就看不懂了，还会越堆越多。所以，不及时总结复习，课就等于白上，还浪费大量的时间和精力。</p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p><strong>lambda表达式</strong>是java8的新特性，使java在编程中更简单，代码更简洁可读，避免了冗长的内部类、匿名类，下面通过栗子看看lambda有哪些应用吧*^-^*</p>
 </blockquote>
 <a id="more"></a>
-<blockquote>
-<p>其实还是自己总结最重要了，看视频，做题，再多，自己不理解归纳总结知识点，意义都不大。做题我有一招特别好使，如果你知道这道题考的考点是什么，你一定能做对。所以，数学背笔记时一定要背考点，12345…</p>
-<p>复习计划早制定，专业课早开始，政治选择早开始，真的不是很难，别害怕，就是路漫漫修远，坚持下来不容易。</p>
-<p>如果我调剂不到好的学校，就做研友；复试通过，就给你书…</p>
+<h2 id="ForEach-与-lambda"><a href="#ForEach-与-lambda" class="headerlink" title="ForEach 与 lambda"></a>ForEach 与 lambda</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, Integer&gt; items = <span class="keyword">new</span> HashMap&lt;&gt;();</div><div class="line">items.put(<span class="string">"A"</span>, <span class="number">10</span>);</div><div class="line">items.put(<span class="string">"B"</span>, <span class="number">20</span>);</div><div class="line">items.put(<span class="string">"C"</span>, <span class="number">30</span>);</div><div class="line">items.put(<span class="string">"D"</span>, <span class="number">40</span>);</div><div class="line"><span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : items.entrySet()) &#123;</div><div class="line">	System.out.println(<span class="string">"item : "</span> + entry.getKey() + <span class="string">"count : "</span> + entry.getValue());</div><div class="line">&#125;</div><div class="line"><span class="comment">// lambda</span></div><div class="line">items.forEach((k, v)-&gt;&#123;</div><div class="line">	System.out.println(<span class="string">"item : "</span> + k + <span class="string">"count : "</span> + v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">list.add(<span class="string">"A"</span>);</div><div class="line">list.add(<span class="string">"B"</span>);</div><div class="line">list.add(<span class="string">"C"</span>);</div><div class="line">list.add(<span class="string">"D"</span>);</div><div class="line">list.add(<span class="string">"E"</span>);</div><div class="line"><span class="keyword">for</span>(String item : list)&#123;</div><div class="line">    System.out.println(item);</div><div class="line">&#125;</div><div class="line"><span class="comment">// lambda 参数只有一个可以省略小括号</span></div><div class="line">list.forEach(x-&gt;System.out.println(x));</div><div class="line"><span class="comment">// </span></div><div class="line">list.forEach(System.out::println);</div></pre></td></tr></table></figure>
+<p>##匿名内部类 与 lambda</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Thread t = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"How a u..."</span>);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">t.start();</div><div class="line"><span class="comment">// lamda</span></div><div class="line">Thread t1 = <span class="keyword">new</span> Thread(()-&gt;System.out.println(<span class="string">"I'm fine...thx"</span>));</div><div class="line">t1.start();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">String[] arr = &#123;<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>&#125;;</div><div class="line">List&lt;String&gt; list = Arrays.asList(arr);</div><div class="line"><span class="comment">// 匿名内部类</span></div><div class="line">Collections.sort(list, <span class="keyword">new</span> Comparator&lt;String&gt;() &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String o1, String o2)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> o1.compareTo(o2);</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">&#125;);</div><div class="line"><span class="comment">// lambda</span></div><div class="line">Collections.sort(list, (s1, s2)-&gt;&#123;</div><div class="line">	<span class="keyword">return</span> s1.compareTo(s2);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 当只有一行时 return 可以省略</span></div><div class="line">Collections.sort(list, (s1, s2)-&gt;s1.compareTo(s2));</div></pre></td></tr></table></figure>
+<h2 id="lambda语法"><a href="#lambda语法" class="headerlink" title="lambda语法"></a>lambda语法</h2><h3 id="一般语法"><a href="#一般语法" class="headerlink" title="一般语法"></a>一般语法</h3><p><code>(Type parameter, Type parameter,...) -&gt; {statements...}</code></p>
+<h3 id="单参数"><a href="#单参数" class="headerlink" title="单参数"></a>单参数</h3><blockquote>
+<p><code>parameter-&gt;{statements}</code></p>
+<p>当 lambda 表达式的参数个数只有一个，可以省略小括号</p>
 </blockquote>
-<p><em>Good luck</em></p>
-<p><em>Shaun</em></p>
+<h3 id="单语句"><a href="#单语句" class="headerlink" title="单语句"></a>单语句</h3><blockquote>
+<p><code>parameter-&gt;statement</code></p>
+<p>当 lambda 表达式只有一条语句时，可以省略<strong>大括号，return 和结尾的分号</strong></p>
+</blockquote>
+<h3 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h3><blockquote>
+<p><code>objectName::instanceMethod</code> 或<code>ClassName::staticMethod</code></p>
+<p>把 lambda 表达式的参数直接当成 instanceMethod 或 staticMethod 的参数，比如<code>System.out::println</code>等同于<code>x-&gt;System.out.println(x)</code>，<code>Math::max</code>等同于<code>(x,y)-&gt;Math::max(x,y)</code></p>
+<p><code>ClassName::instanceMethod</code>是<code>x-&gt;x.instanceMethod()</code>的简化，<strong>eg:</strong> <code>Student::getName</code>等同于<code>x-&gt;x.getName()</code>，<code>instanceMethod</code>是一个无参的函数</p>
+</blockquote>
+<h3 id="访问外部变量"><a href="#访问外部变量" class="headerlink" title="访问外部变量"></a>访问外部变量</h3><blockquote>
+<p>只能访问外部变量，不能在 lambda 内部修改，编译器将隐式将外部变量当成 <strong>final</strong> 处理，匿名函数和 lambda 函数内对外部变量的访问是一样的，都是只能访问 final 修饰的，没有 final 修饰视为 final 修饰，不可改变值。</p>
+</blockquote>
+<h2 id="Stream-与-lambda"><a href="#Stream-与-lambda" class="headerlink" title="Stream 与 lambda"></a>Stream 与 lambda</h2><blockquote>
+<p>Stream 是java8的新特性，大大简化了对集合的操作，请先看看下面的栗子*^-^*</p>
+</blockquote>
+<p><strong>找出集合中的偶数</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; nums = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>);</div><div class="line">List&lt;Integer&gt; evens = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">final</span> <span class="keyword">int</span> n : nums) &#123;</div><div class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">		evens.add(n);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// stream</span></div><div class="line">evens = nums.stream().filter(num-&gt;num%<span class="number">2</span> == <span class="number">0</span>).collect(Collectors.toList());</div><div class="line">evens.forEach(System.out::println);</div></pre></td></tr></table></figure>
+<p><img src="C:\Users\zjm\blog\source\images\java\stream.png" alt="stream"></p>
+<h3 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h3><blockquote>
+<p>我们先定义一个学生实体类，用来说明中间操作有什么应用</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> age;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> score;</div><div class="line">	<span class="comment">//... Getters,Setters,Constructor等省略</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">List&lt;Student&gt; students = <span class="keyword">new</span> ArrayList&lt;Student&gt;() &#123;</div><div class="line">	&#123;</div><div class="line">		add(<span class="keyword">new</span> Student(<span class="number">2013201319</span>, <span class="string">"zcl"</span>, <span class="number">18</span>, <span class="number">100</span>));</div><div class="line">		add(<span class="keyword">new</span> Student(<span class="number">2013201320</span>, <span class="string">"zjm"</span>, <span class="number">20</span>, <span class="number">90</span>));</div><div class="line">		add(<span class="keyword">new</span> Student(<span class="number">2013201321</span>, <span class="string">"tyf"</span>, <span class="number">19</span>, <span class="number">95</span>));</div><div class="line">		add(<span class="keyword">new</span> Student(<span class="number">2013201322</span>, <span class="string">"zzh"</span>, <span class="number">22</span>, <span class="number">97</span>));</div><div class="line">		add(<span class="keyword">new</span> Student(<span class="number">2013201323</span>, <span class="string">"ggy"</span>, <span class="number">21</span>, <span class="number">89</span>));</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h4 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h4><h5 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h5><blockquote>
+<p>过滤姓名以<strong>‘z’</strong>开头的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Student&gt; z_list = students.stream().filter(stu-&gt;stu.getName()</div><div class="line">		.charAt(<span class="number">0</span>) == <span class="string">'z'</span>).collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h5 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h5><blockquote>
+<p>找出偶数后去掉重复的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; evens = nums.stream().filter(num-&gt;num%<span class="number">2</span>==<span class="number">0</span>)</div><div class="line">		.distinct().collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h5 id="sort-amp-limit"><a href="#sort-amp-limit" class="headerlink" title="sort&amp;limit"></a>sort&amp;limit</h5><blockquote>
+<p>找出成绩排名前三的同学</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Student&gt; scoreList = <span class="keyword">this</span>.students.stream().sorted((s1, s2)-&gt;</div><div class="line">		s2.getScore() - s1.getScore()).limit(<span class="number">3</span>).collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h5 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h5><blockquote>
+<p>找出成绩排名第三名以后的同学</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;Student&gt; scoreList = <span class="keyword">this</span>.students.stream().sorted((s1, s2)-&gt;</div><div class="line">		s2.getScore() - s1.getScore()).skip(<span class="number">3</span>).collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h4 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h4><blockquote>
+<p>当我们只想得到一个类的某一个属性值</p>
+</blockquote>
+<h5 id="map"><a href="#map" class="headerlink" title="map"></a>map</h5><blockquote>
+<p>想筛选出所有成绩大于80分的同学的名字</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; names = <span class="keyword">this</span>.students.stream().filter(s-&gt;s.getScore()&gt;<span class="number">80</span>)</div><div class="line">		.map(Student::getName).collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<p>#####flagMap</p>
+<p>&gt;</p>
+<p>####终端操作</p>
+<h5 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h5><ul>
+<li><p>allMatch</p>
+</li>
+<li><p>anyMatch</p>
+</li>
+<li>noneMatch</li>
+<li>findFirst</li>
+<li>findAny</li>
+</ul>
+<h5 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h5><p>#####收藏</p>
+<p>##参考文献</p>
+<p><a href="https://www.cnblogs.com/aoeiuv/p/5911692.html" target="_blank" rel="external">java8 新特性 lamda和Stream</a></p>
+<p><a href="https://www.cnblogs.com/shenlanzhizun/p/6027042.html" target="_blank" rel="external">Java8 新特性之流式数据处理</a></p>
 
       
     </div>
@@ -440,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/life/" rel="tag"># life</a>
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -453,8 +519,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/23/sort/" rel="next" title="排序算法小结">
-                <i class="fa fa-chevron-left"></i> 排序算法小结
+              <a href="/2018/08/20/jvm-gc/" rel="next" title="jvm gc">
+                <i class="fa fa-chevron-left"></i> jvm gc
               </a>
             
           </div>
@@ -462,10 +528,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/06/priority-queue/" rel="prev" title="priority_queue">
-                priority_queue <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分享给朋友的"><span class="nav-number">1.</span> <span class="nav-text">分享给朋友的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ForEach-与-lambda"><span class="nav-number">1.</span> <span class="nav-text">ForEach 与 lambda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda语法"><span class="nav-number">2.</span> <span class="nav-text">lambda语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一般语法"><span class="nav-number">2.1.</span> <span class="nav-text">一般语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单参数"><span class="nav-number">2.2.</span> <span class="nav-text">单参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单语句"><span class="nav-number">2.3.</span> <span class="nav-text">单语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法引用"><span class="nav-number">2.4.</span> <span class="nav-text">方法引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#访问外部变量"><span class="nav-number">2.5.</span> <span class="nav-text">访问外部变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stream-与-lambda"><span class="nav-number">3.</span> <span class="nav-text">Stream 与 lambda</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中间操作"><span class="nav-number">3.1.</span> <span class="nav-text">中间操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#过滤"><span class="nav-number">3.1.1.</span> <span class="nav-text">过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#filter"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">filter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#distinct"><span class="nav-number">3.1.1.2.</span> <span class="nav-text">distinct</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sort-amp-limit"><span class="nav-number">3.1.1.3.</span> <span class="nav-text">sort&limit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#skip"><span class="nav-number">3.1.1.4.</span> <span class="nav-text">skip</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#映射"><span class="nav-number">3.1.2.</span> <span class="nav-text">映射</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#map"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找"><span class="nav-number">3.1.2.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#归约"><span class="nav-number">3.1.2.3.</span> <span class="nav-text">归约</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
