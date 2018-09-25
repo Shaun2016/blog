@@ -103,7 +103,7 @@
 <meta property="og:description" content="JavaGC (Garbage Collection, 垃圾收集) 机制，下面介绍的是 HotSpot 的 GC 机制。Java GC 机制可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。对于一般的程序，Java GC 可以自动的完成绝大多数事情，然而，对于较大型的应用软件，需要对 JVM 进行优化，必须要清楚 Java GC 机制。  java GC 要干啥 确定哪些内存">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/java/jvm.png">
-<meta property="og:updated_time" content="2018-09-24T03:10:55.833Z">
+<meta property="og:updated_time" content="2018-09-25T06:17:42.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jvm gc">
 <meta name="twitter:description" content="JavaGC (Garbage Collection, 垃圾收集) 机制，下面介绍的是 HotSpot 的 GC 机制。Java GC 机制可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。对于一般的程序，Java GC 可以自动的完成绝大多数事情，然而，对于较大型的应用软件，需要对 JVM 进行优化，必须要清楚 Java GC 机制。  java GC 要干啥 确定哪些内存">
@@ -425,44 +425,19 @@
 <h2 id="JVM-内存区域的划分"><a href="#JVM-内存区域的划分" class="headerlink" title="JVM 内存区域的划分"></a>JVM 内存区域的划分</h2><p><img src="\images\java\jvm.png" alt="jvm"></p>
 <ol>
 <li><p>程序计数器 (Program Counter Register)</p>
-<blockquote>
-<p>记录线程执行的字节码运行到第几行</p>
-</blockquote>
 </li>
 <li><p>虚拟机栈 (JVM Stack)</p>
-<blockquote>
-<p>一个线程每个方法执行的同时，都会创建一个栈帧 (Stack Frame)，栈帧中存储局部变量表、操作站、动态链接、方法出口等，当方法被调用时，栈帧入栈，方法执行完栈帧出栈</p>
-</blockquote>
 </li>
 <li><p>本地方法栈 (Native Method Statck)</p>
-<blockquote>
-<p>执行 natice 方法，用C语言编写，和虚拟机栈放在一起使用</p>
-</blockquote>
 </li>
 <li><p>堆区 (Heap)</p>
-<blockquote>
-<p>存储对象实例</p>
-</blockquote>
 </li>
 <li><p>方法区 (Method Area)</p>
-<blockquote>
-<p>已经被虚拟机加载的类的信息，如接口，方法，属性，对象类型等，final 常量，静态变量等</p>
-<p>运行时常量池 (Runtime Constant Pool) 是方法区的一部分，存储编译器生成的常量、引用，也存储运行期间产生的常量，如 String 的常量池</p>
-</blockquote>
 </li>
 <li><p>直接内存 (Direct Memory)</p>
-<blockquote>
-<p>JVM以外的机器内存</p>
-</blockquote>
 </li>
 </ol>
-<h2 id="java-对象的内存访问"><a href="#java-对象的内存访问" class="headerlink" title="java 对象的内存访问"></a>java 对象的内存访问</h2><blockquote>
-<p>一个 Java 的引用访问的内存涉及到：JVM栈，堆，方法区</p>
-<p>eg: <code>Student stu = new Student();</code></p>
-<p><code>Student stu</code>是一个本地引用，存储在 JVM 栈的本地变量表中，<code>new Student()</code>作为实例对象存储在堆中，堆中记录了 Student 类的类型信息（接口，方法，属性，对象类型等）的地址，这些地址所在的数据存储在方法区中</p>
-</blockquote>
-<p><em>Java 内存分配和回收机制概括的说：<strong>分代分配</strong>，<strong>分代回收</strong>，对象按存活时间分为：<strong>年轻代</strong>，<strong>年老代</strong>，<strong>永久代</strong></em></p>
-<h2 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h2><h2 id="何时触发-GC-和执行-GC-的方式"><a href="#何时触发-GC-和执行-GC-的方式" class="headerlink" title="何时触发 GC 和执行 GC 的方式"></a>何时触发 GC 和执行 GC 的方式</h2>
+<h2 id="java-对象的内存访问"><a href="#java-对象的内存访问" class="headerlink" title="java 对象的内存访问"></a>java 对象的内存访问</h2><h2 id="哪些内存需要回收"><a href="#哪些内存需要回收" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h2><h2 id="何时触发-GC-和执行-GC-的方式"><a href="#何时触发-GC-和执行-GC-的方式" class="headerlink" title="何时触发 GC 和执行 GC 的方式"></a>何时触发 GC 和执行 GC 的方式</h2>
       
     </div>
     

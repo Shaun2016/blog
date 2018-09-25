@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[jvm gc]]></title>
     <url>%2F2018%2F08%2F20%2Fjvm-gc%2F</url>
-    <content type="text"><![CDATA[JavaGC (Garbage Collection, 垃圾收集) 机制，下面介绍的是 HotSpot 的 GC 机制。Java GC 机制可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。对于一般的程序，Java GC 可以自动的完成绝大多数事情，然而，对于较大型的应用软件，需要对 JVM 进行优化，必须要清楚 Java GC 机制。 java GC 要干啥 确定哪些内存要回收 何时执行 GC 怎样执行 GC JVM 内存区域的划分 程序计数器 (Program Counter Register) 记录线程执行的字节码运行到第几行 虚拟机栈 (JVM Stack) 一个线程每个方法执行的同时，都会创建一个栈帧 (Stack Frame)，栈帧中存储局部变量表、操作站、动态链接、方法出口等，当方法被调用时，栈帧入栈，方法执行完栈帧出栈 本地方法栈 (Native Method Statck) 执行 natice 方法，用C语言编写，和虚拟机栈放在一起使用 堆区 (Heap) 存储对象实例 方法区 (Method Area) 已经被虚拟机加载的类的信息，如接口，方法，属性，对象类型等，final 常量，静态变量等 运行时常量池 (Runtime Constant Pool) 是方法区的一部分，存储编译器生成的常量、引用，也存储运行期间产生的常量，如 String 的常量池 直接内存 (Direct Memory) JVM以外的机器内存 java 对象的内存访问 一个 Java 的引用访问的内存涉及到：JVM栈，堆，方法区 eg: Student stu = new Student(); Student stu是一个本地引用，存储在 JVM 栈的本地变量表中，new Student()作为实例对象存储在堆中，堆中记录了 Student 类的类型信息（接口，方法，属性，对象类型等）的地址，这些地址所在的数据存储在方法区中 Java 内存分配和回收机制概括的说：分代分配，分代回收，对象按存活时间分为：年轻代，年老代，永久代 哪些内存需要回收何时触发 GC 和执行 GC 的方式]]></content>
+    <content type="text"><![CDATA[JavaGC (Garbage Collection, 垃圾收集) 机制，下面介绍的是 HotSpot 的 GC 机制。Java GC 机制可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。对于一般的程序，Java GC 可以自动的完成绝大多数事情，然而，对于较大型的应用软件，需要对 JVM 进行优化，必须要清楚 Java GC 机制。 java GC 要干啥 确定哪些内存要回收 何时执行 GC 怎样执行 GC JVM 内存区域的划分 程序计数器 (Program Counter Register) 虚拟机栈 (JVM Stack) 本地方法栈 (Native Method Statck) 堆区 (Heap) 方法区 (Method Area) 直接内存 (Direct Memory) java 对象的内存访问哪些内存需要回收何时触发 GC 和执行 GC 的方式]]></content>
       <categories>
         <category>java</category>
       </categories>
