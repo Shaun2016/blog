@@ -449,20 +449,20 @@
 <blockquote>
 <p>修改系统中允许应用创建最多文件个数的限制权限。Linux 默认限制应用最多创建 65535 个文件，但是 ES 至少需要65536 个文件的创建权限。</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.conf</div><div class="line"><span class="meta">#</span> 增加</div><div class="line">* soft nofile 65536</div><div class="line">* hard nofile 65536</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.conf</div><div class="line"><span class="meta">#</span><span class="bash"> 增加</span></div><div class="line">* soft nofile 65536</div><div class="line">* hard nofile 65536</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改线程开启限制</p>
 <blockquote>
 <p>修改允许用户启动的进程开启多少线程，Linux 限制 root 用户开启的进程可以启动任意数量的线程，其他用户开启的进程可以开启 1024 个线程。修改限制数为 4096+。ES 至少需要4096的线程池预备</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.d/90-nproc.conf</div><div class="line"><span class="meta">#</span> 修改下述内容</div><div class="line">*          soft    nproc     4096</div><div class="line">root       soft    nproc     unlimited</div><div class="line"><span class="meta">#</span> 检查可开启的最大线程</div><div class="line">ulimit -u</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.d/90-nproc.conf</div><div class="line"><span class="meta">#</span><span class="bash"> 修改下述内容</span></div><div class="line">*          soft    nproc     4096</div><div class="line">root       soft    nproc     unlimited</div><div class="line"><span class="meta">#</span><span class="bash"> 检查可开启的最大线程</span></div><div class="line">ulimit -u</div></pre></td></tr></table></figure>
 <p><em>注：虚拟机内存是 1 G，最多能开启3000+个线程，不能满足ES的要求，所以要给虚拟机分配1.5G以上的内存</em></p>
 </li>
 <li><p>修改系统控制权限</p>
 <blockquote>
 <p>系统控制文件是管理系统中资源控制的配置文件，ES需要开辟一个65536字节以上空间的虚拟内存。Linux默认不允许任何用户和应用直接开辟虚拟内存</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysctl.conf</div><div class="line"><span class="meta">#</span> 添加</div><div class="line">vm.max_map_count=655360</div><div class="line"><span class="meta">#</span> 让 sysctl 配置生效</div><div class="line">sysctl -p</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysctl.conf</div><div class="line"><span class="meta">#</span><span class="bash"> 添加</span></div><div class="line">vm.max_map_count=655360</div><div class="line"><span class="meta">#</span><span class="bash"> 让 sysctl 配置生效</span></div><div class="line">sysctl -p</div></pre></td></tr></table></figure>
 </li>
 <li><p>安装JDK至少1.8.0_131+</p>
 </li>
@@ -498,6 +498,35 @@
 
     
 
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Zhang JM WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Zhang JM Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
     
 
     
@@ -623,7 +652,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -634,7 +663,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
