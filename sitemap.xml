@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
+    
+    <lastmod>2018-12-18T13:00:15.026Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/08/20/jvm-gc/</loc>
     
     <lastmod>2018-09-25T06:17:42.351Z</lastmod>
