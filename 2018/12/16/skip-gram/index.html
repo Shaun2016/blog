@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法 预备知识sigmoid 函数   \delta(x) = \frac{1}{1+e^{-x}}性质：值域 (0, 1)  \delta&apos;(x) = \delta(x)[1-\delta(x)]\\ [log\delta(x)]&apos; = 1-\delta(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-19T12:32:28.075Z">
+<meta property="og:updated_time" content="2019-02-02T14:27:14.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="skip-gram">
 <meta name="twitter:description" content="因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法 预备知识sigmoid 函数   \delta(x) = \frac{1}{1+e^{-x}}性质：值域 (0, 1)  \delta&apos;(x) = \delta(x)[1-\delta(x)]\\ [log\delta(x)]&apos; = 1-\delta(">
@@ -454,7 +454,7 @@ L=\sum_{w\in C}\log p(w|Context(w))</script></blockquote>
 <li><p>投影层</p>
 <p>将输入层的2c个向量求和，即</p>
 <script type="math/tex; mode=display">
-X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in{\R}^m</script><p><strong>X</strong><sub>w</sub> 即为网络的输入向量</p>
+X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in{R}^m</script><p><strong>X</strong><sub>w</sub> 即为网络的输入向量</p>
 </li>
 <li><p>输出层</p>
 <p>Huffman树，叶子结点共N个，N为词典D的词数，非叶子结点N-1个，做二分类</p>
