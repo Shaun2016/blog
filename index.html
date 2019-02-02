@@ -322,6 +322,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/28/tensorflow-method/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/28/tensorflow-method/" itemprop="url">tensorflow method</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-28T20:25:49+08:00">
+                2019-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/tensorflow/" itemprop="url" rel="index">
+                    <span itemprop="name">tensorflow</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="tf-random-uniform"><a href="#tf-random-uniform" class="headerlink" title="tf.random_uniform"></a>tf.random_uniform</h3><blockquote>
+<p><code>tf.random_uniform(shape, minval, maxval, dtype, seed, name)</code></p>
+<p>产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tf.random_uniform((<span class="number">3</span>, <span class="number">4</span>), <span class="number">-1</span>, <span class="number">1</span>, dtype=tf.float32)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/28/tensorflow-method/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/skip-gram/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,60 +564,20 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法</p>
+          <p>因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法</p>
 <h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="sigmoid-函数"><a href="#sigmoid-函数" class="headerlink" title="sigmoid 函数"></a>sigmoid 函数</h3><blockquote>
 <h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><script type="math/tex; mode=display">
 \delta(x) = \frac{1}{1+e^{-x}}</script><p><strong>性质：</strong>值域 (0, 1)</p>
 <script type="math/tex; mode=display">
 \delta'(x) = \delta(x)[1-\delta(x)]\\
 [log\delta(x)]' = 1-\delta(x)\qquad [log(1-\delta(x))]'=-\delta(x)</script></blockquote>
-<h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><blockquote>
-<p>logistic回归，一种广义线性回归，解决二分类问题：{(x<sub>i</sub>, y<sub>i</sub>)}<sub>i</sub><sup>m</sup> 为二分类问题的样本数据，其中 <strong>x<sub>i</sub></strong>∈R<sup>n</sup>，y<sub>i</sub>∈{0, 1}</p>
-<p>由sigmoid函数，对任意样本 <strong>x</strong>=(<em>x<sub>1</sub></em>, <em>x<sub>2</sub></em>,…, <em>x<sub>n</sub></em>)<sup>T</sup>，可将二分类问题的假设函数(hypothesis)写成</p>
-<script type="math/tex; mode=display">
-h_\theta(x)=\delta(\theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n)</script><p>其中 <strong>θ</strong>=(θ<sub>0</sub>,θ<sub>1</sub>,…,θ<sub>n</sub>)<sup>T</sup>为待定参数，将<strong>x</strong>扩展为起始位置添加x<sub>0</sub>=1，则</p>
-<script type="math/tex; mode=display">
-h_\theta(x)=\delta(\theta^Tx)=\frac{1}{1+e^{-\theta^Tx}}</script><p>去阈值<em>T</em>=0.5，则二分类的判别式为</p>
-<script type="math/tex; mode=display">
-y=
-\begin{cases}
-1, & h_\theta(x)\ge0.5 \\
-0, & h_\theta(x)<0.5
-\end{cases}</script><p>如何求<strong>θ</strong>呢？一般先确定一个如下形式的损失函数，对其进行优化得到最优的参数<strong>θ<sup>*</sup></strong></p>
-<script type="math/tex; mode=display">
-J(\theta)=\frac{1}{m}\sum_{i=1}^mcost(X_i,y_i)</script><p><em>cost(x<sub>i</sub>,y<sub>i</sub>)</em>通常取<strong>对数似然函数</strong></p>
-<script type="math/tex; mode=display">
-cost(X_i,y_i)=
-\begin{cases}
--\log(h_\theta(X_i)), & y_i=1\\
--\log(1-h_\theta(X_i)), & y_i=0
-\end{cases}</script><p>写成整体式为</p>
-<script type="math/tex; mode=display">
-cost(X_i, y_i)=-y_i\log(h_\theta(X_i))-(1-y_i)\log(1-h_\theta(X_i))</script></blockquote>
-<h2 id="CBOW模型"><a href="#CBOW模型" class="headerlink" title="CBOW模型"></a>CBOW模型</h2><blockquote>
-<p>Continuous Bag-of-Words Model，已知 w<sub>t</sub> 的上下文预测 w<sub>t</sub></p>
-<p>目标函数</p>
-<script type="math/tex; mode=display">
-L=\sum_{w\in C}\log p(w|Context(w))</script></blockquote>
-<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><ul>
-<li><p>输入层</p>
-<p>包含Context(w)中2c个词的词向量<strong>v</strong>(Context(w)<sub>1</sub>), <strong>v</strong>(Context(w)<sub>1</sub>),…,<strong>v</strong>(Context(w)<sub>2c</sub>)∈R<sup>m</sup></p>
-</li>
-<li><p>投影层</p>
-<p>将输入层的2c个向量求和，即</p>
-<script type="math/tex; mode=display">
-X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</sub> 即为网络的输入向量</p>
-</li>
-<li><p>输出层</p>
-<p>Huffman树，叶子结点共N个，N为词典D的词数，非叶子结点N-1个，做二分类</p>
-</li>
-</ul>
-<h2 id="Skip-gram-模型"><a href="#Skip-gram-模型" class="headerlink" title="Skip-gram 模型"></a>Skip-gram 模型</h2><blockquote>
-<p>Continuous Skip-gram Model，已知 w<sub>t</sub> 预测 w<sub>t</sub> 的上下文</p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/16/skip-gram/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1719,154 +1829,6 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/26/python-data-process/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang JM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShaunJM's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/26/python-data-process/" itemprop="url">python-data-process</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-26T15:45:51+08:00">
-                2018-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>Python 科学计算中用到的数据处理，图像绘制的方法记录。好多不知道啥意思，先背住吧，用到的时候再找…Python 做科学计算东西挺多的，现在还不能自己掌握，得不断积累</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/26/python-data-process/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1919,7 +1881,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1930,7 +1892,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1941,7 +1903,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -2022,7 +1984,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

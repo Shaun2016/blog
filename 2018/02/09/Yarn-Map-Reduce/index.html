@@ -424,8 +424,7 @@
 <p>修改ResourceManager和NodeManager的<code>vim hadoop/etc/hadoop/yarn-site.xml</code></p>
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>master<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span>  </div><div class="line"> </div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.auxservices.mapreduce.shuffle.class<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.hadoop.mapred.ShuffleHandler<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>###启动yarn集群</p>
-<p><code>start-yarn.sh</code></p>
+<h3 id="启动yarn集群"><a href="#启动yarn集群" class="headerlink" title="启动yarn集群"></a>启动yarn集群</h3><p><code>start-yarn.sh</code></p>
 <blockquote>
 <p>访问8088端口</p>
 </blockquote>
@@ -599,7 +598,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -610,7 +609,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -621,7 +620,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -695,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式计算"><span class="nav-number">1.</span> <span class="nav-text">分布式计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn"><span class="nav-number">1.1.</span> <span class="nav-text">Yarn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yarn-site-xml的配置"><span class="nav-number">1.1.1.</span> <span class="nav-text">yarn-site.xml的配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Map/Reduce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-Reduce-流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">Map/Reduce 流程</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式计算"><span class="nav-number">1.</span> <span class="nav-text">分布式计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn"><span class="nav-number">1.1.</span> <span class="nav-text">Yarn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yarn-site-xml的配置"><span class="nav-number">1.1.1.</span> <span class="nav-text">yarn-site.xml的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动yarn集群"><span class="nav-number">1.1.2.</span> <span class="nav-text">启动yarn集群</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">1.2.</span> <span class="nav-text">Map/Reduce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-Reduce-流程"><span class="nav-number">1.2.1.</span> <span class="nav-text">Map/Reduce 流程</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -718,7 +717,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

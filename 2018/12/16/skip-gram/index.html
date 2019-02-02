@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法 预备知识sigmoid 函数   \delta(x) = \frac{1}{1+e^{-x}}性质：值域 (0, 1)  \delta&apos;(x) = \delta(x)[1-\delta(x)]\\ [log\delta(x)]&apos; = 1-\delta(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T13:00:15.026Z">
+<meta property="og:updated_time" content="2018-12-19T12:32:28.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="skip-gram">
 <meta name="twitter:description" content="因为 deepwork 算法是由 nlp 的 word2vec 衍变来的，本文对 word2vec 介绍，word2vec 是将词用向量表示的方法 预备知识sigmoid 函数   \delta(x) = \frac{1}{1+e^{-x}}性质：值域 (0, 1)  \delta&apos;(x) = \delta(x)[1-\delta(x)]\\ [log\delta(x)]&apos; = 1-\delta(">
@@ -418,6 +418,7 @@
 <script type="math/tex; mode=display">
 \delta'(x) = \delta(x)[1-\delta(x)]\\
 [log\delta(x)]' = 1-\delta(x)\qquad [log(1-\delta(x))]'=-\delta(x)</script></blockquote>
+<a id="more"></a>
 <h3 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h3><blockquote>
 <p>logistic回归，一种广义线性回归，解决二分类问题：{(x<sub>i</sub>, y<sub>i</sub>)}<sub>i</sub><sup>m</sup> 为二分类问题的样本数据，其中 <strong>x<sub>i</sub></strong>∈R<sup>n</sup>，y<sub>i</sub>∈{0, 1}</p>
 <p>由sigmoid函数，对任意样本 <strong>x</strong>=(<em>x<sub>1</sub></em>, <em>x<sub>2</sub></em>,…, <em>x<sub>n</sub></em>)<sup>T</sup>，可将二分类问题的假设函数(hypothesis)写成</p>
@@ -453,7 +454,7 @@ L=\sum_{w\in C}\log p(w|Context(w))</script></blockquote>
 <li><p>投影层</p>
 <p>将输入层的2c个向量求和，即</p>
 <script type="math/tex; mode=display">
-X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</sub> 即为网络的输入向量</p>
+X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in{\R}^m</script><p><strong>X</strong><sub>w</sub> 即为网络的输入向量</p>
 </li>
 <li><p>输出层</p>
 <p>Huffman树，叶子结点共N个，N为词典D的词数，非叶子结点N-1个，做二分类</p>
@@ -530,6 +531,10 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/tensorflow-method/" rel="prev" title="tensorflow method">
+                tensorflow method <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -608,7 +613,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -619,7 +624,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -630,7 +635,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -727,7 +732,7 @@ X_w=\sum_{i=1}^{2c}v(Context(w)_i)\in\R^m</script><p><strong>X</strong><sub>w</s
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
