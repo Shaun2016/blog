@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="tf.random_uniform tf.random_uniform(shape, minval, maxval, dtype, seed, name) 产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化  1tf.random_uniform((3, 4), -1, 1, dtype=tf.float32)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-02T14:23:32.982Z">
+<meta property="og:updated_time" content="2019-02-02T14:29:25.354Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow method">
 <meta name="twitter:description" content="tf.random_uniform tf.random_uniform(shape, minval, maxval, dtype, seed, name) 产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化  1tf.random_uniform((3, 4), -1, 1, dtype=tf.float32)">
@@ -479,7 +479,7 @@
 <p><code>tf.math.multiply(x, y, name=None)</code></p>
 <p>x, y 对应位置值相乘</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">i = tf.Variable([1, 2])</div><div class="line">j = tf.Variable([</div><div class="line">    [2, 1],</div><div class="line">    [1, 3]</div><div class="line">])</div><div class="line">with tf.Session() as sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    print(sess.run(tf.multiply(i, j)))</div><div class="line"># [[2 2]</div><div class="line">#  [1 6]]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">i = tf.Variable([<span class="number">1</span>, <span class="number">2</span>])</div><div class="line">j = tf.Variable([</div><div class="line">    [<span class="number">2</span>, <span class="number">1</span>],</div><div class="line">    [<span class="number">1</span>, <span class="number">3</span>]</div><div class="line">])</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">    sess.run(tf.global_variables_initializer())</div><div class="line">    print(sess.run(tf.multiply(i, j)))</div><div class="line"><span class="comment"># [[2 2]</span></div><div class="line"><span class="comment">#  [1 6]]</span></div></pre></td></tr></table></figure>
 <h3 id="tf-reshape"><a href="#tf-reshape" class="headerlink" title="tf.reshape"></a>tf.reshape</h3><blockquote>
 <p><code>tf.reshape(tensor, shape, name=None)</code></p>
 <p>变形，<code>-1</code> 可以用来推测形状：[-1] 可以用来展开，[-1, 3]：分成 x 组，每组 3 个，[2, -1]：分成 2 组，每组 x 个</p>
