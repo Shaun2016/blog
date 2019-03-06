@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址  vim /etc/sysconfig/network-scripts/ifcfg-enp03 IPADDR=192.168.137.100 NETMASK=255.255">
+<meta name="description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址：vim /etc/sysconfig/network-scripts/ifcfg-enp03  IPADDR=192.168.137.100 NETMASK=255.255">
 <meta name="keywords" content="Hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hadoop配置环境及启动">
 <meta property="og:url" content="http://yoursite.com/2018/02/05/hadoop-day1/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址  vim /etc/sysconfig/network-scripts/ifcfg-enp03 IPADDR=192.168.137.100 NETMASK=255.255">
+<meta property="og:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址：vim /etc/sysconfig/network-scripts/ifcfg-enp03  IPADDR=192.168.137.100 NETMASK=255.255">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T09:16:41.591Z">
+<meta property="og:updated_time" content="2019-03-06T12:18:47.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hadoop配置环境及启动">
-<meta name="twitter:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址  vim /etc/sysconfig/network-scripts/ifcfg-enp03 IPADDR=192.168.137.100 NETMASK=255.255">
+<meta name="twitter:description" content="VirtualBox启动虚拟机 host-only方式连接虚拟机 安装Hadoop  连接虚拟机 查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only   设置ipv4地址：vim /etc/sysconfig/network-scripts/ifcfg-enp03  IPADDR=192.168.137.100 NETMASK=255.255">
 
 
 
@@ -420,19 +420,19 @@
 <li>查看虚拟网卡的IP地址(assume:192.168.137.1)，VM设置网卡类型为host-only</li>
 </ul>
 <ul>
-<li><p>设置ipv4地址</p>
+<li><p>设置ipv4地址：<code>vim /etc/sysconfig/network-scripts/ifcfg-enp03</code></p>
 <blockquote>
-<p><code>vim /etc/sysconfig/network-scripts/ifcfg-enp03</code></p>
 <p><code>IPADDR=192.168.137.100</code></p>
 <p><code>NETMASK=255.255.255.0</code></p>
 </blockquote>
 </li>
-<li><p>设置网关地址</p>
+<li><p>设置网关地址及域名解析：<code>vim /etc/sysconfig/network</code></p>
 <blockquote>
-<p><code>vim /etc/sysconfig/network</code></p>
 <p><code>NETWORKING=yes</code></p>
 <p><code>GATEWAY=192.168.137.1</code></p>
+<p><code>DNS1=8.8.8.8</code></p>
 </blockquote>
+<p>设置计算机上能上网的网卡共享网络给虚拟网卡</p>
 <a id="more"></a>
 </li>
 <li><p>修改主机名</p>
@@ -640,7 +640,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -662,7 +662,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
