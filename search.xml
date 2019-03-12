@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>redis_master_slave_sentinel</title>
+      <link href="/2019/03/12/redis-master-slave-sentinel/"/>
+      <url>/2019/03/12/redis-master-slave-sentinel/</url>
+      <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h2 id="Redis-主从服务器搭建与哨兵机制"><a href="#Redis-主从服务器搭建与哨兵机制" class="headerlink" title="Redis 主从服务器搭建与哨兵机制"></a>Redis 主从服务器搭建与哨兵机制</h2><blockquote><p>实验内容：用三台服务器运行 redis，设置主从关系进行数据存储，建立哨兵监督主节点，模拟主节点宕机后的哨兵选举新主</p></blockquote><h3 id="Redis-单节点安装"><a href="#Redis-单节点安装" class="headerlink" title="Redis 单节点安装"></a>Redis 单节点安装</h3><blockquote><p>将 Redis 5.0.3压缩包解压，进入解压后的文件夹，可以看到<code>Makefile</code>文件，在这个路径下执行<code>make&amp;&amp;make PREFIX=~/redis install</code>进行编译和安装，在<code>~/redis</code>下可以看到<code>bin</code>文件夹，里面有一些脚本文件：<code>redis-server</code>，<code>redis-cli</code>，<code>redis-sentinel</code>等。配置环境变量使得执行脚本命令更加方便：<code>vi /etc/profile</code>在最后加上如下内容：(<code>shift + g</code>跳到最后一行，<code>shift + $</code>跳到一行的最后)</p></blockquote><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export REDIS_HOME=/root/redis</div><div class="line">PATH=$PATH:$REDIS_HOME/bin</div></pre></td></tr></table></figure><a id="more"></a><blockquote><p>在单节点上的某个路径上运行<code>redis-server</code>即可按默认参数（端口6379）启动服务，<code>redis-cli</code>作为客户端访问服务，可以用形如：<code>redis-server --port 6380</code>，<code>redis-cli -h ip -p port</code>的方式指定参数，具体命令访问<a href="https://redis.io/commands" target="_blank" rel="external">redis官网</a></p></blockquote><h3 id="Redis-集群搭建"><a href="#Redis-集群搭建" class="headerlink" title="Redis 集群搭建"></a>Redis 集群搭建</h3><blockquote><p>创建三个服务器：</p><ul><li>192.168.56.100 master</li><li>192.168.56.101 slave1</li><li>192.168.56.102 slave2</li></ul><p><code>vim /etc/hosts</code>设置ip对应的域名减少敲ip的麻烦</p></blockquote><p><em>为了方便，以下都在各个服务器的<code>~/redis/6380</code>文件夹下操作</em></p><h4 id="主结点"><a href="#主结点" class="headerlink" title="主结点"></a>主结点</h4><blockquote><p>master为主节点，服务配置文件<code>vi redis.conf</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">protected-mode no</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure></blockquote><p>&gt;</p><blockquote><p>哨兵配置文件<code>vi sent.conf</code>：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 26379</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">sentinel monitor c1 master 6380 2</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure></blockquote><p>&gt;</p><blockquote><p>启动服务：<code>redis-server redis.conf</code></p><p>启动哨兵：<code>redis-sentinel sent.conf</code></p></blockquote><h4 id="从结点"><a href="#从结点" class="headerlink" title="从结点"></a>从结点</h4><blockquote><p>slave1 和 slave2 作为从节点，在服务配置上加上附属主节点，在哨兵上没有不同</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">protected-mode no</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">slaveof master 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure></blockquote><p>&gt;</p><blockquote><p>写好配置文件后启动服务和哨兵</p></blockquote><h4 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h4><blockquote><p>通过客户端访问不同结点：<code>redis-cli -h master -p 6380</code>可以执行<code>set/get</code>操作，访问slave结点只能执行<code>get</code>操作</p><p>模拟主节点宕机：使用<code>Ctrl C</code>命令关闭主节点redis服务进程，查看slave1和slave2 的状态，可以发现经过大约10s后哨兵重新选举slave1或者slave2作为新的主，同时将master降级为slave，再启动master的redis服务时，它以从节点的身份加入集群。</p></blockquote>]]></content>
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+            <tag> NoSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>fyl</title>
       <link href="/2019/02/13/fyl/"/>
       <url>/2019/02/13/fyl/</url>

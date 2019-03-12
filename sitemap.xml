@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/12/redis-master-slave-sentinel/</loc>
+    
+    <lastmod>2019-03-12T12:29:26.789Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/02/05/hadoop-day1/</loc>
     
     <lastmod>2019-03-06T12:18:47.188Z</lastmod>
