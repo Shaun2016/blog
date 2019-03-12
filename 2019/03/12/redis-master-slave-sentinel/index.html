@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="Redis 主从服务器搭建与哨兵机制 实验内容：用三台服务器运行 redis，设置主从关系进行数据存储，建立哨兵监督主节点，模拟主节点宕机后的哨兵选举新主  Redis 单节点安装 将 Redis 5.0.3压缩包解压，进入解压后的文件夹，可以看到Makefile文件，在这个路径下执行make&amp;amp;&amp;amp;make PREFIX=~/redis install进行编译和安装，在~/redis">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-12T12:29:26.789Z">
+<meta property="og:updated_time" content="2019-03-12T12:36:21.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis_master_slave_sentinel">
 <meta name="twitter:description" content="Redis 主从服务器搭建与哨兵机制 实验内容：用三台服务器运行 redis，设置主从关系进行数据存储，建立哨兵监督主节点，模拟主节点宕机后的哨兵选举新主  Redis 单节点安装 将 Redis 5.0.3压缩包解压，进入解压后的文件夹，可以看到Makefile文件，在这个路径下执行make&amp;amp;&amp;amp;make PREFIX=~/redis install进行编译和安装，在~/redis">
@@ -434,23 +434,20 @@
 <p><em>为了方便，以下都在各个服务器的<code>~/redis/6380</code>文件夹下操作</em></p>
 <h4 id="主结点"><a href="#主结点" class="headerlink" title="主结点"></a>主结点</h4><blockquote>
 <p>master为主节点，服务配置文件<code>vi redis.conf</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">protected-mode no</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">port 6380</div><div class="line">protected-mode no</div></pre></td></tr></table></figure>
 <blockquote>
 <p>哨兵配置文件<code>vi sent.conf</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 26379</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">sentinel monitor c1 master 6380 2</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">port 26379</div><div class="line">sentinel monitor c1 master 6380 2</div></pre></td></tr></table></figure>
 <blockquote>
 <p>启动服务：<code>redis-server redis.conf</code></p>
 <p>启动哨兵：<code>redis-sentinel sent.conf</code></p>
 </blockquote>
 <h4 id="从结点"><a href="#从结点" class="headerlink" title="从结点"></a>从结点</h4><blockquote>
 <p>slave1 和 slave2 作为从节点，在服务配置上加上附属主节点，在哨兵上没有不同</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">port 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">protected-mode no</span></div><div class="line"><span class="meta">&gt;</span><span class="bash">slaveof master 6380</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"></span></div></pre></td></tr></table></figure>
 </blockquote>
-<p>&gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">port 6380</div><div class="line">protected-mode no</div><div class="line">slaveof master 6380</div></pre></td></tr></table></figure>
 <blockquote>
 <p>写好配置文件后启动服务和哨兵</p>
 </blockquote>
