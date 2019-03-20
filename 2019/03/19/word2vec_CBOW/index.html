@@ -98,14 +98,14 @@
 <meta name="keywords" content="word2vec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="word2vec的简单理解">
-<meta property="og:url" content="http://yoursite.com/2019/03/19/word2vec/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/word2vec_CBOW/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/model.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/one-hot-m-matrix.png">
 <meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/cbow.png">
-<meta property="og:updated_time" content="2019-03-20T05:47:34.296Z">
+<meta property="og:updated_time" content="2019-03-20T05:50:34.234Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec的简单理解">
 <meta name="twitter:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/19/word2vec/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/19/word2vec_CBOW/"/>
 
 
 
@@ -326,7 +326,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/word2vec/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/word2vec_CBOW/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -423,8 +423,9 @@
 <li>distributed representation：假设每个词项有d个特征，d远小于m，用d维向量表示每个词项</li>
 </ul>
 <h2 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h2><blockquote>
-<p>CBOW 是 word2vec 中使用的浅层神经网络模型，语料库中词项和词项的上下文做为样本，Sample(Context(x), x)，对模型的参数进行训练，得到每个词项的向量表示。</p>
+<p>CBOW 是 word2vec 中使用的浅层神经网络模型，语料库中词项和词项的上下文做为样本，Sample(Context(x), x)，对模型的参数进行训练，得到每个词项的向量表示</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="词的上下文-Context-x"><a href="#词的上下文-Context-x" class="headerlink" title="词的上下文 Context(x)"></a>词的上下文 Context(x)</h3><blockquote>
 <p>一个词出现的概率只与它前后固定数目(m)的词相关，n的取值与模型参数有关，可以参考：</p>
 <div class="table-container">

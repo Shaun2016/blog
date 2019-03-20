@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/word2vec/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/word2vec_CBOW/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -341,7 +341,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/19/word2vec/" itemprop="url">word2vec的简单理解</a></h1>
+                <a class="post-title-link" href="/2019/03/19/word2vec_CBOW/" itemprop="url">word2vec的简单理解</a></h1>
         
 
         <div class="post-meta">
@@ -414,8 +414,7 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+          <blockquote>
 <p>word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍</p>
 </blockquote>
 <h2 id="词的向量表示"><a href="#词的向量表示" class="headerlink" title="词的向量表示"></a>词的向量表示</h2><ul>
@@ -423,94 +422,15 @@
 <li>distributed representation：假设每个词项有d个特征，d远小于m，用d维向量表示每个词项</li>
 </ul>
 <h2 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h2><blockquote>
-<p>CBOW 是 word2vec 中使用的浅层神经网络模型，语料库中词项和词项的上下文做为样本，Sample(Context(x), x)，对模型的参数进行训练，得到每个词项的向量表示。</p>
+<p>CBOW 是 word2vec 中使用的浅层神经网络模型，语料库中词项和词项的上下文做为样本，Sample(Context(x), x)，对模型的参数进行训练，得到每个词项的向量表示</p>
 </blockquote>
-<h3 id="词的上下文-Context-x"><a href="#词的上下文-Context-x" class="headerlink" title="词的上下文 Context(x)"></a>词的上下文 Context(x)</h3><blockquote>
-<p>一个词出现的概率只与它前后固定数目(m)的词相关，n的取值与模型参数有关，可以参考：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">n</th>
-<th style="text-align:center">模型参数数量</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center"><script type="math/tex">2*10^5</script></td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center"><script type="math/tex">4*10^{10}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center"><script type="math/tex">8*10^{15}</script></td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center"><script type="math/tex">16*10^{20}</script></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>例子：我很爱学信息检索</p>
-<p>如果n=2，则<strong>学</strong>的上下文Context(学)={ 很，爱，信息，检索 } 4 个词组成</p>
-</blockquote>
-<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p><img src="../images/word2vec/model.png" alt="模型结构"></p>
-<h4 id="输入层"><a href="#输入层" class="headerlink" title="输入层"></a>输入层</h4><blockquote>
-<p>上下文词项的one-hot</p>
-</blockquote>
-<h4 id="隐藏层"><a href="#隐藏层" class="headerlink" title="隐藏层"></a>隐藏层</h4><blockquote>
-<p>对于一个样本Sample(Context(x), x)，将<script type="math/tex">u_i</script>的one-hot向量与表示矩阵<script type="math/tex">W_{m*d}</script>相乘，得到<script type="math/tex">u_i</script>的当前表示向量<script type="math/tex">\hat{u_i}</script>，<script type="math/tex">u_i\in Context(x)</script>，将<script type="math/tex">\sum_{i=1}^{2n}{\hat{u_i}}/2n</script>做为隐藏层的输出，是一个1*d的向量。</p>
-</blockquote>
-<p><img src="../images/word2vec/one-hot-m-matrix.png" alt="1552997378231"></p>
-<h4 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h4><blockquote>
-<p>隐藏层得到的1<em>d向量与权重矩阵<script type="math/tex">W'</script>相乘，得到1\</em>m的向量，通过softmax处理后得到一个1*m的向量<script type="math/tex">\hat{y}</script>，为中间词出现的概率，概率最大的index指向的词项即为预测出的中间词，与真实值的one-hot向量 <script type="math/tex">y</script> 做比较，根据误差更新权重矩阵<script type="math/tex">W与W'</script>。</p>
-</blockquote>
-<script type="math/tex; mode=display">
-softmax(
-\begin{bmatrix}
-4.01 & 2.01 & 5& 3.34& 1.2
-\end{bmatrix}
-)=
-\begin{bmatrix}
-0.23&0.03&0.61&0.12&0.01
-\end{bmatrix}</script><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><script type="math/tex; mode=display">
-L=H(\hat y,y)=-\sum_x{p(x)logq(x)}</script><blockquote>
-<p>梯度下降更新W和<script type="math/tex">W'</script>，训练完毕后，W矩阵即为词向量矩阵，用一个词项的one-hot去乘W矩阵即得到这个词项的词向量</p>
-</blockquote>
-<h4 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h4><blockquote>
-<p>参数数量：2*d*m个，d为词向量长度，m为词项个数，在语料库中m的值是很大的，对于一个样本(Context(x), x)，只有一个是正确的结果，其余的m-1个全是错误的结果，每次都对大量的错误结果进行权重更新是很耗时的</p>
-</blockquote>
-<h2 id="改进"><a href="#改进" class="headerlink" title="改进"></a>改进</h2><p><em>思路：减少网络的参数个数和每次要更新的参数个数</em></p>
-<h3 id="负采样策略"><a href="#负采样策略" class="headerlink" title="负采样策略"></a>负采样策略</h3><blockquote>
-<p>对于词 w 的上下文<em>Context(w)</em>来预测w，Context(x)与x构成了一个正样本，Context(x)与别的词项就构成负样本，每次训练仅选择一小部分的负样本，对他们连接的权重进行更新，减少了每次训练需要更新的权重数量，应该选择多少，如何进行选择呢？大体思路是让出现频率高的词项更大概率被选做负样本。</p>
-<p>采样率公式：</p>
-<script type="math/tex; mode=display">
-len(w)=\frac{[counter(w)]^{3/4}}{\sum_{u\in D}[counter(u)]^{3/4}}</script><p>len(w)表示w应该被保留作为负样本的概率，counter(w)代表w在语料库中出现的次数，指数3/4是经验值</p>
-</blockquote>
-<h3 id="Hierarchical-softmax的CBOW"><a href="#Hierarchical-softmax的CBOW" class="headerlink" title="Hierarchical softmax的CBOW"></a>Hierarchical softmax的CBOW</h3><blockquote>
-<p>分层softmax的CBOW将输出层改为树形结构</p>
-</blockquote>
-<p><img src="../images/word2vec/cbow.png" alt="h-softmax-CBOW"></p>
-<blockquote>
-<p>建立哈夫曼树，使高频词项更靠近根节点，规定左孩子为负类，右孩子为正类，经过一个非叶子结点做了一次二分类，设隐藏层的输出为<script type="math/tex">x</script>，经过每个非叶子结点被分到正类的概率为：</p>
-<script type="math/tex; mode=display">
-\sigma(x^T\theta)=\frac{1}{1+e^{-x^T\theta}}</script><p>分到负类概率为：<script type="math/tex">1-\sigma(x^T\theta)</script>，每个非叶子结点上都有一个待定参数向量：<script type="math/tex">\theta</script>，可以计算出到达值为1的结点x的概率：</p>
-<script type="math/tex; mode=display">
-第1次：p(0|x,\theta_1)=1-\sigma(x^T\theta_1)\\
-第2次：p(1|x,\theta_2)=\sigma(x^T\theta_2)\\
-第3次：p(1|x,\theta_3)=\sigma(x^T\theta_3)\\
-第4次：p(1|x,\theta_4)=\sigma(x^T\theta_4)\\
-即：p(x|Context(x))=\prod_{i=1}^4{p(d_i|x,\theta_i)},\ d_i\in\{0,1\}</script><p>目标函数：<script type="math/tex">L=\sum_{x\in C}{log\ p(x|Context(x))}</script> 最大化，通过梯度上升（或者求 <script type="math/tex">1-L</script> 的最小值，用梯度下降）更新 <script type="math/tex">x 和 \theta​</script> 的值，表示矩阵是最终得到的词向量矩阵。</p>
-</blockquote>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://export.arxiv.org/pdf/1301.3781" target="_blank" rel="external">Efficient Estimation of Word Representations in Vector Space</a></p>
-<p><a href="http://www.cnblogs.com/peghoty/p/3857839.html" target="_blank" rel="external">word2vec的数学原理</a></p>
-<p><a href="https://www.jianshu.com/p/ed15e2adbfad" target="_blank" rel="external">word2vec的负采样</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/19/word2vec_CBOW/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
