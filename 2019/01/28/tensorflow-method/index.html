@@ -97,14 +97,14 @@
 <meta name="description" content="tf.random_uniform tf.random_uniform(shape, minval, maxval, dtype, seed, name) 产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化  1tf.random_uniform((3, 4), -1, 1, dtype=tf.float32)">
 <meta name="keywords" content="tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorflow method">
+<meta property="og:title" content="ShaunJM&#39;s blog">
 <meta property="og:url" content="http://yoursite.com/2019/01/28/tensorflow-method/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="tf.random_uniform tf.random_uniform(shape, minval, maxval, dtype, seed, name) 产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化  1tf.random_uniform((3, 4), -1, 1, dtype=tf.float32)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-06T14:43:03.566Z">
+<meta property="og:updated_time" content="2019-03-13T13:37:29.228Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorflow method">
+<meta name="twitter:title" content="ShaunJM&#39;s blog">
 <meta name="twitter:description" content="tf.random_uniform tf.random_uniform(shape, minval, maxval, dtype, seed, name) 产生3行4列的随机数，范围在(-1, 1)，类型是float32，可用于权重参数的初始化  1tf.random_uniform((3, 4), -1, 1, dtype=tf.float32)">
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <title>tensorflow method | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tensorflow method</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -512,6 +512,14 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
 <p>替换图中的某个 tensor 的值，可以用来设计图的输入 (替换开始声明的占位符)</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">op = tf.multiply(a, <span class="number">3</span>)</div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">	sess.run(op, feed_dict=&#123;a: <span class="number">5</span>&#125;)	<span class="comment"># 将 a=5传给操作op</span></div></pre></td></tr></table></figure>
+<h3 id="tf-SparseTensor"><a href="#tf-SparseTensor" class="headerlink" title="tf.SparseTensor"></a>tf.SparseTensor</h3><blockquote>
+<p>稀疏张量：SparseTensor(indices, values, dense_shape)，即坐标，值，规模</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SparseTensor(indices=[[<span class="number">0</span>, <span class="number">0</span>], [<span class="number">1</span>, <span class="number">2</span>]], values=[<span class="number">1</span>, <span class="number">2</span>], dense_shape=[<span class="number">3</span>, <span class="number">4</span>])</div><div class="line">[[<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line"> [<span class="number">0</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">0</span>]</div><div class="line"> [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]]</div></pre></td></tr></table></figure>
+<h3 id="tf-trace"><a href="#tf-trace" class="headerlink" title="tf.trace"></a>tf.trace</h3><blockquote>
+<p>计算矩阵的迹：主对角线的总和</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x = tf.constant([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]])</div><div class="line">tf.trace(x)	<span class="comment"># 15</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -581,8 +589,8 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/13/fyl/" rel="prev" title="fyl">
-                fyl <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/13/fyl/" rel="prev" title="枫叶城">
+                枫叶城 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -662,7 +670,7 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -673,7 +681,7 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -684,7 +692,7 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -758,7 +766,7 @@ H(p,q)-H(p)=-\sum_x p(x)logq(x)+\sum_x p(x)logp(x)=\\-\sum_x p(x)(logq(x)-p(x))=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-random-uniform"><span class="nav-number">1.</span> <span class="nav-text">tf.random_uniform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-argmax"><span class="nav-number">2.</span> <span class="nav-text">tf.argmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reduce-mean"><span class="nav-number">3.</span> <span class="nav-text">tf.reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reduce-sum"><span class="nav-number">4.</span> <span class="nav-text">tf.reduce_sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-truncated-normal"><span class="nav-number">5.</span> <span class="nav-text">tf.truncated_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-random-normal"><span class="nav-number">6.</span> <span class="nav-text">tf.random_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-constant"><span class="nav-number">7.</span> <span class="nav-text">tf.constant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-cast"><span class="nav-number">8.</span> <span class="nav-text">tf.cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-conv2d"><span class="nav-number">9.</span> <span class="nav-text">tf.nn.conv2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-max-pool"><span class="nav-number">10.</span> <span class="nav-text">tf.nn.max_pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-softmax"><span class="nav-number">11.</span> <span class="nav-text">tf.nn.softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-matmul"><span class="nav-number">12.</span> <span class="nav-text">tf.matmul</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-multiply"><span class="nav-number">13.</span> <span class="nav-text">tf.multiply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reshape"><span class="nav-number">14.</span> <span class="nav-text">tf.reshape</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-relu"><span class="nav-number">15.</span> <span class="nav-text">tf.nn.relu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-dropout"><span class="nav-number">16.</span> <span class="nav-text">tf.nn.dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy"><span class="nav-number">17.</span> <span class="nav-text">cross_entropy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#feed-dict"><span class="nav-number">18.</span> <span class="nav-text">feed_dict</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-random-uniform"><span class="nav-number">1.</span> <span class="nav-text">tf.random_uniform</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-argmax"><span class="nav-number">2.</span> <span class="nav-text">tf.argmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reduce-mean"><span class="nav-number">3.</span> <span class="nav-text">tf.reduce_mean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reduce-sum"><span class="nav-number">4.</span> <span class="nav-text">tf.reduce_sum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-truncated-normal"><span class="nav-number">5.</span> <span class="nav-text">tf.truncated_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-random-normal"><span class="nav-number">6.</span> <span class="nav-text">tf.random_normal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-constant"><span class="nav-number">7.</span> <span class="nav-text">tf.constant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-cast"><span class="nav-number">8.</span> <span class="nav-text">tf.cast</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-conv2d"><span class="nav-number">9.</span> <span class="nav-text">tf.nn.conv2d</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-max-pool"><span class="nav-number">10.</span> <span class="nav-text">tf.nn.max_pool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-softmax"><span class="nav-number">11.</span> <span class="nav-text">tf.nn.softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-matmul"><span class="nav-number">12.</span> <span class="nav-text">tf.matmul</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-multiply"><span class="nav-number">13.</span> <span class="nav-text">tf.multiply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-reshape"><span class="nav-number">14.</span> <span class="nav-text">tf.reshape</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-relu"><span class="nav-number">15.</span> <span class="nav-text">tf.nn.relu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-nn-dropout"><span class="nav-number">16.</span> <span class="nav-text">tf.nn.dropout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cross-entropy"><span class="nav-number">17.</span> <span class="nav-text">cross_entropy</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#feed-dict"><span class="nav-number">18.</span> <span class="nav-text">feed_dict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-SparseTensor"><span class="nav-number">19.</span> <span class="nav-text">tf.SparseTensor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tf-trace"><span class="nav-number">20.</span> <span class="nav-text">tf.trace</span></a></li></ol></div>
             
 
           </div>

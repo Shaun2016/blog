@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/19/word2vec/</loc>
+    
+    <lastmod>2019-03-20T05:47:34.296Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
+    
+    <lastmod>2019-03-19T08:21:33.135Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/28/tensorflow-method/</loc>
+    
+    <lastmod>2019-03-13T13:37:29.228Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/13/fyl/</loc>
+    
+    <lastmod>2019-03-13T00:52:17.595Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/03/12/redis-master-slave-sentinel/</loc>
     
     <lastmod>2019-03-13T00:42:28.797Z</lastmod>
@@ -12,27 +40,6 @@
     <loc>http://yoursite.com/2018/02/05/hadoop-day1/</loc>
     
     <lastmod>2019-03-06T12:18:47.188Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/13/fyl/</loc>
-    
-    <lastmod>2019-02-13T12:14:53.168Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/01/28/tensorflow-method/</loc>
-    
-    <lastmod>2019-02-06T14:43:03.566Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
-    
-    <lastmod>2019-02-02T14:27:14.912Z</lastmod>
     
   </url>
   
