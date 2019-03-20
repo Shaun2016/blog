@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/01/28/tensorflow-method/</loc>
+    
+    <lastmod>2019-03-20T05:53:29.948Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
     
     <lastmod>2019-03-20T05:50:34.234Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
     
     <lastmod>2019-03-19T08:21:33.135Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/01/28/tensorflow-method/</loc>
-    
-    <lastmod>2019-03-13T13:37:29.228Z</lastmod>
     
   </url>
   
