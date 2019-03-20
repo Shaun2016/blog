@@ -102,14 +102,14 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/model.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/one-hot-m-matrix.png">
-<meta property="og:image" content="http://yoursite.com/2019/03/19/images/word2vec/cbow.png">
-<meta property="og:updated_time" content="2019-03-20T05:50:34.234Z">
+<meta property="og:image" content="http://yoursite.com/images/word2vec/model.png">
+<meta property="og:image" content="http://yoursite.com/images/word2vec/one-hot-m-matrix.png">
+<meta property="og:image" content="http://yoursite.com/images/word2vec/cbow.png">
+<meta property="og:updated_time" content="2019-03-20T08:05:26.155Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec的简单理解">
 <meta name="twitter:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
-<meta name="twitter:image" content="http://yoursite.com/2019/03/19/images/word2vec/model.png">
+<meta name="twitter:image" content="http://yoursite.com/images/word2vec/model.png">
 
 
 
@@ -427,7 +427,7 @@
 </blockquote>
 <a id="more"></a>
 <h3 id="词的上下文-Context-x"><a href="#词的上下文-Context-x" class="headerlink" title="词的上下文 Context(x)"></a>词的上下文 Context(x)</h3><blockquote>
-<p>一个词出现的概率只与它前后固定数目(m)的词相关，n的取值与模型参数有关，可以参考：</p>
+<p>一个词出现的概率只与它前后固定数目(n)的词相关，n的取值与模型参数有关，可以参考：</p>
 <div class="table-container">
 <table>
 <thead>
@@ -459,14 +459,14 @@
 <p>例子：我很爱学信息检索</p>
 <p>如果n=2，则<strong>学</strong>的上下文Context(学)={ 很，爱，信息，检索 } 4 个词组成</p>
 </blockquote>
-<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p><img src="../images/word2vec/model.png" alt="模型结构"></p>
+<h3 id="模型结构"><a href="#模型结构" class="headerlink" title="模型结构"></a>模型结构</h3><p><img src="/images/word2vec/model.png" alt="模型结构"></p>
 <h4 id="输入层"><a href="#输入层" class="headerlink" title="输入层"></a>输入层</h4><blockquote>
 <p>上下文词项的one-hot</p>
 </blockquote>
 <h4 id="隐藏层"><a href="#隐藏层" class="headerlink" title="隐藏层"></a>隐藏层</h4><blockquote>
 <p>对于一个样本Sample(Context(x), x)，将<script type="math/tex">u_i</script>的one-hot向量与表示矩阵<script type="math/tex">W_{m*d}</script>相乘，得到<script type="math/tex">u_i</script>的当前表示向量<script type="math/tex">\hat{u_i}</script>，<script type="math/tex">u_i\in Context(x)</script>，将<script type="math/tex">\sum_{i=1}^{2n}{\hat{u_i}}/2n</script>做为隐藏层的输出，是一个1*d的向量。</p>
 </blockquote>
-<p><img src="../images/word2vec/one-hot-m-matrix.png" alt="1552997378231"></p>
+<p><img src="/images/word2vec/one-hot-m-matrix.png" alt="1552997378231"></p>
 <h4 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h4><blockquote>
 <p>隐藏层得到的1<em>d向量与权重矩阵<script type="math/tex">W'</script>相乘，得到1\</em>m的向量，通过softmax处理后得到一个1*m的向量<script type="math/tex">\hat{y}</script>，为中间词出现的概率，概率最大的index指向的词项即为预测出的中间词，与真实值的one-hot向量 <script type="math/tex">y</script> 做比较，根据误差更新权重矩阵<script type="math/tex">W与W'</script>。</p>
 </blockquote>
@@ -495,7 +495,7 @@ len(w)=\frac{[counter(w)]^{3/4}}{\sum_{u\in D}[counter(u)]^{3/4}}</script><p>len
 <h3 id="Hierarchical-softmax的CBOW"><a href="#Hierarchical-softmax的CBOW" class="headerlink" title="Hierarchical softmax的CBOW"></a>Hierarchical softmax的CBOW</h3><blockquote>
 <p>分层softmax的CBOW将输出层改为树形结构</p>
 </blockquote>
-<p><img src="../images/word2vec/cbow.png" alt="h-softmax-CBOW"></p>
+<p><img src="/images/word2vec/cbow.png" alt="h-softmax-CBOW"></p>
 <blockquote>
 <p>建立哈夫曼树，使高频词项更靠近根节点，规定左孩子为负类，右孩子为正类，经过一个非叶子结点做了一次二分类，设隐藏层的输出为<script type="math/tex">x</script>，经过每个非叶子结点被分到正类的概率为：</p>
 <script type="math/tex; mode=display">
