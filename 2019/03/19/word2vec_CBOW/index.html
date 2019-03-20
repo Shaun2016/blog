@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/images/word2vec/model.png">
 <meta property="og:image" content="http://yoursite.com/images/word2vec/one-hot-m-matrix.png">
 <meta property="og:image" content="http://yoursite.com/images/word2vec/cbow.png">
-<meta property="og:updated_time" content="2019-03-20T08:05:26.155Z">
+<meta property="og:updated_time" content="2019-03-20T10:58:13.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec的简单理解">
 <meta name="twitter:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
@@ -479,7 +479,7 @@ softmax(
 \begin{bmatrix}
 0.23&0.03&0.61&0.12&0.01
 \end{bmatrix}</script><h4 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h4><script type="math/tex; mode=display">
-L=H(\hat y,y)=-\sum_x{p(x)logq(x)}</script><blockquote>
+L=H(\hat y,y)=-\sum_i^m{\hat y_i log\ y_i}</script><blockquote>
 <p>梯度下降更新W和<script type="math/tex">W'</script>，训练完毕后，W矩阵即为词向量矩阵，用一个词项的one-hot去乘W矩阵即得到这个词项的词向量</p>
 </blockquote>
 <h4 id="结构分析"><a href="#结构分析" class="headerlink" title="结构分析"></a>结构分析</h4><blockquote>
@@ -505,7 +505,7 @@ len(w)=\frac{[counter(w)]^{3/4}}{\sum_{u\in D}[counter(u)]^{3/4}}</script><p>len
 第2次：p(1|x,\theta_2)=\sigma(x^T\theta_2)\\
 第3次：p(1|x,\theta_3)=\sigma(x^T\theta_3)\\
 第4次：p(1|x,\theta_4)=\sigma(x^T\theta_4)\\
-即：p(x|Context(x))=\prod_{i=1}^4{p(d_i|x,\theta_i)},\ d_i\in\{0,1\}</script><p>目标函数：<script type="math/tex">L=\sum_{x\in C}{log\ p(x|Context(x))}</script> 最大化，通过梯度上升（或者求 <script type="math/tex">1-L</script> 的最小值，用梯度下降）更新 <script type="math/tex">x 和 \theta​</script> 的值，表示矩阵是最终得到的词向量矩阵。</p>
+即：p(x|Context(x))=\prod_{i=1}^4{p(d_i|x,\theta_i)},\ d_i\in\{0,1\}</script><p>目标函数：<script type="math/tex">L=\sum_{x\in C}{log\ p(x|Context(x))}</script> 最大化，通过梯度上升（或者求 <script type="math/tex">1-L</script> 的最小值，用梯度下降）更新 <script type="math/tex">x 和 \theta</script> 的值，表示矩阵是最终得到的词向量矩阵。</p>
 </blockquote>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="http://export.arxiv.org/pdf/1301.3781" target="_blank" rel="external">Efficient Estimation of Word Representations in Vector Space</a></p>
 <p><a href="http://www.cnblogs.com/peghoty/p/3857839.html" target="_blank" rel="external">word2vec的数学原理</a></p>
