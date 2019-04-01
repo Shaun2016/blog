@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="图算法," />
 
 
 
@@ -94,16 +94,21 @@
 
 
 
-<meta name="description" content="通俗易懂di讲明白一个故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ShaunJM&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/tags/statistic/index.html">
+<meta name="description" content="使用 networkx 的 pageRank 方法对图中结点计算等级，用 draw 方法对图做可视化，使用起来超简单，超开心">
+<meta name="keywords" content="图算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pageRank和图的可视化使用">
+<meta property="og:url" content="http://yoursite.com/2019/04/01/pageRank/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="通俗易懂di讲明白一个故事">
+<meta property="og:description" content="使用 networkx 的 pageRank 方法对图中结点计算等级，用 draw 方法对图做可视化，使用起来超简单，超开心">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/graph/pageRank2.png">
+<meta property="og:image" content="http://yoursite.com/images/graph/pageRank1.png">
+<meta property="og:updated_time" content="2019-04-01T14:00:21.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ShaunJM&#39;s blog">
-<meta name="twitter:description" content="通俗易懂di讲明白一个故事">
+<meta name="twitter:title" content="pageRank和图的可视化使用">
+<meta name="twitter:description" content="使用 networkx 的 pageRank 方法对图中结点计算等级，用 draw 方法对图做可视化，使用起来超简单，超开心">
+<meta name="twitter:image" content="http://yoursite.com/images/graph/pageRank2.png">
 
 
 
@@ -133,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/statistic/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/04/01/pageRank/"/>
 
 
 
 
 
-  <title>标签: statistic | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>pageRank和图的可视化使用 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -158,7 +163,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,54 +311,207 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>statistic<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/pageRank/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/02/24/math-basic/" itemprop="url">
-              
-                <span itemprop="name">math basic</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">pageRank和图的可视化使用</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-24T18:44:05+08:00"
-              content="2018-02-24" >
-          02-24
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-01T21:19:21+08:00">
+                2019-04-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mechine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">mechine learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>使用 networkx 的 pageRank 方法对图中结点计算等级，用 draw 方法对图做可视化，使用起来超简单，超开心</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</div><div class="line"></div><div class="line">G = nx.DiGraph()</div><div class="line"><span class="keyword">with</span> open(<span class="string">'../GraphData/karate.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</div><div class="line">        head, tail = [int(_) <span class="keyword">for</span> _ <span class="keyword">in</span> line.split()]</div><div class="line">        G.add_edge(head, tail)</div><div class="line">        </div><div class="line">G = G.to_undirected()</div><div class="line">pr = nx.pagerank(G, alpha=<span class="number">0.85</span>)</div><div class="line">x = <span class="number">0</span></div><div class="line"><span class="keyword">for</span> node, value <span class="keyword">in</span> pr.items():</div><div class="line">    print(<span class="string">'%d,%.4f'</span> % (node, value))</div><div class="line">    x += value</div><div class="line">print(x)</div><div class="line"></div><div class="line">layout = nx.spring_layout(G)</div><div class="line">plt.figure(<span class="number">1</span>)</div><div class="line">nx.draw(G, pos=layout, node_color=<span class="string">'y'</span>, with_labels=<span class="keyword">True</span>)</div><div class="line">plt.figure(<span class="number">2</span>)</div><div class="line">nx.draw(G, pos=layout, node_size=[x * <span class="number">6000</span> <span class="keyword">for</span> x <span class="keyword">in</span> pr.values()], node_color=<span class="string">'m'</span>, with_labels=<span class="keyword">True</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面从文件中读取图结构信息，文件中每行两个数字，表示是一条边。networks里提供一些数据集可以直接载入，如：<code>G = nx.karate_club_graph()</code></p>
+</blockquote>
+<p><img src="\images\graph\pageRank2.png" alt=""></p>
+<p><img src="\images\graph\pageRank1.png" alt=""></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Zhang JM WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/aipay.jpg" alt="Zhang JM Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图算法/" rel="tag"># 图算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/01/sklearn-kmeans/" rel="next" title="使用sklearn实现kmeans的代码">
+                <i class="fa fa-chevron-left"></i> 使用sklearn实现kmeans的代码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -361,6 +519,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -601,10 +763,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
