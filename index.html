@@ -341,7 +341,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/04/01/sklearn-kmeans/" itemprop="url">sklearn_kmeans</a></h1>
+                <a class="post-title-link" href="/2019/04/01/sklearn-kmeans/" itemprop="url">使用sklearn实现kmeans的代码</a></h1>
         
 
         <div class="post-meta">
@@ -414,8 +414,8 @@
 
       
         
-          <h2 id="使用sklearn实现kmeans的代码"><a href="#使用sklearn实现kmeans的代码" class="headerlink" title="使用sklearn实现kmeans的代码"></a>使用sklearn实现kmeans的代码</h2><blockquote>
-<p>就是代码，会用也比一点不会强…</p>
+          <blockquote>
+<p>就是代码，也比一点不会强…</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</div><div class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_blobs</div><div class="line">X = []	<span class="comment"># 二维数组</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'./GraphData/small_sample.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f.readlines():</div><div class="line">        X.append(list([int(i.split(<span class="string">' '</span>)[<span class="number">0</span>]), int(i.split(<span class="string">' '</span>)[<span class="number">1</span>])]))</div><div class="line">X = np.asarray(X)</div><div class="line"><span class="comment"># n_clusters 为聚类个数，y_pred 为聚类结果</span></div><div class="line">y_pred = KMeans(n_clusters=<span class="number">2</span>, random_state=<span class="number">9</span>).fit_predict(X)</div><div class="line">print(y_pred)    <span class="comment">#输出： [1 1 1 1 1 1 1 1 0 0 0 0 0]</span></div><div class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y_pred)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
           <!--noindex-->
