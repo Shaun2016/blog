@@ -94,25 +94,21 @@
 
 
 
-<meta name="description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta name="description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树(MST: minimum Spanning Tree)  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点">
 <meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prim-Kruscal">
 <meta property="og:url" content="http://yoursite.com/2017/08/13/Prim-Kruscal/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta property="og:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树(MST: minimum Spanning Tree)  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/tu.jpg">
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/prim.jpg">
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/kruscal.jpg">
-<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=dfb6266065b0e2a1f63bccd1587f64a4&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160744-00b6e27da65b4b48b903e768a97bf888.png">
-<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=2b83a531e086dc93da48d329819fc113&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png">
-<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=39cd479da65629e403608953a381ae81&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png">
-<meta property="og:image" content="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&quality=100&size=w4096&sec=1502580452&di=f547dbac92c11e77a5fc3e32ff80658e&ref=&imgtype=3&src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png">
-<meta property="og:updated_time" content="2017-08-28T16:43:26.042Z">
+<meta property="og:updated_time" content="2019-04-12T10:57:15.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prim-Kruscal">
-<meta name="twitter:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存">
+<meta name="twitter:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树(MST: minimum Spanning Tree)  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点">
 <meta name="twitter:image" content="http://yoursite.com/images/prim_kruscal/tu.jpg">
 
 
@@ -432,7 +428,7 @@
       
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="贪心算法——最小生成树"><a href="#贪心算法——最小生成树" class="headerlink" title="贪心算法——最小生成树"></a>贪心算法——最小生成树</h1><blockquote>
 <ol>
-<li><p>G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树</p>
+<li><p>G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树(MST: minimum Spanning Tree)</p>
 </li>
 <li><p>MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点 v∈V-U 的边（u，v）是一条具有最小权值的边，则必存在 G 的一棵最小生成树包括这条边（u，v）</p>
 </li>
@@ -470,25 +466,22 @@
 <h3 id="优先队列和并查集"><a href="#优先队列和并查集" class="headerlink" title="优先队列和并查集"></a>优先队列和并查集</h3><blockquote>
 <p>优先队列请见 <a href="/2017/02/06/priority-queue/">priority-queue</a></p>
 <p>并查集（Union-find Sets）主要用于处理一些<em>不相交集合</em> 的合并问题，使用树形结构表示一个集合，树的每个节点就表示集合中的一个元素，树根作为集合的代表。</p>
-<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=dfb6266065b0e2a1f63bccd1587f64a4&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160744-00b6e27da65b4b48b903e768a97bf888.png" alt=""></p>
 <p>并查集的基本操作有三个：</p>
 <ol>
 <li><p>makeSet(s)：建立一个新的并查集，其中包含 s 个单元素集合。</p>
-<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=2b83a531e086dc93da48d329819fc113&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160852-98560aa5c6764feeab476938d1bcfe24.png" alt="构造并查集初始化"></p>
 </li>
 <li><p>unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。</p>
 </li>
 <li><p>find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。在find方法中，如果每次都沿着父节点向上查找，当树很高时，会降低查找效率（时间复杂度就是树的高度）有一种非常简单而有效的策略——路径压缩：</p>
 </li>
 <li><p>路径压缩，就是在每次查找时，令查找路径上的每个节点都直接指向根节点</p>
-<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=39cd479da65629e403608953a381ae81&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160922-bc21dc9e11d645519c158e4f5153e20d.png" alt=""></p>
-<p>这样查看每个元素所在树的根节点只需要一步</p>
-</li>
-<li><p>并查集的合并：将一个集合的树根指向另一个集合的树根</p>
-<p><img src="https://ss0.baidu.com/6LVYsjip0QIZ8Aqbn9fN2DC/timg?pa&amp;quality=100&amp;size=w4096&amp;sec=1502580452&amp;di=f547dbac92c11e77a5fc3e32ff80658e&amp;ref=&amp;imgtype=3&amp;src=http://images.cnitblog.com/blog/358550/201309/12160946-86baa213cc204627af4ad9a4cef4a97a.png" alt=""></p>
-<p>​合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
 </li>
 </ol>
+<p>这样查看每个元素所在树的根节点只需要一步</p>
+<ol>
+<li>并查集的合并：将一个集合的树根指向另一个集合的树根</li>
+</ol>
+<p>合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
 </blockquote>
 <p><strong>使用优先队列将边升序排列（注意对自定义类型要重写 ‘&lt;’ 运算符）</strong></p>
 <p><strong>使用并查集判断两点是否在一个集合上（根节点是否相等），合并两集合</strong> </p>
@@ -665,7 +658,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
