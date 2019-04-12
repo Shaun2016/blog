@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/tu.jpg">
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/prim.jpg">
 <meta property="og:image" content="http://yoursite.com/images/prim_kruscal/kruscal.jpg">
-<meta property="og:updated_time" content="2019-04-12T10:57:15.290Z">
+<meta property="og:updated_time" content="2019-04-12T11:02:36.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prim-Kruscal">
 <meta name="twitter:description" content="贪心算法——最小生成树  G=(V,E) 是连通带权图，E 中每条边 (v,w) 的权为 c[v][w]，G 的一个子图 G’ 是一颗包含 G 的所有顶点的树，则称 G’ 为 G 的生成树，所有生成树中权值和最小的称为 G 的最小生成树(MST: minimum Spanning Tree)  MST 性质：设 G=(V,E) 是连通带权图，U 是 V 中的一个真子集，若存在顶点 u∈U 和顶点">
@@ -472,14 +472,9 @@
 </li>
 <li><p>unionSet(x, y)：把元素 x 和元素 y 所在的集合合并，要求 x 和 y 所在的集合不相交，如果相交则不合并。</p>
 </li>
-<li><p>find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。在find方法中，如果每次都沿着父节点向上查找，当树很高时，会降低查找效率（时间复杂度就是树的高度）有一种非常简单而有效的策略——路径压缩：</p>
-</li>
-<li><p>路径压缩，就是在每次查找时，令查找路径上的每个节点都直接指向根节点</p>
-</li>
-</ol>
-<p>这样查看每个元素所在树的根节点只需要一步</p>
-<ol>
-<li>并查集的合并：将一个集合的树根指向另一个集合的树根</li>
+<li>find(x)：找到元素 x 所在的集合的代表，该操作也可以用于判断两个元素是否位于同一个集合，只要将它们各自的代表比较一下就可以了。在find方法中，如果每次都沿着父节点向上查找，当树很高时，会降低查找效率（时间复杂度就是树的高度）有一种非常简单而有效的策略——路径压缩：</li>
+<li>路径压缩，就是在每次查找时，令查找路径上的每个节点都直接指向根节点</li>
+<li>并查集的合并：将一个集合的树根指向另一个集合的树根，这样查看每个元素所在树的根节点只需要一步</li>
 </ol>
 <p>合并策略——按秩合并：用秩表示树的高度，在合并时，总是将具有较小秩的树根指向具有较大秩的树根。简单的说，就是总是将比较矮的树作为子树，添加到较高的树中。代码中 urank[x] 表示 x 为根的树的高度</p>
 </blockquote>
