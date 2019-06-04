@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="今天写一个循环中按条件删除 list 中的元素，我还是知道直接删除会导致数组越界或者漏过某个元素，我的想法是控制下标，但是用 for循环怎么也写不出来，因为python的for _ in range(len(list))的结束条件不会变啊，用while可以控制下标，看了别人的博客，找到了一个巧妙的写法，哇，惊了，长见识了">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-05T07:49:05.613Z">
+<meta property="og:updated_time" content="2019-05-06T10:41:49.922Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 的 list 在循环中删除元素">
 <meta name="twitter:description" content="今天写一个循环中按条件删除 list 中的元素，我还是知道直接删除会导致数组越界或者漏过某个元素，我的想法是控制下标，但是用 for循环怎么也写不出来，因为python的for _ in range(len(list))的结束条件不会变啊，用while可以控制下标，看了别人的博客，找到了一个巧妙的写法，哇，惊了，长见识了">
@@ -419,8 +419,10 @@
 <h3 id="写法二：控制下标"><a href="#写法二：控制下标" class="headerlink" title="写法二：控制下标"></a>写法二：控制下标</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line">i = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> i &lt; len(l):</div><div class="line">    <span class="keyword">if</span> l[i] % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">        l.pop(i)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        i += <span class="number">1</span></div></pre></td></tr></table></figure>
 <h3 id="写法三-倒序遍历"><a href="#写法三-倒序遍历" class="headerlink" title="写法三: 倒序遍历"></a>写法三: 倒序遍历</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(l)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</div><div class="line">	<span class="keyword">if</span> l[i] % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">		l.pop(i)</div></pre></td></tr></table></figure>
 <blockquote>
-<p>第一个会多占用一份list的内存，第三个很好记，加三个<code>-1</code></p>
+<p>第一个会多占用一份list的内存，第三个最好了，长得好看，主要是好记呀，加三个<code>-1</code></p>
 </blockquote>
+<p><em>just remember it </em>~</p>
+<h3 id="dict在遍历中删除-k-v"><a href="#dict在遍历中删除-k-v" class="headerlink" title="dict在遍历中删除 k-v"></a>dict在遍历中删除 k-v</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">l = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div><div class="line"><span class="keyword">for</span> k <span class="keyword">in</span> list(l.keys()):</div><div class="line">	<span class="keyword">if</span> k % <span class="number">2</span> == <span class="number">0</span>:</div><div class="line">		<span class="keyword">del</span>(a[k])</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -663,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写法一：遍历深拷贝操作原始的"><span class="nav-number">1.</span> <span class="nav-text">写法一：遍历深拷贝操作原始的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写法二：控制下标"><span class="nav-number">2.</span> <span class="nav-text">写法二：控制下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写法三-倒序遍历"><span class="nav-number">3.</span> <span class="nav-text">写法三: 倒序遍历</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#写法一：遍历深拷贝操作原始的"><span class="nav-number">1.</span> <span class="nav-text">写法一：遍历深拷贝操作原始的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写法二：控制下标"><span class="nav-number">2.</span> <span class="nav-text">写法二：控制下标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写法三-倒序遍历"><span class="nav-number">3.</span> <span class="nav-text">写法三: 倒序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dict在遍历中删除-k-v"><span class="nav-number">4.</span> <span class="nav-text">dict在遍历中删除 k-v</span></a></li></ol></div>
             
 
           </div>
