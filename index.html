@@ -341,7 +341,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/06/04/gitment/" itemprop="url">gitment</a></h1>
+                <a class="post-title-link" href="/2019/06/04/gitment/" itemprop="url">为 github pages + hexo 博客添加 gitment 评论功能</a></h1>
         
 
         <div class="post-meta">
@@ -414,8 +414,7 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h2 id="hexo-博客添加-gitment-评论功能"><a href="#hexo-博客添加-gitment-评论功能" class="headerlink" title="hexo 博客添加 gitment 评论功能"></a>hexo 博客添加 gitment 评论功能</h2><blockquote>
+          <blockquote>
 <p>如果你的博客使用 <strong>github pages </strong>提供的服务，just like me，想添加评论功能，使用 gitment 是最佳的选择，通过 gitment 发表评论就是在 github 仓库创建 Issues， 配置过程十分简单</p>
 </blockquote>
 <h2 id="注册-github-Oauth-应用程序"><a href="#注册-github-Oauth-应用程序" class="headerlink" title="注册 github Oauth 应用程序"></a>注册 github Oauth 应用程序</h2><blockquote>
@@ -423,31 +422,13 @@
 <p>Homepage URL 和 Authorization callback URL 为你的博客地址：如 <a href="https://shaun2016.github.io/" target="_blank" rel="external">https://shaun2016.github.io/</a></p>
 <p>注册完成后可以得到 Client ID 和 Clint Secret</p>
 </blockquote>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
-<p>在 <strong>主题</strong> 的配置文件 <strong>_config.yml </strong>中，添加：</p>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gitment:</div><div class="line">  enable: true</div><div class="line">  mint: true</div><div class="line">  count: true</div><div class="line">  lazy: false</div><div class="line">  cleanly: false</div><div class="line">  github_user: 'detectiveHLH'</div><div class="line">  github_repo: 'detectiveHLH.github.io'</div><div class="line">  client_id: 'xxx'</div><div class="line">  client_secret: 'xxx'</div></pre></td></tr></table></figure>
-<blockquote>
-<p>其中后四项改为自己的</p>
-</blockquote>
-<h2 id="添加布局和样式"><a href="#添加布局和样式" class="headerlink" title="添加布局和样式"></a>添加布局和样式</h2><blockquote>
-<p>在主题目录下编辑：<code>themes\next\layout\_partials\comments.swig</code>（这个文件可能后缀名不同）在原文件内容后添加：</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">theme.gitment.enable</span>) &#123; %&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitment_title"</span> <span class="attr">class</span>=<span class="string">"gitment_title"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"display:none"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://jjeejj.github.io/css/gitment.css"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://jjeejj.github.io/js/gitment.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-3.3.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">  const myTheme = &#123;</span></div><div class="line"><span class="undefined">    render(state, instance) &#123;</span></div><div class="line"><span class="undefined">      const container = document.createElement('div');</span></div><div class="line"><span class="undefined">      container.lang = "en-US";</span></div><div class="line"><span class="undefined">      container.className = 'gitment-container gitment-root-container';</span></div><div class="line"><span class="undefined">      container.appendChild(instance.renderHeader(state, instance));</span></div><div class="line"><span class="undefined">      container.appendChild(instance.renderEditor(state, instance));</span></div><div class="line"><span class="undefined">      container.appendChild(instance.renderComments(state, instance));</span></div><div class="line"><span class="undefined">      container.appendChild(instance.renderFooter(state, instance));</span></div><div class="line"><span class="undefined">      return container;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">  function showGitment() &#123;</span></div><div class="line"><span class="undefined">    $("#gitment_title").attr("style", "display:none");</span></div><div class="line"><span class="undefined">    $("#container").attr("style", "").addClass("gitment_container");</span></div><div class="line"><span class="undefined">    var gitment = new Gitment(&#123;</span></div><div class="line"><span class="undefined">      id: decodeURI(window.location.pathname),</span></div><div class="line"><span class="undefined">      theme: myTheme,</span></div><div class="line"><span class="undefined">      owner: 'detectiveHLH',</span></div><div class="line"><span class="undefined">      repo: 'detectiveHLH.github.io',</span></div><div class="line"><span class="undefined">      oauth: &#123;</span></div><div class="line"><span class="undefined">        client_id: 'xxx',</span></div><div class="line"><span class="undefined">        client_secret: 'xxx'</span></div><div class="line"><span class="undefined">      &#125;</span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined">    gitment.render('container');</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="undefined">  showGitment();</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>上面的 owner，repo。client_id，client_secret 同样修改成自己的，这样就可以利用 gitment 在博客下方进行评论了</p>
-<p>在开始时也查阅如何实现博客的评论系统时，总结了一下几个主流的第三方服务分享给大家：</p>
-</blockquote>
-<ul>
-<li><a href="https://leancloud.cn/" target="_blank" rel="external">Valine</a>: 国内的服务，基于Leancloud，在我绑定域名的时候发现无法绑定 <em>*</em>.github.io，对于自己购买备案的域名很适合</li>
-<li><a href="https://www.hypercomments.com/" target="_blank" rel="external">Hypercomments</a>: 国外的，需要登录google账户，风格简约</li>
-<li><a href="https://www.livere.com/introduce" target="_blank" rel="external">来必力</a>: 韩国的服务，支持很多第三方登录</li>
-</ul>
-<blockquote>
-<p>多说，友言的服务都关闭了，很可惜啊，对于如何通过 github pages 搭建个人博客感兴趣的可以去找找，主要思路是通过一个博客框架，如 hexo 生成本地博客静态资源文件，网页上的内容和链接都是静态的，不涉及后台，将这些文件 <code>push</code> 到 github pages 的仓库中，访问<code>***.github.io</code>就可以显示博客内容了。修改配置文件，配置主题，加各种小功能的过程还是非常的有趣的，而且不难，查文档就好了，欢迎大家评论啊。</p>
-</blockquote>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/06/04/gitment/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
