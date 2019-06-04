@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/06/04/gitment/</loc>
+    
+    <lastmod>2019-06-04T07:13:28.470Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/05/05/python-list-removeItem-in-loop/</loc>
     
     <lastmod>2019-05-06T10:41:49.922Z</lastmod>
