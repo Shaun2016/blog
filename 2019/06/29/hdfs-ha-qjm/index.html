@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="elasticSearch,kibana," />
+  <meta name="keywords" content="hadoop,hdfs," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Linux 安装 ES ES 6.3.x 要求 Linux 内核必须是 3.5+版本以上，不能用 root 用户启动 uname -a 查看 linux 内核版本，低于3.5要升级内核，或者使用Centos7  升级内核 注册内核： rpm –import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7  下载内核安装包 rpm -Uvh">
-<meta name="keywords" content="elasticSearch,kibana">
+<meta name="description" content="搭建分布式的 hdfs 集群，一台服务器部署 namenode，另一台部署 secondaryname 的方式，存在单点故障的问题，为了解决这个问题，加入备用主节点 Standby namenode ，当 Active namenode 宕机后提升为Active namenode，使集群更高可用。本文介绍如何配置和部署hdfs的高可用集群： HDFS High Availability Usin">
+<meta name="keywords" content="hadoop,hdfs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="elasticSearch kibana install in linux">
-<meta property="og:url" content="http://yoursite.com/2018/05/06/elasticsearch-kibana-install/index.html">
+<meta property="og:title" content="hdfs HA using QJM">
+<meta property="og:url" content="http://yoursite.com/2019/06/29/hdfs-ha-qjm/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="Linux 安装 ES ES 6.3.x 要求 Linux 内核必须是 3.5+版本以上，不能用 root 用户启动 uname -a 查看 linux 内核版本，低于3.5要升级内核，或者使用Centos7  升级内核 注册内核： rpm –import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7  下载内核安装包 rpm -Uvh">
+<meta property="og:description" content="搭建分布式的 hdfs 集群，一台服务器部署 namenode，另一台部署 secondaryname 的方式，存在单点故障的问题，为了解决这个问题，加入备用主节点 Standby namenode ，当 Active namenode 宕机后提升为Active namenode，使集群更高可用。本文介绍如何配置和部署hdfs的高可用集群： HDFS High Availability Usin">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T03:10:05.182Z">
+<meta property="og:updated_time" content="2019-06-29T07:00:40.980Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="elasticSearch kibana install in linux">
-<meta name="twitter:description" content="Linux 安装 ES ES 6.3.x 要求 Linux 内核必须是 3.5+版本以上，不能用 root 用户启动 uname -a 查看 linux 内核版本，低于3.5要升级内核，或者使用Centos7  升级内核 注册内核： rpm –import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7  下载内核安装包 rpm -Uvh">
+<meta name="twitter:title" content="hdfs HA using QJM">
+<meta name="twitter:description" content="搭建分布式的 hdfs 集群，一台服务器部署 namenode，另一台部署 secondaryname 的方式，存在单点故障的问题，为了解决这个问题，加入备用主节点 Standby namenode ，当 Active namenode 宕机后提升为Active namenode，使集群更高可用。本文介绍如何配置和部署hdfs的高可用集群： HDFS High Availability Usin">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/06/elasticsearch-kibana-install/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/06/29/hdfs-ha-qjm/"/>
 
 
 
 
 
-  <title>elasticSearch kibana install in linux | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>hdfs HA using QJM | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/06/elasticsearch-kibana-install/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/29/hdfs-ha-qjm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">elasticSearch kibana install in linux</h1>
+          <h1 class="post-title" itemprop="name headline">hdfs HA using QJM</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-06T22:11:13+08:00">
-                2018-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-29T08:58:32+08:00">
+                2019-06-29
               </time>
             
 
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/elk/" itemprop="url" rel="index">
-                    <span itemprop="name">elk</span>
+                  <a href="/categories/hadoop/" itemprop="url" rel="index">
+                    <span itemprop="name">hadoop</span>
                   </a>
                 </span>
 
@@ -411,83 +411,105 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="Linux-安装-ES"><a href="#Linux-安装-ES" class="headerlink" title="Linux 安装 ES"></a>Linux 安装 ES</h1><blockquote>
-<p>ES 6.3.x 要求 Linux 内核必须是 3.5+版本以上，不能用 root 用户启动</p>
-<p><code>uname -a</code> 查看 linux 内核版本，低于3.5要升级内核，或者使用Centos7</p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>搭建分布式的 hdfs 集群，一台服务器部署 namenode，另一台部署 secondaryname 的方式，存在单点故障的问题，为了解决这个问题，加入备用主节点 <code>Standby namenode</code> ，当 <code>Active namenode</code> 宕机后提升为<code>Active namenode</code>，使集群更高可用。本文介绍如何配置和部署hdfs的高可用集群： <code>HDFS High Availability Using the Quorum Journal Manager</code></p>
+<p>使用 Virtual Box 建立虚拟机后各角色的分配如下：</p>
 </blockquote>
-<h2 id="升级内核"><a href="#升级内核" class="headerlink" title="升级内核"></a>升级内核</h2><ol>
-<li><p>注册内核：</p>
-<p><code>rpm –import http://mirror.centos.org/centos/RPM-GPG-KEY-CentOS-7</code></p>
-</li>
-<li><p>下载内核安装包</p>
-<p><code>rpm -Uvh http://www.elrepo.org/elrepo-release-6-8.el6.elrepo.noarch.rpm</code></p>
-</li>
-<li><p>安装内核新版本</p>
-<p><code>yum --enablerepo=elrepo-kernel install kernel-lt -y</code></p>
-</li>
-<li><p>设置启动内核版本</p>
-<p><code>vim /etc/grub.conf</code></p>
-<p>修改为：default=0</p>
-</li>
-<li><p>重启系统让内核生效：<code>reboot</code>（还是直接用 Centos7 吧乖乖）</p>
-</li>
-</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">hdfs</th>
+<th style="text-align:center">journalnode</th>
+<th style="text-align:center">zookeeper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">master</td>
+<td style="text-align:center">nn</td>
+<td style="text-align:center">jn</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">slave1</td>
+<td style="text-align:center">nn/dn</td>
+<td style="text-align:center">jn</td>
+<td style="text-align:center">zk</td>
+</tr>
+<tr>
+<td style="text-align:center">slave2</td>
+<td style="text-align:center">dn</td>
+<td style="text-align:center">jn</td>
+<td style="text-align:center">zk</td>
+</tr>
+<tr>
+<td style="text-align:center">slave3</td>
+<td style="text-align:center">dn</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">zk</td>
+</tr>
+</tbody>
+</table>
+</div>
 <a id="more"></a>
-<blockquote>
-<p>注意：</p>
+<h2 id="结点之间免密"><a href="#结点之间免密" class="headerlink" title="结点之间免密"></a>结点之间免密</h2><blockquote>
+<p>通过主节点自动化的启动集群，需要主节点可以发送指令到从节点，而无需输入从节点密码，要在主节点的<code>root/.ssh</code> 目录下生成公钥私钥，将公钥文件分发到其他结点中，并将公钥内容添加到 <code>authorized_keys</code> 中</p>
+<p>另一种免密情况是 主namenode 和 备namenode 结点的 jzfc 进程之间通信切换状态时，slave1 向 master 免密</p>
+<p>总的说来：即 master 向 master, slave1, slave2, slave3 免密，slave1 向 master, slave1 免密，免密操作如下</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t dsa -P 'password' -f ./id_dsa    # 生成公钥私钥（master中）</div><div class="line">cat ./id_dsa.pub &gt;&gt; authorized_keys	# 将公钥添加到本机的 authorized_keys 中（master中）</div><div class="line">scp ./id_dsa root@slave1:`pwd`/slave1.pub  # 将公钥发送到要对免密的结点中（master中）</div><div class="line">cat ./slave1.pub &gt;&gt; authorized_keys	# 在要对免密的结点中添加公钥到 authorized_keys 中（slave1中）</div></pre></td></tr></table></figure>
+<p><strong>zookeeper和 hadoop都是运行在JVM上，需要安装jdk并配置环境变量，下面的zookeeper，hadoop命令为了在任意路径下使用，都需要在/etc/profile文件中添加对应的路径</strong></p>
+<h2 id="部署Zookeeper集群"><a href="#部署Zookeeper集群" class="headerlink" title="部署Zookeeper集群"></a>部署Zookeeper集群</h2><blockquote>
 <ol>
-<li>高版本的内核对线程的内存资源需要更高的要求，要给虚拟机分配 1.5G 以上的内存</li>
-<li>配置虚拟机网关，DNS，保证能连接外网</li>
+<li>解压 zk 安装包</li>
+<li>进入安装路径下: /conf，将<code>zoo_sample.cfg</code>改名为<code>zoo.cfg</code>，编辑<code>zoo.cfg</code>,修改持久化文件路径：dataDir 为非 tmp 下的路径，如<code>dataDir=/usr/zjm/zookeeper</code>，添加结点信息：</li>
 </ol>
 </blockquote>
-<h2 id="为ES提供系统配置"><a href="#为ES提供系统配置" class="headerlink" title="为ES提供系统配置"></a>为ES提供系统配置</h2><blockquote>
-<p>ES 在 Linux 安装部署需要系统为其提供若干系统配置，如：应用可启动的线程数，可以划分到的内存，最多可以创建的文件…</p>
-</blockquote>
-<ol>
-<li><p>修改限制信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">server.1=slave1:2888:3888</div><div class="line">server.2=slave2:2888:3888</div><div class="line">server.3=slave3:2888:3888</div></pre></td></tr></table></figure>
 <blockquote>
-<p>修改系统中允许应用创建最多文件个数的限制权限。Linux 默认限制应用最多创建 65535 个文件，但是 ES 至少需要65536 个文件的创建权限。</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.conf</div><div class="line"><span class="meta">#</span> 增加</div><div class="line">* soft nofile 65536</div><div class="line">* hard nofile 65536</div></pre></td></tr></table></figure>
-</li>
-<li><p>修改线程开启限制</p>
-<blockquote>
-<p>修改允许用户启动的进程开启多少线程，Linux 限制 root 用户开启的进程可以启动任意数量的线程，其他用户开启的进程可以开启 1024 个线程。修改限制数为 4096+。ES 至少需要4096的线程池预备</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">vi /etc/security/limits.d/90-nproc.conf</div><div class="line"><span class="meta">#</span> 修改下述内容</div><div class="line">*          soft    nproc     4096</div><div class="line">root       soft    nproc     unlimited</div><div class="line"><span class="meta">#</span> 检查可开启的最大线程</div><div class="line">ulimit -u</div></pre></td></tr></table></figure>
-<p><em>注：虚拟机内存是 1 G，最多能开启3000+个线程，不能满足ES的要求，所以要给虚拟机分配1.5G以上的内存</em></p>
-</li>
-<li><p>修改系统控制权限</p>
-<blockquote>
-<p>系统控制文件是管理系统中资源控制的配置文件，ES需要开辟一个65536字节以上空间的虚拟内存。Linux默认不允许任何用户和应用直接开辟虚拟内存</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">vi /etc/sysctl.conf</div><div class="line"><span class="meta">#</span> 添加</div><div class="line">vm.max_map_count=655360</div><div class="line"><span class="meta">#</span> 让 sysctl 配置生效</div><div class="line">sysctl -p</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装JDK至少1.8.0_131+</p>
-</li>
-<li><p>解压ES：<code>tar -zxf elasticsearch-6.3.1.tar.gz</code></p>
-<p><em>注：ES 不允许 root 用户启动，如果 ES 是通过 root 用户解压的，则所有者是 root 用户，需要将ES 应用所有者改为其他用户</em></p>
-</li>
-<li><p>修改所有者</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 先移动到普通用户路径下： </span></div><div class="line">mv <span class="comment">#path1 path2</span></div><div class="line">chown -R group.user elasticsearch... <span class="comment"># 无组用户的组名和用户名一致</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>修改elasticsearch配置文件</p>
-<p>设置可访问的客户端。0.0.0.0代表任意客户端访问。</p>
-</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vi config/elasticsearch.yml</div><div class="line"><span class="meta">#</span><span class="bash"> 修改下述内容</span></div><div class="line">network.host: 0.0.0.0</div></pre></td></tr></table></figure>
 <ol>
-<li>切换用户启动：<code>su zjm</code>，<code>cd elasticsearch/bin</code>，<code>./elasticsearch</code> 启动服务</li>
-<li>测试连接：<code>curl http://ip:9200</code></li>
+<li>创建dataDir，并在其中建立文件 myid，将server后对应的数字写入 myid 中</li>
 </ol>
-<h1 id="Linux安装Kibana"><a href="#Linux安装Kibana" class="headerlink" title="Linux安装Kibana"></a>Linux安装Kibana</h1><p><em>是ES提供的一个Web的管理控制台，解压，启动即可，Kibana要求的环境配置是小于ES的</em></p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 在 slave1 中</div><div class="line">mkdir -p /usr/zjm/zookeeper</div><div class="line">echo 1 &gt; /usr/zjm/zookeeper/myid</div></pre></td></tr></table></figure>
+<blockquote>
 <ol>
-<li>tar -zxf kibana.tar.gz</li>
-<li>修改 config/kibana.yml，增加：server.host: “0.0.0.0”</li>
-<li>运行：<code>kibana_home/bin/kabana</code>‘</li>
-<li>访问：<code>http://ip:5601</code></li>
+<li>在其他结点中重复上述操作，或者将一台结点中已经解压配置好的文件分发到其他结点中：scp -r xxx root@slave2:`pwd`</li>
+<li>在各个结点中启动 zk 服务：<code>zkServer.sh start</code></li>
+<li>查看 zk 服务状态：<code>zkServer.sh status</code></li>
 </ol>
-
+</blockquote>
+<h2 id="编辑hadoop配置文件"><a href="#编辑hadoop配置文件" class="headerlink" title="编辑hadoop配置文件"></a>编辑hadoop配置文件</h2><blockquote>
+<p>在所有结点中都要编辑以下配置文件，可以配置一份然后分发给其他结点</p>
+</blockquote>
+<h3 id="hadoop-env-sh"><a href="#hadoop-env-sh" class="headerlink" title="hadoop-env.sh"></a>hadoop-env.sh</h3><blockquote>
+<p>/hadoop-…/etc/hadoop下的 hadoop-env.sh 中加入<code>export JAVA_HOME=/usr/java/default</code> </p>
+</blockquote>
+<h3 id="core-site-xml"><a href="#core-site-xml" class="headerlink" title="core-site.xml"></a>core-site.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://mycluster<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/hadoop-2.7.3/ha<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">name</span>&gt;</span>ha.zookeeper.quorum<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">value</span>&gt;</span>slave1:2181,slave2:2181,slave3:2181<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="hdfs-site-xml"><a href="#hdfs-site-xml" class="headerlink" title="hdfs-site.xml"></a>hdfs-site.xml</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.nameservices<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>mycluster<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.namenodes.mycluster<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>nn1,nn2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.mycluster.nn1<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>master:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.rpc-address.mycluster.nn2<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>slave1:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.mycluster.nn1<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>master:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.http-address.mycluster.nn2<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>slave1:50070<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.shared.edits.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span>       	   </div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>qjournal://192.168.56.100:8485;192.168.56.101:8485;192.168.56.102:8485/mycluster<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.journalnode.edits.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/hadoop-2.7.3/ha/journal<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.client.failover.proxy.provider.mycluster<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.fencing.methods<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>sshfence</div><div class="line"> shell(/bin/true)</div><div class="line">  <span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.fencing.ssh.private-key-files<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/root/.ssh/id_dsa<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.ha.automatic-failover.enabled<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="格式化-Namenode"><a href="#格式化-Namenode" class="headerlink" title="格式化 Namenode"></a>格式化 Namenode</h3><blockquote>
+<p>格式化 namenode 是删除旧的 namenode 的镜像文件（fsimage）日志文件（edits），并新建空白的fsimage和edits，在HA QJM集群中，edits 文件存放在 Journalnode 中，所以在格式化namenode之前要先启动 journalnode进程：在 master,slave1, slave2 中执行 <code>hadoop-daemon.sh start journalnode</code></p>
+<p>在 master 中格式化 hdfs：<code>hdfs namenode -format</code>，启动namenode: <code>hadoop-daemon.sh start namenode</code>，在备主结点同步元数据：<code>hdfs namenode -bootstrapStandby</code>. </p>
+</blockquote>
+<h3 id="格式化-Zookeeper"><a href="#格式化-Zookeeper" class="headerlink" title="格式化 Zookeeper"></a>格式化 Zookeeper</h3><blockquote>
+<p>为了让 zookeeper 选举 active namenode，要让 JKFC 进程对 zookeeper 格式化，即在 zk 的目录结构中建立路径：/hadoop-ha/mycluster，当master 与 slave1 中的 ZKFC 进程启动后去争抢 /hadoop-ha/mycluster 的使用权（锁），谁先抢到对应的 namenode 就是 active，其余的 namenode 是 standby 状态。</p>
+<p>操作：在 master 或 slave1 中执行<code>hdfs zkfc -formatZK</code></p>
+</blockquote>
+<h2 id="启动集群"><a href="#启动集群" class="headerlink" title="启动集群"></a>启动集群</h2><blockquote>
+<p>在 master 中执行 <code>start-dfs.sh</code></p>
+</blockquote>
+<h2 id="验证HA"><a href="#验证HA" class="headerlink" title="验证HA"></a>验证HA</h2><blockquote>
+<p>浏览器访问 master:50070 和 slave1:50070，可以看到集群中 namenode 和 dataname 状态，一个namenode 为 active，另一个为 standby。将 active 的 namenode 通过 <code>kill -9 进程号</code> 终止进程，通过web 页面可以看到原 active 的结点已经无法访问，standby 的结点状态变为 active</p>
+</blockquote>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><blockquote>
+<p>第一次配置时，journalnode 是在 namenode 启动之前开启的，当在 master 中 <code>stop-dfs.sh</code> 停止集群后，再次开启<code>start-dfs.sh</code> 时，启动的顺序是 namenode, datanode, journalnode, zkfc，这时，由于 namenode 先于 journalnode 启动，不断尝试与 journalnode 建立连接可能由于 journal 进程还没启动，namenode 的retry 超过最大次数限制，导致 namenode 启动失败，active namenode 结点的 namenode 进程在刚启动时是可以看到的，一会就不见了，但是 standby namenode 启动成功了</p>
+<p>这个问题的解决方法是在<code>start-dfs.sh</code> 之前手动的启动 journalnode 进程，或者在配置文件中增大namenode等待journalnode 的时间，感觉是我的电脑开启四个虚拟机运行速度太慢导致的。</p>
+<p>journalnode 是同步 active nn 与 standby nn 元数据的，但是在active nn 等待超时的情况下，standby nn 为什么能启动呢？</p>
+</blockquote>
+<p><em>以上存在个人理解，很多说法不严格，欢迎大家在评论区留言</em></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
     </div>
     
@@ -533,9 +555,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/elasticSearch/" rel="tag"># elasticSearch</a>
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
-            <a href="/tags/kibana/" rel="tag"># kibana</a>
+            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
           
         </div>
       
@@ -548,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/08/kibana-command/" rel="next" title="kibana command">
-                <i class="fa fa-chevron-left"></i> kibana command
+              <a href="/2019/06/04/gitment/" rel="next" title="为 github pages + hexo 博客添加 gitment 评论功能">
+                <i class="fa fa-chevron-left"></i> 为 github pages + hexo 博客添加 gitment 评论功能
               </a>
             
           </div>
@@ -557,10 +579,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/14/concurrent/" rel="prev" title="concurrent">
-                concurrent <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -776,7 +794,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-安装-ES"><span class="nav-number">1.</span> <span class="nav-text">Linux 安装 ES</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#升级内核"><span class="nav-number">1.1.</span> <span class="nav-text">升级内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为ES提供系统配置"><span class="nav-number">1.2.</span> <span class="nav-text">为ES提供系统配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux安装Kibana"><span class="nav-number">2.</span> <span class="nav-text">Linux安装Kibana</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结点之间免密"><span class="nav-number">1.</span> <span class="nav-text">结点之间免密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署Zookeeper集群"><span class="nav-number">2.</span> <span class="nav-text">部署Zookeeper集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑hadoop配置文件"><span class="nav-number">3.</span> <span class="nav-text">编辑hadoop配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hadoop-env-sh"><span class="nav-number">3.1.</span> <span class="nav-text">hadoop-env.sh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#core-site-xml"><span class="nav-number">3.2.</span> <span class="nav-text">core-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hdfs-site-xml"><span class="nav-number">3.3.</span> <span class="nav-text">hdfs-site.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化-Namenode"><span class="nav-number">3.4.</span> <span class="nav-text">格式化 Namenode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#格式化-Zookeeper"><span class="nav-number">3.5.</span> <span class="nav-text">格式化 Zookeeper</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动集群"><span class="nav-number">4.</span> <span class="nav-text">启动集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证HA"><span class="nav-number">5.</span> <span class="nav-text">验证HA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">6.</span> <span class="nav-text">遇到的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文献"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
             
 
           </div>
