@@ -473,7 +473,7 @@
 <li>创建dataDir，并在其中建立文件 myid，将server后对应的数字写入 myid 中</li>
 </ol>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> 在 slave1 中</div><div class="line">mkdir -p /usr/zjm/zookeeper</div><div class="line">echo 1 &gt; /usr/zjm/zookeeper/myid</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"> 在 slave1 中</span></div><div class="line">mkdir -p /usr/zjm/zookeeper</div><div class="line">echo 1 &gt; /usr/zjm/zookeeper/myid</div></pre></td></tr></table></figure>
 <blockquote>
 <ol>
 <li>在其他结点中重复上述操作，或者将一台结点中已经解压配置好的文件分发到其他结点中：scp -r xxx root@slave2:`pwd`</li>
@@ -579,6 +579,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/hive/" rel="prev" title="hive 集群搭建">
+                hive 集群搭建 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -694,7 +698,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -705,7 +709,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -716,7 +720,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
