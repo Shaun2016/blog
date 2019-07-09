@@ -94,21 +94,21 @@
 
 
 
-<meta name="description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止创建的对象没有回收内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
+<meta name="description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
 <meta name="keywords" content="jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HotSpot VM中的内存划分和GC算法">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/jvm-gc/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止创建的对象没有回收内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
+<meta property="og:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/java/jvm.png">
 <meta property="og:image" content="http://yoursite.com/images/java/recycle.png">
 <meta property="og:image" content="http://yoursite.com/images/java/heap.png">
-<meta property="og:updated_time" content="2019-07-08T12:51:28.561Z">
+<meta property="og:updated_time" content="2019-07-09T06:39:56.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HotSpot VM中的内存划分和GC算法">
-<meta name="twitter:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止创建的对象没有回收内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
+<meta name="twitter:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
 <meta name="twitter:image" content="http://yoursite.com/images/java/jvm.png">
 
 
@@ -416,7 +416,7 @@
 
       
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
-<p>JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止创建的对象没有回收内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM <strong>HotSpot</strong> 的内存区域划分和垃圾收集算法</p>
+<p>JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM <strong>HotSpot</strong> 的内存区域划分和垃圾收集算法</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="Hotspot-VM-内存区域的划分"><a href="#Hotspot-VM-内存区域的划分" class="headerlink" title="Hotspot VM 内存区域的划分"></a>Hotspot VM 内存区域的划分</h2><p><img src="\images\java\jvm.png" alt="jvm"></p>
@@ -547,8 +547,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/05/hive/" rel="next" title="hive 集群搭建">
-                <i class="fa fa-chevron-left"></i> hive 集群搭建
+              <a href="/2019/07/05/hive/" rel="next" title="hive 集群搭建与表的简单操作">
+                <i class="fa fa-chevron-left"></i> hive 集群搭建与表的简单操作
               </a>
             
           </div>

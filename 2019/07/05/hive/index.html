@@ -97,15 +97,19 @@
 <meta name="description" content="Hive 是基于 hadoop 的一个数据仓库，将结构化的数据文件存储在 hdfs 上，数据的结构信息存储在关系型数据库中（如mysql, oracle, derby），可以将sql语句转化为 mapreduce 任务，mapreduce 任务需要编程人员使用 java 语言写 MapTask, ReduceTask 的逻辑代码，打包成 jar 上传到 hdfs 中，而 hive 的 sql 语">
 <meta name="keywords" content="hive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hive 集群搭建">
+<meta property="og:title" content="hive 集群搭建与表的简单操作">
 <meta property="og:url" content="http://yoursite.com/2019/07/05/hive/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="Hive 是基于 hadoop 的一个数据仓库，将结构化的数据文件存储在 hdfs 上，数据的结构信息存储在关系型数据库中（如mysql, oracle, derby），可以将sql语句转化为 mapreduce 任务，mapreduce 任务需要编程人员使用 java 语言写 MapTask, ReduceTask 的逻辑代码，打包成 jar 上传到 hdfs 中，而 hive 的 sql 语">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-07T07:02:30.803Z">
+<meta property="og:image" content="http://yoursite.com/images/hadoop/student.png">
+<meta property="og:image" content="http://yoursite.com/images/hadoop/student_p.png">
+<meta property="og:image" content="http://yoursite.com/images/hadoop/student_p3.png">
+<meta property="og:updated_time" content="2019-07-09T15:27:10.470Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hive 集群搭建">
+<meta name="twitter:title" content="hive 集群搭建与表的简单操作">
 <meta name="twitter:description" content="Hive 是基于 hadoop 的一个数据仓库，将结构化的数据文件存储在 hdfs 上，数据的结构信息存储在关系型数据库中（如mysql, oracle, derby），可以将sql语句转化为 mapreduce 任务，mapreduce 任务需要编程人员使用 java 语言写 MapTask, ReduceTask 的逻辑代码，打包成 jar 上传到 hdfs 中，而 hive 的 sql 语">
+<meta name="twitter:image" content="http://yoursite.com/images/hadoop/student.png">
 
 
 
@@ -141,7 +145,7 @@
 
 
 
-  <title>hive 集群搭建 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>hive 集群搭建与表的简单操作 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -339,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hive 集群搭建</h1>
+          <h1 class="post-title" itemprop="name headline">hive 集群搭建与表的简单操作</h1>
         
 
         <div class="post-meta">
@@ -454,38 +458,71 @@
 </blockquote>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- hdfs 路径 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionURL<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>jdbc:mysql://master:3306/hive?createDatabaseIfNotExist=true<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionDriverName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>com.mysql.jdbc.Driver<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- mysql 登陆名密码 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionUserName<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>javax.jdo.option.ConnectionPassword<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>root<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
 <blockquote>
+<p>上面配置项中<code>hive.metastore.warehouse.dir</code>的值为 Hive 数据仓库的数据在 hdfs 中的存储路径，当创建一个表，如 school 表，会在配置的路径下创建一个名为 <code>school</code> 的路径，如<code>/usr/hive/warehouse/school</code>，向<code>school</code> 表中添加的数据会存放在这个路径下</p>
 <ol>
 <li>将<strong>客户端</strong> hive/conf/hive-site.xml 中<configuration>内的配置项改为：</configuration></li>
 </ol>
 </blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.warehouse.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>/usr/hive/warehouse<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 服务端地址 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.uris<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>thrift://slave1:9083<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 服务端地址 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">name</span>&gt;</span>hive.metastore.uris<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">value</span>&gt;</span>thrift://slave1:9083<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
 <blockquote>
 <ol>
-<li>启动 Hive 服务端进程：<code>hive --service metastore</code></li>
+<li>启动 Hive 服务端进程：<code>hive --service metastore</code> </li>
 <li>启动 Hive 客户端进程：<code>hive</code>，即可进入 hive 数据仓库进行操作</li>
 </ol>
 </blockquote>
 <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><blockquote>
-<p>hive 的很多指令与 sql 语句类似，如查询表内容，显示表删除表</p>
+<p>hive 的很多指令与关系型数据库的 sql 语句类似</p>
 </blockquote>
 <h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><blockquote>
-<p>Hive 的表分为：内部表和外部表，内部表是先建表，后导入数据；外部表是已经有数据文件，根据数据建表去装载数据，当删除内部表时，数据文件也会一起删除；删除外部表只删除表结构，不删除数据文件</p>
+<p>Hive 的表分为内部表和外部表</p>
 </blockquote>
 <h4 id="内部表"><a href="#内部表" class="headerlink" title="内部表"></a>内部表</h4><blockquote>
-<p>创建语句：指定表列名，类型，列之间 (FIELDS) 的分隔符，特殊类型: array (COLLECTION ITEMS), map (MAP KEYS) 中元素之间的分隔符（不能是分号 “;”）</p>
+<p>直接创建表，创建后再向表中导入数据。创建语句：指定表列名，类型，列之间 (FIELDS) 的分隔符，特殊类型: array (COLLECTION ITEMS), map (MAP KEYS) 中元素之间的分隔符（不能是分号 “;”）</p>
 </blockquote>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> student</div><div class="line">(<span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>, interests <span class="built_in">array</span>&lt;<span class="keyword">string</span>&gt;, score <span class="keyword">map</span>&lt;<span class="keyword">string</span>, <span class="built_in">float</span>&gt;) </div><div class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> </div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </div><div class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span> </div><div class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span>;</div></pre></td></tr></table></figure>
-<h4 id="外部表"><a href="#外部表" class="headerlink" title="外部表"></a>外部表</h4><blockquote>
-<p>与内部表不同的要加入 <code>external</code>关键字和 hdfs 文件所在路径：</p>
+<blockquote>
+<p>执行完建表语句，可以看到 hdfs 文件系统中的 hive 存储路径下多了 <code>student</code>文件夹，里面是空的，导入的数据则存放在 <code>student</code>下</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> student</div><div class="line">(<span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>, interests <span class="built_in">array</span>&lt;<span class="keyword">string</span>&gt;, score <span class="keyword">map</span>&lt;<span class="keyword">string</span>, <span class="built_in">float</span>&gt;) </div><div class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> </div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </div><div class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span> </div><div class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span></div><div class="line">location <span class="string">'/.../'</span></div></pre></td></tr></table></figure>
-<h3 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h3><blockquote>
-<p>使用 <code>insert into table values(v1,v2,...);</code>的方式会通过 MR 任务的形式很慢，这里通过文件将数据导入到表中的方式，文件中数据格式如下：</p>
+<h4 id="外部表"><a href="#外部表" class="headerlink" title="外部表"></a>外部表</h4><blockquote>
+<p>先有数据，根据数据的格式建立数据表，可以理解建立表与 hdfs 一个路径下数据的映射</p>
+<p>加入<code>external</code>关键字和要对应的 hdfs 路径，该路径下所有文件中的数据都是表中的数据：</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">external</span> <span class="keyword">table</span> student_external</div><div class="line">(<span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>, interests <span class="built_in">array</span>&lt;<span class="keyword">string</span>&gt;, score <span class="keyword">map</span>&lt;<span class="keyword">string</span>, <span class="built_in">float</span>&gt;) </div><div class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> </div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </div><div class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span> </div><div class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span></div><div class="line">location <span class="string">'/usr/zjm/external/'</span></div></pre></td></tr></table></figure>
+<p><em>注：示例中 <code>location</code> 后的路径是 hdfs 路径，会将 <code>/usr/zjm/external</code>下的所有文件中的数据都作为student_external表的数据，格式不一致各字段显示 null</em></p>
+<h4 id="内部表和外部表的区别"><a href="#内部表和外部表的区别" class="headerlink" title="内部表和外部表的区别"></a>内部表和外部表的区别</h4><blockquote>
+<ol>
+<li>外部表是已有数据，根据数据设计表，去对应hdfs的一个路径，外部表更常用</li>
+<li>内部表创建之初没有数据，会在hdfs中建立以表名命名的文件夹（如果没有该文件夹的话）</li>
+<li>删除内部表时会把文件夹以及内部文件数据一同删掉，外部表只删除表的元数据，不会删除对应的路径</li>
+</ol>
+</blockquote>
+<h4 id="向表中添加数据"><a href="#向表中添加数据" class="headerlink" title="向表中添加数据"></a>向表中添加数据</h4><blockquote>
+<p>使用 <code>insert into table values(v1,v2,...);</code> 的方式会通过 MR 任务的形式很慢，要通过文件上传的形式将数据导入到表中，文件中数据格式如下：</p>
 </blockquote>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">0 zjm0 football,basketball,music math:91.44,chinese:76.97,english:98.75</div><div class="line">1 zjm1 football,tennis,music math:97.96,chinese:80.22,english:89.79</div><div class="line">2 zjm2 basketball,pingpang,swim,music math:95.62,chinese:76.54,english:90.73</div><div class="line">...</div></pre></td></tr></table></figure>
 <blockquote>
-<p>导入语句：<code>load data local input &#39;/usr/local/data.txt&#39; into table student;</code></p>
+<p>导入语句：<code>load data local inpath &#39;/usr/local/data.txt&#39; into table student;</code>，其中 <code>inpath</code>后的路径是本地路径，将一个本地文件上传到 hdfs 中做为表的数据，导入后在 hdfs 中可以看到 <code>/usr/hive/warehouse/student</code>下多了<code>data.txt</code></p>
+<p><strong>注：表中的数据就是对应目录下的所有文件中的数据，所以 load 就是执行 hdfs dfs -put 将文件上传到对应hdfs目录中</strong></p>
 </blockquote>
+<p><img src="/images/hadoop/student.png" alt="student"></p>
+<h3 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h3><blockquote>
+<p>当查询表内容时：<code>select * from student</code>，先从关系型数据库中读到表结构，再从表对应的 hdfs 路径下读到所有文件中的数据低按照表结构封装，如果不符合表结构则显示一条记录的各个字段都显示 null</p>
+</blockquote>
+<h3 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h3><blockquote>
+<p>对一个表的内容按某个字段分成不同区域，如时间，方便查询</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> student_p</div><div class="line">(<span class="keyword">id</span> <span class="built_in">int</span>, <span class="keyword">name</span> <span class="keyword">string</span>, interests <span class="built_in">array</span>&lt;<span class="keyword">string</span>&gt;, score <span class="keyword">map</span>&lt;<span class="keyword">string</span>, <span class="built_in">float</span>&gt;) </div><div class="line">partitioned <span class="keyword">by</span> (grade <span class="built_in">int</span>)</div><div class="line"><span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span> </div><div class="line"><span class="keyword">FIELDS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">' '</span> </div><div class="line">COLLECTION ITEMS <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">','</span> </div><div class="line"><span class="keyword">MAP</span> <span class="keyword">KEYS</span> <span class="keyword">TERMINATED</span> <span class="keyword">BY</span> <span class="string">':'</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面建立了按照年级的学生分区表，当插入数据时可以将不同年级的学生的数据分别放入不同的分区中，在hdfs中一个分区是表文件夹下的一个文件夹</p>
+<p>导入数据：<code>load data local inpath &#39;/.../data.txt&#39; into table student_p partition (grade=3)</code>，这里的<code>data.txt</code>中不能含有 grade 字段，且里面的数据都应该属于相同 grade 的 student 信息，查询的时候是根据 hdfs 的文件夹名<code>grade=3</code>添加字段</p>
+</blockquote>
+<p><img src="/images/hadoop/student_p.png" alt="student_p"></p>
+<blockquote>
+<p>多分区：指定多个分区，出现多级目录</p>
+<p><code>partitioned by (grade int, tall int, sex string)</code></p>
+<p><code>load data local inpath &#39;/.../data.txt&#39; into table student_p partition (grade=3, tall=170, sex=&#39;girl&#39;)</code></p>
+</blockquote>
+<p><img src="/images/hadoop/student_p3.png" alt="student_p3"></p>
 
       
     </div>
@@ -773,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在搭建好的-hadoop-集群上部署-Hive"><span class="nav-number">1.</span> <span class="nav-text">在搭建好的 hadoop 集群上部署 Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作指令"><span class="nav-number">3.</span> <span class="nav-text">操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">3.1.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部表"><span class="nav-number">3.1.1.</span> <span class="nav-text">内部表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部表"><span class="nav-number">3.1.2.</span> <span class="nav-text">外部表</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导入数据"><span class="nav-number">3.2.</span> <span class="nav-text">导入数据</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在搭建好的-hadoop-集群上部署-Hive"><span class="nav-number">1.</span> <span class="nav-text">在搭建好的 hadoop 集群上部署 Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作指令"><span class="nav-number">3.</span> <span class="nav-text">操作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建表"><span class="nav-number">3.1.</span> <span class="nav-text">创建表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内部表"><span class="nav-number">3.1.1.</span> <span class="nav-text">内部表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#外部表"><span class="nav-number">3.1.2.</span> <span class="nav-text">外部表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内部表和外部表的区别"><span class="nav-number">3.1.3.</span> <span class="nav-text">内部表和外部表的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向表中添加数据"><span class="nav-number">3.1.4.</span> <span class="nav-text">向表中添加数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询表"><span class="nav-number">3.2.</span> <span class="nav-text">查询表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分区表"><span class="nav-number">3.3.</span> <span class="nav-text">分区表</span></a></li></ol></li></ol></div>
             
 
           </div>
