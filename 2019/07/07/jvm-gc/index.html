@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/images/java/jvm.png">
 <meta property="og:image" content="http://yoursite.com/images/java/recycle.png">
 <meta property="og:image" content="http://yoursite.com/images/java/heap.png">
-<meta property="og:updated_time" content="2019-07-09T06:39:56.227Z">
+<meta property="og:updated_time" content="2019-07-12T12:54:43.204Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HotSpot VM中的内存划分和GC算法">
 <meta name="twitter:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
@@ -428,13 +428,13 @@
 <li><p><strong>本地方法栈 (Native Method Statck)</strong>：调用C语言所用到的栈</p>
 <p><em>以上的是每个线程<strong>独有</strong>的内存区域，以下是线程<strong>共有</strong>的内存区</em></p>
 </li>
-<li><p><strong>堆区 (Heap)</strong>：存放 new 出来的对象，常量池</p>
+<li><p><strong>堆区 (Heap)</strong>：存放大多数 new 出来的对象 (其他情况：<strong>栈上分配</strong>和<strong>TLAB</strong>)，字符串常量池</p>
 </li>
-<li><p><strong>元空间 (MetaSpace)</strong>：存储已被加载的类的元数据，如：属性，方法，常量，静态变量，这部分内存不在JVM中，而是在本地内存</p>
+<li><p><strong>方法区 (Method Area)</strong>：存储已被加载的类的元数据，如：属性，方法，常量池，静态变量，这部分内存不在JVM中，而是在本地内存</p>
 </li>
 </ol>
-<p><strong>注：</strong> 在jdk1.7之前，方法区 Method Area 是 Heap 中的一块内存区用于存放类的元数据以及常量池 ，HotSpot 在 jdk1.8 中将方法区/永久代 (Method Area/PermGen) 移除，用元空间 (MetaSpace) 代替，MetaSpace 在本地内存中，默认没有最大空间限制，所以不易发生（大大减少了）OOM。移除永久代，一是为了和 JRockit 融合，JRockit 没有永久代的概念；二是永久代受参数大小的限制，参数在配置时也受到 JVM 设置内存大小的限制，导致在使用中可能出现内存溢出。当然，如果不设置 MetaSpace 的内存的上限则受到本地内存的限制</p>
-<p>​    HotSpot 在jdk1.7之后将常量池从方法区中分离到 Heap 中</p>
+<p><strong>注：</strong> 在jdk1.7之前，方法区 Method Area 用永久代 (PermGen) 的形式实现，它是 Heap 中的一块内存区，用于存放类的元数据以及常量池 ， jdk1.8 之后用元空间 (MetaSpace) 代替了永久代的形式去实现 Method Area ，MetaSpace 在本地内存中，默认没有最大空间限制，所以几乎不会发生（大大减少了）OOM。移除永久代，一是为了和 JRockit 融合，JRockit 没有永久代的概念；二是永久代受参数大小的限制，参数在配置时也受到 JVM 设置内存大小的限制，导致在使用中可能出现内存溢出。当然，如果不设置 MetaSpace 的内存的上限则受到本地内存的限制</p>
+<p>​    HotSpot 在jdk1.7之后将常量池从方法区中移动到 Heap 中</p>
 <h2 id="JVM-GC-要干啥"><a href="#JVM-GC-要干啥" class="headerlink" title="JVM GC 要干啥"></a>JVM GC 要干啥</h2><ol>
 <li>确定哪些内存要回收</li>
 <li>何时执行 GC</li>
@@ -488,6 +488,24 @@
 </ol>
 </blockquote>
 <p><em>垃圾收集器我还不是很懂啊，下一篇将具体写一下</em></p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h3><blockquote>
+<p>有些对象的作用域始终都在一个方法中，它们的生命周期和方法一样：从方法被调用到方法的结束，对于作用域不会逃逸出方法的对象，将对象分配到栈上，减少gc负担</p>
+<p>栈上分配要开启<strong>逃逸分析</strong>和<strong>标量替换</strong></p>
+</blockquote>
+<h3 id="TLAB-Thread-Local-Allocation-Buffer"><a href="#TLAB-Thread-Local-Allocation-Buffer" class="headerlink" title="TLAB(Thread Local Allocation Buffer)"></a>TLAB(Thread Local Allocation Buffer)</h3><blockquote>
+<p>TLAB(Thread Local Allocation Buffer)，线程本地分配缓冲区，为了缓解多个线程同时在堆上申请空间使得分配效率降低的问题。TLAB 是eden 区的一份空间，很小，JVM 默认会为每个线程分配一块 TLAB 空间，当线程需要创建对象（非栈上分配的对象）时，会先尝分配到试该线程的 TLAB 区，如果 TLAB 区不够再分配到堆中。由于 TLAB 区很小，当剩余空间小于一个阈值 (refill_waste) 中，需要为线程重新创建空的 TLAB，原来的 TLAB 则舍弃，被舍弃的 TLAB 即使有少许的剩余空间也无法分配对象</p>
+</blockquote>
+<h3 id="对象内存分配的两种方法"><a href="#对象内存分配的两种方法" class="headerlink" title="对象内存分配的两种方法"></a>对象内存分配的两种方法</h3><blockquote>
+<p>如何将一块指定大小的内存从堆中划分出来存储一个对象呢：</p>
+<ol>
+<li><p>碰撞指针 (Bump the Pointer)</p>
+<p>将 heap 的内存分成规整的两部分：已使用放在一边，空闲的放在另一边，中间放一个指针作为分界点，分配内存时将指针向空闲空间移动对象需要的大小</p>
+</li>
+<li><p>空闲列表 (Free List)</p>
+<p>如果堆的内存并不是规整的，已用内存和空闲内存是相互交错，就无法简单的使用碰撞指针了，需要维护一个列表，记录可用的内存块，分配时找到足够大的空间划分给对象，并更新列表中的记录</p>
+</li>
+</ol>
+</blockquote>
 
       
     </div>
@@ -556,6 +574,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/11/hbase/" rel="prev" title="hbase 的搭建和简单操作">
+                hbase 的搭建和简单操作 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -671,7 +693,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -693,7 +715,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">28</span>
+                <span class="site-state-item-count">29</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -771,7 +793,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hotspot-VM-内存区域的划分"><span class="nav-number">1.</span> <span class="nav-text">Hotspot VM 内存区域的划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-GC-要干啥"><span class="nav-number">2.</span> <span class="nav-text">JVM GC 要干啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哪些内存需要回收"><span class="nav-number">3.</span> <span class="nav-text">哪些内存需要回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">4.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mark-Sweep-标记清除算法"><span class="nav-number">4.1.</span> <span class="nav-text">Mark-Sweep 标记清除算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copying-拷贝复制"><span class="nav-number">4.2.</span> <span class="nav-text">Copying 拷贝复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mark-Compact-标记压缩"><span class="nav-number">4.3.</span> <span class="nav-text">Mark-Compact 标记压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分代的收集算法"><span class="nav-number">4.4.</span> <span class="nav-text">分代的收集算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC的种类与何时触发GC"><span class="nav-number">5.</span> <span class="nav-text">GC的种类与何时触发GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">6.</span> <span class="nav-text">垃圾收集器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hotspot-VM-内存区域的划分"><span class="nav-number">1.</span> <span class="nav-text">Hotspot VM 内存区域的划分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-GC-要干啥"><span class="nav-number">2.</span> <span class="nav-text">JVM GC 要干啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哪些内存需要回收"><span class="nav-number">3.</span> <span class="nav-text">哪些内存需要回收</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集算法"><span class="nav-number">4.</span> <span class="nav-text">垃圾收集算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Mark-Sweep-标记清除算法"><span class="nav-number">4.1.</span> <span class="nav-text">Mark-Sweep 标记清除算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Copying-拷贝复制"><span class="nav-number">4.2.</span> <span class="nav-text">Copying 拷贝复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mark-Compact-标记压缩"><span class="nav-number">4.3.</span> <span class="nav-text">Mark-Compact 标记压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分代的收集算法"><span class="nav-number">4.4.</span> <span class="nav-text">分代的收集算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GC的种类与何时触发GC"><span class="nav-number">5.</span> <span class="nav-text">GC的种类与何时触发GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">6.</span> <span class="nav-text">垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充"><span class="nav-number">7.</span> <span class="nav-text">补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#栈上分配"><span class="nav-number">7.1.</span> <span class="nav-text">栈上分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TLAB-Thread-Local-Allocation-Buffer"><span class="nav-number">7.2.</span> <span class="nav-text">TLAB(Thread Local Allocation Buffer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象内存分配的两种方法"><span class="nav-number">7.3.</span> <span class="nav-text">对象内存分配的两种方法</span></a></li></ol></li></ol></div>
             
 
           </div>
