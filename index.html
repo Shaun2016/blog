@@ -322,6 +322,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/hashmap/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/16/hashmap/" itemprop="url">java8 hashmap 的实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T12:09:24+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>哈希表是存储不连续主键的数据结构，如果主键是连续的，如[1,100]，可以直接将主键作为下标用数组存放。但是很多情况主键不是连续的，或者值很大，如学号(2013201320)，就要用哈希表存储。哈希表也是数组，只是存放时不是直接将主键作为下标，先通过散列函数计算应该放的位置，如：<code>n=k%m</code>，其中k是主键值，m是哈希表长度（数组长度），n为应该存放的位置。这样，n一定小于m，不会数组越界。但是可能发生冲突，即两个k计算的n一样，这样就需要有解决哈希冲突的策略。当需要查询时，先经过散列函数计算位置，如果主键值不是我们想要的，需要按照散列冲突去寻找主键。好的散列函数需要将主键在数组中分布的尽量均匀，一般数组长度取2的n次幂周围的素数</p>
+<p>HashMap 是很常用的集合类，用于存储键值对(Node<k,v>)。jdk1.7中hashmap用数组和链表实现，可是链表的查询效率低；在jdk1.8中hashmap使用数组+链表+红黑树的形式实现，当链表长度大于8时，会转成红黑树，提高了查询效率：O(n)到O(lgn)，本文对jdk1.8中hashmap实现中的几个有意思的细节进行叙述</k,v></p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/16/hashmap/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/DesignPattern/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/DesignPattern/" itemprop="url">Design Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T11:36:18+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h2 id="Strategy-策略模式"><a href="#Strategy-策略模式" class="headerlink" title="Strategy 策略模式"></a>Strategy 策略模式</h2><blockquote>
+<p>做一件事情有不同的执行方法时</p>
+<p>典型案例：不同类型对象的排序：Comparator<t> 接口</t></p>
+<p>对于自定义类的排序，排序的策略肯定不同，使用<code>Arrays.sort(T[] a, Comparator&lt;? super T&gt; c)</code>排序时需要将一个<code>Comparator</code>对象传入，可以建立一个类去实现<code>Comparator</code>接口，也可以用匿名内部类以及lambda表示式</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Cat[] cats = &#123;<span class="keyword">new</span> Cat(<span class="number">4</span>, <span class="number">5</span>), <span class="keyword">new</span> Cat(<span class="number">6</span>, <span class="number">2</span>), <span class="keyword">new</span> Cat(<span class="number">3</span>, <span class="number">8</span>)&#125;;</div><div class="line">Arrays.sort(cats, <span class="keyword">new</span> Comparator&lt;Cat&gt; () &#123;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Cat o1, Cat o2)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// lambda 表示式代替匿名内部类</span></div><div class="line">Arrays.sort(cats, (c1, c2)-&gt;&#123;</div><div class="line">	<span class="keyword">return</span> c1.getWeight() - c2.getWeight();</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Factory-Method-amp-Abstract-Method-工厂方法和抽象工厂"><a href="#Factory-Method-amp-Abstract-Method-工厂方法和抽象工厂" class="headerlink" title="Factory Method &amp; Abstract Method 工厂方法和抽象工厂"></a>Factory Method &amp; Abstract Method 工厂方法和抽象工厂</h2><h2 id="Mediator-调停者"><a href="#Mediator-调停者" class="headerlink" title="Mediator 调停者"></a>Mediator 调停者</h2><blockquote>
+<p>消息中间件</p>
+</blockquote>
+<h2 id="Decorator-装饰器"><a href="#Decorator-装饰器" class="headerlink" title="Decorator 装饰器"></a>Decorator 装饰器</h2><h2 id="Chain-Of-Responsibility-责任链"><a href="#Chain-Of-Responsibility-责任链" class="headerlink" title="Chain Of Responsibility 责任链"></a>Chain Of Responsibility 责任链</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/hbase/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1550,315 +1827,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/01/sklearn-kmeans/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang JM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShaunJM's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/01/sklearn-kmeans/" itemprop="url">使用sklearn的kmeans方法进行聚类</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-01T15:30:40+08:00">
-                2019-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mechine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">mechine learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>就是代码，也比一点不会强…</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</div><div class="line"><span class="keyword">from</span> sklearn.datasets.samples_generator <span class="keyword">import</span> make_blobs</div><div class="line">X = []	<span class="comment"># 二维数组</span></div><div class="line"><span class="keyword">with</span> open(<span class="string">'./GraphData/small_sample.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f.readlines():</div><div class="line">        X.append([int(x) <span class="keyword">for</span> x <span class="keyword">in</span> i.split()])</div><div class="line">X = np.asarray(X)</div><div class="line"><span class="comment"># n_clusters 为聚类个数，y_pred 为聚类结果</span></div><div class="line">y_pred = KMeans(n_clusters=<span class="number">2</span>, random_state=<span class="number">9</span>).fit_predict(X)</div><div class="line">print(y_pred)    <span class="comment">#输出： [1 1 1 1 1 1 1 1 0 0 0 0 0]</span></div><div class="line">plt.scatter(X[:, <span class="number">0</span>], X[:, <span class="number">1</span>], c=y_pred)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/01/sklearn-kmeans/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/word2vec_CBOW/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang JM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShaunJM's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/19/word2vec_CBOW/" itemprop="url">word2vec的简单理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T16:20:56+08:00">
-                2019-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mechine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">mechine learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍</p>
-</blockquote>
-<h2 id="词的向量表示"><a href="#词的向量表示" class="headerlink" title="词的向量表示"></a>词的向量表示</h2><ul>
-<li>one-hot：语料库的词项个数为m，则one-hot表示的长度为m，只有一个位置是1，其余都是0</li>
-<li>distributed representation：假设每个词项有d个特征，d远小于m，用d维向量表示每个词项</li>
-</ul>
-<h2 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h2><blockquote>
-<p>CBOW 是 word2vec 中使用的浅层神经网络模型，语料库中词项和词项的上下文做为样本，Sample(Context(x), x)，对模型的参数进行训练，得到每个词项的向量表示</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/19/word2vec_CBOW/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1907,7 +1880,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">42</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1929,7 +1902,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-count">30</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/16/hashmap/</loc>
+    
+    <lastmod>2019-07-16T06:56:48.440Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/15/DesignPattern/</loc>
+    
+    <lastmod>2019-07-16T04:08:56.530Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/11/hbase/</loc>
     
     <lastmod>2019-07-12T12:55:14.862Z</lastmod>
