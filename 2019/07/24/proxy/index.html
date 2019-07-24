@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hadoop," />
+  <meta name="keywords" content="java,proxy," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="在多台服务器上配置Hadoop 启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070">
-<meta name="keywords" content="Hadoop">
+<meta name="description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
+<meta name="keywords" content="java,proxy">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hadoop hdfs">
-<meta property="og:url" content="http://yoursite.com/2018/02/06/hadoop-hdfs/index.html">
+<meta property="og:title" content="java proxy 代理模式">
+<meta property="og:url" content="http://yoursite.com/2019/07/24/proxy/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="在多台服务器上配置Hadoop 启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070">
+<meta property="og:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T13:27:04.924Z">
+<meta property="og:updated_time" content="2019-07-24T12:26:00.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hadoop hdfs">
-<meta name="twitter:description" content="在多台服务器上配置Hadoop 启动namenode和datanode   hadoop-daemon.sh start namenode(datanode)   在master上检测datanode   hdfs dfsadmin -report | more   在web页面观察hadoop集群情况   192.168.137.100:50070">
+<meta name="twitter:title" content="java proxy 代理模式">
+<meta name="twitter:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/06/hadoop-hdfs/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/07/24/proxy/"/>
 
 
 
 
 
-  <title>hadoop hdfs | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>java proxy 代理模式 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/hadoop-hdfs/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hadoop hdfs</h1>
+          <h1 class="post-title" itemprop="name headline">java proxy 代理模式</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T17:33:53+08:00">
-                2018-02-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T15:23:12+08:00">
+                2019-07-24
               </time>
             
 
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
-                    <span itemprop="name">Big Data</span>
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
                   </a>
                 </span>
 
@@ -411,49 +411,39 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="在多台服务器上配置Hadoop"><a href="#在多台服务器上配置Hadoop" class="headerlink" title="在多台服务器上配置Hadoop"></a>在多台服务器上配置Hadoop</h1><ul>
-<li>启动namenode和datanode</li>
-</ul>
-<blockquote>
-<p><code>hadoop-daemon.sh start namenode(datanode)</code></p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等</p>
+<p>代理模式分为静态代理和动态代理</p>
 </blockquote>
-<ul>
-<li>在master上检测datanode</li>
-</ul>
-<blockquote>
-<p><code>hdfs dfsadmin -report | more</code></p>
-</blockquote>
-<ul>
-<li>在web页面观察hadoop集群情况</li>
-</ul>
-<blockquote>
-<p><code>192.168.137.100:50070</code></p>
+<h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><blockquote>
+<p>代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="集中管理Slaves"><a href="#集中管理Slaves" class="headerlink" title="集中管理Slaves"></a>集中管理Slaves</h1><blockquote>
-<p>在<code>/usr/local/hadoop/etc/hadoop</code>下的slaves文件中添加slaves的主机名，在master中就可以管理其中的所有slaves，如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"I'm a car, I'm running..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogProxy</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Movable movable;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LogProxy</span><span class="params">(Movable movable)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.movable = movable;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// ...logs</span></div><div class="line">        <span class="keyword">this</span>.movable.move();</div><div class="line">    	<span class="comment">// ...logs</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// similarity, another proxy just like LogProxy</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthProxy</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Movable movable;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="keyword">new</span> LogProxy(</div><div class="line">        <span class="keyword">new</span> AuthProxy(</div><div class="line">            <span class="keyword">new</span> Tank()</div><div class="line">        )</div><div class="line">    ).move();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><blockquote>
+<p>代理不确定类型的对象，生成代理的两种方式：</p>
+<ul>
+<li>jdk 的动态代理，必须让被代理的类实现某个接口；</li>
+<li>cglib 生成代理</li>
+</ul>
+<p>二者都是使用 ASM 操作二进制文件修改类的属性和方法</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">slave1</div><div class="line">slave2</div><div class="line">slave3</div></pre></td></tr></table></figure>
+<h4 id="jdk-的动态代理的代理类"><a href="#jdk-的动态代理的代理类" class="headerlink" title="jdk 的动态代理的代理类"></a>jdk 的动态代理的代理类</h4><blockquote>
+<p>被代理类一定要实现某个接口，下面先定义接口<code>Actor</code>和被代理类<code>Singer</code></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sing</span><span class="params">()</span></span>;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dance</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singer</span> <span class="keyword">implements</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sing</span><span class="params">(String song, <span class="keyword">int</span> volume)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"I'm a singer, I can sing "</span> + song + <span class="string">"at volume "</span> + volume);</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dance</span><span class="params">()</span> </span>&#123;<span class="comment">/*...*/</span>&#125;;</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dancer</span> <span class="keyword">implements</span> <span class="title">Actor</span> </span>&#123;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>执行：<code>start-dfs.sh</code>，输入master, slave, secondaryNameNode的密码</p>
-<p>为了避免输入多次的密码，在 <code>/.ssh</code> 下执行 <code>ssh-keygen -t rsa</code></p>
-<p>回车三次，发现.ssh下生成两个文件：<code>id_ras</code> （私钥）和 <code>id_ras.pub</code>（公钥）</p>
-<p>从master发送公钥到master, slave1, slave2, slave3：<code>ssh-copy-id master</code>, <code>ssh-copy-id slave1</code>, <code>ssh-copy-id slave2</code>, <code>ssh-copy-id slave3</code> 以后<code>ssh IP</code> 就不用再输入密码了，再执行<code>start-dfs.sh</code>时就不用再次输入密码了</p>
+<p>单例的动态代理类，传入委托类(被代理类)，返回动态代理对象</p>
 </blockquote>
-<h1 id="hdfs文件系统"><a href="#hdfs文件系统" class="headerlink" title="hdfs文件系统"></a>hdfs文件系统</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><blockquote>
-<p><code>hadoop fs -ls</code>或<code>hdfs dfs -ls</code></p>
-<p>放置一个文件到hdfs中：<code>hadoop fs -put file /</code></p>
-<p>通过网页观察现象：<code>http://192.168.137.100:50070/explorer.html#/</code></p>
-<p>指令：</p>
-<p><code>hadoop fs -mkdir /dirname</code></p>
-<p><code>hadoop fs -text /filename</code> 查看文本文件内容</p>
-<p><code>hadoop fs -rm /filename</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActorInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ActorInvocationHandler</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ActorInvocationHandler singleton = <span class="keyword">new</span> ActorInvocationHandler();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Class tClass;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">createProxy</span><span class="params">(Class c)</span> </span>&#123;</div><div class="line">        tClass = c;</div><div class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(tClass.getClassLoader(),</div><div class="line">                                     tClass.getInterfaces(), singleton);</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">        System.out.println(<span class="string">"... start singing ..."</span>);</div><div class="line">        Object res = method.invoke(tClass.newInstance(), args);</div><div class="line">        System.out.println(<span class="string">"... end singing ..."</span>);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	Actor actor = (Actor) ActorInvocationHandler.createProxy(Dancer.class);</div><div class="line">    actor.dance();</div><div class="line">    Actor singer = (Actor) ActorInvocationHandler.createProxy(Singer.class);</div><div class="line">    singer.sing(<span class="string">"Always with you"</span>, <span class="number">5</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="cglib实现代理类"><a href="#cglib实现代理类" class="headerlink" title="cglib实现代理类"></a>cglib实现代理类</h4><blockquote>
+<p>对委托类不需要实现接口，但是委托类不能是 final</p>
 </blockquote>
-<h2 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h2><blockquote>
-<p>编写/hadoop/etc/hadoop/hdfs-site.xml</p>
-<p><em>eg:</em> 修改复制的个数为2份（默认为3份）：</p>
-</blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">value</span>&gt;</span>2<span class="tag">&lt;/<span class="name">value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingerLogInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">SingerLogInterceptor</span><span class="params">()</span> </span>&#123;&#125;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingerLogInterceptor interceptor = <span class="keyword">new</span> SingerLogInterceptor();</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Class targetClass;</div><div class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method, Object[] objects, MethodProxy methodProxy)</span> <span class="keyword">throws</span> Throwable </span>&#123;</div><div class="line">        System.out.println(<span class="string">"log start..."</span>);</div><div class="line">        Object result = methodProxy.invokeSuper(o, objects);</div><div class="line">        System.out.println(<span class="string">"log end..."</span>);</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getInstance</span><span class="params">(Class c)</span> </span>&#123;</div><div class="line">        targetClass = c;</div><div class="line">        Enhancer enhancer = <span class="keyword">new</span> Enhancer();</div><div class="line">        enhancer.setSuperclass(targetClass);</div><div class="line">        enhancer.setCallback(interceptor);</div><div class="line">        <span class="keyword">return</span> enhancer.create();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singer</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sing</span><span class="params">(String song, <span class="keyword">int</span> volume)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"I'm a singer, I can sing "</span> + song + <span class="string">"at volume "</span> + volume);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    Singer singer = (Singer) SingerLogInterceptor.getInstance(Singer.class);</div><div class="line">    singer.sing(<span class="string">"Always with you"</span>, <span class="number">5</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -500,7 +490,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/proxy/" rel="tag"># proxy</a>
           
         </div>
       
@@ -513,8 +505,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/05/hadoop-day1/" rel="next" title="hadoop配置环境及启动">
-                <i class="fa fa-chevron-left"></i> hadoop配置环境及启动
+              <a href="/2019/07/16/hashmap/" rel="next" title="java8 hashmap 的实现">
+                <i class="fa fa-chevron-left"></i> java8 hashmap 的实现
               </a>
             
           </div>
@@ -522,10 +514,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/08/java-hdfs/" rel="prev" title="java hdfs">
-                java hdfs <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -741,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在多台服务器上配置Hadoop"><span class="nav-number">1.</span> <span class="nav-text">在多台服务器上配置Hadoop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集中管理Slaves"><span class="nav-number">2.</span> <span class="nav-text">集中管理Slaves</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hdfs文件系统"><span class="nav-number">3.</span> <span class="nav-text">hdfs文件系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#指令"><span class="nav-number">3.1.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置参数"><span class="nav-number">3.2.</span> <span class="nav-text">配置参数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态代理"><span class="nav-number">1.</span> <span class="nav-text">静态代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态代理"><span class="nav-number">2.</span> <span class="nav-text">动态代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#jdk-的动态代理的代理类"><span class="nav-number">2.1.</span> <span class="nav-text">jdk 的动态代理的代理类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#cglib实现代理类"><span class="nav-number">2.2.</span> <span class="nav-text">cglib实现代理类</span></a></li></ol></li></ol></div>
             
 
           </div>
