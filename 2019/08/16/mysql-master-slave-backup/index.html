@@ -102,10 +102,14 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-16T07:02:17.212Z">
+<meta property="og:image" content="http://yoursite.com/images/mysql/master_status.png">
+<meta property="og:image" content="http://yoursite.com/images/mysql/slave_status.png">
+<meta property="og:image" content="http://yoursite.com/images/mysql/slave_status2.png">
+<meta property="og:updated_time" content="2019-08-16T07:12:39.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql 主从备份">
 <meta name="twitter:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求">
+<meta name="twitter:image" content="http://yoursite.com/images/mysql/master_status.png">
 
 
 
@@ -440,7 +444,7 @@
 <h3 id="查看主库日志文件"><a href="#查看主库日志文件" class="headerlink" title="查看主库日志文件"></a>查看主库日志文件</h3><blockquote>
 <p>在主库DBMS中执行：<code>show master status;</code>，查看日志文件名</p>
 </blockquote>
-<p><img src="" alt="/images/mysql/master_status.png"></p>
+<p><img src="/images/mysql/master_status.png" alt="master status"></p>
 <h3 id="配置主库信息"><a href="#配置主库信息" class="headerlink" title="配置主库信息"></a>配置主库信息</h3><blockquote>
 <p>进入DBMS：<code>mysql -uroot -proot</code> ，先停止slave功能：<code>stop slave;</code>，将主库的ip或域名，主库提供的对应从库的用户名密码，日志文件（上图中的文件名）输入到主库信息中：</p>
 </blockquote>
@@ -451,8 +455,8 @@
 <h3 id="查看slave情况"><a href="#查看slave情况" class="headerlink" title="查看slave情况"></a>查看slave情况</h3><blockquote>
 <p>执行<code>show slave status \G;</code> 查看slave连接情况：</p>
 </blockquote>
-<p><img src="" alt="\images\mysql\slave_status.png"></p>
-<p><img src="" alt="\images\mysql\slave_status1.png"></p>
+<p><img src="\images\mysql\slave_status.png" alt="slave status"></p>
+<p><img src="\images\mysql\slave_status2.png" alt="slave status"></p>
 <blockquote>
 <p>图二中没有错误就是连接成功，且没有执行错误的sql语句</p>
 </blockquote>
