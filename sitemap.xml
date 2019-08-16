@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2019/07/24/proxy/</loc>
+    <loc>http://yoursite.com/2019/08/16/mysql-master-slave-backup/</loc>
     
-    <lastmod>2019-07-24T12:26:00.216Z</lastmod>
+    <lastmod>2019-08-16T07:02:17.212Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/18/singleton/</loc>
+    
+    <lastmod>2019-07-29T05:32:08.025Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/07/15/DesignPattern/</loc>
     
-    <lastmod>2019-07-24T07:20:23.113Z</lastmod>
+    <lastmod>2019-07-26T14:23:39.381Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/24/proxy/</loc>
+    
+    <lastmod>2019-07-24T12:26:00.216Z</lastmod>
     
   </url>
   
@@ -159,13 +173,6 @@
     <loc>http://yoursite.com/2018/07/18/producter-consumer/</loc>
     
     <lastmod>2018-08-22T15:43:35.907Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/08/18/singleton/</loc>
-    
-    <lastmod>2018-08-19T14:08:54.639Z</lastmod>
     
   </url>
   
