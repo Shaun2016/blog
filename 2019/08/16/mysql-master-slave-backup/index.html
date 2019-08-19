@@ -94,21 +94,21 @@
 
 
 
-<meta name="description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求">
+<meta name="description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库除了保障了数据的安全性，还可以做读写分离，从库负责读请求，主库负责写请求">
 <meta name="keywords" content="mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql 主从备份">
 <meta property="og:url" content="http://yoursite.com/2019/08/16/mysql-master-slave-backup/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求">
+<meta property="og:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库除了保障了数据的安全性，还可以做读写分离，从库负责读请求，主库负责写请求">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/mysql/master_status.png">
 <meta property="og:image" content="http://yoursite.com/images/mysql/slave_status.png">
 <meta property="og:image" content="http://yoursite.com/images/mysql/slave_status2.png">
-<meta property="og:updated_time" content="2019-08-16T07:12:39.104Z">
+<meta property="og:updated_time" content="2019-08-19T04:14:15.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql 主从备份">
-<meta name="twitter:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求">
+<meta name="twitter:description" content="概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库除了保障了数据的安全性，还可以做读写分离，从库负责读请求，主库负责写请求">
 <meta name="twitter:image" content="http://yoursite.com/images/mysql/master_status.png">
 
 
@@ -416,7 +416,7 @@
 
       
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
-<p>概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库还可以做读写分离，从库负责读请求，主库负责写请求</p>
+<p>概述：在两台虚拟机master和slave中安装相同版本的 mysql，在master中的mysql做为主库，slave中的mysql做为从库，对主库和从库配置，从库可以从主库的日志文件中读取SQL语句并执行，从库中的数据就和主库中一致，到达备份的目的；主从库除了保障了数据的安全性，还可以做读写分离，从库负责读请求，主库负责写请求</p>
 </blockquote>
 <a id="more"></a>
 <h2 id="主库配置"><a href="#主库配置" class="headerlink" title="主库配置"></a>主库配置</h2><h3 id="修改主库配置文件"><a href="#修改主库配置文件" class="headerlink" title="修改主库配置文件"></a>修改主库配置文件</h3><blockquote>
@@ -435,7 +435,7 @@
 </blockquote>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">grant all privileges on *.* to 'username'@'ip' identified by 'password' with grant option;</div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>其中，<strong>ip</strong> 是从库所在服务器的ip地址或域名，执行完，就向 <em>mysql</em> 库的 <em>user</em> 表中添加了一个用户，对应从库的 ip 和使用的用户</p>
+<p>其中，<strong>ip</strong> 是从库所在服务器的ip地址(<strong>注：经测试，不能是域名</strong>)，执行完，就向 <em>mysql</em> 库的 <em>user</em> 表中添加了一个用户，对应从库的 ip 和使用的用户</p>
 </blockquote>
 <h2 id="从库配置"><a href="#从库配置" class="headerlink" title="从库配置"></a>从库配置</h2><h3 id="修改-slave-配置文件"><a href="#修改-slave-配置文件" class="headerlink" title="修改 slave 配置文件"></a>修改 slave 配置文件</h3><blockquote>
 <p><code>vi /etc/my.cnf</code>，添加<code>server-id = 2</code>，这里要大于主库的<code>server-id</code>即可，不要和其他从库重复</p>
@@ -448,7 +448,7 @@
 <h3 id="配置主库信息"><a href="#配置主库信息" class="headerlink" title="配置主库信息"></a>配置主库信息</h3><blockquote>
 <p>进入DBMS：<code>mysql -uroot -proot</code> ，先停止slave功能：<code>stop slave;</code>，将主库的ip或域名，主库提供的对应从库的用户名密码，日志文件（上图中的文件名）输入到主库信息中：</p>
 </blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">change master to master_host='master', master_user='slave', </div><div class="line">master_passowrd='slave', master_log_file='master_log.000002';</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">change master to master_host=&apos;master&apos;, master_user=&apos;slave&apos;, </div><div class="line">master_passowrd=&apos;slave&apos;, master_log_file=&apos;master_log.000002&apos;;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>执行完，开启slave：<code>start slave;</code></p>
 </blockquote>
@@ -542,6 +542,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/17/mycat-sub-library-and-rw-separation/" rel="prev" title="mycat 表分库与读写分离">
+                mycat 表分库与读写分离 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -657,7 +661,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -679,7 +683,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

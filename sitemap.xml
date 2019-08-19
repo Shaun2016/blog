@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/17/mycat-sub-library-and-rw-separation/</loc>
+    
+    <lastmod>2019-08-19T16:37:21.210Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/16/mysql-master-slave-backup/</loc>
     
-    <lastmod>2019-08-16T07:12:39.104Z</lastmod>
+    <lastmod>2019-08-19T04:14:15.266Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/07/24/proxy/</loc>
+    
+    <lastmod>2019-08-16T07:40:08.554Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2019/07/15/DesignPattern/</loc>
     
     <lastmod>2019-07-26T14:23:39.381Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/24/proxy/</loc>
-    
-    <lastmod>2019-07-24T12:26:00.216Z</lastmod>
     
   </url>
   

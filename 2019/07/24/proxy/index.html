@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
+<meta name="description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理">
 <meta name="keywords" content="java,proxy">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java proxy 代理模式">
 <meta property="og:url" content="http://yoursite.com/2019/07/24/proxy/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
+<meta property="og:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-24T12:26:00.216Z">
+<meta property="og:updated_time" content="2019-08-16T07:40:08.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java proxy 代理模式">
-<meta name="twitter:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理  静态代理 代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口">
+<meta name="twitter:description" content="代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等 代理模式分为静态代理和动态代理">
 
 
 
@@ -415,10 +415,10 @@
 <p>代理模式：当用户不想直接访问对象，而是通过代理类来访问对象，代理类可以帮助用户包装，加工对象，比如学校想购买一批电脑，学校不直接和电脑厂商联系，而是通过销售人员，销售人员帮学校给电脑装指定的操作系统、驱动、杀毒办公软件等</p>
 <p>代理模式分为静态代理和动态代理</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="静态代理"><a href="#静态代理" class="headerlink" title="静态代理"></a>静态代理</h3><blockquote>
 <p>代理确定类型的对象，不同的代理实现同一个接口，代理内部聚合接口类型的属性，可以将代理之间相互嵌套，被代理对象也实现相同的接口</p>
 </blockquote>
-<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"I'm a car, I'm running..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogProxy</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Movable movable;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LogProxy</span><span class="params">(Movable movable)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.movable = movable;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// ...logs</span></div><div class="line">        <span class="keyword">this</span>.movable.move();</div><div class="line">    	<span class="comment">// ...logs</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// similarity, another proxy just like LogProxy</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthProxy</span> <span class="keyword">implements</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Movable movable;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">//...</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Movable</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="keyword">new</span> LogProxy(</div><div class="line">        <span class="keyword">new</span> AuthProxy(</div><div class="line">            <span class="keyword">new</span> Tank()</div><div class="line">        )</div><div class="line">    ).move();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><blockquote>
@@ -633,7 +633,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">44</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -655,7 +655,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">32</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
