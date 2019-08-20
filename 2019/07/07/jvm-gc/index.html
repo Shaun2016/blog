@@ -97,7 +97,7 @@
 <meta name="description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
 <meta name="keywords" content="jvm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HotSpot VM中的内存划分和GC算法">
+<meta property="og:title" content="HotSpot VM的内存模型和GC算法">
 <meta property="og:url" content="http://yoursite.com/2019/07/07/jvm-gc/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
@@ -105,9 +105,9 @@
 <meta property="og:image" content="http://yoursite.com/images/java/jvm.png">
 <meta property="og:image" content="http://yoursite.com/images/java/recycle.png">
 <meta property="og:image" content="http://yoursite.com/images/java/heap.png">
-<meta property="og:updated_time" content="2019-07-12T12:54:43.204Z">
+<meta property="og:updated_time" content="2019-08-20T14:49:48.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HotSpot VM中的内存划分和GC算法">
+<meta name="twitter:title" content="HotSpot VM的内存模型和GC算法">
 <meta name="twitter:description" content="JVM GC (Garbage Collection 垃圾收集) 可以自动的回收内存，保证 JVM 中的内存空间充足，防止内存泄漏溢出。JVM 帮助程序员去管理内存有很大好处：1. 防止没有回收不用的对象的内存而产生内存泄漏；2.防止人为的回收两次回收了错误的内存。本文记录了 Oracle 的 JVM HotSpot 的内存区域划分和垃圾收集算法">
 <meta name="twitter:image" content="http://yoursite.com/images/java/jvm.png">
 
@@ -145,7 +145,7 @@
 
 
 
-  <title>HotSpot VM中的内存划分和GC算法 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>HotSpot VM的内存模型和GC算法 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -343,7 +343,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HotSpot VM中的内存划分和GC算法</h1>
+          <h1 class="post-title" itemprop="name headline">HotSpot VM的内存模型和GC算法</h1>
         
 
         <div class="post-meta">
@@ -693,7 +693,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

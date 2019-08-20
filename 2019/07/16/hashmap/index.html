@@ -97,16 +97,16 @@
 <meta name="description" content="前言 哈希表是存储不连续主键的数据结构，如果主键是连续的，如[1,100]，可以直接将主键作为下标用数组存放。但是很多情况主键不是连续的，或者值很大，如学号(2013201320)，就要用哈希表存储。哈希表也是数组，只是存放时不是直接将主键作为下标，先通过散列函数计算应该放的位置，如：n=k%m，其中k是主键值，m是哈希表长度（数组长度），n为应该存放的位置。这样，n一定小于m，不会数组越界。但是">
 <meta name="keywords" content="hashmap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java8 hashmap 的实现">
+<meta property="og:title" content="java8 hashmap 的几点细节">
 <meta property="og:url" content="http://yoursite.com/2019/07/16/hashmap/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="前言 哈希表是存储不连续主键的数据结构，如果主键是连续的，如[1,100]，可以直接将主键作为下标用数组存放。但是很多情况主键不是连续的，或者值很大，如学号(2013201320)，就要用哈希表存储。哈希表也是数组，只是存放时不是直接将主键作为下标，先通过散列函数计算应该放的位置，如：n=k%m，其中k是主键值，m是哈希表长度（数组长度），n为应该存放的位置。这样，n一定小于m，不会数组越界。但是">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/java/hash.png">
 <meta property="og:image" content="http://yoursite.com/images/java/kuorong.png">
-<meta property="og:updated_time" content="2019-07-16T06:56:48.440Z">
+<meta property="og:updated_time" content="2019-08-20T14:48:18.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java8 hashmap 的实现">
+<meta name="twitter:title" content="java8 hashmap 的几点细节">
 <meta name="twitter:description" content="前言 哈希表是存储不连续主键的数据结构，如果主键是连续的，如[1,100]，可以直接将主键作为下标用数组存放。但是很多情况主键不是连续的，或者值很大，如学号(2013201320)，就要用哈希表存储。哈希表也是数组，只是存放时不是直接将主键作为下标，先通过散列函数计算应该放的位置，如：n=k%m，其中k是主键值，m是哈希表长度（数组长度），n为应该存放的位置。这样，n一定小于m，不会数组越界。但是">
 <meta name="twitter:image" content="http://yoursite.com/images/java/hash.png">
 
@@ -144,7 +144,7 @@
 
 
 
-  <title>java8 hashmap 的实现 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>java8 hashmap 的几点细节 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -342,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java8 hashmap 的实现</h1>
+          <h1 class="post-title" itemprop="name headline">java8 hashmap 的几点细节</h1>
         
 
         <div class="post-meta">
@@ -625,7 +625,7 @@ x\%y=x\&(y-1),y=2^n</script><h3 id="扩容时的重定位"><a href="#扩容时�
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">45</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
