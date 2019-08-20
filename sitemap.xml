@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/20/my-resume/</loc>
+    
+    <lastmod>2019-08-20T14:11:37.460Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/17/mycat-sub-library-and-rw-separation/</loc>
     
     <lastmod>2019-08-19T16:37:21.210Z</lastmod>
