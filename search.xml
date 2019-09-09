@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[java 多线程]]></title>
+    <url>%2F2019%2F09%2F09%2Fjava-threads%2F</url>
+    <content type="text"><![CDATA[Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车 Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一 12345678910111213141516171819202122232425262728public class CarPark &#123; public static void main(String[] args) &#123; BlockingQueue&lt;Integer&gt; parks = new LinkedBlockingQueue&lt;&gt;(5); for (int i=0; i&lt;5; i++) parks.offer(i); Semaphore semaphore = new Semaphore(5); List&lt;Thread&gt; list = new ArrayList&lt;&gt;(); for (int i=0; i&lt;10; i++) &#123; list.add(new Thread(()-&gt;&#123; try &#123; // 占用车位 semaphore.acquire(); int parkNum = parks.take(); System.out.println(parkNum); Thread.sleep(2000); // 释放车位 parks.offer(parkNum); semaphore.release(); &#125; catch (Exception e) &#123; e.printStackTrace(); &#125; &#125;)); &#125; for (Thread t : list) &#123; t.start(); &#125; &#125;&#125; ThreadLocal 的应用场景与使用实例 有三个用户，服务器要为每个登陆的用户创建一个线程，如果当天登陆了就将登陆次数加一； ThreadLocal可以让共享变量对每个线程都是内部的，各个线程之间的是相互独立的，不会相互影响；实现原理简单的说：是ThreadLocal内有一个线程安全的 map，线程的 id 作为 key，实例对象为 value； 12345678910111213141516171819202122public class LoginTimeLogs &#123; private static ThreadLocal&lt;Integer&gt; loginTimeInMonth = new ThreadLocal&lt;Integer&gt;() &#123; @Override protected Integer initialValue() &#123; return Integer.valueOf(0); &#125; &#125;; public static void main(String[] args) &#123; for (int i=0; i&lt;3; i++) &#123; new Thread(()-&gt;&#123; // 假设每个用户都是每天都登陆 for (int j=1; j&lt;=7; j++) &#123; loginTimeInMonth.set(loginTimeInMonth.get()+1); System.out.println(Thread.currentThread().getName() + " " + loginTimeInMonth.get()); &#125; &#125;, "t"+i).start(); &#125; &#125; &#125;]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+        <tag>Semaphore</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[mycat 表分库与读写分离]]></title>
     <url>%2F2019%2F08%2F17%2Fmycat-sub-library-and-rw-separation%2F</url>
     <content type="text"><![CDATA[分库分表，读写分离都是数据库层面的负载均衡策略，由于单节点数据库存在单点故障和响应瓶颈，人们希望数据库以集群的形式对外提供服务，实现高可用，为了管理集群数据库，产生了Mycat这款中间件 Mycat是阿里开发的开源的数据库分库分表中间件，mycat管理多节点的mysql，请求访问数据时，由mycat处理这条请求应该发送到哪个或哪些节点上执行操作，对外界就像访问单节点的 mysql 一样 MyCat 安装及配置安装 上传压缩包解压即可 配置server.xml 设计 mycat 服务端口号（默认8066），登陆名密码等，用户操作权限 schema.xml 设计逻辑库，逻辑表与实际库的映射关系： 12345678910111213141516171819&lt;?xml version="1.0"?&gt;&lt;!DOCTYPE mycat:schema SYSTEM "schema.dtd"&gt;&lt;mycat:schema xmlns:mycat="http://io.mycat/"&gt; &lt;schema name="TESTDB" checkSQLschema="false" sqlMaxLimit="100"&gt; &lt;table name="student" dataNode="dn1,dn2,dn3" rule="crc32slot" /&gt; &lt;/schema&gt; &lt;dataNode name="dn1" dataHost="localhost1" database="db1" /&gt; &lt;dataNode name="dn2" dataHost="localhost1" database="db2" /&gt; &lt;dataNode name="dn3" dataHost="localhost1" database="db3" /&gt; &lt;dataHost name="localhost1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100"&gt; &lt;heartbeat&gt;select user()&lt;/heartbeat&gt; &lt;writeHost host="hostM1" url="master:3306" user="root" password="root"&gt; &lt;readHost host="hostS1" url="slave:3306" user="root" password="root" /&gt; &lt;/writeHost&gt; &lt;/dataHost&gt;&lt;/mycat:schema&gt; TESTDB 是逻辑库(schema)，student 是逻辑表，将 student 表分片到三个 dataNode : dn1, dn2, dn3 中，对应三个实际库：db1, db2, db3，上图的配置中，三个实际库都在 dataHost : localhost1 中，对应主节点 master 及其从节点 slave。即在 mycat 中的 student 的数据实际上是存储在 master 节点的 mysql 中的三个库 db1, db2, db3 中的 student 表中，slave 节点为 master 的备份节点 rule.xml123&lt;function name="crc32slot" class="io.mycat.route.function.PartitionByCRC32PreSlot"&gt; &lt;property name="count"&gt;3&lt;/property&gt;&lt;!-- 要分片的数据库节点数量，必须指定，否则没法分片 --&gt; 启动和访问Mycat服务 将 mycat/bin 添加到环境变量，执行 mycat start 启动 mycat 服务，mycat status 查看服务状态，mysql -uroot -p123456 -hmaster -P8066 进入 mycat 的 DBMS，可以看打 mycat 中有一个库为 TESTDB，里面有一个表 student，而实际对应的mysql中并没有db1, db2, db3这三个库，需要手动创建 注：搭建 Mycat 分表和读写分离是建立在Mysql主备模式已经建立的基础上 分表 当一张表中字段数非常多时，会影响查询效率，我们希望将数据分散到多个表中，有两种方法：1. 可以放到一个库的不同表中，2. 也可以放到多个库的不同表中；放到多个库的不同表中可以令表名相同，方便管理，如下图： 手动建库 在 master 节点中创建库：create database db1, create database db2, create database db3 mycat中建表 虽然在 mycat 中能看到 TESTDB 库中已经有了 student 表，但这是在配置文件中读到的逻辑表，实际表没有创建，这里不需要到 master 中手动自己创建，在 mycat 中执行建表语句，会自动在对应的物理库中生成对应的表： 1create table student(id int not null primary key, name varchar(24), age int); 新增的 _slot 字段用来保存 crc32slot 分片算法为每条记录计算结果，用来散列记录到某个表中，避免迁移时重新计算 分表结果 在 MySQL 实际表中查询结果： 在 Mycat 的逻辑表中查询结果： 读写分离 Mycat 将读请求发送给多个从库处理，增删改请求发送给主库，达到负载均衡的效果 在 schema.xml 中配置 dataHost 的属性：（官网文档抄的，我还没有配置主备HA） balance=”1” 表示：全部的 readHost 与 stand by writeHost 参与 select 语句的负载均衡，简单的说，当双主双从模式(M1-&gt;S1，M2-&gt;S2，并且 M1 与 M2 互为主备)，正常情况下，M2,S1,S2 都参与 select 语句的负载均衡 或者：balance=”3” 表示：所有读请求随机的分发到 writerHost 对应的 readhost 执行，writerHost 不负担读压力 writeType=”0” 表示：所有写操作发送到配置的第一个 writeHost，第一个挂了切到还生存的第二个 writeHost 12345678&lt;dataHost name="localhost1" maxCon="1000" minCon="10" balance="1" writeType="0" dbType="mysql" dbDriver="native" switchType="1" slaveThreshold="100"&gt; &lt;heartbeat&gt;select user()&lt;/heartbeat&gt; &lt;writeHost host="hostM1" url="master:3306" user="root" password="root"&gt; &lt;readHost host="hostS1" url="slave:3306" user="root" password="root" /&gt; &lt;/writeHost&gt; &lt;/dataHost&gt; 为了验证读到的是从节点的数据，可以手动修改一条记录，使其与主结点中对应记录不同，如果结果是修改过的说明是从节点中读的 遇到问题 无法将查询请求发送到从节点 实验中读到的是主节点中的值，通过 logs/mycat.log 中发现 mycat 无法连接从节点：io.mycat.sqlengine.SQLJob.connectionError(SQLJob.java:114)) - can&#39;t get connection for sql :select user()，即 mycat 通过schema.xml 中的 readHost中从节点的 url，用户名密码去访问被拒绝；在从节点的 mysql 库的 user 表中添加用户： 12grant all privileges on *.* to 'username'@'ip' identified by 'password' with grant option;flush privileges; 其中：username=root, password=root, 第一次我将 ip 设为 master，经测试 mycat 依旧无法连接，改为 ip 后连接成功，可以查询到从库的数据 注：从库是为了备份主库数据和响应读请求的，可以使用更适合读请求的 MyISAM 存储引擎，从库数据要与主库保持一致，自己手动修改只是为了测试读写分离，如果在从库中修改了数据主库不会同步，造成不一致 Referencemycat中文指南手册]]></content>
@@ -8,8 +20,8 @@
         <category>mysql</category>
       </categories>
       <tags>
-        <tag>mycat</tag>
         <tag>mysql</tag>
+        <tag>mycat</tag>
       </tags>
   </entry>
   <entry>
@@ -178,7 +190,7 @@
   <entry>
     <title><![CDATA[枫叶城]]></title>
     <url>%2F2019%2F02%2F13%2Ffyl%2F</url>
-    <content type="text"><![CDATA[最近，开始练习杨昊昆的枫叶城，这首用到打板和拍弦的技巧十足需要练习一阵子。深秋的城中，枫叶在枝头，在风中，在地面，映红了这座城，在城楼高处，吉他的旋律，伴着起舞的枫叶，在簌簌的风中回荡，在寂静的空巷中飘扬。这，显然是一个人的城。这首曲子真的好听，弹琴的时候，才是我全身心投入的时候，只想沉浸在音乐中，全部的烦恼也都无暇顾及。做别的事呢，则经常是插着耳机，朋友笑着说，你真的很喜欢音乐啊。是啊，但是，不听歌做什么呢？在校园里用眼睛和腿就可以过马路，食堂吃饭只需要嘴巴，在电脑前工作音乐能让枯燥的时间过的快些。当旋律响起，枫叶出现在空中，走在古城中，青石板铺成的宽阔街道上，两侧空无一人的店铺，静止的门窗，时隐时现的风铃，也不觉得奇怪。朋友冲我笑了笑：来啦，我也向他问好，走到座位上，把耳机从手机上拔下，插在了电脑上。不知从什么时候开始，就喜欢把情绪埋在心底，脸上的表情也越来越少，即使在家里，和一年见几次面的父母，也不想让他们看出自己的喜怒哀乐。…喧嚣和嘈杂中，有能属于自己的安静，是多么珍贵，把寝室的窗户擦亮，静下心观察天空的颜色，远处高山的秋装，为自己能生活在温暖的室内而惬喜。嘴上说着要为自己活，要有独立的人格，可漫漫长夜，谁又能忍受得了呢。]]></content>
+    <content type="text"><![CDATA[最近，开始练习杨昊昆的枫叶城，这首用到打板和拍弦的技巧十足需要练习一阵子。深秋的城中，枫叶在枝头，在风中，在地面，映红了这座城，在城楼高处，吉他的旋律，伴着起舞的枫叶，在簌簌的风中回荡，在寂静的空巷中飘扬。这，显然是一个人的城。这首曲子真的好听，弹琴的时候，才是我全身心投入的时候，只想沉浸在音乐中，全部的烦恼也都无暇顾及。做别的事呢，则经常是插着耳机，朋友笑着说，你真的很喜欢音乐啊。是啊，但是，不听歌做什么呢？在校园里用眼睛和腿就可以过马路，食堂吃饭只需要嘴巴，在电脑前工作音乐能让枯燥的时间过的快些。当旋律响起，枫叶出现在空中，走在古城中，青石板铺成的宽阔街道上，两侧空无一人的店铺，静止的门窗，时隐时现的风铃，也不觉得奇怪。朋友冲我笑了笑：来啦，我也向他问好，走到座位上，把耳机从手机上拔下，插在了电脑上。不知从什么时候开始，就喜欢把情绪埋在心底，脸上的表情也越来越少，即使在家里，和一年见几次面的父母，也不想让他们看出自己的喜怒哀乐。…喧嚣和嘈杂中，有能属于自己的安静，是多么珍贵。]]></content>
       <categories>
         <category>随笔</category>
       </categories>

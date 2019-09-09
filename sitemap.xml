@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/09/09/java-threads/</loc>
+    
+    <lastmod>2019-09-09T14:21:51.282Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/13/fyl/</loc>
+    
+    <lastmod>2019-08-22T07:24:56.967Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/07/jvm-gc/</loc>
     
     <lastmod>2019-08-20T14:49:48.743Z</lastmod>
@@ -138,13 +152,6 @@
     <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
     
     <lastmod>2019-03-19T08:21:33.135Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/13/fyl/</loc>
-    
-    <lastmod>2019-03-13T00:52:17.595Z</lastmod>
     
   </url>
   
