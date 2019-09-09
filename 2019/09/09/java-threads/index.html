@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一 12">
+<meta name="description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一">
 <meta name="keywords" content="java,Semaphore">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java 多线程">
 <meta property="og:url" content="http://yoursite.com/2019/09/09/java-threads/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一 12">
+<meta property="og:description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-09T14:21:51.282Z">
+<meta property="og:updated_time" content="2019-09-09T14:43:54.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java 多线程">
-<meta name="twitter:description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一 12">
+<meta name="twitter:description" content="Semaphore的应用场景与使用实例 在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车  Semaphore 是信号量，内部有一个成员变量int state，调用acquire()方法，如果state大于0，将state减一，如果state不大于0，会阻塞，直到其他线程调用release()方法，将state加一">
 
 
 
@@ -415,6 +415,7 @@
 <p>在停车场中有5个停车位，现有十辆车想进入停车场，每辆车最多停留 1000 ms，每辆车随机抢占车位，但要保证一个车位只有一辆车</p>
 </blockquote>
 <p><code>Semaphore</code> 是信号量，内部有一个成员变量<code>int state</code>，调用<code>acquire()</code>方法，如果<code>state</code>大于0，将<code>state</code>减一，如果<code>state</code>不大于0，会阻塞，直到其他线程调用<code>release()</code>方法，将<code>state</code>加一</p>
+<a id="more"></a>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarPark</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		BlockingQueue&lt;Integer&gt; parks = <span class="keyword">new</span> LinkedBlockingQueue&lt;&gt;(<span class="number">5</span>);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">			parks.offer(i);</div><div class="line">		Semaphore semaphore = <span class="keyword">new</span> Semaphore(<span class="number">5</span>);</div><div class="line">		List&lt;Thread&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</div><div class="line">			list.add(<span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">				<span class="keyword">try</span> &#123;</div><div class="line">					<span class="comment">// 占用车位</span></div><div class="line">					semaphore.acquire();</div><div class="line">					<span class="keyword">int</span> parkNum = parks.take();</div><div class="line">					System.out.println(parkNum);</div><div class="line">					Thread.sleep(<span class="number">2000</span>);</div><div class="line">					<span class="comment">// 释放车位</span></div><div class="line">					parks.offer(parkNum);</div><div class="line">					semaphore.release();</div><div class="line">				&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">					e.printStackTrace();</div><div class="line">				&#125;</div><div class="line">			&#125;));</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span> (Thread t : list) &#123;</div><div class="line">			t.start();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="ThreadLocal-的应用场景与使用实例"><a href="#ThreadLocal-的应用场景与使用实例" class="headerlink" title="ThreadLocal 的应用场景与使用实例"></a>ThreadLocal 的应用场景与使用实例</h2><blockquote>
 <p>有三个用户，服务器要为每个登陆的用户创建一个线程，如果当天登陆了就将登陆次数加一；</p>
