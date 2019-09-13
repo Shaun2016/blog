@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/09/13/mysql-transaction-isolation/</loc>
+    
+    <lastmod>2019-09-13T10:39:41.889Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/09/09/java-threads/</loc>
     
     <lastmod>2019-09-09T14:43:54.678Z</lastmod>

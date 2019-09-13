@@ -415,60 +415,60 @@
 <h2 id="Windows系统安装和使用"><a href="#Windows系统安装和使用" class="headerlink" title="Windows系统安装和使用"></a>Windows系统安装和使用</h2><p>安装后会出现三个工具-Bash,-CMD,-GUI，只用-Bash就行</p>
 <p>在你想作为本地仓库的文件夹上（或进入文件夹空白处）鼠标右键，选择Git Bash here</p>
 <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="git-clone"><a href="#git-clone" class="headerlink" title="git clone"></a>git clone</h3><p>​    从远程主机复制文件到本地文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> &lt;链接&gt; &lt;本地路径&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git clone &lt;链接&gt; &lt;本地路径&gt;</div></pre></td></tr></table></figure>
 <p>​    &lt;本地路径&gt;省略即-Bash当前路径</p>
 <a id="more"></a>
 <h3 id="git-remote"><a href="#git-remote" class="headerlink" title="git remote"></a>git remote</h3><ol>
 <li><p>管理远程主机名：Git要求每个远程主机都必须指定一个主机名</p>
 <p>添加远程主机+命名</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote add &lt;主机名&gt; &lt;网址&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote add &lt;主机名&gt; &lt;网址&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>列出所有远程主机</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote</span></div><div class="line">origin</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote</div><div class="line">origin</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看远程主机名对应的网址</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote -v</span></div><div class="line">origin  https://... (fetch)</div><div class="line">origin  https://...(push)</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote -v</div><div class="line">origin  https://... (fetch)</div><div class="line">origin  https://...(push)</div></pre></td></tr></table></figure>
 </li>
 <li><p>删除主机</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote rm &lt;主机名&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote rm &lt;主机名&gt;</div></pre></td></tr></table></figure>
 </li>
 <li><p>改主机名</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="git-fetch"><a href="#git-fetch" class="headerlink" title="git fetch"></a>git fetch</h3><ol>
 <li><p>远程主机有更新（commit），将更新的取回本地。默认情况下git fetch 取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git fetch &lt;远程主机名&gt; &lt;分支名&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch &lt;远程主机名&gt; &lt;分支名&gt;</div></pre></td></tr></table></figure>
 <p><strong>eg</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git fetch origin master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch origin master</div></pre></td></tr></table></figure>
 </li>
 <li><p>查看远程分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git branch -r</span></div><div class="line">origin/master    #查看远程分支</div><div class="line"></div><div class="line"><span class="meta">$</span><span class="bash"> git branch -a  <span class="comment">#查看所有分支（包括本地）</span></span></div><div class="line">* master</div><div class="line">  remotes/origin/master</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git branch -r</div><div class="line">origin/master    #查看远程分支</div><div class="line"></div><div class="line"><span class="meta">$</span> git branch -a  #查看所有分支（包括本地）</div><div class="line">* master</div><div class="line">  remotes/origin/master</div></pre></td></tr></table></figure>
 </li>
 <li><p>在本地分支上合并远程分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git merge origin/master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git merge origin/master</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h3><ol>
 <li><p>取回远程主机某分支的更新，并与本地的制定分支合并</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</div></pre></td></tr></table></figure>
 <p>与当前分支合并冒号后可省略</p>
 <p><strong>eg</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git pull origin master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git pull origin master</div></pre></td></tr></table></figure>
 <p>相当于</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git fetch origin</span></div><div class="line"><span class="meta">$</span><span class="bash"> git merge origin/master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git fetch origin</div><div class="line"><span class="meta">$</span> git merge origin/master</div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h3 id="git-push"><a href="#git-push" class="headerlink" title="git push"></a>git push</h3><ol>
 <li><p>将本地分支的更新，推送到远程主机</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</div></pre></td></tr></table></figure>
 <p><strong>eg</strong></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git push origin master:master</span></div><div class="line"><span class="meta">#</span><span class="bash">等同于</span></div><div class="line"><span class="meta">$</span><span class="bash"> git push origin master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push origin master:master</div><div class="line"><span class="meta">#</span>等同于</div><div class="line"><span class="meta">$</span> git push origin master</div></pre></td></tr></table></figure>
 <p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。</p>
 <p>上面命令表示，将本地的master分支推送到origin主机的master分支。</p>
 </li>
 <li><p>省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span><span class="bash"> git push origin :master</span></div><div class="line"><span class="meta">#</span><span class="bash"> 等同于</span></div><div class="line"><span class="meta">$</span><span class="bash"> git push origin --delete master</span></div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git push origin :master</div><div class="line"><span class="meta">#</span> 等同于</div><div class="line"><span class="meta">$</span> git push origin --delete master</div></pre></td></tr></table></figure>
 <p>上面命令表示删除origin主机的master分支</p>
 <p>更详细资料请参照：<a href="https://www.git-scm.com/book/en/v2" target="_blank" rel="external">https://www.git-scm.com/book/en/v2</a></p>
 </li>
@@ -660,7 +660,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -682,7 +682,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-count">35</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

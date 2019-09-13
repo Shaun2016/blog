@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo gitment," />
+  <meta name="keywords" content="mysql,transaction," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="如果你的博客使用 github pages 提供的服务，just like me，想添加评论功能，使用 gitment 是最佳的选择，通过 gitment 发表评论就是在 github 仓库创建 Issues， 配置过程十分简单  注册 github Oauth 应用程序 首先，注册OAuth Application（请点击） Homepage URL 和 Authorization callb">
-<meta name="keywords" content="hexo gitment">
+<meta name="description" content="事物的隔离级别    事务的隔离级别 脏读 不可重复读 幻读     读未提交 (READ UNCOMMITTED) √ √ √   读已提交 (READ COMMITTED)  √ √   可重复读 (REPEATABLE READ)   √   串行化 (SERIALIZABLE)">
+<meta name="keywords" content="mysql,transaction">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为 github pages + hexo 博客添加 gitment 评论功能">
-<meta property="og:url" content="http://yoursite.com/2019/06/04/gitment/index.html">
+<meta property="og:title" content="mysql 事务隔离级别与锁的使用">
+<meta property="og:url" content="http://yoursite.com/2019/09/13/mysql-transaction-isolation/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="如果你的博客使用 github pages 提供的服务，just like me，想添加评论功能，使用 gitment 是最佳的选择，通过 gitment 发表评论就是在 github 仓库创建 Issues， 配置过程十分简单  注册 github Oauth 应用程序 首先，注册OAuth Application（请点击） Homepage URL 和 Authorization callb">
+<meta property="og:description" content="事物的隔离级别    事务的隔离级别 脏读 不可重复读 幻读     读未提交 (READ UNCOMMITTED) √ √ √   读已提交 (READ COMMITTED)  √ √   可重复读 (REPEATABLE READ)   √   串行化 (SERIALIZABLE)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-05T05:53:31.374Z">
+<meta property="og:updated_time" content="2019-09-13T10:39:41.889Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="为 github pages + hexo 博客添加 gitment 评论功能">
-<meta name="twitter:description" content="如果你的博客使用 github pages 提供的服务，just like me，想添加评论功能，使用 gitment 是最佳的选择，通过 gitment 发表评论就是在 github 仓库创建 Issues， 配置过程十分简单  注册 github Oauth 应用程序 首先，注册OAuth Application（请点击） Homepage URL 和 Authorization callb">
+<meta name="twitter:title" content="mysql 事务隔离级别与锁的使用">
+<meta name="twitter:description" content="事物的隔离级别    事务的隔离级别 脏读 不可重复读 幻读     读未提交 (READ UNCOMMITTED) √ √ √   读已提交 (READ COMMITTED)  √ √   可重复读 (REPEATABLE READ)   √   串行化 (SERIALIZABLE)">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/04/gitment/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/09/13/mysql-transaction-isolation/"/>
 
 
 
 
 
-  <title>为 github pages + hexo 博客添加 gitment 评论功能 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>mysql 事务隔离级别与锁的使用 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -322,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/04/gitment/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/13/mysql-transaction-isolation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -339,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">为 github pages + hexo 博客添加 gitment 评论功能</h1>
+          <h1 class="post-title" itemprop="name headline">mysql 事务隔离级别与锁的使用</h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-04T14:20:59+08:00">
-                2019-06-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-13T11:45:15+08:00">
+                2019-09-13
               </time>
             
 
@@ -374,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">hexo</span>
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
                   </a>
                 </span>
 
@@ -411,39 +411,61 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
-<p>如果你的博客使用 <strong>github pages </strong>提供的服务，just like me，想添加评论功能，使用 gitment 是最佳的选择，通过 gitment 发表评论就是在 github 仓库创建 Issues， 配置过程十分简单</p>
-</blockquote>
-<h2 id="注册-github-Oauth-应用程序"><a href="#注册-github-Oauth-应用程序" class="headerlink" title="注册 github Oauth 应用程序"></a>注册 github Oauth 应用程序</h2><blockquote>
-<p>首先，<a href="https://github.com/settings/applications/new" target="_blank" rel="external">注册OAuth Application（请点击）</a></p>
-<p>Homepage URL 和 Authorization callback URL 为你的博客地址：如 <a href="https://shaun2016.github.io/" target="_blank" rel="external">https://shaun2016.github.io/</a></p>
-<p>注册完成后可以得到 Client ID 和 Clint Secret</p>
-</blockquote>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h2 id="事物的隔离级别"><a href="#事物的隔离级别" class="headerlink" title="事物的隔离级别"></a>事物的隔离级别</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>事务的隔离级别</th>
+<th>脏读</th>
+<th>不可重复读</th>
+<th>幻读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读未提交 (READ UNCOMMITTED)</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>读已提交 (READ COMMITTED)</td>
+<td></td>
+<td>√</td>
+<td>√</td>
+</tr>
+<tr>
+<td>可重复读 (REPEATABLE READ)</td>
+<td></td>
+<td></td>
+<td>√</td>
+</tr>
+<tr>
+<td>串行化 (SERIALIZABLE)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
 <a id="more"></a>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><blockquote>
-<p>在 <strong>主题</strong> 的配置文件 <strong>_config.yml </strong>中，添加：</p>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">gitment:</div><div class="line">  enable: true</div><div class="line">  mint: true</div><div class="line">  count: true</div><div class="line">  lazy: false</div><div class="line">  cleanly: false</div><div class="line">  github_user: 'detectiveHLH'</div><div class="line">  github_repo: 'detectiveHLH.github.io'</div><div class="line">  client_id: 'xxx'</div><div class="line">  client_secret: 'xxx'</div></pre></td></tr></table></figure>
-<blockquote>
-<p>其中后四项改为自己的</p>
-</blockquote>
-<h2 id="添加布局和样式"><a href="#添加布局和样式" class="headerlink" title="添加布局和样式"></a>添加布局和样式</h2><blockquote>
-<p>在主题目录下编辑：<code>themes\next\layout\_partials\comments.swig</code>（这个文件可能后缀名不同）修改如下：这里只显示一部分</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">&#123;% if page.comments %&#125;</div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"comments"</span> <span class="attr">id</span>=<span class="string">"comments"</span>&gt;</span></div><div class="line">    &#123;% if theme.gitment.enable %&#125;</div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"gitment_title"</span> <span class="attr">class</span>=<span class="string">"gitment_title"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">style</span>=<span class="string">"display:none"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://jjeejj.github.io/css/gitment.css"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://jjeejj.github.io/js/gitment.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-3.3.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        const myTheme = &#123;</span></div><div class="line"><span class="undefined">          render(state, instance) &#123;</span></div><div class="line"><span class="undefined">            const container = document.createElement('div');</span></div><div class="line"><span class="undefined">            container.lang = "en-US";</span></div><div class="line"><span class="undefined">            container.className = 'gitment-container gitment-root-container';</span></div><div class="line"><span class="undefined">            container.appendChild(instance.renderHeader(state, instance));</span></div><div class="line"><span class="undefined">            container.appendChild(instance.renderEditor(state, instance));</span></div><div class="line"><span class="undefined">            container.appendChild(instance.renderComments(state, instance));</span></div><div class="line"><span class="undefined">            container.appendChild(instance.renderFooter(state, instance));</span></div><div class="line"><span class="undefined">            return container;</span></div><div class="line"><span class="undefined">          &#125;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        function showGitment() &#123;</span></div><div class="line"><span class="undefined">          $("#gitment_title").attr("style", "display:none");</span></div><div class="line"><span class="undefined">          $("#container").attr("style", "").addClass("gitment_container");</span></div><div class="line"><span class="undefined">          var gitment = new Gitment(&#123;</span></div><div class="line"><span class="undefined">            id: decodeURI(window.location.pathname),</span></div><div class="line"><span class="undefined">            theme: myTheme,</span></div><div class="line"><span class="undefined">            owner: '&#123;&#123; theme.gitment.gitment_user &#125;&#125;',</span></div><div class="line"><span class="undefined">            repo: '&#123;&#123; theme.gitment.gitment_repo&#125;&#125;',</span></div><div class="line"><span class="undefined">            oauth: &#123;</span></div><div class="line"><span class="undefined">              client_id: '&#123;&#123; theme.gitment.client_id&#125;&#125;',</span></div><div class="line"><span class="undefined">              client_secret: '&#123;&#123; theme.gitment.client_secret &#125;&#125;'</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">          &#125;);</span></div><div class="line"><span class="undefined">          gitment.render('container');</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        showGitment();</span></div><div class="line"><span class="undefined">      </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    &#123;% elseif (theme.duoshuo and theme.duoshuo.shortname) or theme.duoshuo_shortname %&#125;</div><div class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ds-thread"</span> <span class="attr">data-thread-key</span>=<span class="string">"&#123;&#123; page.path &#125;&#125;"</span></span></div><div class="line"><span class="tag">           <span class="attr">data-title</span>=<span class="string">"&#123;&#123; page.title &#125;&#125;"</span> <span class="attr">data-url</span>=<span class="string">"&#123;&#123; page.permalink &#125;&#125;"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">      ...</div></pre></td></tr></table></figure>
-<blockquote>
-<p>我将 gitment 放在 if 条件的首位置，owner，repo，client_id，client_secret 四部分从配置文件读取，至此配置完毕</p>
-<p>在开始时也查阅如何实现博客的评论系统时，总结了一下几个主流的第三方服务分享给大家：</p>
-</blockquote>
+<p>查看提交方式：<code>select @@autocommit;</code> 改为手动提交：<code>set autocommit=0</code></p>
+<h3 id="读未提交"><a href="#读未提交" class="headerlink" title="读未提交"></a>读未提交</h3><p>首先开启两个会话，分别设置事物的隔离级别为读未提交：</p>
+<p><code>set session transaction isolation level read uncommitted;</code></p>
+<p>在一个会话中更新一个字段，并未提交，但是在另一个会话中可以看到更新的字段值，属于<strong>脏读</strong>；</p>
+<h3 id="读已提交"><a href="#读已提交" class="headerlink" title="读已提交"></a>读已提交</h3><p><code>set session transaction isolation level read committed;</code></p>
+<p>在一个会话中开启一个事务A：<code>begin</code>或<code>start transaction</code>，查询一个字段值，在另一个会话B中修改这个字段值并提交，如果在事务A中再次查询得到了B更新的值，则在一个事务中重复读结果不一致，属于<strong>不可重复读</strong></p>
+<h3 id="可重复读"><a href="#可重复读" class="headerlink" title="可重复读"></a>可重复读</h3><p><code>set session transaction isolation level repeatable read;</code></p>
+<p>可重复读保证了在一个事务中每次查询的结果都是一致的，只有将此次事务<code>commit;</code>后才能查询到变动的值；</p>
+<p>在一个会话中开启事务A，在另一个事务中开启事务B，A中插入id=4的记录并提交，B 中虽然读不到id=4的记录，但是B也插入 id=4 的记录时报错，发生<strong>幻读</strong></p>
+<h3 id="串行化"><a href="#串行化" class="headerlink" title="串行化"></a>串行化</h3><p><code>set session transaction isolation level serializable;</code></p>
+<h2 id="隔离性实现原理：锁"><a href="#隔离性实现原理：锁" class="headerlink" title="隔离性实现原理：锁"></a>隔离性实现原理：锁</h2><p>mysql 中，锁分为：</p>
 <ul>
-<li><a href="https://leancloud.cn/" target="_blank" rel="external">Valine</a>: 国内的服务，基于Leancloud，在我绑定域名的时候发现无法绑定 <em>*</em>.github.io，对于自己购买备案的域名很适合</li>
-<li><a href="https://www.hypercomments.com/" target="_blank" rel="external">Hypercomments</a>: 国外的，需要登录google账户，风格简约</li>
-<li><a href="https://www.livere.com/introduce" target="_blank" rel="external">来必力</a>: 韩国的服务，支持很多第三方登录</li>
+<li>共享锁（读锁）：对已经锁定的对象不能更新，可以读</li>
+<li>排它锁（写锁）：对已经锁定的对象不能读，也不能更新</li>
 </ul>
-<blockquote>
-<p>多说，友言的服务都关闭了，很可惜啊，对于如何通过 github pages 搭建个人博客感兴趣的可以去找找，主要思路是通过一个博客框架，如 hexo 生成本地博客静态资源文件，网页上的内容和链接都是静态的，不涉及后台，将这些文件 <code>push</code> 到 github pages 的仓库中，访问<code>***.github.io</code>就可以显示博客内容了。修改配置文件，配置主题，加各种小功能的过程还是非常的有趣的，而且不难，查文档就好了，欢迎大家评论啊。</p>
-</blockquote>
-<p>主要参考文章：<a href="https://www.jianshu.com/p/b8255a630d46" target="_blank" rel="external">https://www.jianshu.com/p/b8255a630d46</a></p>
+<p>mysql 中，锁的粒度：</p>
+<p>​    记录(行)，表，数据库</p>
 
       
     </div>
@@ -490,7 +512,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo-gitment/" rel="tag"># hexo gitment</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/transaction/" rel="tag"># transaction</a>
           
         </div>
       
@@ -503,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/05/python-list-removeItem-in-loop/" rel="next" title="Python 的 list 在循环中删除元素">
-                <i class="fa fa-chevron-left"></i> Python 的 list 在循环中删除元素
+              <a href="/2019/09/09/java-threads/" rel="next" title="java 多线程">
+                <i class="fa fa-chevron-left"></i> java 多线程
               </a>
             
           </div>
@@ -512,10 +536,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/29/hdfs-ha-qjm/" rel="prev" title="hdfs HA using QJM">
-                hdfs HA using QJM <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -731,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-github-Oauth-应用程序"><span class="nav-number">1.</span> <span class="nav-text">注册 github Oauth 应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加布局和样式"><span class="nav-number">3.</span> <span class="nav-text">添加布局和样式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事物的隔离级别"><span class="nav-number">1.</span> <span class="nav-text">事物的隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读未提交"><span class="nav-number">1.1.</span> <span class="nav-text">读未提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读已提交"><span class="nav-number">1.2.</span> <span class="nav-text">读已提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可重复读"><span class="nav-number">1.3.</span> <span class="nav-text">可重复读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#串行化"><span class="nav-number">1.4.</span> <span class="nav-text">串行化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔离性实现原理：锁"><span class="nav-number">2.</span> <span class="nav-text">隔离性实现原理：锁</span></a></li></ol></div>
             
 
           </div>
