@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/01/26/docker/</loc>
+    
+    <lastmod>2020-01-26T14:29:09.499Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/25/load-balance-reverse-proxy/</loc>
+    
+    <lastmod>2020-01-25T13:43:11.447Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
+    
+    <lastmod>2020-01-25T08:27:29.546Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/11/11/python-math-skill/</loc>
+    
+    <lastmod>2019-12-17T14:37:37.657Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/09/13/mysql-transaction-isolation/</loc>
     
     <lastmod>2019-09-13T10:39:41.889Z</lastmod>
