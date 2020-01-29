@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="docker," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="通俗易懂di讲明白一个故事">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ShaunJM&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+<meta name="description" content="容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实，">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker容器间通讯与数据共享">
+<meta property="og:url" content="http://yoursite.com/2020/01/28/docker-component-communication/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="通俗易懂di讲明白一个故事">
+<meta property="og:description" content="容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实，">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-01-29T07:26:09.119Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ShaunJM&#39;s blog">
-<meta name="twitter:description" content="通俗易懂di讲明白一个故事">
+<meta name="twitter:title" content="docker容器间通讯与数据共享">
+<meta name="twitter:description" content="容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实，">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/page/3/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/01/28/docker-component-communication/"/>
 
 
 
 
 
-  <title>归档 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>docker容器间通讯与数据共享 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -158,7 +160,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left  page-archive  ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,415 +308,222 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/docker-component-communication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
-         
+          <h1 class="post-title" itemprop="name headline">docker容器间通讯与数据共享</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-28T16:16:54+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        好! 目前共计 52 篇日志。 继续努力。
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/04/01/sklearn-kmeans/" itemprop="url">
-              
-                <span itemprop="name">使用sklearn的kmeans方法进行聚类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-04-01T15:30:40+08:00"
-              content="2019-04-01" >
-          04-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/19/word2vec_CBOW/" itemprop="url">
-              
-                <span itemprop="name">word2vec的简单理解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-19T16:20:56+08:00"
-              content="2019-03-19" >
-          03-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/03/12/redis-master-slave-sentinel/" itemprop="url">
-              
-                <span itemprop="name">Redis 主从服务器搭建与哨兵机制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-12T18:41:58+08:00"
-              content="2019-03-12" >
-          03-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/13/fyl/" itemprop="url">
-              
-                <span itemprop="name">枫叶城</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-13T20:11:43+08:00"
-              content="2019-02-13" >
-          02-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/01/28/tensorflow-method/" itemprop="url">
-              
-                <span itemprop="name">tensorflow method</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-28T20:25:49+08:00"
-              content="2019-01-28" >
-          01-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h2 class="archive-year motion-element" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/12/16/skip-gram/" itemprop="url">
-              
-                <span itemprop="name">skip-gram</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-12-16T20:09:16+08:00"
-              content="2018-12-16" >
-          12-16
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/18/lambda-introduce/" itemprop="url">
-              
-                <span itemprop="name">简单好用的lambda与Stream</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-18T10:22:14+08:00"
-              content="2018-09-18" >
-          09-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/18/singleton/" itemprop="url">
-              
-                <span itemprop="name">singleton</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-18T23:02:40+08:00"
-              content="2018-08-18" >
-          08-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="容器间单向通信"><a href="#容器间单向通信" class="headerlink" title="容器间单向通信"></a>容器间单向通信</h3><blockquote>
+<p>Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实，</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="给容器命名和建立单向连接"><a href="#给容器命名和建立单向连接" class="headerlink" title="给容器命名和建立单向连接"></a>给容器命名和建立单向连接</h4><p><code>docker run -d --name database mysql</code>创建了一个名为<code>database</code>的mysql容器；</p>
+<p>创建一个名为<code>bd_web</code>连接到<code>database</code>的tomcat容器，<code>docker run -d -p 80:8080 --link database --name bd_web tomcat</code></p>
+<p>进入名为<code>bd_web</code>的tomcat容器访问<code>database</code>容器：<code>docker exec -it xxx(database&#39;s containerID) /bin/bash</code>，<code>ping database</code>，可以ping通</p>
+<h3 id="容器间双向通信"><a href="#容器间双向通信" class="headerlink" title="容器间双向通信"></a>容器间双向通信</h3><blockquote>
+<p>可以在两个容器创建时link对方的name，有更简单灵活的方法是建立网桥</p>
+</blockquote>
+<p>创建两个容器name分别为web和database</p>
+<p>创建网桥：<code>docker network create -d bridge my-bridge</code></p>
+<p><code>docker network connect my-bridge web</code></p>
+<p><code>docker network connect my-bridge database</code></p>
+<p>在<code>web</code>与<code>database</code>中互相可以ping通</p>
+<p>当创建了一个网桥后，docker会创建一个虚拟网卡，不同的容器通过这个虚拟网卡进行网络通信</p>
+<h3 id="容器间共享数据"><a href="#容器间共享数据" class="headerlink" title="容器间共享数据"></a>容器间共享数据</h3><blockquote>
+<p>当很多容器中部署的相同的项目时，更新项目文件时如果需要更新很多容器的话是一件很麻烦的事，将宿主机的目录设置为Docker容器的工程目录，修改宿主机目录中的文件就可以同时对很多容器进行更新</p>
+</blockquote>
+<h4 id="设置挂载宿主机路径"><a href="#设置挂载宿主机路径" class="headerlink" title="设置挂载宿主机路径"></a>设置挂载宿主机路径</h4><p><code>docker run --name 容器名 -v 宿主机路径:容器内挂载路径 tomcat</code></p>
+<p>每次创建容器都要设置挂载路径是一件很麻烦的事情</p>
+<h4 id="创建共享容器"><a href="#创建共享容器" class="headerlink" title="创建共享容器"></a>创建共享容器</h4><p><code>docker create --name c1 -v 宿主机路径:容器内挂载路径 tomcat /bin/true</code></p>
+<h4 id="设置共享容器"><a href="#设置共享容器" class="headerlink" title="设置共享容器"></a>设置共享容器</h4><p><code>docker run --volumes-from c1 --name t1 -d -p 8000:8080 tomcat</code></p>
+<p>这样创建容器时通过设置<code>c1</code>为共享容器，就挂载上了<code>c1</code>中挂载的宿主机路径</p>
+<h3 id="指令随记"><a href="#指令随记" class="headerlink" title="指令随记"></a>指令随记</h3><p><code>docker inspect containerID</code>查看容器的信息</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/08/09/elastic-search/" itemprop="url">
-              
-                <span itemprop="name">elastic search</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-09T20:09:17+08:00"
-              content="2018-08-09" >
-          08-09
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/18/producter-consumer/" itemprop="url">
-              
-                <span itemprop="name">producter&consumer</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-18T20:27:33+08:00"
-              content="2018-07-18" >
-          07-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Zhang JM WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/aipay.jpg" alt="Zhang JM Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/26/docker/" rel="next" title="Docker镜像与容器">
+                <i class="fa fa-chevron-left"></i> Docker镜像与容器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -722,6 +531,46 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="gitment_title" class="gitment_title"></div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
+      <script src="https://jjeejj.github.io/js/gitment.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script>
+        const myTheme = {
+          render(state, instance) {
+            const container = document.createElement('div');
+            container.lang = "en-US";
+            container.className = 'gitment-container gitment-root-container';
+            container.appendChild(instance.renderHeader(state, instance));
+            container.appendChild(instance.renderEditor(state, instance));
+            container.appendChild(instance.renderComments(state, instance));
+            container.appendChild(instance.renderFooter(state, instance));
+            return container;
+          }
+        }
+        function showGitment() {
+          $("#gitment_title").attr("style", "display:none");
+          $("#container").attr("style", "").addClass("gitment_container");
+          var gitment = new Gitment({
+            id: decodeURI(window.location.pathname),
+            theme: myTheme,
+            owner: 'shaun2016',
+            repo: 'shaun2016.github.io',
+            oauth: {
+              client_id: '69c4f1364bbcc54ee15e',
+              client_secret: '62a895ff3aa85a6286b00329aec6ec9ef037cade'
+            }
+          });
+          gitment.render('container');
+        }
+        showGitment();
+      </script>
+    
+  </div>
+
 
 
         </div>
@@ -743,8 +592,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -863,6 +721,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#容器间单向通信"><span class="nav-number">1.</span> <span class="nav-text">容器间单向通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#给容器命名和建立单向连接"><span class="nav-number">1.1.</span> <span class="nav-text">给容器命名和建立单向连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器间双向通信"><span class="nav-number">2.</span> <span class="nav-text">容器间双向通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#容器间共享数据"><span class="nav-number">3.</span> <span class="nav-text">容器间共享数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#设置挂载宿主机路径"><span class="nav-number">3.1.</span> <span class="nav-text">设置挂载宿主机路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建共享容器"><span class="nav-number">3.2.</span> <span class="nav-text">创建共享容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置共享容器"><span class="nav-number">3.3.</span> <span class="nav-text">设置共享容器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令随记"><span class="nav-number">4.</span> <span class="nav-text">指令随记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -978,11 +852,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
 
 
   

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="GSLBLVSF5负载均衡算法 round-robin (default)：轮训 ip_hash：相同ip的请求发送到相同的服务器 hash key 哈希算法 一致性哈希算法   least_conn：将请求发送到最小活跃连接的上游服务器上  失败重试1234upstream backend &amp;#123;    server 192.168.31.1:8080 max_fails=2 fail_t">
+<meta name="description" content="GSLB">
 <meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="load_balance_reverse_proxy">
 <meta property="og:url" content="http://yoursite.com/2020/01/25/load-balance-reverse-proxy/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="GSLBLVSF5负载均衡算法 round-robin (default)：轮训 ip_hash：相同ip的请求发送到相同的服务器 hash key 哈希算法 一致性哈希算法   least_conn：将请求发送到最小活跃连接的上游服务器上  失败重试1234upstream backend &amp;#123;    server 192.168.31.1:8080 max_fails=2 fail_t">
+<meta property="og:description" content="GSLB">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-25T13:43:11.447Z">
+<meta property="og:updated_time" content="2020-01-29T07:32:19.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="load_balance_reverse_proxy">
-<meta name="twitter:description" content="GSLBLVSF5负载均衡算法 round-robin (default)：轮训 ip_hash：相同ip的请求发送到相同的服务器 hash key 哈希算法 一致性哈希算法   least_conn：将请求发送到最小活跃连接的上游服务器上  失败重试1234upstream backend &amp;#123;    server 192.168.31.1:8080 max_fails=2 fail_t">
+<meta name="twitter:description" content="GSLB">
 
 
 
@@ -411,7 +411,8 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="GSLB"><a href="#GSLB" class="headerlink" title="GSLB"></a>GSLB</h3><h3 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h3><h3 id="F5"><a href="#F5" class="headerlink" title="F5"></a>F5</h3><h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><ul>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="GSLB"><a href="#GSLB" class="headerlink" title="GSLB"></a>GSLB</h3><a id="more"></a>
+<h3 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h3><h3 id="F5"><a href="#F5" class="headerlink" title="F5"></a>F5</h3><h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><ul>
 <li>round-robin (default)：轮训</li>
 <li>ip_hash：相同ip的请求发送到相同的服务器</li>
 <li>hash key<ul>
@@ -432,6 +433,9 @@
 <blockquote>
 <p>interval 每隔3秒检查一次，timeout 连接超时为失败一次，fall 失败3次后标记为不存活，rise 成功1次后标记为存活</p>
 </blockquote>
+<ul>
+<li>HTTP 心跳检查</li>
+</ul>
 
       
     </div>
@@ -501,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/26/docker/" rel="prev" title="Docker install in Centos7">
-                Docker install in Centos7 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/26/docker/" rel="prev" title="Docker镜像与容器">
+                Docker镜像与容器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -619,7 +623,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -661,6 +665,17 @@
                   
                     
                       GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://space.bilibili.com/40920026" target="_blank" title="BiliBili">
+                  
+                    <i class="fa fa-fw fa-television"></i>
+                  
+                    
+                      BiliBili
                     
                 </a>
               </span>

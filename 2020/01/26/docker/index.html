@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像">
+<meta name="description" content="安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker install in Centos7">
+<meta property="og:title" content="Docker镜像与容器">
 <meta property="og:url" content="http://yoursite.com/2020/01/26/docker/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像">
+<meta property="og:description" content="安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-26T14:29:09.499Z">
+<meta property="og:image" content="http://yoursite.com/images/docker/dockerfile.png">
+<meta property="og:updated_time" content="2020-01-29T07:42:38.587Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker install in Centos7">
-<meta name="twitter:description" content="安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像">
+<meta name="twitter:title" content="Docker镜像与容器">
+<meta name="twitter:description" content="安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo">
+<meta name="twitter:image" content="http://yoursite.com/images/docker/dockerfile.png">
 
 
 
@@ -141,7 +143,7 @@
 
 
 
-  <title>Docker install in Centos7 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Docker镜像与容器 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -339,7 +341,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker install in Centos7</h1>
+          <h1 class="post-title" itemprop="name headline">Docker镜像与容器</h1>
         
 
         <div class="post-meta">
@@ -411,10 +413,11 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>安装环境依赖</p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><p>安装环境依赖</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</div></pre></td></tr></table></figure>
 <p>添加yum源</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像则要保证链接有效，并使用<code>yum makecache fast</code>检测哪个安装源是最快的，如：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</div><div class="line">yum makecache fast</div></pre></td></tr></table></figure>
 <p>安装docker</p>
@@ -425,12 +428,70 @@
 <p>启动docker服务</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker start</div></pre></td></tr></table></figure>
 <p>常用命令</p>
-<p><code>docker pull image_name</code>从远程仓库下载镜像</p>
+<p><code>docker pull image_name:tag</code>从远程仓库下载镜像</p>
 <p><code>docker images</code>查看本地镜像</p>
 <p><code>docker run image_name</code>创建容器，运行镜像</p>
-<p><code>docker ps</code>查询运行中的镜像容器</p>
+<p><code>docker ps</code>查询运行中的容器</p>
+<p><code>docker ps -a</code>列出所有容器（包括没有运行的）</p>
 <p><code>docker rm (-f)</code>（强制）删除容器</p>
 <p><code>docker rmi (-f)</code>（强制）删除镜像</p>
+<p><strong>注：</strong>容器和镜像的存放位置：<code>/var/lib/docker</code>下<code>containers</code>存放创建的容器，<code>image</code>下存放创建的镜像</p>
+<h3 id="运行Tomcat镜像容器"><a href="#运行Tomcat镜像容器" class="headerlink" title="运行Tomcat镜像容器"></a>运行Tomcat镜像容器</h3><ol>
+<li><p><code>docker pull tomcat</code>拉去Tomcat镜像</p>
+<p>在<a href="https://hub.docker.com/" target="_blank" rel="external">https://hub.docker.com</a>网站上有镜像的不同版本，指定对应的<code>tag</code>，如<code>docker pull tomcat:jdk8-openjdk</code>，若不加<code>tag</code>为最新版本</p>
+</li>
+<li><p>端口映射：<code>docker run -p 8000:8080 -d tomcat</code></p>
+<p>宿主机对外的端口为8000，映射到内部运行的docker容器的8080端口</p>
+<p><code>-d</code>表示后台运行</p>
+<p><strong>或者</strong>先创建容器后运行：<code>docker create -p 8000:8080 tomcat</code>，查看创建容器的<code>containerID</code>：<code>docker ps -a</code>，运行容器：<code>docker start containerID</code></p>
+<p><code>netstat -tulpn</code>查看运行的进程的端口</p>
+</li>
+<li><p>停止运行的容器</p>
+<p><code>docker ps</code>查看容器的<code>Container ID</code></p>
+<p><code>docker stop containerID</code>停止容器</p>
+<p><code>docker rm -f containerID</code>删除容器</p>
+</li>
+<li><p>在容器中执行命令</p>
+<p><code>docker exec -it containerID /bin/bash</code></p>
+</li>
+<li><p>执行<code>apt-get update</code></p>
+</li>
+<li><p>执行<code>apt-get install vim</code></p>
+</li>
+<li><p>进入<code>webapps</code>文件夹，创建文件夹并进入，创建<code>index.html</code>，通过浏览器访问tomcat服务</p>
+</li>
+</ol>
+<p>这样可以在docker容器中发布一个主页，但是通过<code>vim</code>编辑网页是很麻烦的，大型的项目需要整体提交到docker容器中，如何将web项目上传到docker容器中的指定目录下呢？</p>
+<h3 id="Dockerfile-构建镜像"><a href="#Dockerfile-构建镜像" class="headerlink" title="Dockerfile 构建镜像"></a>Dockerfile 构建镜像</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> tomcat:latest</div><div class="line"><span class="keyword">MAINTAINER</span> xxx.com</div><div class="line"><span class="keyword">WORKDIR</span> /usr/local/tomcat/webapps	# 要将工程拷贝到宿主机里的路径</div><div class="line">ADD docker-web ./docker-web	# 将docker-web下的文件复制到/usr/local/tomcat/webapps/docker-web下</div></pre></td></tr></table></figure>
+<p>将<code>docker-web</code>和<code>Dockerfile</code>上传到宿主机中，在上传文件夹中执行：</p>
+<p><code>docker build -t xxx.com/docker-web:1.0 .</code> 构建镜像</p>
+<p>通过<code>docker images</code>查看创建的镜像：可以发现</p>
+<p><img src="\images\docker\dockerfile.png" alt="image-20200127220413931"></p>
+<p>运行镜像文件：<code>docker run -d -p 80:8080 xxx.com/docker-web:1.0</code></p>
+<p><strong>注：</strong>一定要在镜像名后面加上<strong>TAG</strong></p>
+<p>这样运行起来的Tomcat容器就已经含有docker-web工程了，不过如何对容器中的工程进行更新呢？可以找到在宿主机上工程的文件路径，然后进行文件的替换，如<code>docker inspect containerID</code>查看<code>GraphDriver.Data.MergedDir</code>和<code>GraphDriver.Config.WorkingDir</code>，就可以找到容器中tomcat在宿主机中的目录，然后进入<code>webapps</code>中更新工程，这样做对一个容器更新项目还好，如果有很多Tomcat容器都运行相同的web服务，更新起来就比较麻烦了，后文会介绍共享目录的方式的更新容器中的项目</p>
+<h3 id="Dockerfile-中的指令"><a href="#Dockerfile-中的指令" class="headerlink" title="Dockerfile 中的指令"></a>Dockerfile 中的指令</h3><blockquote>
+<p><code>RUN</code>在构建镜像时执行，<code>CMD|ENTRYPOINT</code>在创建容器时执行</p>
+</blockquote>
+<h4 id="指令的两个格式"><a href="#指令的两个格式" class="headerlink" title="指令的两个格式"></a>指令的两个格式</h4><ol>
+<li>Shell格式：创建子进程执行脚本</li>
+<li>Exec格式：不创建子进程，创建新的进程替换当前进程执行脚本</li>
+</ol>
+<p><em>注：推荐使用Exec的方式</em></p>
+<h4 id="RUN"><a href="#RUN" class="headerlink" title="RUN"></a>RUN</h4><h4 id="ENTRYPOINT"><a href="#ENTRYPOINT" class="headerlink" title="ENTRYPOINT"></a>ENTRYPOINT</h4><blockquote>
+<p>入口点，用于容器启动时执行的命令</p>
+</blockquote>
+<h4 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h4><blockquote>
+<p>CMD用于设置容器启动时的附加指令，Dockerfile中只有最后一条CMD会被执行，如果容器启动时人为给出附加指令，则CMD被忽略</p>
+</blockquote>
+<p>例如在Dockerfile中编辑如下：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> tomcat</div><div class="line"><span class="keyword">RUN</span> ['echo', 'image building']</div><div class="line">ENTRYPOINT ['echo', 'entrypoint of container ']</div><div class="line">CMD ['container starting']</div></pre></td></tr></table></figure>
+<p>构建竟像时，输出：<code>image building</code></p>
+<p>构建容器时，输出：<code>entrypoint of container container starting</code> </p>
+<p>如果构建容器时加入了其他指令，如<code>docker run xxx.com/dc_run:1.1 aaaa</code>输出：<code>`entrypoint of container aaaa</code>，说明<code>CMD</code>被替换了，而<code>Entropoint</code>没有被替换；</p>
+<p>下面是一个用 Dockerfile 构建 redis 镜像的实例：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> centos</div><div class="line"><span class="keyword">RUN</span> ["yun", "install", "-y", "gcc", "gcc-c++", "net-tools", "make"]</div><div class="line">WORKDIR /usr/local</div><div class="line">ADD redis-4.0.14.tar.gz</div><div class="line">WORKDIR /usr/local/redis-4.0.14/src</div><div class="line">RUN make &amp;&amp; make install</div><div class="line">WORKDIR /usr/local/redis-4.0.14</div><div class="line">ADD redis-7000.conf</div><div class="line">EXPOSE 7000</div><div class="line">CMD ["redis-server", "redis-7000.conf"]</div></pre></td></tr></table></figure>
+<p>当然，在<a href="https://hub.docker.com/" target="_blank" rel="external">https://hub.docker.com</a>网站上已经有构建好的redis镜像，完全没有必要自己从<code>centos</code>开始构建镜像</p>
 
       
     </div>
@@ -499,6 +560,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/28/docker-component-communication/" rel="prev" title="docker容器间通讯与数据共享">
+                docker容器间通讯与数据共享 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -587,8 +652,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -605,7 +679,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -647,6 +721,17 @@
                   
                     
                       GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://space.bilibili.com/40920026" target="_blank" title="BiliBili">
+                  
+                    <i class="fa fa-fw fa-television"></i>
+                  
+                    
+                      BiliBili
                     
                 </a>
               </span>
@@ -695,6 +780,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Docker"><span class="nav-number">1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Tomcat镜像容器"><span class="nav-number">2.</span> <span class="nav-text">运行Tomcat镜像容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-构建镜像"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile 构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-中的指令"><span class="nav-number">4.</span> <span class="nav-text">Dockerfile 中的指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的两个格式"><span class="nav-number">4.1.</span> <span class="nav-text">指令的两个格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RUN"><span class="nav-number">4.2.</span> <span class="nav-text">RUN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ENTRYPOINT"><span class="nav-number">4.3.</span> <span class="nav-text">ENTRYPOINT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD"><span class="nav-number">4.4.</span> <span class="nav-text">CMD</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

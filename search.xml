@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Docker install in Centos7]]></title>
+    <title><![CDATA[docker容器间通讯与数据共享]]></title>
+    <url>%2F2020%2F01%2F28%2Fdocker-component-communication%2F</url>
+    <content type="text"><![CDATA[容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实， 给容器命名和建立单向连接docker run -d --name database mysql创建了一个名为database的mysql容器； 创建一个名为bd_web连接到database的tomcat容器，docker run -d -p 80:8080 --link database --name bd_web tomcat 进入名为bd_web的tomcat容器访问database容器：docker exec -it xxx(database&#39;s containerID) /bin/bash，ping database，可以ping通 容器间双向通信 可以在两个容器创建时link对方的name，有更简单灵活的方法是建立网桥 创建两个容器name分别为web和database 创建网桥：docker network create -d bridge my-bridge docker network connect my-bridge web docker network connect my-bridge database 在web与database中互相可以ping通 当创建了一个网桥后，docker会创建一个虚拟网卡，不同的容器通过这个虚拟网卡进行网络通信 容器间共享数据 当很多容器中部署的相同的项目时，更新项目文件时如果需要更新很多容器的话是一件很麻烦的事，将宿主机的目录设置为Docker容器的工程目录，修改宿主机目录中的文件就可以同时对很多容器进行更新 设置挂载宿主机路径docker run --name 容器名 -v 宿主机路径:容器内挂载路径 tomcat 每次创建容器都要设置挂载路径是一件很麻烦的事情 创建共享容器docker create --name c1 -v 宿主机路径:容器内挂载路径 tomcat /bin/true 设置共享容器docker run --volumes-from c1 --name t1 -d -p 8000:8080 tomcat 这样创建容器时通过设置c1为共享容器，就挂载上了c1中挂载的宿主机路径 指令随记docker inspect containerID查看容器的信息]]></content>
+      <categories>
+        <category>docker</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Docker镜像与容器]]></title>
     <url>%2F2020%2F01%2F26%2Fdocker%2F</url>
-    <content type="text"><![CDATA[安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像则要保证链接有效，并使用yum makecache fast检测哪个安装源是最快的，如： 12yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repoyum makecache fast 安装docker 1yum install -y docker-ce 配置阿里云镜像加速 1234567mkdir /etc/dockervi /etc/docker/daemon.json # 路径不能错# 加入以下内容&#123;"registry-mirrors": ["https://***.mirror.aliyuncs.com", "http://hub-mirror.c.163.com"]&#125; 其中，https://***.mirror.aliyuncs.comdocker加速器地址需要到https://cr.console.aliyun.com上注册账号后，在镜像加速器一栏中获取 启动docker服务 1service docker start 常用命令 docker pull image_name从远程仓库下载镜像 docker images查看本地镜像 docker run image_name创建容器，运行镜像 docker ps查询运行中的镜像容器 docker rm (-f)（强制）删除容器 docker rmi (-f)（强制）删除镜像]]></content>
+    <content type="text"><![CDATA[安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo 注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像则要保证链接有效，并使用yum makecache fast检测哪个安装源是最快的，如： 12yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repoyum makecache fast 安装docker 1yum install -y docker-ce 配置阿里云镜像加速 1234567mkdir /etc/dockervi /etc/docker/daemon.json # 路径不能错# 加入以下内容&#123;"registry-mirrors": ["https://***.mirror.aliyuncs.com", "http://hub-mirror.c.163.com"]&#125; 其中，https://***.mirror.aliyuncs.comdocker加速器地址需要到https://cr.console.aliyun.com上注册账号后，在镜像加速器一栏中获取 启动docker服务 1service docker start 常用命令 docker pull image_name:tag从远程仓库下载镜像 docker images查看本地镜像 docker run image_name创建容器，运行镜像 docker ps查询运行中的容器 docker ps -a列出所有容器（包括没有运行的） docker rm (-f)（强制）删除容器 docker rmi (-f)（强制）删除镜像 注：容器和镜像的存放位置：/var/lib/docker下containers存放创建的容器，image下存放创建的镜像 运行Tomcat镜像容器 docker pull tomcat拉去Tomcat镜像 在https://hub.docker.com网站上有镜像的不同版本，指定对应的tag，如docker pull tomcat:jdk8-openjdk，若不加tag为最新版本 端口映射：docker run -p 8000:8080 -d tomcat 宿主机对外的端口为8000，映射到内部运行的docker容器的8080端口 -d表示后台运行 或者先创建容器后运行：docker create -p 8000:8080 tomcat，查看创建容器的containerID：docker ps -a，运行容器：docker start containerID netstat -tulpn查看运行的进程的端口 停止运行的容器 docker ps查看容器的Container ID docker stop containerID停止容器 docker rm -f containerID删除容器 在容器中执行命令 docker exec -it containerID /bin/bash 执行apt-get update 执行apt-get install vim 进入webapps文件夹，创建文件夹并进入，创建index.html，通过浏览器访问tomcat服务 这样可以在docker容器中发布一个主页，但是通过vim编辑网页是很麻烦的，大型的项目需要整体提交到docker容器中，如何将web项目上传到docker容器中的指定目录下呢？ Dockerfile 构建镜像1234FROM tomcat:latestMAINTAINER xxx.comWORKDIR /usr/local/tomcat/webapps # 要将工程拷贝到宿主机里的路径ADD docker-web ./docker-web # 将docker-web下的文件复制到/usr/local/tomcat/webapps/docker-web下 将docker-web和Dockerfile上传到宿主机中，在上传文件夹中执行： docker build -t xxx.com/docker-web:1.0 . 构建镜像 通过docker images查看创建的镜像：可以发现 运行镜像文件：docker run -d -p 80:8080 xxx.com/docker-web:1.0 注：一定要在镜像名后面加上TAG 这样运行起来的Tomcat容器就已经含有docker-web工程了，不过如何对容器中的工程进行更新呢？可以找到在宿主机上工程的文件路径，然后进行文件的替换，如docker inspect containerID查看GraphDriver.Data.MergedDir和GraphDriver.Config.WorkingDir，就可以找到容器中tomcat在宿主机中的目录，然后进入webapps中更新工程，这样做对一个容器更新项目还好，如果有很多Tomcat容器都运行相同的web服务，更新起来就比较麻烦了，后文会介绍共享目录的方式的更新容器中的项目 Dockerfile 中的指令 RUN在构建镜像时执行，CMD|ENTRYPOINT在创建容器时执行 指令的两个格式 Shell格式：创建子进程执行脚本 Exec格式：不创建子进程，创建新的进程替换当前进程执行脚本 注：推荐使用Exec的方式 RUNENTRYPOINT 入口点，用于容器启动时执行的命令 CMD CMD用于设置容器启动时的附加指令，Dockerfile中只有最后一条CMD会被执行，如果容器启动时人为给出附加指令，则CMD被忽略 例如在Dockerfile中编辑如下： 1234FROM tomcatRUN ['echo', 'image building']ENTRYPOINT ['echo', 'entrypoint of container ']CMD ['container starting'] 构建竟像时，输出：image building 构建容器时，输出：entrypoint of container container starting 如果构建容器时加入了其他指令，如docker run xxx.com/dc_run:1.1 aaaa输出：`entrypoint of container aaaa，说明CMD被替换了，而Entropoint没有被替换； 下面是一个用 Dockerfile 构建 redis 镜像的实例： 12345678910FROM centosRUN ["yun", "install", "-y", "gcc", "gcc-c++", "net-tools", "make"]WORKDIR /usr/localADD redis-4.0.14.tar.gzWORKDIR /usr/local/redis-4.0.14/srcRUN make &amp;&amp; make installWORKDIR /usr/local/redis-4.0.14ADD redis-7000.confEXPOSE 7000CMD ["redis-server", "redis-7000.conf"] 当然，在https://hub.docker.com网站上已经有构建好的redis镜像，完全没有必要自己从centos开始构建镜像]]></content>
       <categories>
         <category>docker</category>
       </categories>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[load_balance_reverse_proxy]]></title>
     <url>%2F2020%2F01%2F25%2Fload-balance-reverse-proxy%2F</url>
-    <content type="text"><![CDATA[GSLBLVSF5负载均衡算法 round-robin (default)：轮训 ip_hash：相同ip的请求发送到相同的服务器 hash key 哈希算法 一致性哈希算法 least_conn：将请求发送到最小活跃连接的上游服务器上 失败重试1234upstream backend &#123; server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1; server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;&#125; 当fail_timeout内失败了max_fails次请求，认为该上游服务器不可用，移除该服务器，尝试下一台服务器 健康检查 TCP心跳检查 12345upstream backend &#123; server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1; server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2; check interval=3000 rise=1 fall=3 timeout=2000 type=tcp;&#125; interval 每隔3秒检查一次，timeout 连接超时为失败一次，fall 失败3次后标记为不存活，rise 成功1次后标记为存活]]></content>
+    <content type="text"><![CDATA[GSLB LVSF5负载均衡算法 round-robin (default)：轮训 ip_hash：相同ip的请求发送到相同的服务器 hash key 哈希算法 一致性哈希算法 least_conn：将请求发送到最小活跃连接的上游服务器上 失败重试1234upstream backend &#123; server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1; server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;&#125; 当fail_timeout内失败了max_fails次请求，认为该上游服务器不可用，移除该服务器，尝试下一台服务器 健康检查 TCP心跳检查 12345upstream backend &#123; server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1; server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2; check interval=3000 rise=1 fall=3 timeout=2000 type=tcp;&#125; interval 每隔3秒检查一次，timeout 连接超时为失败一次，fall 失败3次后标记为不存活，rise 成功1次后标记为存活 HTTP 心跳检查]]></content>
       <categories>
         <category>nginx</category>
       </categories>
@@ -34,9 +45,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[python math skill]]></title>
+    <title><![CDATA[python 写实验的时候遇到的矩阵操作]]></title>
     <url>%2F2019%2F11%2F11%2Fpython-math-skill%2F</url>
-    <content type="text"><![CDATA[python 写实验的时候遇到的矩阵操作矩阵平铺成向量12a = np.array([[3,4],[1,2]])b = a.reshape(-1) 返回排序下标，向量反转12bsortIndex = np.argsort(b) # [2 3 0 1]bsortIndex = bsortIndex[::-1] 取二维数组的某一列123a = [[1,3],[2,5]]a[:,0] # 第一列a[:,1] # 第二列 保留三个小数12a = 12.3456round(a, 2) # 12.346 矩阵求和1234567# 按列求和c = np.array([[1, 3], [2, 0]])print(np.sum(c, axis=0)) # [3, 3]# 按行求和print(np.sum(c, axis=1)) # [4, 2]# 全部和print(np.sum(c)) # 6 矩阵变形123# 一维变二维c = np.array([1, 3, 2, 0, 6])print(c.reshape(len(c), 1)) ### [[1], [3], [2], [0], [6]] 矩阵值替换123# 将数组的0替换为1 (前提是0为最小值)c = np.array([1, 3, 2, 0, 6])print(c.clip(min=1)) # [1 3 2 1 6] 行向量与列向量123456[1, 3] # 对于给出的一维数组，都是列向量：两行一列，shape=(2,1)[[1, 2]] # 行向量，一行两列，shape=(1,2)# 列向量变行向量np.array([1,2,3]).reshape(1,-1)# 列向量变行向量np.array([[1,2,3]]).T 矩阵与向量的乘法1234567a = np.array([1, 3])b = np.array([1, 3]).reshape(1, -1)c = np.ones([2, 3])# 注意相乘的顺序：矩阵(n*m)*向量(m*1)(列向量)np.matmul(c.T, a)# 向量(1*m)*矩阵(m*n)np.matmul(b, c)]]></content>
+    <content type="text"><![CDATA[矩阵平铺成向量12a = np.array([[3,4],[1,2]])b = a.reshape(-1) 返回排序下标，向量反转12bsortIndex = np.argsort(b) # [2 3 0 1]bsortIndex = bsortIndex[::-1] 取二维数组的某一列123a = [[1,3],[2,5]]a[:,0] # 第一列a[:,1] # 第二列 保留三个小数12a = 12.3456round(a, 2) # 12.346 矩阵求和1234567# 按列求和c = np.array([[1, 3], [2, 0]])print(np.sum(c, axis=0)) # [3, 3]# 按行求和print(np.sum(c, axis=1)) # [4, 2]# 全部和print(np.sum(c)) # 6 矩阵变形123# 一维变二维c = np.array([1, 3, 2, 0, 6])print(c.reshape(len(c), 1)) ### [[1], [3], [2], [0], [6]] 矩阵值替换123# 将数组的0替换为1 (前提是0为最小值)c = np.array([1, 3, 2, 0, 6])print(c.clip(min=1)) # [1 3 2 1 6] 行向量与列向量123456[1, 3] # 对于给出的一维数组，都是列向量：两行一列，shape=(2,1)[[1, 2]] # 行向量，一行两列，shape=(1,2)# 列向量变行向量np.array([1,2,3]).reshape(1,-1)# 列向量变行向量np.array([[1,2,3]]).T 矩阵与向量的乘法1234567a = np.array([1, 3])b = np.array([1, 3]).reshape(1, -1)c = np.ones([2, 3])# 注意相乘的顺序：矩阵(n*m)*向量(m*1)(列向量)np.matmul(c.T, a)# 向量(1*m)*矩阵(m*n)np.matmul(b, c)]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -76,8 +87,8 @@
         <category>mysql</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>mycat</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>

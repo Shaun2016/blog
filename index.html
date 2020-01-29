@@ -322,6 +322,154 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/docker-component-communication/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhang JM">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ShaunJM's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/28/docker-component-communication/" itemprop="url">docker容器间通讯与数据共享</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-28T16:16:54+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="容器间单向通信"><a href="#容器间单向通信" class="headerlink" title="容器间单向通信"></a>容器间单向通信</h3><blockquote>
+<p>Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实，</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/28/docker-component-communication/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/26/docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -341,7 +489,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/26/docker/" itemprop="url">Docker install in Centos7</a></h1>
+                <a class="post-title-link" href="/2020/01/26/docker/" itemprop="url">Docker镜像与容器</a></h1>
         
 
         <div class="post-meta">
@@ -414,29 +562,17 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><p>安装环境依赖</p>
+          <h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><p>安装环境依赖</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</div></pre></td></tr></table></figure>
 <p>添加yum源</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</div></pre></td></tr></table></figure>
-<p>注：这里不需要添加国内镜像源也可以安装docker服务及客户端，添加国内镜像则要保证链接有效，并使用<code>yum makecache fast</code>检测哪个安装源是最快的，如：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</div><div class="line">yum makecache fast</div></pre></td></tr></table></figure>
-<p>安装docker</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install -y docker-ce</div></pre></td></tr></table></figure>
-<p>配置阿里云镜像加速</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mkdir /etc/docker</div><div class="line">vi /etc/docker/daemon.json	# 路径不能错</div><div class="line"><span class="meta">#</span> 加入以下内容</div><div class="line">&#123;"registry-mirrors": </div><div class="line">	["https://***.mirror.aliyuncs.com",</div><div class="line">	"http://hub-mirror.c.163.com"]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中，<code>https://***.mirror.aliyuncs.com</code>docker加速器地址需要到<a href="https://cr.console.aliyun.com/" target="_blank" rel="external">https://cr.console.aliyun.com</a>上注册账号后，在镜像加速器一栏中获取</p>
-<p>启动docker服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker start</div></pre></td></tr></table></figure>
-<p>常用命令</p>
-<p><code>docker pull image_name</code>从远程仓库下载镜像</p>
-<p><code>docker images</code>查看本地镜像</p>
-<p><code>docker run image_name</code>创建容器，运行镜像</p>
-<p><code>docker ps</code>查询运行中的镜像容器</p>
-<p><code>docker rm (-f)</code>（强制）删除容器</p>
-<p><code>docker rmi (-f)</code>（强制）删除镜像</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/26/docker/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -575,30 +711,14 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="GSLB"><a href="#GSLB" class="headerlink" title="GSLB"></a>GSLB</h3><h3 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h3><h3 id="F5"><a href="#F5" class="headerlink" title="F5"></a>F5</h3><h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><ul>
-<li>round-robin (default)：轮训</li>
-<li>ip_hash：相同ip的请求发送到相同的服务器</li>
-<li>hash key<ul>
-<li>哈希算法</li>
-<li>一致性哈希算法</li>
-</ul>
-</li>
-<li>least_conn：将请求发送到最小活跃连接的上游服务器上</li>
-</ul>
-<h3 id="失败重试"><a href="#失败重试" class="headerlink" title="失败重试"></a>失败重试</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>当fail_timeout内失败了max_fails次请求，认为该上游服务器不可用，移除该服务器，尝试下一台服务器</p>
-</blockquote>
-<h3 id="健康检查"><a href="#健康检查" class="headerlink" title="健康检查"></a>健康检查</h3><ul>
-<li>TCP心跳检查</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">    check interval=3000 rise=1 fall=3 timeout=2000 type=tcp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>interval 每隔3秒检查一次，timeout 连接超时为失败一次，fall 失败3次后标记为不存活，rise 成功1次后标记为存活</p>
-</blockquote>
-
-          
+          <h3 id="GSLB"><a href="#GSLB" class="headerlink" title="GSLB"></a>GSLB</h3>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/25/load-balance-reverse-proxy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -737,16 +857,16 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+          <blockquote>
 <p>写项目中遇到的小技巧记录</p>
 </blockquote>
-<h3 id="检查-key-是否存在"><a href="#检查-key-是否存在" class="headerlink" title="检查 key 是否存在"></a>检查 key 是否存在</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">d = &#123;<span class="number">1</span>:<span class="number">2</span>, <span class="number">3</span>:<span class="number">4</span>&#125;</div><div class="line">print(<span class="number">1</span> <span class="keyword">in</span> d)	<span class="comment"># True</span></div><div class="line">print(<span class="number">2</span> <span class="keyword">in</span> d)	<span class="comment"># False</span></div></pre></td></tr></table></figure>
-<h3 id="对-dict-排序"><a href="#对-dict-排序" class="headerlink" title="对 dict 排序"></a>对 dict 排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dict1 = &#123;<span class="number">1</span>: <span class="number">4</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">2</span>&#125;</div><div class="line">d1 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>])	<span class="comment"># 按 value 升序</span></div><div class="line">print(d1)	<span class="comment"># [(2, 1), (3, 2), (1, 4)]	</span></div><div class="line">d2 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>], reverse=<span class="keyword">True</span>)	<span class="comment"># 按 value 降序</span></div><div class="line">print(d2)	<span class="comment"># [(1, 4), (3, 2), (2, 1)]	</span></div><div class="line">d3 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">0</span>])	<span class="comment"># 按 key 升序</span></div><div class="line">print(d3)	<span class="comment"># [(1, 4), (2, 1), (3, 2)]	</span></div><div class="line">print(dict1)	<span class="comment"># &#123;1: 4, 2: 1, 3: 2&#125;  注：sorted函数不会改变排序对象</span></div></pre></td></tr></table></figure>
-<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">x&amp;y <span class="comment"># 交集</span></div><div class="line">x|y <span class="comment"># 并集</span></div><div class="line">x-y <span class="comment"># 差集</span></div><div class="line">x.issubset(y) <span class="comment"># x 是否为 y 的子集</span></div><div class="line">x.issuperset(y) <span class="comment"># x 是否为 y 的父集</span></div></pre></td></tr></table></figure>
-<h3 id="由已有的list做为key建立dict"><a href="#由已有的list做为key建立dict" class="headerlink" title="由已有的list做为key建立dict"></a>由已有的list做为key建立dict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d=&#123;&#125;.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])	<span class="comment"># &#123;1: None, 2: None, 3: None&#125;</span></div><div class="line">d=dict().fromkeys([...])</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/16/python-program-skill/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -812,7 +932,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/11/python-math-skill/" itemprop="url">python math skill</a></h1>
+                <a class="post-title-link" href="/2019/11/11/python-math-skill/" itemprop="url">python 写实验的时候遇到的矩阵操作</a></h1>
         
 
         <div class="post-meta">
@@ -885,18 +1005,14 @@
 
       
         
-          
-            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h2 id="python-写实验的时候遇到的矩阵操作"><a href="#python-写实验的时候遇到的矩阵操作" class="headerlink" title="python 写实验的时候遇到的矩阵操作"></a>python 写实验的时候遇到的矩阵操作</h2><h3 id="矩阵平铺成向量"><a href="#矩阵平铺成向量" class="headerlink" title="矩阵平铺成向量"></a>矩阵平铺成向量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">2</span>]])</div><div class="line">b = a.reshape(<span class="number">-1</span>)</div></pre></td></tr></table></figure>
-<h3 id="返回排序下标，向量反转"><a href="#返回排序下标，向量反转" class="headerlink" title="返回排序下标，向量反转"></a>返回排序下标，向量反转</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bsortIndex = np.argsort(b)	<span class="comment"># [2 3 0 1]</span></div><div class="line">bsortIndex = bsortIndex[::<span class="number">-1</span>]</div></pre></td></tr></table></figure>
-<h3 id="取二维数组的某一列"><a href="#取二维数组的某一列" class="headerlink" title="取二维数组的某一列"></a>取二维数组的某一列</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">a = [[<span class="number">1</span>,<span class="number">3</span>],[<span class="number">2</span>,<span class="number">5</span>]]</div><div class="line">a[:,<span class="number">0</span>]	<span class="comment"># 第一列</span></div><div class="line">a[:,<span class="number">1</span>]  <span class="comment"># 第二列</span></div></pre></td></tr></table></figure>
-<h3 id="保留三个小数"><a href="#保留三个小数" class="headerlink" title="保留三个小数"></a>保留三个小数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = <span class="number">12.3456</span></div><div class="line">round(a, <span class="number">2</span>)	<span class="comment"># 12.346</span></div></pre></td></tr></table></figure>
-<h3 id="矩阵求和"><a href="#矩阵求和" class="headerlink" title="矩阵求和"></a>矩阵求和</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 按列求和</span></div><div class="line">c = np.array([[<span class="number">1</span>, <span class="number">3</span>], [<span class="number">2</span>, <span class="number">0</span>]])</div><div class="line">print(np.sum(c, axis=<span class="number">0</span>))	<span class="comment"># [3, 3]</span></div><div class="line"><span class="comment"># 按行求和</span></div><div class="line">print(np.sum(c, axis=<span class="number">1</span>))	<span class="comment"># [4, 2]</span></div><div class="line"><span class="comment"># 全部和</span></div><div class="line">print(np.sum(c))	<span class="comment"># 6</span></div></pre></td></tr></table></figure>
-<h3 id="矩阵变形"><a href="#矩阵变形" class="headerlink" title="矩阵变形"></a>矩阵变形</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 一维变二维</span></div><div class="line">c = np.array([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">6</span>])</div><div class="line">print(c.reshape(len(c), <span class="number">1</span>))	<span class="comment">### [[1], [3], [2], [0], [6]]</span></div></pre></td></tr></table></figure>
-<h3 id="矩阵值替换"><a href="#矩阵值替换" class="headerlink" title="矩阵值替换"></a>矩阵值替换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将数组的0替换为1 (前提是0为最小值)</span></div><div class="line">c = np.array([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">6</span>])</div><div class="line">print(c.clip(min=<span class="number">1</span>))	<span class="comment"># [1 3 2 1 6]</span></div></pre></td></tr></table></figure>
-<h3 id="行向量与列向量"><a href="#行向量与列向量" class="headerlink" title="行向量与列向量"></a>行向量与列向量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">3</span>]	<span class="comment"># 对于给出的一维数组，都是列向量：两行一列，shape=(2,1)</span></div><div class="line">[[<span class="number">1</span>, <span class="number">2</span>]] <span class="comment"># 行向量，一行两列，shape=(1,2)</span></div><div class="line"><span class="comment"># 列向量变行向量</span></div><div class="line">np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]).reshape(<span class="number">1</span>,<span class="number">-1</span>)</div><div class="line"><span class="comment"># 列向量变行向量</span></div><div class="line">np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]]).T</div></pre></td></tr></table></figure>
-<h3 id="矩阵与向量的乘法"><a href="#矩阵与向量的乘法" class="headerlink" title="矩阵与向量的乘法"></a>矩阵与向量的乘法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">a = np.array([<span class="number">1</span>, <span class="number">3</span>])</div><div class="line">b = np.array([<span class="number">1</span>, <span class="number">3</span>]).reshape(<span class="number">1</span>, <span class="number">-1</span>)</div><div class="line">c = np.ones([<span class="number">2</span>, <span class="number">3</span>])</div><div class="line"><span class="comment"># 注意相乘的顺序：矩阵(n*m)*向量(m*1)(列向量)</span></div><div class="line">np.matmul(c.T, a)</div><div class="line"><span class="comment"># 向量(1*m)*矩阵(m*n)</span></div><div class="line">np.matmul(b, c)</div></pre></td></tr></table></figure>
-
-          
+          <h3 id="矩阵平铺成向量"><a href="#矩阵平铺成向量" class="headerlink" title="矩阵平铺成向量"></a>矩阵平铺成向量</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = np.array([[<span class="number">3</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">2</span>]])</div><div class="line">b = a.reshape(<span class="number">-1</span>)</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/11/python-math-skill/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1707,155 +1823,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/16/hashmap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zhang JM">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ShaunJM's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/hashmap/" itemprop="url">java8 hashmap 的几点细节</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-16T12:09:24+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>哈希表是存储不连续主键的数据结构，如果主键是连续的，如[1,100]，可以直接将主键作为下标用数组存放。但是很多情况主键不是连续的，或者值很大，如学号(2013201320)，就要用哈希表存储。哈希表也是数组，只是存放时不是直接将主键作为下标，先通过散列函数计算应该放的位置，如：<code>n=k%m</code>，其中k是主键值，m是哈希表长度（数组长度），n为应该存放的位置。这样，n一定小于m，不会数组越界。但是可能发生冲突，即两个k计算的n一样，这样就需要有解决哈希冲突的策略。当需要查询时，先经过散列函数计算位置，如果主键值不是我们想要的，需要按照散列冲突去寻找主键。好的散列函数需要将主键在数组中分布的尽量均匀，一般数组长度取2的n次幂周围的素数</p>
-<p>HashMap 是很常用的集合类，用于存储键值对(Node<k,v>)。jdk1.7中hashmap用数组和链表实现，可是链表的查询效率低；在jdk1.8中hashmap使用数组+链表+红黑树的形式实现，当链表长度大于8时，会转成红黑树，提高了查询效率：O(n)到O(lgn)，本文对jdk1.8中hashmap实现中的几个有意思的细节进行叙述</k,v></p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/16/hashmap/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +1876,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1951,6 +1918,17 @@
                   
                     
                       GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://space.bilibili.com/40920026" target="_blank" title="BiliBili">
+                  
+                    <i class="fa fa-fw fa-television"></i>
+                  
+                    
+                      BiliBili
                     
                 </a>
               </span>
