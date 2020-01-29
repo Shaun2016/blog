@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/01/28/docker-component-communication/</loc>
+    
+    <lastmod>2020-01-29T09:39:30.074Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/01/26/docker/</loc>
     
     <lastmod>2020-01-29T07:42:38.587Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2020/01/25/load-balance-reverse-proxy/</loc>
     
     <lastmod>2020-01-29T07:32:19.713Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/01/28/docker-component-communication/</loc>
-    
-    <lastmod>2020-01-29T07:26:09.119Z</lastmod>
     
   </url>
   
