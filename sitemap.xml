@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
+    
+    <lastmod>2020-02-02T11:59:22.690Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/31/kubernetes/</loc>
+    
+    <lastmod>2020-02-01T07:11:45.544Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/01/28/docker-component-communication/</loc>
     
-    <lastmod>2020-01-29T09:39:30.074Z</lastmod>
+    <lastmod>2020-01-29T10:09:14.286Z</lastmod>
     
   </url>
   
@@ -19,13 +33,6 @@
     <loc>http://yoursite.com/2019/11/11/python-math-skill/</loc>
     
     <lastmod>2020-01-29T07:40:23.705Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
-    
-    <lastmod>2020-01-29T07:32:34.047Z</lastmod>
     
   </url>
   

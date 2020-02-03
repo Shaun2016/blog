@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kubernetes]]></title>
+    <url>%2F2020%2F01%2F31%2Fkubernetes%2F</url>
+    <content type="text"><![CDATA[K8s的安装环境 Master : 192.168.137.100 Slave1 : 192.168.137.101 Slave2 : 192.168.137.102 下面的操作为仅在Master中的操作，其余两台从节点也要执行相应的操作 设置主机名和时区 timedatectl set-timezone Asia/Shanghai hostnamectl set-hostname master 配置主机名对应的IP vi /etc/hosts 1234192.168.137.100 master192.168.137.101 slave1192.168.137.102 slave2192.168.137.103 slave3 关闭防火墙 123sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/configsystemctl disable firewalldsystemctl stop firewalld 安装kubeadmin XFTP上传kubernetes离线安装文件 在每个节点上安装Docker docker info | grep cgroup查看Cgroup Driver:cgroupfs tar -zxvf kube114-rpm.tar.gz cd kube114-rpm yum localinstall -y *.rpm 关闭交换区swapoff -a，vi /etc/fstap注释带有swap一行 配置网桥 12345cat &lt;&lt;EOF &gt; /etc/sysctl.d/k8s.confnet.bridge.bridge-nf-call-ip6tables = 1net.bridge.bridge-nf-call-iptables = 1EOFsysctl --system 指令随记 cat &gt;file表示重定向输出到file中，用户输入内容后按ctrl+c结束编写内容并将内容输出到file中，注：会覆盖file中原始的内容； cat &gt;&gt; file是在file 中追加内容 上述的两个指令无法在脚本执行中使用，因为会阻塞等待用户输入，需要使用下面的指令： cat &lt;&lt;EOF &gt; file创建文件并写入内容，输入完成后以EOF结束，其中EOF只是一个字符串标记，可以随意指定，只是默认的写法是EOF；在脚本中想向文件中写入内容时使用，cat &lt;&lt;EOF &gt;&gt; file表示追加内容 echo 12345 &gt; 1.txt cat &lt; 1.txt &gt; 2.txt 在上面的两条指令中，&gt;表示输出流（&gt;覆盖&gt;&gt;追加），&lt;表示输入流，如cat &lt; 1.txt &gt; 2.txt表示将1.txt的内容做为输入，输出到2.txt中]]></content>
+      <categories>
+        <category>kubernetes</category>
+      </categories>
+      <tags>
+        <tag>kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[docker容器间通讯与数据共享与Docker Compose]]></title>
     <url>%2F2020%2F01%2F28%2Fdocker-component-communication%2F</url>
-    <content type="text"><![CDATA[容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实， 给容器命名和建立单向连接docker run -d --name database mysql创建了一个名为database的mysql容器； 创建一个名为bd_web连接到database的tomcat容器，docker run -d -p 80:8080 --link database --name bd_web tomcat 进入名为bd_web的tomcat容器访问database容器：docker exec -it xxx(database&#39;s containerID) /bin/bash，ping database，可以ping通 容器间双向通信 可以在两个容器创建时link对方的name，有更简单灵活的方法是建立网桥 创建两个容器name分别为web和database 创建网桥：docker network create -d bridge my-bridge docker network connect my-bridge web docker network connect my-bridge database 在web与database中互相可以ping通 当创建了一个网桥后，docker会创建一个虚拟网卡，不同的容器通过这个虚拟网卡进行网络通信 容器间共享数据 当很多容器中部署的相同的项目时，更新项目文件时如果需要更新很多容器的话是一件很麻烦的事，将宿主机的目录设置为Docker容器的工程目录，修改宿主机目录中的文件就可以同时对很多容器进行更新 设置挂载宿主机路径docker run --name 容器名 -v 宿主机路径:容器内挂载路径 tomcat 每次创建容器都要设置挂载路径是一件很麻烦的事情 创建共享容器docker create --name c1 -v 宿主机路径:容器内挂载路径 tomcat /bin/true 设置共享容器docker run --volumes-from c1 --name t1 -d -p 8000:8080 tomcat 这样创建容器时通过设置c1为共享容器，就挂载上了c1中挂载的宿主机路径 Docker Compose 单节点多容器的部署工具，使用yml文件定义多容器如何部署 Docker Compose的安装在https://docs.docker.com/compose按照文档： 哎，自己看官方文档吧，不复制了 指令随记docker inspect containerID查看容器的信息]]></content>
+    <content type="text"><![CDATA[容器间单向通信 Tomcat容器要访问MySQL容器：docker容器在创建时都会有一个虚拟IP，使用IP地址进行通讯显然不现实， 给容器命名和建立单向连接docker run -d --name database mysql创建了一个名为database的mysql容器； 创建一个名为bd_web连接到database的tomcat容器，docker run -d -p 80:8080 --link database --name bd_web tomcat 进入名为bd_web的tomcat容器访问database容器：docker exec -it xxx(database&#39;s containerID) /bin/bash，ping database，可以ping通 容器间双向通信 可以在两个容器创建时link对方的name，有更简单灵活的方法是建立网桥 创建两个容器name分别为web和database 创建网桥：docker network create -d bridge my-bridge docker network connect my-bridge web docker network connect my-bridge database 在web与database中互相可以ping通 当创建了一个网桥后，docker会创建一个虚拟网卡，不同的容器通过这个虚拟网卡进行网络通信 容器间共享数据 当很多容器中部署的相同的项目时，更新项目文件时如果需要更新很多容器的话是一件很麻烦的事，将宿主机的目录设置为Docker容器的工程目录，修改宿主机目录中的文件就可以同时对很多容器进行更新 设置挂载宿主机路径docker run --name 容器名 -v 宿主机路径:容器内挂载路径 tomcat 每次创建容器都要设置挂载路径是一件很麻烦的事情 创建共享容器docker create --name c1 -v 宿主机路径:容器内挂载路径 tomcat /bin/true 设置共享容器docker run --volumes-from c1 --name t1 -d -p 8000:8080 tomcat 这样创建容器时通过设置c1为共享容器，就挂载上了c1中挂载的宿主机路径 Docker Compose 单节点多容器的部署工具，使用yml文件定义多容器如何部署 Docker Compose的安装在https://docs.docker.com/compose按照文档： 不过使用curl在线安装docker compose很慢容易失败，我找到了一个使用离线或者pip安装的方法https://my.oschina.net/thinwonton/blog/2985886 指令随记docker inspect containerID查看容器的信息]]></content>
       <categories>
         <category>docker</category>
       </categories>
@@ -36,7 +47,7 @@
   <entry>
     <title><![CDATA[python program skill]]></title>
     <url>%2F2019%2F11%2F16%2Fpython-program-skill%2F</url>
-    <content type="text"><![CDATA[写项目中遇到的小技巧记录 检查 key 是否存在123d = &#123;1:2, 3:4&#125;print(1 in d) # Trueprint(2 in d) # False 对 dict 排序12345678dict1 = &#123;1: 4, 2: 1, 3: 2&#125;d1 = sorted(dict1.items(), key=lambda d: d[1]) # 按 value 升序print(d1) # [(2, 1), (3, 2), (1, 4)] d2 = sorted(dict1.items(), key=lambda d: d[1], reverse=True) # 按 value 降序print(d2) # [(1, 4), (3, 2), (2, 1)] d3 = sorted(dict1.items(), key=lambda d: d[0]) # 按 key 升序print(d3) # [(1, 4), (2, 1), (3, 2)] print(dict1) # &#123;1: 4, 2: 1, 3: 2&#125; 注：sorted函数不会改变排序对象 集合运算12345x&amp;y # 交集x|y # 并集x-y # 差集x.issubset(y) # x 是否为 y 的子集x.issuperset(y) # x 是否为 y 的父集 由已有的list做为key建立dict12d=&#123;&#125;.fromkeys([1,2,3]) # &#123;1: None, 2: None, 3: None&#125;d=dict().fromkeys([...])]]></content>
+    <content type="text"><![CDATA[写项目中遇到的小技巧记录 检查 key 是否存在123d = &#123;1:2, 3:4&#125;print(1 in d) # Trueprint(2 in d) # False 对 dict 排序12345678dict1 = &#123;1: 4, 2: 1, 3: 2&#125;d1 = sorted(dict1.items(), key=lambda d: d[1]) # 按 value 升序print(d1) # [(2, 1), (3, 2), (1, 4)] d2 = sorted(dict1.items(), key=lambda d: d[1], reverse=True) # 按 value 降序print(d2) # [(1, 4), (3, 2), (2, 1)] d3 = sorted(dict1.items(), key=lambda d: d[0]) # 按 key 升序print(d3) # [(1, 4), (2, 1), (3, 2)] print(dict1) # &#123;1: 4, 2: 1, 3: 2&#125; 注：sorted函数不会改变排序对象 集合运算12345x&amp;y # 交集x|y # 并集x-y # 差集x.issubset(y) # x 是否为 y 的子集x.issuperset(y) # x 是否为 y 的父集 由已有的list做为key建立dict12d=&#123;&#125;.fromkeys([1,2,3]) # &#123;1: None, 2: None, 3: None&#125;d=dict().fromkeys([...]) python 线程与线程池创建线程的两种方法：_thread和threading _thread 1234567import _threadimport timedef crawl(url, name): print(url, name) time.sleep(2)_thread.start_new_thread(crawl, ('www', 'thread-1'))time.sleep(5) # 阻塞主线程，否则子线程也会被销毁 _thread.start_new_thread(function, args)，args为传递给线程函数的参数，为tuple类型 threading 123456import threadingdef crawl(url, name): print(url, name) time.sleep(2)thread1 = threading.Thread(target=crawl, name='thread-1', args=('www', 'zjm'))thread1.start() 区别：在主线程执行完毕后，_thread创建的线程如果还存活，会直接结束；threading创建的线程如果还存活，会等待子线程完成后再退出 线程池 12345678910111213from concurrent.futures import ThreadPoolExecutorimport timedef crawl(url, name): print(url, name) time.sleep(2)urls = ['www.baidu.com', 'www.tencent.com', 'www.taobao.com']# submit的形式: 每次都要提交一个目标函数和对应的参数with ThreadPoolExecutor(3) as executor: # 线程数 for index, url in enumerate(urls): executor.submit(crawl, url, 'Thread-'+str(index))# map的形式: 只需要提交一次目标函数，目标函数的参数以列表形式传入with ThreadPoolExecutor(3) as executor: executor.map(crawl, urls, ['Thread-'+str(_) for _ in range(len(urls))])]]></content>
       <categories>
         <category>python</category>
       </categories>
@@ -87,8 +98,8 @@
         <category>mysql</category>
       </categories>
       <tags>
-        <tag>mycat</tag>
         <tag>mysql</tag>
+        <tag>mycat</tag>
       </tags>
   </entry>
   <entry>

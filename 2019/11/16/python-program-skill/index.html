@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="写项目中遇到的小技巧记录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-29T07:32:34.047Z">
+<meta property="og:updated_time" content="2020-02-02T11:59:22.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python program skill">
 <meta name="twitter:description" content="写项目中遇到的小技巧记录">
@@ -419,7 +419,19 @@
 <h3 id="对-dict-排序"><a href="#对-dict-排序" class="headerlink" title="对 dict 排序"></a>对 dict 排序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dict1 = &#123;<span class="number">1</span>: <span class="number">4</span>, <span class="number">2</span>: <span class="number">1</span>, <span class="number">3</span>: <span class="number">2</span>&#125;</div><div class="line">d1 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>])	<span class="comment"># 按 value 升序</span></div><div class="line">print(d1)	<span class="comment"># [(2, 1), (3, 2), (1, 4)]	</span></div><div class="line">d2 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">1</span>], reverse=<span class="keyword">True</span>)	<span class="comment"># 按 value 降序</span></div><div class="line">print(d2)	<span class="comment"># [(1, 4), (3, 2), (2, 1)]	</span></div><div class="line">d3 = sorted(dict1.items(), key=<span class="keyword">lambda</span> d: d[<span class="number">0</span>])	<span class="comment"># 按 key 升序</span></div><div class="line">print(d3)	<span class="comment"># [(1, 4), (2, 1), (3, 2)]	</span></div><div class="line">print(dict1)	<span class="comment"># &#123;1: 4, 2: 1, 3: 2&#125;  注：sorted函数不会改变排序对象</span></div></pre></td></tr></table></figure>
 <h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">x&amp;y <span class="comment"># 交集</span></div><div class="line">x|y <span class="comment"># 并集</span></div><div class="line">x-y <span class="comment"># 差集</span></div><div class="line">x.issubset(y) <span class="comment"># x 是否为 y 的子集</span></div><div class="line">x.issuperset(y) <span class="comment"># x 是否为 y 的父集</span></div></pre></td></tr></table></figure>
 <h3 id="由已有的list做为key建立dict"><a href="#由已有的list做为key建立dict" class="headerlink" title="由已有的list做为key建立dict"></a>由已有的list做为key建立dict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d=&#123;&#125;.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])	<span class="comment"># &#123;1: None, 2: None, 3: None&#125;</span></div><div class="line">d=dict().fromkeys([...])</div></pre></td></tr></table></figure>
-
+<h3 id="python-线程与线程池"><a href="#python-线程与线程池" class="headerlink" title="python 线程与线程池"></a>python 线程与线程池</h3><p>创建<strong>线程</strong>的两种方法：<code>_thread</code>和<code>threading</code></p>
+<ol>
+<li>_thread</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> _thread</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl</span><span class="params">(url, name)</span>:</span></div><div class="line">    print(url, name)</div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">_thread.start_new_thread(crawl, (<span class="string">'www'</span>, <span class="string">'thread-1'</span>))</div><div class="line">time.sleep(<span class="number">5</span>)	<span class="comment"># 阻塞主线程，否则子线程也会被销毁</span></div></pre></td></tr></table></figure>
+<p><code>_thread.start_new_thread(function, args)</code>，<code>args</code>为传递给线程函数的参数，为tuple类型</p>
+<ol>
+<li>threading</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> threading</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl</span><span class="params">(url, name)</span>:</span></div><div class="line">    print(url, name)</div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">thread1 = threading.Thread(target=crawl, name=<span class="string">'thread-1'</span>, args=(<span class="string">'www'</span>, <span class="string">'zjm'</span>))</div><div class="line">thread1.start()</div></pre></td></tr></table></figure>
+<p><strong>区别：</strong>在主线程执行完毕后，_thread创建的线程如果还存活，会直接结束；threading创建的线程如果还存活，会等待子线程完成后再退出</p>
+<p><strong>线程池</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl</span><span class="params">(url, name)</span>:</span></div><div class="line">    print(url, name)</div><div class="line">    time.sleep(<span class="number">2</span>)</div><div class="line">urls = [<span class="string">'www.baidu.com'</span>, <span class="string">'www.tencent.com'</span>, <span class="string">'www.taobao.com'</span>]</div><div class="line"><span class="comment"># submit的形式: 每次都要提交一个目标函数和对应的参数</span></div><div class="line"><span class="keyword">with</span> ThreadPoolExecutor(<span class="number">3</span>) <span class="keyword">as</span> executor:	<span class="comment"># 线程数</span></div><div class="line">	<span class="keyword">for</span> index, url <span class="keyword">in</span> enumerate(urls):</div><div class="line">    	executor.submit(crawl, url, <span class="string">'Thread-'</span>+str(index))</div><div class="line"><span class="comment"># map的形式: 只需要提交一次目标函数，目标函数的参数以列表形式传入</span></div><div class="line"><span class="keyword">with</span> ThreadPoolExecutor(<span class="number">3</span>) <span class="keyword">as</span> executor:</div><div class="line">    executor.map(crawl, urls, [<span class="string">'Thread-'</span>+str(_) <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(urls))])</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -606,7 +618,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -617,7 +629,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -628,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -717,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查-key-是否存在"><span class="nav-number">1.</span> <span class="nav-text">检查 key 是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-dict-排序"><span class="nav-number">2.</span> <span class="nav-text">对 dict 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合运算"><span class="nav-number">3.</span> <span class="nav-text">集合运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#由已有的list做为key建立dict"><span class="nav-number">4.</span> <span class="nav-text">由已有的list做为key建立dict</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#检查-key-是否存在"><span class="nav-number">1.</span> <span class="nav-text">检查 key 是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对-dict-排序"><span class="nav-number">2.</span> <span class="nav-text">对 dict 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合运算"><span class="nav-number">3.</span> <span class="nav-text">集合运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#由已有的list做为key建立dict"><span class="nav-number">4.</span> <span class="nav-text">由已有的list做为key建立dict</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-线程与线程池"><span class="nav-number">5.</span> <span class="nav-text">python 线程与线程池</span></a></li></ol></div>
             
 
           </div>
