@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://yoursite.com/images/word2vec/model.png">
 <meta property="og:image" content="http://yoursite.com/images/word2vec/one-hot-m-matrix.png">
 <meta property="og:image" content="http://yoursite.com/images/word2vec/cbow.png">
-<meta property="og:updated_time" content="2019-03-20T11:33:35.049Z">
+<meta property="og:updated_time" content="2020-02-07T13:08:14.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="word2vec的简单理解">
 <meta name="twitter:description" content="word2vec研究如何将词用向量表示，使用的两个重要模型——CBOW模型(Continuous Bag-of-Words Model)和Skip-gram模型(Continuous Skip-gram Model)，CBOW通过上下文预测中间词，Skip-gram对中间词预测它的上下文，本文只对CBOW进行介绍  词的向量表示 one-hot：语料库的词项个数为m，则one-hot表示的长度为">
@@ -468,7 +468,7 @@
 </blockquote>
 <p><img src="/images/word2vec/one-hot-m-matrix.png" alt="1552997378231"></p>
 <h4 id="输出层"><a href="#输出层" class="headerlink" title="输出层"></a>输出层</h4><blockquote>
-<p>隐藏层得到的1<em>d向量与权重矩阵<script type="math/tex">W'</script>相乘，得到1\</em>m的向量，通过softmax处理后得到一个1*m的向量<script type="math/tex">\hat{y}</script>，为中间词出现的概率，概率最大的index指向的词项即为预测出的中间词，与真实值的one-hot向量 <script type="math/tex">y</script> 做比较，根据误差更新权重矩阵<script type="math/tex">W与W'</script>。</p>
+<p>隐藏层得到的1*d向量与权重矩阵<script type="math/tex">W'</script>相乘，得到1*m的向量，通过softmax处理后得到一个1*m的向量<script type="math/tex">\hat{y}</script>，为中间词出现的概率，概率最大的index指向的词项即为预测出的中间词，与真实值的one-hot向量 <script type="math/tex">y</script> 做比较，根据误差更新权重矩阵<script type="math/tex">W与W'</script>。</p>
 </blockquote>
 <script type="math/tex; mode=display">
 softmax(
@@ -697,7 +697,7 @@ len(w)=\frac{[counter(w)]^{3/4}}{\sum_{u\in D}[counter(u)]^{3/4}}</script><p>len
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">48</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

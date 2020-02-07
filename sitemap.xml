@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
+    
+    <lastmod>2020-02-07T13:08:14.210Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
     
     <lastmod>2020-02-06T14:11:43.776Z</lastmod>
@@ -191,20 +198,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
-    
-    <lastmod>2019-03-20T11:33:35.049Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/12/16/skip-gram/</loc>
-    
-    <lastmod>2019-03-19T08:21:33.135Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2019/03/12/redis-master-slave-sentinel/</loc>
     
     <lastmod>2019-03-13T00:42:28.797Z</lastmod>
@@ -240,30 +233,9 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/08/09/elastic-search/</loc>
-    
-    <lastmod>2018-08-18T13:30:23.993Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2018/07/14/concurrent/</loc>
     
     <lastmod>2018-08-18T13:28:04.356Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/04/08/kibana-command/</loc>
-    
-    <lastmod>2018-08-09T03:10:24.697Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/05/06/elasticsearch-kibana-install/</loc>
-    
-    <lastmod>2018-08-09T03:10:05.182Z</lastmod>
     
   </url>
   
@@ -334,13 +306,6 @@
     <loc>http://yoursite.com/2017/02/06/priority-queue/</loc>
     
     <lastmod>2017-08-28T16:43:46.277Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/01/24/ky/</loc>
-    
-    <lastmod>2017-08-28T16:41:51.639Z</lastmod>
     
   </url>
   
