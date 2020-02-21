@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/02/21/limit-traffic/</loc>
+    
+    <lastmod>2020-02-21T14:10:36.204Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/31/kubernetes/</loc>
+    
+    <lastmod>2020-02-07T13:55:57.143Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
     
     <lastmod>2020-02-07T13:08:14.210Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
     
     <lastmod>2020-02-06T14:11:43.776Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/01/31/kubernetes/</loc>
-    
-    <lastmod>2020-02-01T07:11:45.544Z</lastmod>
     
   </url>
   

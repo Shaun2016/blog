@@ -414,7 +414,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="用yum安装jdk"><a href="#用yum安装jdk" class="headerlink" title="用yum安装jdk"></a>用yum安装jdk</h3><h4 id="查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）"><a href="#查看-yum-库中都有哪些-jdk-版本（暂时只发现了-openjdk）" class="headerlink" title="查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）"></a>查看 yum 库中都有哪些 jdk 版本（暂时只发现了 openjdk）</h4><p><code>yum search java|grep jdk</code></p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p><code>yum install java-1.7.0-openjdk</code></p>
 <h4 id="设置环境变量"><a href="#设置环境变量" class="headerlink" title="设置环境变量"></a>设置环境变量</h4><p>在profile文件中添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash"><span class="built_in">set</span> java environment</span></div><div class="line">JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131</div><div class="line"><span class="meta">#</span><span class="bash">复制路径以防路径无法找到</span></div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span>set java environment</div><div class="line">JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.131</div><div class="line"><span class="meta">#</span>复制路径以防路径无法找到</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">export JAVA_HOME JRE_HOME CLASS_PATH PATH</div></pre></td></tr></table></figure>
 <p>让修改生效</p>
 <p><code>source /etc/profile</code></p>
 <a id="more"></a>
@@ -618,7 +618,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -640,7 +640,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
