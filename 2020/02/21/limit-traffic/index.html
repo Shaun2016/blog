@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  1234RateLimiter limiter = RateLimiter.create(5);    // 桶容">
+<meta name="description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  使用Guava提供的令牌桶实现： 1234RateLimiter limiter = RateLimiter.cr">
 <meta name="keywords" content="website architecture">
 <meta property="og:type" content="article">
 <meta property="og:title" content="限流">
 <meta property="og:url" content="http://yoursite.com/2020/02/21/limit-traffic/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  1234RateLimiter limiter = RateLimiter.create(5);    // 桶容">
+<meta property="og:description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  使用Guava提供的令牌桶实现： 1234RateLimiter limiter = RateLimiter.cr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-21T14:10:36.204Z">
+<meta property="og:updated_time" content="2020-02-21T14:15:12.739Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="限流">
-<meta name="twitter:description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  1234RateLimiter limiter = RateLimiter.create(5);    // 桶容">
+<meta name="twitter:description" content="限流算法令牌桶算法 有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个n字节大小的数据包到达时，如果桶内令牌数大于n，从桶中删除n个令牌，放数据包通过，如果桶中令牌数不足n个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）  使用Guava提供的令牌桶实现： 1234RateLimiter limiter = RateLimiter.cr">
 
 
 
@@ -242,16 +242,6 @@
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
             站点地图
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-commonweal">
-          <a href="/404.html" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
-            
-            公益404
           </a>
         </li>
       
@@ -414,6 +404,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="限流算法"><a href="#限流算法" class="headerlink" title="限流算法"></a>限流算法</h3><h4 id="令牌桶算法"><a href="#令牌桶算法" class="headerlink" title="令牌桶算法"></a>令牌桶算法</h4><blockquote>
 <p>有一个装有固定容量令牌的大桶，按照固定速率往桶里添加令牌，当装满时，新添加的令牌被拒绝添加；当一个<code>n</code>字节大小的数据包到达时，如果桶内令牌数大于<code>n</code>，从桶中删除<code>n</code>个令牌，放数据包通过，如果桶中令牌数不足<code>n</code>个，不会删除令牌，且该数据包被限流（丢弃，或进入缓冲队列等待）</p>
 </blockquote>
+<p>使用<code>Guava</code>提供的令牌桶实现：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">RateLimiter limiter = RateLimiter.create(<span class="number">5</span>);    <span class="comment">// 桶容量为5，且每秒增加5个令牌</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)</div><div class="line">    <span class="comment">// 消费一个令牌，如果桶中有足够的令牌，成功，返回0；如果桶中没有令牌，暂停一段时间直到桶中有令牌</span></div><div class="line">    System.out.println(limiter.acquire());</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>令牌桶允许一下全部取走所有令牌，也可以消费未来的令牌，这样系统可能扛不住瞬间很大的突发请求</p>
@@ -442,7 +433,7 @@
 <ul>
 <li>平滑限流</li>
 </ul>
-<p>以上的限流方法都不能很好地处理突发请求，即瞬间请求可以很大。一些场景需要对突发请求进行平滑，可以使用<code>Guava</code>提供的令牌桶实现：</p>
+<p>以上的限流方法都不能很好地处理突发请求，即瞬间请求可以很大。一些场景需要对突发请求进行平滑：</p>
 <p><code>RateLimiter limiter = RateLimiter.create(double permitsPerSecond, long warmupPeriod, TimeUnit unit)</code>，其中，<code>permitsPerSecond</code>表示每秒新增的令牌数，<code>warmupPeriod</code>表示从冷启动速率过渡到平均速率的时间间隔</p>
 <ul>
 <li>分布式限流（不懂）</li>
@@ -523,6 +514,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/22/downgrade/" rel="prev" title="降级">
+                降级 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -638,7 +633,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

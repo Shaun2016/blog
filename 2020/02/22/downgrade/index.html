@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hadoop," />
+  <meta name="keywords" content="website architecture," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Java开发Map/Reduce程序MR程序执行方式： 在本地运行，输入输出都在本地，用于调试程序 把远程数据拉到本地运行，输出传回远程，只适合数据量小 在远程运行，输入输出都在远程">
-<meta name="keywords" content="Hadoop">
+<meta name="description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
+<meta name="keywords" content="website architecture">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java map-reduce">
-<meta property="og:url" content="http://yoursite.com/2018/02/11/java-map-reduce/index.html">
+<meta property="og:title" content="降级">
+<meta property="og:url" content="http://yoursite.com/2020/02/22/downgrade/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="Java开发Map/Reduce程序MR程序执行方式： 在本地运行，输入输出都在本地，用于调试程序 把远程数据拉到本地运行，输出传回远程，只适合数据量小 在远程运行，输入输出都在远程">
+<meta property="og:description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-29T01:01:25.504Z">
+<meta property="og:updated_time" content="2020-02-22T14:30:53.899Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java map-reduce">
-<meta name="twitter:description" content="Java开发Map/Reduce程序MR程序执行方式： 在本地运行，输入输出都在本地，用于调试程序 把远程数据拉到本地运行，输出传回远程，只适合数据量小 在远程运行，输入输出都在远程">
+<meta name="twitter:title" content="降级">
+<meta name="twitter:description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/02/11/java-map-reduce/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/22/downgrade/"/>
 
 
 
 
 
-  <title>java map-reduce | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>降级 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/11/java-map-reduce/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/22/downgrade/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhang JM">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java map-reduce</h1>
+          <h1 class="post-title" itemprop="name headline">降级</h1>
         
 
         <div class="post-meta">
@@ -341,8 +341,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-11T12:48:22+08:00">
-                2018-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-22T14:21:04+08:00">
+                2020-02-22
               </time>
             
 
@@ -364,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hadoop/" itemprop="url" rel="index">
-                    <span itemprop="name">Hadoop</span>
+                  <a href="/categories/website-architecture/" itemprop="url" rel="index">
+                    <span itemprop="name">website architecture</span>
                   </a>
                 </span>
 
@@ -401,37 +401,47 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h1 id="Java开发Map-Reduce程序"><a href="#Java开发Map-Reduce程序" class="headerlink" title="Java开发Map/Reduce程序"></a>Java开发Map/Reduce程序</h1><h2 id="MR程序执行方式："><a href="#MR程序执行方式：" class="headerlink" title="MR程序执行方式："></a>MR程序执行方式：</h2><ul>
-<li>在本地运行，输入输出都在本地，用于调试程序</li>
-<li>把远程数据拉到本地运行，输出传回远程，只适合数据量小</li>
-<li>在远程运行，输入输出都在远程</li>
-</ul>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）</p>
+</blockquote>
 <a id="more"></a>
-<h2 id="Java程序在服务器上运行"><a href="#Java程序在服务器上运行" class="headerlink" title="Java程序在服务器上运行"></a>Java程序在服务器上运行</h2><ul>
-<li><p>配置系统环境变量HADOOP_HOME，指向hadoop安装目录（如果你不想招惹不必要的麻烦，不要在目录中包含空格或者中文字符）</p>
-<p>把HADOOP_HOME/bin加到PATH环境变量（非必要，只是为了方便）</p>
-</li>
-<li><p>如果是在windows下开发，需要添加windows的库文件</p>
-<ul>
-<li>把盘中共享的bin目录覆盖HADOOP_HOME/bin</li>
-<li>如果还是不行，把其中的hadoop.dll复制到c:\windows\system32目录下，可能需要重启机器</li>
+<h4 id="主要分为以下几种情况："><a href="#主要分为以下几种情况：" class="headerlink" title="主要分为以下几种情况："></a>主要分为以下几种情况：</h4><ul>
+<li>页面降级，页面片段降级，页面异步请求降级：动态渲染页面边为静态默认页面</li>
+<li>服务功能降级：一些不重要的服务出现问题或影响性能，返回兜底数据</li>
+<li>读降级：从读数据库降级为只读缓存</li>
+<li>写降级：不对缓存更新，然后峰值过去后异步更新数据库，保证最终一致性（同步转异步）</li>
+<li>爬虫降级：对爬虫访问返回空数据或静态数据</li>
+<li>风控降级：拒绝高风险用户</li>
 </ul>
-</li>
+<h4 id="何时需要降级："><a href="#何时需要降级：" class="headerlink" title="何时需要降级："></a>何时需要降级：</h4><ul>
+<li>响应超时</li>
+<li>失败次数大于阈值</li>
+<li>出现故障</li>
+<li>限流降级：当访问量达到限流阈值时，后续的请求会被降级，处理方案可以是：排队，无货，错误页（活动太火爆，请稍后重试）</li>
+<li>人为关闭某项服务时，如灰度测试</li>
 </ul>
-<h3 id="maven引入依赖"><a href="#maven引入依赖" class="headerlink" title="maven引入依赖"></a>maven引入依赖</h3><blockquote>
-<p>新建项目，引入hadoop 所需要的jar文件</p>
+<h4 id="如何降级"><a href="#如何降级" class="headerlink" title="如何降级"></a>如何降级</h4><h5 id="通过修改配置文件"><a href="#通过修改配置文件" class="headerlink" title="通过修改配置文件"></a>通过修改配置文件</h5><p>例如：当检测到需要降级时，发送一个指令修改<code>properties</code>配置文件，借住<code>JDK 7 WatchService</code> 实现配置文件变更监听</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    File file = <span class="keyword">new</span> File(<span class="string">"C:\\Users\\zjm\\IdeaProjects\\LimitTraffic\\src\\main\\java\\com\\heu\\zjm\\utils\\application.properties"</span>);	<span class="comment">// 模拟配置文件</span></div><div class="line">    WatchService watchService = FileSystems.getDefault().newWatchService();</div><div class="line">    Paths.get(file.getParent()).register(watchService,</div><div class="line">            StandardWatchEventKinds.ENTRY_MODIFY,</div><div class="line">            StandardWatchEventKinds.ENTRY_DELETE);</div><div class="line">    <span class="comment">// 启动一个线程监听内容变化</span></div><div class="line">    Thread watchThread = <span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">                WatchKey watchKey = watchService.take();</div><div class="line">                <span class="keyword">for</span> (WatchEvent&lt;?&gt; event : watchKey.pollEvents()) &#123;</div><div class="line">                    <span class="keyword">if</span> (Objects.equal(event.context().toString(), file.getName())) &#123;</div><div class="line">                        System.out.println(<span class="string">"文件发生了变化："</span> + event.kind() + <span class="string">"，重新载入配置文件"</span>);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                watchKey.reset();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    watchThread.setDaemon(<span class="keyword">true</span>);	<span class="comment">// 守护线程</span></div><div class="line">    watchThread.start();</div><div class="line">    watchThread.join();		<span class="comment">// 防止主线程结束将守护线程停止</span></div><div class="line">    Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            watchService.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注：</strong>用idea修改配置文件内容不会观察到modify现实的提示，用文本编辑器修改后保存可以观察到modify操作的提示</p>
+<p><strong>用户线程和守护线程：</strong>主线程结束，如果有用户线程，用户线程继续执行；主线程结束，没有用户线程，守护线程结束。默认创建的都是用户线程，守护线程需要在<code>start</code>前<code>setDaemon(true)</code></p>
+<p>​          在分布式系统中，要同时修改很多台服务器上的配置文件，会很麻烦，可以使用分布式配置中心统一管理</p>
+<h5 id="通过配置中心（注册中心）"><a href="#通过配置中心（注册中心）" class="headerlink" title="通过配置中心（注册中心）"></a>通过配置中心（注册中心）</h5><p>可选择的开源项目：<code>ZooKeeper</code>，<code>Diamond</code>，<code>Disconf</code>，<code>Etcd 3</code>，<code>Consul</code> </p>
+<h4 id="熔断"><a href="#熔断" class="headerlink" title="熔断"></a>熔断</h4><blockquote>
+<p>降级的开关：某个服务的熔断打开，不处理该服务的请求，直接做降级处理；熔断关闭，重新处理该服务的请求</p>
 </blockquote>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">project.build.sourceencoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">project.build.sourceencoding</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">hadoop.version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">hadoop.version</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.12<span class="tag">&lt;/<span class="name">version</span></span></div><div class="line">    &lt;/dependency&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-hdfs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hadoop.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="WordMapper-java"><a href="#WordMapper-java" class="headerlink" title="WordMapper.java"></a>WordMapper.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordMapper</span> <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">LongWritable</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(LongWritable key, Text value, Mapper&lt;LongWritable, Text, Text, IntWritable&gt;.Context context)</span></span></div><div class="line"><span class="function">			<span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</div><div class="line">		<span class="keyword">final</span> IntWritable ONE = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</div><div class="line">		String s = value.toString();</div><div class="line">		String[] words = s.split(<span class="string">" "</span>);</div><div class="line">		<span class="keyword">for</span>(String word: words) &#123;</div><div class="line">			context.write(<span class="keyword">new</span> Text(word), ONE);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="WordReduce-java"><a href="#WordReduce-java" class="headerlink" title="WordReduce.java"></a>WordReduce.java</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordReducer</span> <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>, <span class="title">IntWritable</span>, <span class="title">Text</span>, <span class="title">LongWritable</span>&gt;</span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,</span></span></div><div class="line"><span class="function"><span class="params">			Reducer&lt;Text, IntWritable, Text, LongWritable&gt;.Context context)</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</div><div class="line">		<span class="keyword">long</span> count = <span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(IntWritable v: values) &#123;</div><div class="line">			count += v.get();</div><div class="line">		&#125;</div><div class="line">		context.write(key, <span class="keyword">new</span> LongWritable(count));</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.zjm;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.LongWritable;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</div><div class="line">		Configuration conf = <span class="keyword">new</span> Configuration();</div><div class="line">        conf.set(<span class="string">"fs.defaultFS"</span>, <span class="string">"hdfs://master:9000/"</span>);</div><div class="line">        <span class="comment">// 将项目打包到项目跟目录下</span></div><div class="line">        conf.set(<span class="string">"mapreduce.job.jar"</span>, <span class="string">"wc.jar"</span>);</div><div class="line">		conf.set(<span class="string">"mapreduce.framework.name"</span>, <span class="string">"yarn"</span>);</div><div class="line">		conf.set(<span class="string">"yarn.resourcemanager.hostname"</span>, <span class="string">"master"</span>);</div><div class="line">		conf.set(<span class="string">"mapreduce.app-submission.cross-platform"</span>,<span class="string">"true"</span>);</div><div class="line">        Job job = Job.getInstance(conf);</div><div class="line">         </div><div class="line">        job.setMapperClass(WordMapper.class);</div><div class="line">        job.setReducerClass(WordReducer.class);</div><div class="line">        job.setMapOutputKeyClass(Text.class);</div><div class="line">        job.setMapOutputValueClass(IntWritable.class);</div><div class="line">        <span class="comment">// Reduce 的输出类型</span></div><div class="line">        job.setOutputKeyClass(Text.class);</div><div class="line">        job.setOutputValueClass(LongWritable.class);</div><div class="line">         </div><div class="line">        FileInputFormat.setInputPaths(job, <span class="string">"/input/"</span>);</div><div class="line">        FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(<span class="string">"/output"</span>));</div><div class="line">         </div><div class="line">        job.waitForCompletion(<span class="keyword">true</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注：</strong></p>
-<blockquote>
-<p>win系统的hosts文件添加虚拟机的IP和主机名</p>
-<p>配置hadoop在win系统的环境变量</p>
-<p>Run as —— Run Configurations —— Arguments —— VM arguments: <code>-DHADOOP_USER_NAME=root</code></p>
-</blockquote>
-
+<p><em>个人理解：熔断是为了防止反复请求已经降级的服务</em></p>
+<h5 id="熔断的状态"><a href="#熔断的状态" class="headerlink" title="熔断的状态"></a>熔断的状态</h5><ul>
+<li>闭合：如果配置了熔断开关强制闭合，或者当前失败率低于阈值，不启动熔断，不进行降级处理</li>
+<li>打开：如果配置了熔断开关强制打开，或者当前失败率超过阈值，熔断开关打开，调用降级处理方法<code>getFallback</code></li>
+<li>半打开：熔断处于打开状态，一段时间后重试请求，如果重试成功闭合熔断，否则熔断开关还处于打开状态</li>
+</ul>
+<h4 id="失败请求的统计"><a href="#失败请求的统计" class="headerlink" title="失败请求的统计"></a>失败请求的统计</h4><ul>
+<li>计数统计：记录一定时间窗内（N秒）的失败、超时、线程池拒绝、信号量拒绝数，记录N组，写入数据时写到第N组，统计时计算前N-1组，因为第N组刚开始统计时是随时变化的，然后基于时间滚转统计分组</li>
+<li>最大并发数统计</li>
+<li>延时百分比统计</li>
+</ul>
+<p>下面模拟一个长度为10的时间窗的计数统计，与上述实现有所不同的是：写入时写到当前时间所处位置<code>nowIndex</code>上，统计时计算<code>nowIndex</code>以外的位置数字之和，每秒将<code>nowIndex</code>循环后移一位</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Random;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BucketedCounter</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> windowSize = <span class="number">10</span>;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] windows;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> nowIndex = <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">(<span class="keyword">int</span> windowSize)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.windowSize = windowSize;</div><div class="line">        <span class="keyword">this</span>.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.windows = <span class="keyword">new</span> <span class="keyword">int</span>[windowSize];</div><div class="line">        <span class="comment">// 创建一个线程控制时间窗的移动，每秒操作的数组下标向后推一个格</span></div><div class="line">        Thread t = <span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">                <span class="keyword">try</span> &#123;</div><div class="line">                    Thread.sleep(<span class="number">1000L</span>);</div><div class="line">                    <span class="comment">// 打印windowSize秒内接受到的请求数</span></div><div class="line">                    System.out.println(statistic());</div><div class="line">                    <span class="comment">// 显示时间窗数组内容</span></div><div class="line">                    showBucketed();</div><div class="line">                    <span class="keyword">this</span>.nowIndex += <span class="number">1</span>;</div><div class="line">                    <span class="keyword">this</span>.nowIndex %= <span class="keyword">this</span>.windowSize;</div><div class="line">                    <span class="keyword">this</span>.windows[nowIndex] = <span class="number">0</span>;</div><div class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                    e.printStackTrace();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        t.start();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">statistic</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.windowSize; i++) &#123;</div><div class="line">            <span class="comment">// 计算除了当前操作位置以外的数组之和</span></div><div class="line">            <span class="keyword">if</span> (i == <span class="keyword">this</span>.nowIndex) &#123;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            total += <span class="keyword">this</span>.windows[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> total;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 显示时间窗各个时间点接受的请求数，'[]'为当前操作的位置</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">showBucketed</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="keyword">this</span>.windowSize; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i == <span class="keyword">this</span>.nowIndex) &#123;</div><div class="line">                System.out.print(<span class="string">'['</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.print(<span class="keyword">this</span>.windows[i]);</div><div class="line">            <span class="keyword">if</span> (i == <span class="keyword">this</span>.nowIndex) &#123;</div><div class="line">                System.out.print(<span class="string">']'</span>);</div><div class="line">            &#125;</div><div class="line">            System.out.print(<span class="string">' '</span>);</div><div class="line">        &#125;</div><div class="line">        System.out.println();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendRequest</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="comment">// 只对当前操作位置增加</span></div><div class="line">        <span class="keyword">this</span>.windows[<span class="keyword">this</span>.nowIndex] += <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">        BucketedCounter counter = <span class="keyword">new</span> BucketedCounter();</div><div class="line">        <span class="comment">// 启动计算器</span></div><div class="line">        counter.start();</div><div class="line">        Random random = <span class="keyword">new</span> Random();</div><div class="line">        <span class="comment">// 模拟发送请求</span></div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            counter.sendRequest();</div><div class="line">            <span class="comment">// 模拟请求间隔时间</span></div><div class="line">            Thread.sleep(<span class="number">10</span> + random.nextInt(<span class="number">20</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
     
@@ -477,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+            <a href="/tags/website-architecture/" rel="tag"># website architecture</a>
           
         </div>
       
@@ -490,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/09/Yarn-Map-Reduce/" rel="next" title="Yarn&Map/Reduce">
-                <i class="fa fa-chevron-left"></i> Yarn&Map/Reduce
+              <a href="/2020/02/21/limit-traffic/" rel="next" title="限流">
+                <i class="fa fa-chevron-left"></i> 限流
               </a>
             
           </div>
@@ -499,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/23/backtracking-questions/" rel="prev" title="backtracking questions">
-                backtracking questions <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -729,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java开发Map-Reduce程序"><span class="nav-number">1.</span> <span class="nav-text">Java开发Map/Reduce程序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MR程序执行方式："><span class="nav-number">1.1.</span> <span class="nav-text">MR程序执行方式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java程序在服务器上运行"><span class="nav-number">1.2.</span> <span class="nav-text">Java程序在服务器上运行</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maven引入依赖"><span class="nav-number">1.2.1.</span> <span class="nav-text">maven引入依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.2.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WordMapper-java"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">WordMapper.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WordReduce-java"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">WordReduce.java</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#main函数"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">main函数</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#主要分为以下几种情况："><span class="nav-number">1.</span> <span class="nav-text">主要分为以下几种情况：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#何时需要降级："><span class="nav-number">2.</span> <span class="nav-text">何时需要降级：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何降级"><span class="nav-number">3.</span> <span class="nav-text">如何降级</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过修改配置文件"><span class="nav-number">3.1.</span> <span class="nav-text">通过修改配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过配置中心（注册中心）"><span class="nav-number">3.2.</span> <span class="nav-text">通过配置中心（注册中心）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#熔断"><span class="nav-number">4.</span> <span class="nav-text">熔断</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#熔断的状态"><span class="nav-number">4.1.</span> <span class="nav-text">熔断的状态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#失败请求的统计"><span class="nav-number">5.</span> <span class="nav-text">失败请求的统计</span></a></li></ol></div>
             
 
           </div>

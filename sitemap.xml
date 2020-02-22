@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/02/22/downgrade/</loc>
+    
+    <lastmod>2020-02-22T14:30:53.899Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/02/21/limit-traffic/</loc>
     
-    <lastmod>2020-02-21T14:10:36.204Z</lastmod>
+    <lastmod>2020-02-21T14:15:12.739Z</lastmod>
     
   </url>
   
