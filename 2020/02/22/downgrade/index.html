@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="website architecture," />
+  <meta name="keywords" content="High Availability," />
 
 
 
@@ -95,14 +95,14 @@
 
 
 <meta name="description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
-<meta name="keywords" content="website architecture">
+<meta name="keywords" content="High Availability">
 <meta property="og:type" content="article">
 <meta property="og:title" content="降级">
 <meta property="og:url" content="http://yoursite.com/2020/02/22/downgrade/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-22T14:30:53.899Z">
+<meta property="og:updated_time" content="2020-02-23T12:18:36.916Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="降级">
 <meta name="twitter:description" content="当访问量剧增，服务出现问题（响应时间长或不响应），非核心服务影响到核心流程的性能时，将这些服务降级，以保证核心服务的可用性（弃卒保帅）">
@@ -422,7 +422,7 @@
 </ul>
 <h4 id="如何降级"><a href="#如何降级" class="headerlink" title="如何降级"></a>如何降级</h4><h5 id="通过修改配置文件"><a href="#通过修改配置文件" class="headerlink" title="通过修改配置文件"></a>通过修改配置文件</h5><p>例如：当检测到需要降级时，发送一个指令修改<code>properties</code>配置文件，借住<code>JDK 7 WatchService</code> 实现配置文件变更监听</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">    File file = <span class="keyword">new</span> File(<span class="string">"C:\\Users\\zjm\\IdeaProjects\\LimitTraffic\\src\\main\\java\\com\\heu\\zjm\\utils\\application.properties"</span>);	<span class="comment">// 模拟配置文件</span></div><div class="line">    WatchService watchService = FileSystems.getDefault().newWatchService();</div><div class="line">    Paths.get(file.getParent()).register(watchService,</div><div class="line">            StandardWatchEventKinds.ENTRY_MODIFY,</div><div class="line">            StandardWatchEventKinds.ENTRY_DELETE);</div><div class="line">    <span class="comment">// 启动一个线程监听内容变化</span></div><div class="line">    Thread watchThread = <span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">                WatchKey watchKey = watchService.take();</div><div class="line">                <span class="keyword">for</span> (WatchEvent&lt;?&gt; event : watchKey.pollEvents()) &#123;</div><div class="line">                    <span class="keyword">if</span> (Objects.equal(event.context().toString(), file.getName())) &#123;</div><div class="line">                        System.out.println(<span class="string">"文件发生了变化："</span> + event.kind() + <span class="string">"，重新载入配置文件"</span>);</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                watchKey.reset();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    watchThread.setDaemon(<span class="keyword">true</span>);	<span class="comment">// 守护线程</span></div><div class="line">    watchThread.start();</div><div class="line">    watchThread.join();		<span class="comment">// 防止主线程结束将守护线程停止</span></div><div class="line">    Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(()-&gt;&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            watchService.close();</div><div class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注：</strong>用idea修改配置文件内容不会观察到modify现实的提示，用文本编辑器修改后保存可以观察到modify操作的提示</p>
+<p><strong>注：</strong>用idea修改配置文件内容不会观察到modify现象的提示，用文本编辑器修改后保存可以观察到modify操作的提示</p>
 <p><strong>用户线程和守护线程：</strong>主线程结束，如果有用户线程，用户线程继续执行；主线程结束，没有用户线程，守护线程结束。默认创建的都是用户线程，守护线程需要在<code>start</code>前<code>setDaemon(true)</code></p>
 <p>​          在分布式系统中，要同时修改很多台服务器上的配置文件，会很麻烦，可以使用分布式配置中心统一管理</p>
 <h5 id="通过配置中心（注册中心）"><a href="#通过配置中心（注册中心）" class="headerlink" title="通过配置中心（注册中心）"></a>通过配置中心（注册中心）</h5><p>可选择的开源项目：<code>ZooKeeper</code>，<code>Diamond</code>，<code>Disconf</code>，<code>Etcd 3</code>，<code>Consul</code> </p>
@@ -487,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/website-architecture/" rel="tag"># website architecture</a>
+            <a href="/tags/High-Availability/" rel="tag"># High Availability</a>
           
         </div>
       
@@ -509,6 +509,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/27/consistent-hash/" rel="prev" title="一致性Hash算法(consistent hash)">
+                一致性Hash算法(consistent hash) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -624,7 +628,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -635,7 +639,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -646,7 +650,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

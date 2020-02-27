@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="nginx," />
+  <meta name="keywords" content="High Availability," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="GSLB">
-<meta name="keywords" content="nginx">
+<meta name="description" content="当一个服务器无法支撑用户请求时，需要扩容，从一台服务器扩展到很多台。然而，用户访问时是通过同一个域名，浏览器会查询DNS服务器获取对应的IP，然后通过此IP访问服务。反向代理就是将很多台服务器对外看起来是一台服务器，用反向代理服务器选择具体哪个服务器为用户提供服务">
+<meta name="keywords" content="High Availability">
 <meta property="og:type" content="article">
 <meta property="og:title" content="load_balance_reverse_proxy">
 <meta property="og:url" content="http://yoursite.com/2020/01/25/load-balance-reverse-proxy/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="GSLB">
+<meta property="og:description" content="当一个服务器无法支撑用户请求时，需要扩容，从一台服务器扩展到很多台。然而，用户访问时是通过同一个域名，浏览器会查询DNS服务器获取对应的IP，然后通过此IP访问服务。反向代理就是将很多台服务器对外看起来是一台服务器，用反向代理服务器选择具体哪个服务器为用户提供服务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-29T07:32:19.713Z">
+<meta property="og:updated_time" content="2020-02-27T08:57:32.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="load_balance_reverse_proxy">
-<meta name="twitter:description" content="GSLB">
+<meta name="twitter:description" content="当一个服务器无法支撑用户请求时，需要扩容，从一台服务器扩展到很多台。然而，用户访问时是通过同一个域名，浏览器会查询DNS服务器获取对应的IP，然后通过此IP访问服务。反向代理就是将很多台服务器对外看起来是一台服务器，用反向代理服务器选择具体哪个服务器为用户提供服务">
 
 
 
@@ -364,8 +364,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
+                  <a href="/categories/website-architecture/" itemprop="url" rel="index">
+                    <span itemprop="name">website architecture</span>
                   </a>
                 </span>
 
@@ -401,31 +401,77 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="GSLB"><a href="#GSLB" class="headerlink" title="GSLB"></a>GSLB</h3><a id="more"></a>
-<h3 id="LVS"><a href="#LVS" class="headerlink" title="LVS"></a>LVS</h3><h3 id="F5"><a href="#F5" class="headerlink" title="F5"></a>F5</h3><h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><ul>
-<li>round-robin (default)：轮训</li>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>当一个服务器无法支撑用户请求时，需要扩容，从一台服务器扩展到很多台。然而，用户访问时是通过同一个域名，浏览器会查询DNS服务器获取对应的IP，然后通过此IP访问服务。反向代理就是将很多台服务器对外看起来是一台服务器，用反向代理服务器选择具体哪个服务器为用户提供服务</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h3><ul>
+<li>round-robin (default)：轮询</li>
 <li>ip_hash：相同ip的请求发送到相同的服务器</li>
 <li>hash key<ul>
 <li>哈希算法</li>
-<li>一致性哈希算法</li>
+<li><a href="/2020/02/27/consistent-hash/" title="一致性哈希算法">一致性哈希算法</a></li>
 </ul>
 </li>
 <li>least_conn：将请求发送到最小活跃连接的上游服务器上</li>
 </ul>
-<h3 id="失败重试"><a href="#失败重试" class="headerlink" title="失败重试"></a>失败重试</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="失败重试"><a href="#失败重试" class="headerlink" title="失败重试"></a>失败重试</h3><blockquote>
+<p>以下配置位于<code>/etc/nginx/nginx.conf</code>内，在<code>http {...}</code>中</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8001 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.1:8002 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen 80;</div><div class="line">    server_name localhost;</div><div class="line">    location / &#123;</div><div class="line">        proxy_pass http://backend;</div><div class="line">        index index.htm index.html;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>当fail_timeout内失败了max_fails次请求，认为该上游服务器不可用，移除该服务器，尝试下一台服务器</p>
 </blockquote>
 <h3 id="健康检查"><a href="#健康检查" class="headerlink" title="健康检查"></a>健康检查</h3><ul>
 <li>TCP心跳检查</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8080 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.2:8080 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">    check interval=3000 rise=1 fall=3 timeout=2000 type=tcp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    server 192.168.31.1:8001 max_fails=2 fail_timeout=10s weight=1;</div><div class="line">    server 192.168.31.1:8002 max_fails=2 fail_timeout=10s weight=2;</div><div class="line">    check interval=3000 rise=1 fall=3 timeout=2000 type=tcp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>interval 每隔3秒检查一次，timeout 连接超时为失败一次，fall 失败3次后标记为不存活，rise 成功1次后标记为存活</p>
 </blockquote>
 <ul>
 <li>HTTP 心跳检查</li>
 </ul>
+<h3 id="Nginx-Location-匹配规则"><a href="#Nginx-Location-匹配规则" class="headerlink" title="Nginx Location 匹配规则"></a>Nginx Location 匹配规则</h3><blockquote>
+<p>用于匹配请求字符串，用不同的模块去处理不同匹配的请求：<code>location [=|~|~*|^~] uri {...}</code>，其中<code>uri</code>是要去匹配的字符串，可以不包含正则，称为“标准uri”；包含正则的uri称为“正则uri”</p>
+</blockquote>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>标识符</th>
+<th>描述</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>精确匹配，用于标准uri</td>
+<td>location = /hello/ {} 对应 <code>curl 192.168.0.1/hello/</code></td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>正则匹配，用于正则uri，区分大小写</td>
+<td>location ~  \.(html) {} 对应 <code>192.168.0.1/aaa.html</code></td>
+</tr>
+<tr>
+<td><code>~*</code></td>
+<td>正则匹配，用于正则uri，不区分大小写</td>
+<td>location ~  \.(html) {} 对应 <code>192.168.0.1/aaa.html</code></td>
+</tr>
+<tr>
+<td><code>^~</code></td>
+<td>非正则匹配，匹配前缀，用于标准uri，</td>
+<td>location ^~ /hello/ {} 对应 <code>192.168.0.1/index/...</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>全部请求</td>
+</tr>
+</tbody>
+</table>
+</div>
 
       
     </div>
@@ -472,7 +518,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
+            <a href="/tags/High-Availability/" rel="tag"># High Availability</a>
           
         </div>
       
@@ -613,7 +659,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-count">51</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -624,7 +670,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -635,7 +681,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-count">38</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -724,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GSLB"><span class="nav-number">1.</span> <span class="nav-text">GSLB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LVS"><span class="nav-number">2.</span> <span class="nav-text">LVS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F5"><span class="nav-number">3.</span> <span class="nav-text">F5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#负载均衡算法"><span class="nav-number">4.</span> <span class="nav-text">负载均衡算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失败重试"><span class="nav-number">5.</span> <span class="nav-text">失败重试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#健康检查"><span class="nav-number">6.</span> <span class="nav-text">健康检查</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#负载均衡算法"><span class="nav-number">1.</span> <span class="nav-text">负载均衡算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失败重试"><span class="nav-number">2.</span> <span class="nav-text">失败重试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#健康检查"><span class="nav-number">3.</span> <span class="nav-text">健康检查</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx-Location-匹配规则"><span class="nav-number">4.</span> <span class="nav-text">Nginx Location 匹配规则</span></a></li></ol></div>
             
 
           </div>
