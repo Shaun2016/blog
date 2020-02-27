@@ -107,7 +107,7 @@
 <meta property="og:image" content="http://yoursite.com/images/web/badmove.png">
 <meta property="og:image" content="http://yoursite.com/images/web/hash_oblique.png">
 <meta property="og:image" content="http://yoursite.com/images/web/virtual_node.png">
-<meta property="og:updated_time" content="2020-02-27T11:13:16.518Z">
+<meta property="og:updated_time" content="2020-02-27T15:13:38.213Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一致性Hash算法(consistent hash)">
 <meta name="twitter:description" content="在分布式集群中，有三台服务器（0, 1, 2）用于缓存图片（图片不重名），我们可以$hash(图片名)\%3$ 的方式将图片存放到对应的服务器中，用户请求时，根据上式从对应的服务器上取到图片。但是，当我们增加或减少服务器个数的时候，由于映射函数变化，需要将所有的图片重新散列，才能找到正确的位置，涉及到大量文件的转移，无疑是成本巨大的。解决方法是采用一致性hash算法">
@@ -436,6 +436,9 @@
 <p>在 hash 环上生成实际节点的虚拟节点，如果数据对应的是虚拟节点，则存放到虚拟节点对应的实际节点，虚拟节点使得服务分布的更均匀，数据分布的也就更均匀</p>
 </blockquote>
 <p><img src="/images/web/virtual_node.png" alt="virtual node"></p>
+<h3 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">upstream backend &#123;</div><div class="line">    hash $consistent_key consistent;</div><div class="line">    server ip:port weight=1;</div><div class="line">    server ip:port weight=2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果 location 指定了一致性哈希 key，使用请求参数 cat 做 key，如果没有，使用请求 uri 做 key</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">    set $consistent_key $arg_cat;</div><div class="line">    if ($consistent_key = "") &#123;</div><div class="line">   	    set $consistent_key $request_uri;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -730,7 +733,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对-2-32-取模"><span class="nav-number">1.</span> <span class="nav-text">对$2^{32}$取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-hash-算法对比"><span class="nav-number">3.</span> <span class="nav-text">与 hash 算法对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash-环倾斜问题"><span class="nav-number">4.</span> <span class="nav-text">hash 环倾斜问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟节点"><span class="nav-number">5.</span> <span class="nav-text">虚拟节点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对-2-32-取模"><span class="nav-number">1.</span> <span class="nav-text">对$2^{32}$取模</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#与-hash-算法对比"><span class="nav-number">3.</span> <span class="nav-text">与 hash 算法对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hash-环倾斜问题"><span class="nav-number">4.</span> <span class="nav-text">hash 环倾斜问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟节点"><span class="nav-number">5.</span> <span class="nav-text">虚拟节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-配置"><span class="nav-number">6.</span> <span class="nav-text">nginx 配置</span></a></li></ol></div>
             
 
           </div>
