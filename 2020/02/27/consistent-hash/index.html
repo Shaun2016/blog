@@ -105,9 +105,9 @@
 <meta property="og:image" content="http://yoursite.com/images/web/iphash.png">
 <meta property="og:image" content="http://yoursite.com/images/web/pichash.png">
 <meta property="og:image" content="http://yoursite.com/images/web/badmove.png">
-<meta property="og:image" content="http://yoursite.com/images/web/oblique.png">
-<meta property="og:image" content="http://yoursite.com/iamges/web/virtual_node.png">
-<meta property="og:updated_time" content="2020-02-27T10:32:20.604Z">
+<meta property="og:image" content="http://yoursite.com/images/web/hash_oblique.png">
+<meta property="og:image" content="http://yoursite.com/images/web/virtual_node.png">
+<meta property="og:updated_time" content="2020-02-27T11:13:16.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一致性Hash算法(consistent hash)">
 <meta name="twitter:description" content="在分布式集群中，有三台服务器（0, 1, 2）用于缓存图片（图片不重名），我们可以$hash(图片名)\%3$ 的方式将图片存放到对应的服务器中，用户请求时，根据上式从对应的服务器上取到图片。但是，当我们增加或减少服务器个数的时候，由于映射函数变化，需要将所有的图片重新散列，才能找到正确的位置，涉及到大量文件的转移，无疑是成本巨大的。解决方法是采用一致性hash算法">
@@ -430,12 +430,12 @@
 <h3 id="hash-环倾斜问题"><a href="#hash-环倾斜问题" class="headerlink" title="hash 环倾斜问题"></a>hash 环倾斜问题</h3><blockquote>
 <p>可以发现，服务器要存储的数据是与它逆时针最近的服务器之间的数据；如果服务器映射的太集中，有的服务器存放的数据太少，有的服务器存放的数据太多，导致有的服务器不能被充分利用，有的却饱和，当请求时，也会造成大量请求发送到同一个服务器上；我们希望服务器映射到 hash 环上均匀一些</p>
 </blockquote>
-<p><img src="/images/web/oblique.png" alt="hash oblique"></p>
+<p><img src="/images/web/hash_oblique.png" alt="hash oblique"></p>
 <p>如上图，服务器 B 存储了红色区域的数据；当服务器 B 坏掉时，服务器B，C之间的数据都要移动到服务器 A 中，增大了 A 的负载，超出 A 的承受能力还可能使 A 坏掉，并继续向后产生连锁反应，解决方法是使用<strong>虚拟节点</strong> </p>
 <h3 id="虚拟节点"><a href="#虚拟节点" class="headerlink" title="虚拟节点"></a>虚拟节点</h3><blockquote>
 <p>在 hash 环上生成实际节点的虚拟节点，如果数据对应的是虚拟节点，则存放到虚拟节点对应的实际节点，虚拟节点使得服务分布的更均匀，数据分布的也就更均匀</p>
 </blockquote>
-<p><img src="/iamges/web/virtual_node.png" alt="virtual node"></p>
+<p><img src="/images/web/virtual_node.png" alt="virtual node"></p>
 
       
     </div>
