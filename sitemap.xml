@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
+    
+    <lastmod>2020-03-19T15:42:30.376Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/02/28/application-cache/</loc>
     
-    <lastmod>2020-02-29T18:22:08.664Z</lastmod>
+    <lastmod>2020-03-01T02:59:19.550Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
     
     <lastmod>2020-02-07T13:08:14.210Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
-    
-    <lastmod>2020-02-06T14:11:43.776Z</lastmod>
     
   </url>
   

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
 <meta property="og:description" content="缓存是让数据更接近用户，提高访问速度 由于磁盘到内存之间的 IO 瓶颈会影响数据读取速度，将数据放在内存中，有请求到来时先从缓存中读取数据，如果没有，再从磁盘上读取并同步到缓存。然而，内存的空间是远远小于硬盘空间的，不能讲全部的数据都放到内存中。经常读取的数据，频繁访问的数据，热点数据，I/O 瓶颈数据，计算昂贵的数据，符号 5 分钟法则（如果一个数据的访问周期在5分钟以内则存放在内存中，否则应">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-29T18:22:08.664Z">
+<meta property="og:updated_time" content="2020-03-01T02:59:19.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="应用级缓存">
 <meta name="twitter:description" content="缓存是让数据更接近用户，提高访问速度 由于磁盘到内存之间的 IO 瓶颈会影响数据读取速度，将数据放在内存中，有请求到来时先从缓存中读取数据，如果没有，再从磁盘上读取并同步到缓存。然而，内存的空间是远远小于硬盘空间的，不能讲全部的数据都放到内存中。经常读取的数据，频繁访问的数据，热点数据，I/O 瓶颈数据，计算昂贵的数据，符号 5 分钟法则（如果一个数据的访问周期在5分钟以内则存放在内存中，否则应">
@@ -412,7 +412,7 @@
 <li>TTI (Time to Idle)：空闲期，数据多久没被访问后移除缓存</li>
 </ol>
 </li>
-<li>基于空间/容量</li>
+<li>基于空间/容量（空间：100MB，容量：1000条数据）</li>
 <li>基于 Java 对象引用类型<ol>
 <li>软引用：当 JVM 堆内存不足时，会进行相应的 GC，这次 GC <strong>不会</strong>回收软引用对象；如果 GC 后依旧空间不足， JVM 会进行第二次 GC，来回收不被强引用对象引用的软引用</li>
 <li>弱引用：GC 时回收不被强引用对象引用的弱引用对象</li>
