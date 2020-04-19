@@ -94,18 +94,21 @@
 
 
 
-<meta name="description" content="K8s的安装">
+<meta name="description" content="K8s 是一个用于自动化容器应用程序部署，扩展和管理的工具  Kubernetes 的功能： 自动化容器部署与复制 扩展或收缩容器规模 容器分组，负载均衡 实时监控，即时故障检测，自动替换">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kubernetes">
+<meta property="og:title" content="kubernetes 简介及安装">
 <meta property="og:url" content="http://yoursite.com/2020/01/31/kubernetes/index.html">
 <meta property="og:site_name" content="ShaunJM&#39;s blog">
-<meta property="og:description" content="K8s的安装">
+<meta property="og:description" content="K8s 是一个用于自动化容器应用程序部署，扩展和管理的工具  Kubernetes 的功能： 自动化容器部署与复制 扩展或收缩容器规模 容器分组，负载均衡 实时监控，即时故障检测，自动替换">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-07T13:55:57.143Z">
+<meta property="og:image" content="http://yoursite.com/images/k8s/conception.png">
+<meta property="og:image" content="http://yoursite.com/images/k8s/k8s_images.png">
+<meta property="og:updated_time" content="2020-04-16T05:31:35.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kubernetes">
-<meta name="twitter:description" content="K8s的安装">
+<meta name="twitter:title" content="kubernetes 简介及安装">
+<meta name="twitter:description" content="K8s 是一个用于自动化容器应用程序部署，扩展和管理的工具  Kubernetes 的功能： 自动化容器部署与复制 扩展或收缩容器规模 容器分组，负载均衡 实时监控，即时故障检测，自动替换">
+<meta name="twitter:image" content="http://yoursite.com/images/k8s/conception.png">
 
 
 
@@ -141,7 +144,7 @@
 
 
 
-  <title>kubernetes | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>kubernetes 简介及安装 | ShaunJM's blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -329,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">kubernetes</h1>
+          <h1 class="post-title" itemprop="name headline">kubernetes 简介及安装</h1>
         
 
         <div class="post-meta">
@@ -401,11 +404,29 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><h3 id="K8s的安装"><a href="#K8s的安装" class="headerlink" title="K8s的安装"></a>K8s的安装</h3><a id="more"></a>
-<h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><blockquote>
-<p>Master : 192.168.137.100</p>
-<p>Slave1 : 192.168.137.101</p>
-<p>Slave2 : 192.168.137.102</p>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"><blockquote>
+<p>K8s 是一个用于自动化容器应用程序部署，扩展和管理的工具</p>
+</blockquote>
+<h3 id="Kubernetes-的功能："><a href="#Kubernetes-的功能：" class="headerlink" title="Kubernetes 的功能："></a>Kubernetes 的功能：</h3><ul>
+<li>自动化容器部署与复制</li>
+<li>扩展或收缩容器规模</li>
+<li>容器分组，负载均衡</li>
+<li>实时监控，即时故障检测，自动替换</li>
+</ul>
+<a id="more"></a>
+<h3 id="K8s-的基本概念"><a href="#K8s-的基本概念" class="headerlink" title="K8s 的基本概念"></a>K8s 的基本概念</h3><p><img src="\images\k8s\conception.png" alt="基本概念"></p>
+<ul>
+<li><code>Pod</code> 内部可以运行多个容器，内部的容器间网络互通</li>
+<li><code>Container</code> 运行在 Pod 中的容器</li>
+<li><code>Label</code> 标签，Pod的别名</li>
+<li><code>Replication Controller</code> 复制控制器，在主节点上，监控Pod数量</li>
+<li><code>kubelet</code> 执行 k8s 指令</li>
+<li><code>kube-proxy</code> Pod 间容器通信时请求的转发</li>
+</ul>
+<h3 id="Kubernetes-的安装"><a href="#Kubernetes-的安装" class="headerlink" title="Kubernetes 的安装"></a>Kubernetes 的安装</h3><h4 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h4><blockquote>
+<p>master : 192.168.137.100</p>
+<p>node1 : 192.168.137.101</p>
+<p>node2 : 192.168.137.102</p>
 </blockquote>
 <p>下面的操作为仅在Master中的操作，其余两台从节点也要执行相应的操作</p>
 <ol>
@@ -415,18 +436,23 @@
 </li>
 <li><p>配置主机名对应的IP</p>
 <p><code>vi /etc/hosts</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">192.168.137.100 master</div><div class="line">192.168.137.101 slave1</div><div class="line">192.168.137.102 slave2</div><div class="line">192.168.137.103 slave3</div></pre></td></tr></table></figure>
-</li>
-<li><p>关闭防火墙</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config</div><div class="line">systemctl disable firewalld</div><div class="line">systemctl stop firewalld</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">192.168.137.100 master</div><div class="line">192.168.137.101 node1</div><div class="line">192.168.137.102 node2</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="安装kubeadmin"><a href="#安装kubeadmin" class="headerlink" title="安装kubeadmin"></a>安装kubeadmin</h4><ol>
+<ol>
+<li><p>关闭防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config	# 关闭安全模式</div><div class="line">setenforce 0	# 使上条命令临时生效</div><div class="line">systemctl disable firewalld</div><div class="line">systemctl stop firewalld</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="安装-kubeadmin"><a href="#安装-kubeadmin" class="headerlink" title="安装 kubeadmin"></a>安装 kubeadmin</h4><blockquote>
+<p>快速部署 K8s 的工具，简化 K8s 部署过程</p>
+</blockquote>
+<ol>
 <li><p>XFTP上传kubernetes离线安装文件</p>
 </li>
 <li><p>在每个节点上安装Docker</p>
 </li>
-<li><p><code>docker info | grep cgroup</code>查看<code>Cgroup Driver:cgroupfs</code></p>
+<li><p><code>docker info | grep cgroup</code>查看控制组：<code>Cgroup Driver:cgroupfs</code></p>
 </li>
 <li><p><code>tar -zxvf kube114-rpm.tar.gz</code></p>
 </li>
@@ -437,13 +463,16 @@
 <li><p>关闭交换区<code>swapoff -a</code>，<code>vi /etc/fstap</code>注释带有<code>swap</code>一行</p>
 </li>
 <li><p>配置网桥</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF &gt; /etc/sysctl.d/k8s.conf</div><div class="line">net.bridge.bridge-nf-call-ip6tables = 1</div><div class="line">net.bridge.bridge-nf-call-iptables = 1</div><div class="line">EOF</div><div class="line">sysctl --system</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cat &lt;&lt;EOF &gt; /etc/sysctl.d/k8s.conf</div><div class="line">net.bridge.bridge-nf-call-ip6tables = 1</div><div class="line">net.bridge.bridge-nf-call-iptables = 1</div><div class="line">EOF</div><div class="line">sysctl --system	# 查看参数值是否都为 1</div></pre></td></tr></table></figure>
+</li>
+<li><p>用本地文件创建K8s镜像：<code>docker load -i k8s-***-images.tar.gz</code></p>
+<p>使用<code>docker images</code>查看创建的K8s容器镜像</p>
+<p><img src="\images\k8s\k8s_images.png" alt="k8s容器镜像"></p>
+</li>
+<li><p>安装kubernetes-dashboard：<code>docker load -i flannel-dashboard.tar.gz</code></p>
 </li>
 </ol>
-<ol>
-<li><h3 id="指令随记"><a href="#指令随记" class="headerlink" title="指令随记"></a>指令随记</h3></li>
-</ol>
-<p><code>cat &gt;file</code>表示重定向输出到file中，用户输入内容后按<code>ctrl+c</code>结束编写内容并将内容输出到file中，<strong>注：</strong>会覆盖file中原始的内容；</p>
+<h3 id="指令随记"><a href="#指令随记" class="headerlink" title="指令随记"></a>指令随记</h3><p><code>cat &gt;file</code>表示重定向输出到file中，用户输入内容后按<code>ctrl+c</code>结束编写内容并将内容输出到file中，<strong>注：</strong>会覆盖file中原始的内容；</p>
 <p><code>cat &gt;&gt; file</code>是在file 中追加内容</p>
 <p>上述的两个指令无法在脚本执行中使用，因为会阻塞等待用户输入，需要使用下面的指令：</p>
 <p><code>cat &lt;&lt;EOF &gt; file</code>创建文件并写入内容，输入完成后以<code>EOF</code>结束，其中<code>EOF</code>只是一个字符串标记，可以随意指定，只是默认的写法是<code>EOF</code>；在脚本中想向文件中写入内容时使用，<code>cat &lt;&lt;EOF &gt;&gt; file</code>表示追加内容</p>
@@ -637,7 +666,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -648,7 +677,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -659,7 +688,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -748,7 +777,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K8s的安装"><span class="nav-number">1.</span> <span class="nav-text">K8s的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境"><span class="nav-number">1.1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装kubeadmin"><span class="nav-number">1.2.</span> <span class="nav-text">安装kubeadmin</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令随记"><span class="nav-number">2.</span> <span class="nav-text">指令随记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Kubernetes-的功能："><span class="nav-number">1.</span> <span class="nav-text">Kubernetes 的功能：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#K8s-的基本概念"><span class="nav-number">2.</span> <span class="nav-text">K8s 的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kubernetes-的安装"><span class="nav-number">3.</span> <span class="nav-text">Kubernetes 的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#环境"><span class="nav-number">3.1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-kubeadmin"><span class="nav-number">3.2.</span> <span class="nav-text">安装 kubeadmin</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令随记"><span class="nav-number">4.</span> <span class="nav-text">指令随记</span></a></li></ol></div>
             
 
           </div>

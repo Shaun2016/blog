@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2020/03/21/progressbar/</loc>
+    <loc>http://yoursite.com/2020/04/19/NFS-file-sharing/</loc>
     
-    <lastmod>2020-03-21T06:28:03.640Z</lastmod>
+    <lastmod>2020-04-19T09:04:21.817Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/16/k8s-deployment/</loc>
+    
+    <lastmod>2020-04-19T07:45:49.203Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/31/kubernetes/</loc>
+    
+    <lastmod>2020-04-16T05:31:35.532Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/06/kubernete-cluster/</loc>
+    
+    <lastmod>2020-04-16T05:30:58.276Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/04/11/linux-commands/</loc>
+    
+    <lastmod>2020-04-13T03:20:47.146Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2019/11/16/python-program-skill/</loc>
     
-    <lastmod>2020-03-21T06:17:33.349Z</lastmod>
+    <lastmod>2020-03-28T14:31:51.594Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/26/docker/</loc>
+    
+    <lastmod>2020-03-28T07:46:28.923Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/03/21/progressbar/</loc>
+    
+    <lastmod>2020-03-22T06:45:27.918Z</lastmod>
     
   </url>
   
@@ -51,13 +93,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/01/31/kubernetes/</loc>
-    
-    <lastmod>2020-02-07T13:55:57.143Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2019/03/19/word2vec_CBOW/</loc>
     
     <lastmod>2020-02-07T13:08:14.210Z</lastmod>
@@ -68,13 +103,6 @@
     <loc>http://yoursite.com/2020/01/28/docker-component-communication/</loc>
     
     <lastmod>2020-01-29T10:09:14.286Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2020/01/26/docker/</loc>
-    
-    <lastmod>2020-01-29T07:42:38.587Z</lastmod>
     
   </url>
   

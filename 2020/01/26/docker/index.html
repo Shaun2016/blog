@@ -103,7 +103,7 @@
 <meta property="og:description" content="安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/docker/dockerfile.png">
-<meta property="og:updated_time" content="2020-01-29T07:42:38.587Z">
+<meta property="og:updated_time" content="2020-03-28T07:46:28.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker镜像与容器">
 <meta name="twitter:description" content="安装Docker安装环境依赖 1yum install -y yum-utils device-mapper-persistent-data lvm2 添加yum源 1yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo">
@@ -482,6 +482,8 @@
 <p>下面是一个用 Dockerfile 构建 redis 镜像的实例：</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> centos</div><div class="line"><span class="keyword">RUN</span> ["yun", "install", "-y", "gcc", "gcc-c++", "net-tools", "make"]</div><div class="line">WORKDIR /usr/local</div><div class="line">ADD redis-4.0.14.tar.gz</div><div class="line">WORKDIR /usr/local/redis-4.0.14/src</div><div class="line">RUN make &amp;&amp; make install</div><div class="line">WORKDIR /usr/local/redis-4.0.14</div><div class="line">ADD redis-7000.conf</div><div class="line">EXPOSE 7000</div><div class="line">CMD ["redis-server", "redis-7000.conf"]</div></pre></td></tr></table></figure>
 <p>当然，在<a href="https://hub.docker.com/" target="_blank" rel="external">https://hub.docker.com</a>网站上已经有构建好的redis镜像，完全没有必要自己从<code>centos</code>开始构建镜像</p>
+<h3 id="为非-root-用户添加-docker-命令权限"><a href="#为非-root-用户添加-docker-命令权限" class="headerlink" title="为非 root 用户添加 docker 命令权限"></a>为非 root 用户添加 docker 命令权限</h3><p>在<code>docker</code>组中的用户有权执行docker命令，使用 root 用户执行下面的指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gpasswd -a username docker</div><div class="line">service docker restart</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -669,7 +671,7 @@
             
               <a href="/archives/">
             
-                <span class="site-state-item-count">53</span>
+                <span class="site-state-item-count">57</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -680,7 +682,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -691,7 +693,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -780,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Docker"><span class="nav-number">1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Tomcat镜像容器"><span class="nav-number">2.</span> <span class="nav-text">运行Tomcat镜像容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-构建镜像"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile 构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-中的指令"><span class="nav-number">4.</span> <span class="nav-text">Dockerfile 中的指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的两个格式"><span class="nav-number">4.1.</span> <span class="nav-text">指令的两个格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RUN"><span class="nav-number">4.2.</span> <span class="nav-text">RUN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ENTRYPOINT"><span class="nav-number">4.3.</span> <span class="nav-text">ENTRYPOINT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD"><span class="nav-number">4.4.</span> <span class="nav-text">CMD</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Docker"><span class="nav-number">1.</span> <span class="nav-text">安装Docker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行Tomcat镜像容器"><span class="nav-number">2.</span> <span class="nav-text">运行Tomcat镜像容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-构建镜像"><span class="nav-number">3.</span> <span class="nav-text">Dockerfile 构建镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dockerfile-中的指令"><span class="nav-number">4.</span> <span class="nav-text">Dockerfile 中的指令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令的两个格式"><span class="nav-number">4.1.</span> <span class="nav-text">指令的两个格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RUN"><span class="nav-number">4.2.</span> <span class="nav-text">RUN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ENTRYPOINT"><span class="nav-number">4.3.</span> <span class="nav-text">ENTRYPOINT</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CMD"><span class="nav-number">4.4.</span> <span class="nav-text">CMD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为非-root-用户添加-docker-命令权限"><span class="nav-number">5.</span> <span class="nav-text">为非 root 用户添加 docker 命令权限</span></a></li></ol></div>
             
 
           </div>
