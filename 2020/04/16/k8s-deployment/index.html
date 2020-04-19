@@ -103,7 +103,7 @@
 <meta property="og:description" content="部署是主节点向从节点发送指令，创建容器的过程；k8s支持yml格式的部署脚本  Deployment部署脚本示例">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/k8s/kube_service.png">
-<meta property="og:updated_time" content="2020-04-19T07:45:49.203Z">
+<meta property="og:updated_time" content="2020-04-19T14:31:59.927Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deployment脚本部署Tomcat集群">
 <meta name="twitter:description" content="部署是主节点向从节点发送指令，创建容器的过程；k8s支持yml格式的部署脚本  Deployment部署脚本示例">
@@ -421,7 +421,7 @@
 <li><code>kubectl get deployment</code>    查看部署状态</li>
 </ol>
 <h3 id="外部访问-Tomcat-集群"><a href="#外部访问-Tomcat-集群" class="headerlink" title="外部访问 Tomcat 集群"></a>外部访问 Tomcat 集群</h3><blockquote>
-<p>在从节点上容器对外暴露的端口封装在Pod内，外界不能跨过Pod访问内部的容器。为了让外部能访问容器服务，做法是：在主节点上创建 service 服务，并向外暴露端口，通过访问 service服务，再由 service 转发到具体的 tomcat 服务，实现外部访问</p>
+<p>在从节点上容器对外暴露的端口封装在Pod内，外界不能跨过Pod访问内部的容器。为了让外部能访问容器服务，做法是：在主节点上创建 service 服务，并向外暴露端口，通过访问 service服务，再由 service 转发到具体的 tomcat 服务，实现外部访问，也可以实现负载均衡</p>
 </blockquote>
 <p><img src="\images\k8s\kube_service.png" alt=""></p>
 <ol>
@@ -430,7 +430,30 @@
 <li>kubectl get service</li>
 <li>kubectl descrive service service_name</li>
 </ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># tomcat-service.yml</div><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  name: tomcat-service</div><div class="line">  labels:</div><div class="line">    app: tomcat-service</div><div class="line">spec:</div><div class="line">  type: NodePort</div><div class="line">  selector:</div><div class="line">    app: tomcat-cluster	# Service要对应的目标 pod 的名称</div><div class="line">  ports:</div><div class="line">  - port: 8000	# Service 对外端口</div><div class="line">    targetPort: 8080    # 目标服务端口</div><div class="line">    nodePort: 32500</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"># tomcat-service.yml</div><div class="line">apiVersion: v1</div><div class="line">kind: Service</div><div class="line">metadata:</div><div class="line">  name: tomcat-service</div><div class="line">  labels:</div><div class="line">    app: tomcat-service</div><div class="line">spec:</div><div class="line">#  type: NodePort</div><div class="line">  selector:</div><div class="line">    app: tomcat-cluster	# Service要对应的目标 pod 的名称</div><div class="line">  ports:</div><div class="line">  - port: 8000	# Service 对外端口</div><div class="line">    targetPort: 8080    # 目标服务端口</div><div class="line">#    nodePort: 32500</div></pre></td></tr></table></figure>
+<p>这种方式可以在宿主机内部通过<code>kubectl get services</code>查看Cluster-IP，然后通过<code>curl Cluster-IP:8080/.../...</code>的形式访问 Tomcat 集群服务，但是外界无法访问Cluster-IP，因为外部只能看到宿主机的IP，如何通过宿主机IP+端口转到Cluster-IP+端口呢？</p>
+<h3 id="端口转发工具-Rinetd"><a href="#端口转发工具-Rinetd" class="headerlink" title="端口转发工具 Rinetd"></a>端口转发工具 Rinetd</h3><blockquote>
+<p>Rinetd是Linux中的重定向传输控制协议工具，可将源IP端口数据转发到目标IP端口，在Kubernetes中用于将Service服务对外暴露</p>
+</blockquote>
+<h4 id="安装Rinetd"><a href="#安装Rinetd" class="headerlink" title="安装Rinetd"></a>安装Rinetd</h4><ol>
+<li><code>cd /usr/local</code></li>
+<li>下载源码：<code>wget http://www.boutell.com/rinted/http/rinetd.tar.gz</code></li>
+<li>解压并进入：<code>tar -zxvf rinetd.tar.gz</code>，<code>cd rinetd</code></li>
+<li>替换字符串：<code>sed -i &#39;s/65536/65535/g&#39; rinetd.c</code></li>
+<li><code>mkdir -p /usr/man</code></li>
+<li>安装gcc：<code>yum install -y gcc</code></li>
+<li>编译并安装：<code>make &amp;&amp; make install</code></li>
+</ol>
+<h4 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h4><ol>
+<li><p><code>vi /etc/rinetd.conf</code>，添加：<code>0.0.0.0 8001 10.100.22.231 8000</code></p>
+<p><em>0.0.0.0表示哪些客户端可以访问，8001表示对外暴露的端口，10.100.22.231为将8001接受的数据转发到宿主机内的IP，8000为转发到的端口</em></p>
+</li>
+<li><p>加载配置文件：<code>rinetd -c /etc/rinetd.conf</code></p>
+</li>
+</ol>
+<h3 id="对集群资源限定"><a href="#对集群资源限定" class="headerlink" title="对集群资源限定"></a>对集群资源限定</h3><p>对<code>tomcat-deploy.yml</code>做如下修改：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">spec:</div><div class="line">  spec:</div><div class="line">    containers:</div><div class="line">      resources:	# 最小资源限制</div><div class="line">        cpu: 0.5</div><div class="line">        memory: 200Mi</div><div class="line">      limits:	# 最大资源限制</div><div class="line">        cpu: 1</div><div class="line">        memory: 512Mi</div></pre></td></tr></table></figure>
+<p>更新已部署的集群服务：<code>kubectl apply -f tomcat-deploy.yml</code></p>
 
       
     </div>
@@ -729,7 +752,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment部署脚本示例"><span class="nav-number">1.</span> <span class="nav-text">Deployment部署脚本示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署命令"><span class="nav-number">2.</span> <span class="nav-text">部署命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署步骤"><span class="nav-number">3.</span> <span class="nav-text">部署步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部访问-Tomcat-集群"><span class="nav-number">4.</span> <span class="nav-text">外部访问 Tomcat 集群</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Deployment部署脚本示例"><span class="nav-number">1.</span> <span class="nav-text">Deployment部署脚本示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署命令"><span class="nav-number">2.</span> <span class="nav-text">部署命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署步骤"><span class="nav-number">3.</span> <span class="nav-text">部署步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#外部访问-Tomcat-集群"><span class="nav-number">4.</span> <span class="nav-text">外部访问 Tomcat 集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#端口转发工具-Rinetd"><span class="nav-number">5.</span> <span class="nav-text">端口转发工具 Rinetd</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Rinetd"><span class="nav-number">5.1.</span> <span class="nav-text">安装Rinetd</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口映射"><span class="nav-number">5.2.</span> <span class="nav-text">端口映射</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对集群资源限定"><span class="nav-number">6.</span> <span class="nav-text">对集群资源限定</span></a></li></ol></div>
             
 
           </div>
