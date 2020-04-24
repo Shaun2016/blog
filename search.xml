@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[springboot web开发]]></title>
+    <url>%2F2020%2F04%2F21%2Fspringboot-web%2F</url>
+    <content type="text"><![CDATA[国际化配置在yml中： 123spring: messages: basename: i18n/index 在resources下新建文件夹i18n，再i18n下新建三个文件：index.properties，index_zh_CN.properties，index_en_US.properties，分别表示默认文字，中文，英文；如下为中文的示例 1234index.welcome=欢迎！index.user=用户index.Chinese=中文index.English=英文 在templates下新建thymeleaf模板的index.html 12345678910111213&lt;!DOCTYPE html&gt;&lt;html lang="en" xmlns:th="http://www.thymeleaf.org"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 th:text="#&#123;index.welcome&#125;"&gt;&lt;/h1&gt;&lt;h2 th:text="#&#123;index.user&#125;"&gt;&lt;/h2&gt;&lt;a th:href="@&#123;/index(language='zh_CN')&#125;" th:text="#&#123;index.Chinese&#125;"&gt;&lt;/a&gt;&lt;a th:href="@&#123;/index(language='en_US')&#125;" th:text="#&#123;index.English&#125;"&gt;&lt;/a&gt;&lt;/body&gt;&lt;/html&gt; 新建配置类MyMvcConfig 1234567891011121314151617181920212223242526272829@Configurationpublic class MyMvcConfig implements WebMvcConfigurer &#123; @Bean public LocaleResolver localeResolver() &#123; return new NativeLocalResolver(); &#125; protected static class NativeLocalResolver implements LocaleResolver &#123; @Override public Locale resolveLocale(HttpServletRequest request) &#123; String language = request.getParameter("language"); System.out.println("-----"+language); Locale locale = Locale.getDefault(); if (!StringUtils.isEmpty(language)) &#123; String[] split = language.split("_"); locale = new Locale(split[0], split[1]); &#125; return locale; &#125; @Override public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) &#123; &#125; &#125;&#125; 控制器里的路由函数跳转到index或者直接访问服务域名端口 多数据源切换]]></content>
+      <categories>
+        <category>springboot</category>
+      </categories>
+      <tags>
+        <tag>springboot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用NFS实现不同Pod中Tomcat工程目录共享]]></title>
     <url>%2F2020%2F04%2F19%2FNFS-file-sharing%2F</url>
     <content type="text"><![CDATA[Network File System (NFS) 网络文件系统， 能使使用者访问网络上的文件就像在本地一样，主要采用远程调用RPC机制实现文件传输 在主节点上安装 NFS 与 RPC 服务yum install -y nfs-utils rpcbind 创建目录：/usr/local/data/www-data 编辑文件：vi /etc/exports，写入：/usr/local/www-data 192.168.163.129/24(rw,sync) 启动nfs与rpc服务（设置开机启动步骤略过）： systemctl start nfs.service systemctl start rpcbind.service 执行：exportfs查看结果 从节点yum install -y nfs-utils showmount -e 192.168.163.132 查看主服务器的共享文件夹 mount 192.168.163.132:/usr/local/data/www-data /mnt 将远程主机的文件夹映射到从节点本地文件 将从节点的nfs服务设置开机启动 至此，主节点的/usr/local/data/www-data路径挂载到从节点的/mnt路径中，在从节点上访问或修改/mnt路径下的文件，与在主节点有一样的效果 编辑deployment配置文件修改tomcat-deploy.yml文件： 1234567891011121314151617181920212223apiVersion: extensions/V1beta1kind: Deploymentmetadata: name: tomcat-deployspec: replicas: 2 template: metadata: labels: app: tomcat-cluster spec: volumes: - name: web-app hostPath: path: /mnt containers: - name: tomca-cluster images: tomcat:latest ports: - containerPort: 8080 volumeMounts: - name: web-app mountPath: /usr/local/tomcat/webapps 如果已经运行了由tomcat-deploy.yml部署的tomcat集群服务，可以使用kubectl delete deployment tomcat-deploy删除已运行的服务，重启tomcat-deploy服务后，两个Pod中的Tomcat服务的工程路径都和主节点中对外提供NFS服务的路径保持一致，则修改主节点中路径即可修改所有的从节点的Pod中Tomcat服务]]></content>

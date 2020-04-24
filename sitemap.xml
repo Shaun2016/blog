@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/04/21/springboot-web/</loc>
+    
+    <lastmod>2020-04-24T16:53:19.512Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/04/16/k8s-deployment/</loc>
     
     <lastmod>2020-04-19T14:31:59.927Z</lastmod>
