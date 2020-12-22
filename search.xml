@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[一个人的时光]]></title>
+    <url>%2F2020%2F12%2F23%2Fthe-life-in-flowing-bj%2F</url>
+    <content type="text"><![CDATA[前言 好久没有写了，工作半年多，一直都在忙，收货却很少，转正之后更是，对未来的困惑与迷茫让天暗淡，生活中的烦恼与日俱增，快乐越来越少，前进的动力也不知道能支持多久。很早就想写一些感受，一直下不来决心和勇气，总是没有时间，却又什么都没做。今天是12月23日，我想以后每天多多少少都写点]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[springboot web开发]]></title>
     <url>%2F2020%2F04%2F21%2Fspringboot-web%2F</url>
     <content type="text"><![CDATA[国际化配置在yml中： 123spring: messages: basename: i18n/index 在resources下新建文件夹i18n，再i18n下新建三个文件：index.properties，index_zh_CN.properties，index_en_US.properties，分别表示默认文字，中文，英文；如下为中文的示例 1234index.welcome=欢迎！index.user=用户index.Chinese=中文index.English=英文 在templates下新建thymeleaf模板的index.html 12345678910111213&lt;!DOCTYPE html&gt;&lt;html lang="en" xmlns:th="http://www.thymeleaf.org"&gt;&lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;title&gt;Title&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 th:text="#&#123;index.welcome&#125;"&gt;&lt;/h1&gt;&lt;h2 th:text="#&#123;index.user&#125;"&gt;&lt;/h2&gt;&lt;a th:href="@&#123;/index(language='zh_CN')&#125;" th:text="#&#123;index.Chinese&#125;"&gt;&lt;/a&gt;&lt;a th:href="@&#123;/index(language='en_US')&#125;" th:text="#&#123;index.English&#125;"&gt;&lt;/a&gt;&lt;/body&gt;&lt;/html&gt; 新建配置类MyMvcConfig 1234567891011121314151617181920212223242526272829@Configurationpublic class MyMvcConfig implements WebMvcConfigurer &#123; @Bean public LocaleResolver localeResolver() &#123; return new NativeLocalResolver(); &#125; protected static class NativeLocalResolver implements LocaleResolver &#123; @Override public Locale resolveLocale(HttpServletRequest request) &#123; String language = request.getParameter("language"); System.out.println("-----"+language); Locale locale = Locale.getDefault(); if (!StringUtils.isEmpty(language)) &#123; String[] split = language.split("_"); locale = new Locale(split[0], split[1]); &#125; return locale; &#125; @Override public void setLocale(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Locale locale) &#123; &#125; &#125;&#125; 控制器里的路由函数跳转到index或者直接访问服务域名端口 多数据源切换]]></content>
